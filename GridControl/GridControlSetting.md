@@ -1,128 +1,135 @@
 # 1. GridControl
-1. ÄÃ·³ Å¬¸¯ ¹æÁö
-2. ¼¿°ª ¹Ù²î¸é ´Ù¸¥¼¿°ªµµ ¼¼ÆÃÇØÁÖ´Â ¹æ¹ı
-	- ¼¿°ªÀÌ ¹Ù²ğ¶§ Å×ÀÌºí¿¡¼­ ¸µÅ¥°É¾î¼­ °°Àº·Î¿ì¿¡ ÀÖ´Â ´Ù¸¥ ¼¿°ªµéÀ» ºÒ·¯¿Ã ¼ö ÀÖ´Ù. 
-3. ¼¿ÀÇ Å©±â¿Í ÄÃ·³Çì´õ(ÆÒµåºä¸é ¹êµå Çì´õ) Å©±â ¼¿ÀÇ »öÀ» ¹Ù²ãÁÙ ¼ö ÀÖ´Ù.
-4. ·Î¿ì¼¿µé¿¡°Ô »ö±ò ÁÖ±â(readonly È¸»ö Æ÷ÇÔ)
-5. ±×·ìÇÎ ¹× ÄÃ·³¼ÒÆÃ
-	- ÄÃ·³ ¼ÒÆÃ ÀÌº¥Æ®Á¤ÀÇ (Á¤±ÔÇ¥Çö½Ä)
-	- Ç²ÅÍ¿¡ ÇÕ, Æò±Õ µî °è»ê°ª Á¤¸®ÇØÁÖ±â
-		- Ç²ÅÍ(footer)ÀÇ Á¾·ù
-6. ±×¸®µåºäÀÇ Á¾·ù : ¹êµå±×¸®µåºä (BandedGridView) 
-	- BandedGridView ÄÃ·³ Header ¿¡ »ö±òÁÖ±â
-7. µ¿ÀûÄÃ·³
-	- µ¿ÀûÄÃ·³ CU ÀúÀåÇÒ¶§ ÄÃ·³ Àß¶ó¼­ ³Ñ±â±â. ¾Æ·¡ µÎ ¸Ş¼­µå´Â ¹Ù·Î À§ DataSave() ¿¡¼­ »ç¿ëÀº ¾ÈÇß´Âµ¥ »ç¿ëÇÒ¼öµµ ÀÖÀ¸´Ï Âü°í¹Ù¶÷. ÃâÃ³´Â MS Q&A
-8. ±×¸®µåºäÀÇ ·Î¿ì¸¦ À§ ¾Æ·¡·Î ¿Å°ÜÁÖ±â(À§¾Æ·¡ ¹öÆ°¸¸µé±â)
-9. ·Î¿ì Ãß°¡ÇÒ¶§ ¼ø¼­´ë·Î ¹øÈ£µç ¹®ÀÚµç ÁÖ±â
-10. Á¤±Ô½ÄÀ¸·Î ÄÃ·³¿¡ Á¤ÇØÁø°ª¸¸ ÀÛ¼ºÇÒ ¼ö ÀÖ°Ô ¸¸µé¾îÁÖ±â
-11. ±×¸®µåºä ÇÊÅÍ¿¡ °üÇØ¼­ 
-	- ÇÊÅÍ¸¦ ¾Èº¸ÀÌ°Ô ÇÏ´Â¹ı
-	- ÇÊÅÍ°¡ BOOLEAN ÀÏ¶§ ±âº» µğÆúÆ®°ªÀ» FALSE·Î ÁÖ´Â ¹æ¹ı (±âº»Àº NULLÀÎµí ÇÏ´Ù)
-12. ±×¸®µå ÄÁÆ®·Ñ È­¸é´Ü¿¡ ºÒÇÊ¿äÇÑ 0 ÀÌ ÀÖÀ»¶§ ¾Èº¸ÀÌ°Ô ÇÏ´Â ¹æ¹ı
+1. ì»¬ëŸ¼ í´ë¦­ ë°©ì§€
+2. ì…€ê°’ ë°”ë€Œë©´ ë‹¤ë¥¸ì…€ê°’ë„ ì„¸íŒ…í•´ì£¼ëŠ” ë°©ë²•
+	- ì…€ê°’ì´ ë°”ë€”ë•Œ í…Œì´ë¸”ì—ì„œ ë§íê±¸ì–´ì„œ ê°™ì€ë¡œìš°ì— ìˆëŠ” ë‹¤ë¥¸ ì…€ê°’ë“¤ì„ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆë‹¤. 
+3. ì…€ì˜ í¬ê¸°ì™€ ì»¬ëŸ¼í—¤ë”(íŒ¬ë“œë·°ë©´ ë°´ë“œ í—¤ë”) í¬ê¸° ì…€ì˜ ìƒ‰ì„ ë°”ê¿”ì¤„ ìˆ˜ ìˆë‹¤.
+    - ë¡œìš°ì…€ë“¤ì—ê²Œ ìƒ‰ê¹” ì£¼ê¸°(readonly íšŒìƒ‰ í¬í•¨)
+4. ê·¸ë£¹í•‘ ë° ì»¬ëŸ¼ì†ŒíŒ…
+	- ì»¬ëŸ¼ ì†ŒíŒ… ì´ë²¤íŠ¸ì •ì˜ (ì •ê·œí‘œí˜„ì‹)
+	- í’‹í„°(footer)ì˜ ì¢…ë¥˜ì— ëŒ€í•´ì„œ
+    	- í’‹í„°ì— í•©, í‰ê·  ë“± ê³„ì‚°ê°’ ì •ë¦¬í•´ì£¼ê¸°
+5. ê·¸ë¦¬ë“œë·°ì˜ ì¢…ë¥˜ : ë°´ë“œê·¸ë¦¬ë“œë·° (BandedGridView) 
+	- BandedGridView ì»¬ëŸ¼ Header ì— ìƒ‰ê¹”ì£¼ê¸°
+6. ë™ì ì»¬ëŸ¼
+	- ë™ì ì»¬ëŸ¼ CU ì €ì¥í• ë•Œ ì»¬ëŸ¼ ì˜ë¼ì„œ ë„˜ê¸°ê¸°. ì•„ë˜ ë‘ ë©”ì„œë“œëŠ” ë°”ë¡œ ìœ„ DataSave() ì—ì„œ ì‚¬ìš©ì€ ì•ˆí–ˆëŠ”ë° ì‚¬ìš©í• ìˆ˜ë„ ìˆìœ¼ë‹ˆ ì°¸ê³ ë°”ëŒ. ì¶œì²˜ëŠ” MS Q&A
+7. ê·¸ë¦¬ë“œë·°ì˜ ë¡œìš°ë¥¼ ìœ„ ì•„ë˜ë¡œ ì˜®ê²¨ì£¼ê¸°(ìœ„ì•„ë˜ ë²„íŠ¼ë§Œë“¤ê¸°)
+8. ë¡œìš° ì¶”ê°€í• ë•Œ ìˆœì„œëŒ€ë¡œ ë²ˆí˜¸ë“  ë¬¸ìë“  ì£¼ê¸°
+9. ì •ê·œì‹ìœ¼ë¡œ ì»¬ëŸ¼ì— ì •í•´ì§„ê°’ë§Œ ì‘ì„±í•  ìˆ˜ ìˆê²Œ ë§Œë“¤ì–´ì£¼ê¸°
+10. ê·¸ë¦¬ë“œë·° í•„í„°ì— ê´€í•´ì„œ 
+	- í•„í„°ë¥¼ ì•ˆë³´ì´ê²Œ í•˜ëŠ”ë²•
+	- í•„í„°ê°€ BOOLEAN ì¼ë•Œ ê¸°ë³¸ ë””í´íŠ¸ê°’ì„ FALSEë¡œ ì£¼ëŠ” ë°©ë²• (ê¸°ë³¸ì€ NULLì¸ë“¯ í•˜ë‹¤)
+11. ê·¸ë¦¬ë“œ ì»¨íŠ¸ë¡¤ í™”ë©´ë‹¨ì— ë¶ˆí•„ìš”í•œ 0 ì´ ìˆì„ë•Œ ì•ˆë³´ì´ê²Œ í•˜ëŠ” ë°©ë²•
 _________________________________________________________________________
-#### 1. ÄÃ·³ Å¬¸¯ ¹æÁö
+<br>
 
-¾Æ·¡´Â ±×¸®µåºäÀÇ ÄÃ·³À» »ç¿ëÀÚ°¡ ¼±ÅÃÇÏÁö ¸øÇÏ°Ô ¸·´Â ÀÌº¥Æ®¸£ »ç¿ëÇß´Ù.
-ShowingEditor¸¦ »ç¿ëÇÏ°í e.cancle = true; ·Î ÇÏ¸é ¼±ÅÃÀÌ µÇÁö ¾Ê´Â´Ù. 
-½ºÀ§Ä¡¹®À» »ç¿ëÇØ¼­ Æ¯Á¤ ÄÃ·³¸¸À» ´ë»óÀ¸·Î ¼±ÅÃÀ» ¸·À» ¼ö ÀÖ´Ù.
-gridview.FocusedColumn.FieldName À¸·Î ¼±ÅÃÇÑ(Æ÷Ä¿½ºµÈ) ¼¿ÀÇ ÄÃ·³ÀÌ¸§À» ºñ±³ÇÏ¿©
-¿øÇÏ´Â ÄÃ·³¿¡¸¸ showingeditor ÀÌº¥Æ®¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù. 
+#### 1. ì»¬ëŸ¼ í´ë¦­ ë°©ì§€
+
+ì•„ë˜ëŠ” ê·¸ë¦¬ë“œë·°ì˜ ì»¬ëŸ¼ì„ ì‚¬ìš©ìê°€ ì„ íƒí•˜ì§€ ëª»í•˜ê²Œ ë§‰ëŠ” ì´ë²¤íŠ¸ë¥´ ì‚¬ìš©í–ˆë‹¤.
+ShowingEditorë¥¼ ì‚¬ìš©í•˜ê³  e.cancle = true; ë¡œ í•˜ë©´ ì„ íƒì´ ë˜ì§€ ì•ŠëŠ”ë‹¤. 
+ìŠ¤ìœ„ì¹˜ë¬¸ì„ ì‚¬ìš©í•´ì„œ íŠ¹ì • ì»¬ëŸ¼ë§Œì„ ëŒ€ìƒìœ¼ë¡œ ì„ íƒì„ ë§‰ì„ ìˆ˜ ìˆë‹¤.
+gridview.FocusedColumn.FieldName ìœ¼ë¡œ ì„ íƒí•œ(í¬ì»¤ìŠ¤ëœ) ì…€ì˜ ì»¬ëŸ¼ì´ë¦„ì„ ë¹„êµí•˜ì—¬
+ì›í•˜ëŠ” ì»¬ëŸ¼ì—ë§Œ showingeditor ì´ë²¤íŠ¸ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤. 
 ```c#
 Grid_Something.ShowingEditor += Grid_Something_ShowingEditor;
 
 private void Grid_Something_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e)
-       {
-           switch (Grid_Something.DefaultView.FocusedColumn.FieldName)
-           {
-               case "CAR_NUMBER":
-               case "PHONE_NUMBER":
-               case "TON_CAR":
-               case "FC_NAME":
-                   e.Cancel = true;
-                   break;
-               default:
-                   e.Cancel = false;
-                   break;
-           }
-          
-       }
+{
+    switch (Grid_Something.DefaultView.FocusedColumn.FieldName)
+    {
+        case "CAR_NUMBER":
+        case "PHONE_NUMBER":
+        case "TON_CAR":
+        case "FC_NAME":
+            e.Cancel = true;
+            break;
+        default:
+            e.Cancel = false;
+            break;
+    }
+    
+}
 ```
 _________________________________________________________________________
-#### 2. ¼¿°ª ¹Ù²î¸é ´Ù¸¥¼¿°ªµµ ¼¼ÆÃÇØÁÖ´Â ¹æ¹ı
-CellValueChanged ÀÌº¥Æ®¸¦ »ç¿ëÇØ¼­ ¼±ÅÃÇÑ ¼¿ÀÌ ¹Ù²ğ¶§ ÇÏ·Á´ÂÀÏÀ» Á¤ÇØÁÙ ¼ö ÀÖ´Ù.
+<br>
+
+#### 2. ì…€ê°’ ë°”ë€Œë©´ ë‹¤ë¥¸ì…€ê°’ë„ ì„¸íŒ…í•´ì£¼ëŠ” ë°©ë²•
+CellValueChanged ì´ë²¤íŠ¸ë¥¼ ì‚¬ìš©í•´ì„œ ì„ íƒí•œ ì…€ì´ ë°”ë€”ë•Œ í•˜ë ¤ëŠ”ì¼ì„ ì •í•´ì¤„ ìˆ˜ ìˆë‹¤.
 ``` C#
 gridview.CellValueChanged += gridview_CellValueChanged;
 ```
-µû¶ó¼­ ¼±ÅÃÇÑ ¼¿°ªÀÌ ¹Ù²ğ¶§ ´Ù¸¥¼¿¿¡µµ °ªÀ» ³Ö¾îÁÙ ¼ö ÀÖ°ÔµÈ´Ù. º¸ÅëÀº LookUp¾ÈÀÇ ³»¿ëÀ»
-¼±ÅÃÇÏ¸é °°Àº ·Î¿ìÀÇ ´Ù¸¥ ¼¿°ªµéÀÌ ÀÚµ¿À¸·Î ¹ÙÀÎµùµÇ´Â ½ÄÀÇ ÀÏÀÌ ¸¹´Ù.
+ë”°ë¼ì„œ ì„ íƒí•œ ì…€ê°’ì´ ë°”ë€”ë•Œ ë‹¤ë¥¸ì…€ì—ë„ ê°’ì„ ë„£ì–´ì¤„ ìˆ˜ ìˆê²Œëœë‹¤. ë³´í†µì€ LookUpì•ˆì˜ ë‚´ìš©ì„
+ì„ íƒí•˜ë©´ ê°™ì€ ë¡œìš°ì˜ ë‹¤ë¥¸ ì…€ê°’ë“¤ì´ ìë™ìœ¼ë¡œ ë°”ì¸ë”©ë˜ëŠ” ì‹ì˜ ì¼ì´ ë§ë‹¤.
 ``` C#
 private void gridview_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-      {
-          var item = this.gridview.GetFocusedRow<ISOMETHINGModel>();
-          if (item == null) return;
+{
+    var item = this.gridview.GetFocusedRow<ISOMETHINGModel>();
+    if (item == null) return;
 
-          //SOMETHING_ID¼¿°ªÀ» ¹Ù²ãÁÖ¸é Â÷·®¹øÈ£,¿¬¶ôÃ³,Â÷·®Åæ¼ö,°Å·¡Ã³ ¸¦ ÀÚµ¿À¸·Î ºÙ¿©Áİ´Ï´Ù. 
-          if(e.Column.FieldName == "SOMETHING_ID")
-          {
-              var items = this.SomethingDataTable.AsEnumerable().Where(i => i["SOMETHING_ID"].ToString() == item.SOMETHING_ID.ToString());
+    //SOMETHING_IDì…€ê°’ì„ ë°”ê¿”ì£¼ë©´ ì°¨ëŸ‰ë²ˆí˜¸,ì—°ë½ì²˜,ì°¨ëŸ‰í†¤ìˆ˜,ê±°ë˜ì²˜ ë¥¼ ìë™ìœ¼ë¡œ ë¶™ì—¬ì¤ë‹ˆë‹¤. 
+    if(e.Column.FieldName == "SOMETHING_ID")
+    {
+        var items = this.SomethingDataTable.AsEnumerable().Where(i => i["SOMETHING_ID"].ToString() == item.SOMETHING_ID.ToString());
 
-              if(items.Count() > 0)
-              {
-                  DataRow row = items.FirstOrDefault();
-                  if (row["CAR_NUMBER"] != DBNull.Value)
-                  {
-                      item.CAR_NUMBER = row["CAR_NUMBER"].ToString();
-                  }
-                  if (row["PHONE_NUMBER"] != DBNull.Value)
-                  {
-                      item.PHONE_NUMBER = row["PHONE_NUMBER"].ToString();
-                  }
-                  if (row["TON_CAR"] != DBNull.Value)
-                  {
-                      item.TON_CAR = row["TON_CAR"].ToString();
-                  }
-                  if (row["FC_NAME"] != DBNull.Value)
-                  {
-                      item.FC_NAME = row["FC_NAME"].ToString();
-                  }
-              }
-          }
+        if(items.Count() > 0)
+        {
+            DataRow row = items.FirstOrDefault();
+            if (row["CAR_NUMBER"] != DBNull.Value)
+            {
+                item.CAR_NUMBER = row["CAR_NUMBER"].ToString();
+            }
+            if (row["PHONE_NUMBER"] != DBNull.Value)
+            {
+                item.PHONE_NUMBER = row["PHONE_NUMBER"].ToString();
+            }
+            if (row["TON_CAR"] != DBNull.Value)
+            {
+                item.TON_CAR = row["TON_CAR"].ToString();
+            }
+            if (row["FC_NAME"] != DBNull.Value)
+            {
+                item.FC_NAME = row["FC_NAME"].ToString();
+            }
+        }
+    }
+}
 ```
-À§ÀÇ ÄÚµå¸¦ º¸¸é ¼±ÅÃÇÑ ±×¸®µåºäÀÇ ·Î¿ì¸¦ GetFocusedRow\<T>() ¸Ş¼­µå¸¦ »ç¿ëÇØ¼­ item¿¡ ºÙ¿©ÁÖ¾ú´Ù. 
+ìœ„ì˜ ì½”ë“œë¥¼ ë³´ë©´ ì„ íƒí•œ ê·¸ë¦¬ë“œë·°ì˜ ë¡œìš°ë¥¼ GetFocusedRow\<T>() ë©”ì„œë“œë¥¼ ì‚¬ìš©í•´ì„œ itemì— ë¶™ì—¬ì£¼ì—ˆë‹¤. 
 ```C#
 if(e.Column.FieldName == "SOMETHING_ID")
 ```
-¿©±â if¹®¿¡¼­ ÆÄ¶ó¹ÌÅÍ e´Â ¹Ù²ï ¼¿°ªÀÇ ÄÃ·³À» ¸®ÅÏÇÑ´Ù. 
+ì—¬ê¸° ifë¬¸ì—ì„œ íŒŒë¼ë¯¸í„° eëŠ” ë°”ë€ ì…€ê°’ì˜ ì»¬ëŸ¼ì„ ë¦¬í„´í•œë‹¤. 
 ________________________________________________________________________________________________
-#### 3. ¼¿ÀÇ Å©±â¿Í ÄÃ·³Çì´õ(¹êµğµåºä¸é ¹êµå Çì´õ) Å©±â ¼¿ÀÇ »öÀ» ¹Ù²ãÁÙ ¼ö ÀÖ´Ù.
-¹êµğµå±×¸®µåºäÀÇ Çì´õ¸é ±×³É ±×¸®µåºäÀÇ Çì´õ¿Í ´Ù¸£´Ï±ñ À¯ÀÇÇØ¾ßÇÑ´Ù. UI¼³Á¤ÅÇ¿¡¼­µµ ¼³Á¤°¡´ÉÇÏ´Ù. 
-±×·¡µµ ÄÁÆ®·Ñ¿¡¼­ ¼öÁ¤ÇÏ´Â°ÍÀÌ ÁÁ´Ù. ¾È±×·¯¸é ¾îµğ¼­ ¾î¶»°Ô ¹«¾ùÀ» ¹Ù²Ù¾ú´ÂÁö Àß ¸ğ¸£°Ô µÈ´Ù.
+<br>
+
+#### 3. ì…€ì˜ í¬ê¸°ì™€ ì»¬ëŸ¼í—¤ë”(ë°´ë””ë“œë·°ë©´ ë°´ë“œ í—¤ë”) í¬ê¸° ì…€ì˜ ìƒ‰ì„ ë°”ê¿”ì¤„ ìˆ˜ ìˆë‹¤.
+ë°´ë””ë“œê·¸ë¦¬ë“œë·°ì˜ í—¤ë”ë©´ ê·¸ëƒ¥ ê·¸ë¦¬ë“œë·°ì˜ í—¤ë”ì™€ ë‹¤ë¥´ë‹ˆê¹ ìœ ì˜í•´ì•¼í•œë‹¤. UIì„¤ì •íƒ­ì—ì„œë„ ì„¤ì •ê°€ëŠ¥í•˜ë‹¤. 
+ê·¸ë˜ë„ ì»¨íŠ¸ë¡¤ì—ì„œ ìˆ˜ì •í•˜ëŠ”ê²ƒì´ ì¢‹ë‹¤. ì•ˆê·¸ëŸ¬ë©´ ì–´ë””ì„œ ì–´ë–»ê²Œ ë¬´ì—‡ì„ ë°”ê¾¸ì—ˆëŠ”ì§€ ì˜ ëª¨ë¥´ê²Œ ëœë‹¤.
 - XtraGrid BandedGridView.BandPanelRowHeight Property.
 - XtraGrid GridView.ColumnPanelRowHeight Property.
 
-UI¼³Á¤¿¡ ¿©±â·Î °¡¸é ÇÁ·ÎÆÛÆ¼¸¦ ¼³Á¤ÇØ ÁÙ ¼ö ÀÖ±ä ÇÏ´Ù.
-ÀÌ¸§°ªÀ» ¾Ë¾Æ¿À´Âµ¥ À¯¿ëÇÏ°Ô ¾µ ¼ö ÀÖ´Ù.
-¾Æ·¡ ÄÚµå´Â ÀÌº¥Æ® µéÀÌ´Ù. ¼³¸í¿¡ µû¶ó¼­ ±â´ÉÀÌ ¿©·¯°¡Áö´Ù. Áß¿äÇÑ°ÍÀº ÆùÆ® Å©±â¿Í »öÀº ¼¿ÀÇ
-Å©±â¿Í ÀüÇô »ó°üÀÌ ¾ø´Ù´Â °ÍÀÌ´Ù.!! ÆùÆ®Å©±â¸¦ Å°¿öÁÖ¸é ÀÚµ¿À¸·Î ¼¿ÀÇ Å©±âµµ ´Ã¾î³ª¾ß ÇÒ °Í °°Áö¸¸
-²À ±×·¸Áö¸¸Àº ¾Ê´Ù. ¼¿ÀÇ Å©±â¸¦ º¯°æÇØÁÖ´Â ¹æ¹ıÀº 
+UIì„¤ì •ì— ì—¬ê¸°ë¡œ ê°€ë©´ í”„ë¡œí¼í‹°ë¥¼ ì„¤ì •í•´ ì¤„ ìˆ˜ ìˆê¸´ í•˜ë‹¤.
+ì´ë¦„ê°’ì„ ì•Œì•„ì˜¤ëŠ”ë° ìœ ìš©í•˜ê²Œ ì“¸ ìˆ˜ ìˆë‹¤.
+ì•„ë˜ ì½”ë“œëŠ” ì´ë²¤íŠ¸ ë“¤ì´ë‹¤. ì„¤ëª…ì— ë”°ë¼ì„œ ê¸°ëŠ¥ì´ ì—¬ëŸ¬ê°€ì§€ë‹¤. ì¤‘ìš”í•œê²ƒì€ í°íŠ¸ í¬ê¸°ì™€ ìƒ‰ì€ ì…€ì˜
+í¬ê¸°ì™€ ì „í˜€ ìƒê´€ì´ ì—†ë‹¤ëŠ” ê²ƒì´ë‹¤.!! í°íŠ¸í¬ê¸°ë¥¼ í‚¤ì›Œì£¼ë©´ ìë™ìœ¼ë¡œ ì…€ì˜ í¬ê¸°ë„ ëŠ˜ì–´ë‚˜ì•¼ í•  ê²ƒ ê°™ì§€ë§Œ
+ê¼­ ê·¸ë ‡ì§€ë§Œì€ ì•Šë‹¤. ì…€ì˜ í¬ê¸°ë¥¼ ë³€ê²½í•´ì£¼ëŠ” ë°©ë²•ì€ 
 
-- ÀÌº¥Æ®·Î ÇÏ³ªÇÏ³ª »ı¼ºµÉ¶§ ´Ã·ÁÁÖ´Â ¹æ¹ı(Calc.RowHeight())
-- UI¿¡¼­ ÃÊ±â ¼¼ÆÃ°ªÀ» ¹Ù²ãÁÖ´Â ¹æ¹ı
+- ì´ë²¤íŠ¸ë¡œ í•˜ë‚˜í•˜ë‚˜ ìƒì„±ë ë•Œ ëŠ˜ë ¤ì£¼ëŠ” ë°©ë²•(Calc.RowHeight())
+- UIì—ì„œ ì´ˆê¸° ì„¸íŒ…ê°’ì„ ë°”ê¿”ì£¼ëŠ” ë°©ë²•
 
-ÀÌ ÀÖ´Ù.
+ì´ ìˆë‹¤.
 ```C#
 //SetGridControl
         
-//CustomDrawCell ÀÌº¥Æ® »ç¿ë±İÁö. ¼¿ ¼±ÅÃ ¾ÈµÊ. RowCellStyle »ç¿ë.
+//CustomDrawCell ì´ë²¤íŠ¸ ì‚¬ìš©ê¸ˆì§€. ì…€ ì„ íƒ ì•ˆë¨. RowCellStyle ì‚¬ìš©.
 //((BandedGridView)this.gridview).CustomDrawCell += SomethingController_CustomDrawCell;
 ((BandedGridView)this.gridview).RowCellStyle += SomethingController_RowCellStyle;
-//ÇÊ¿ä½Ã CalcRowHeightÀÌº¥Æ®·Î ¼¿ Å©±âº¯°æ °¡´É.
+//í•„ìš”ì‹œ CalcRowHeightì´ë²¤íŠ¸ë¡œ ì…€ í¬ê¸°ë³€ê²½ ê°€ëŠ¥.
 ((BandedGridView)this.gridview).CalcRowHeight += SomethingController_CalcRowHeight;
 ((BandedGridView)this.gridview).CustomDrawBandHeader += SomethingController_CustomDrawBandHeader;
 ((BandedGridView)this.gridviewv).BandPanelRowHeight = 40;
 ```
 ```C#
-//bandinfoÀÇ readonlyÀÇ »öÀ» µğÆúÆ®·Î ¹Ù²ãÁİ´Ï´Ù. 
+//bandinfoì˜ readonlyì˜ ìƒ‰ì„ ë””í´íŠ¸ë¡œ ë°”ê¿”ì¤ë‹ˆë‹¤. 
 private void SomethingController_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
 {
     if (e.Column.OptionsColumn.ReadOnly)
@@ -130,16 +137,221 @@ private void SomethingController_RowCellStyle(object sender, DevExpress.XtraGrid
     //e.Appearance.Font = new Font("", 15);
     e.Appearance.FontSizeDelta = 10;
 }
-//¼¿ÀÇ Å©±â¸¦ º¯°æÇØÁİ´Ï´Ù. 
+//ì…€ì˜ í¬ê¸°ë¥¼ ë³€ê²½í•´ì¤ë‹ˆë‹¤. 
 private void SomethingController_CalcRowHeight(object sender, DevExpress.XtraGrid.Views.Grid.RowHeightEventArgs e)
 {
     e.RowHeight = 60; 
 }
-//¹êµåÇì´õÀÇ Å©±â¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+//ë°´ë“œí—¤ë”ì˜ í¬ê¸°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 private void SomethingController_CustomDrawBandHeader(object sender, BandHeaderCustomDrawEventArgs e)
 {
     e.Appearance.FontSizeDelta = 10;            
 }
 ```
+íŠ¹ì • ì»¬ëŸ¼ì—ë‹¤ê°€ ìƒ‰ì„ ì£¼ëŠ” ë°©ë²•ì´ë‹¤. ì´ë¦„ì´ SOMETHING(N)ì¸ ì»¬ëŸ¼ì—ëŠ” ì—˜ë¦¬ìŠ¤ ë¸”ë£¨ ìƒ‰ê¹”ì„ ì£¼ê³  ë‚˜ë¨¸ì§€ëŠ” READONLYì˜ íšŒìƒ‰ìƒ‰ê¹”ì„ ì£¼ëŠ” ë°©ë²•ì´ë‹¤. READONLYíšŒìƒ‰ì€ ì•„ë˜ì™€ê°™ì´ ì„ ì–¸í•´ì„œ ì¨ì•¼í•œë‹¤.
+```C#
+private void DefaultView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+{
+    Skin currentSkin = CommonSkins.GetSkin(DevExpress.LookAndFeel.UserLookAndFeel.Default);
+    Color readOnlyColor = currentSkin.Colors["ReadOnly"];
+    GridView currentView = sender as GridView;
+    if(
+        e.Column.FieldName == "SOMETHING1" ||
+        e.Column.FieldName == "SOMETHING2" ||
+        e.Column.FieldName == "SOMETHING3" ||
+        e.Column.FieldName == "SOMETHING4" ||
+        e.Column.FieldName == "SOMETHING5"
+        )
+    {
+        e.Appearance.BackColor = Color.AliceBlue;
+    }
+    else
+    {
+        e.Appearance.BackColor = readOnlyColor;
+    }
+}
+```
 
-_____________________________________________________________________________________
+__________________________________________________________________________
+<br>
+
+#### 4. ê·¸ë£¹í•‘ ë° ì»¬ëŸ¼ì†ŒíŒ…
+ì…€ë“¤ì„ ë³‘í•© ë¨¸ì§• í•´ì¤˜ì„œ ë³´ê¸° í¸í•˜ê²Œ ë§Œë“¤ì–´ì¤ë‹ˆë‹¤.
+
+ì²˜ìŒì—ëŠ” ì•„ë˜ì™€ ê°™ì´ ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤. AllowCellMerge í”„ë¡œí¼í‹°ë¥¼ trueë¡œ ì…‹íŒ…í•´ì¤˜ì•¼í•©ë‹ˆë‹¤.
+```C#
+this.gridview.OptionsView.AllowCellMerge = true;	
+this.gridview.CellMerge += Grid_CellMerge	
+```
+ì•„ë˜ëŠ” ì´ë²¤íŠ¸ ë©”ì„œë“œ ì…ë‹ˆë‹¤.
+```C#
+private void Grid_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
+{
+    DevExpress.XtraGrid.Views.Grid.GridView view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
+    try
+    {
+        if (e.Column.FieldName == "SOMETHING_COLUMN_NAME")
+        {
+            string class1 = view.GetRowCellDisplayText(e.RowHandle1, "SOMETHING_COLUMN_NAME");
+            string class2 = view.GetRowCellDisplayText(e.RowHandle2, "SOMETHING_COLUMN_NAME");
+            e.Merge = (class1 == class2);
+            e.Handled = true;
+        }
+        else
+        {
+            e.Merge = false;
+            e.Handled = true;
+        }
+    }
+    catch (Exception ex)
+    {
+    }
+}
+```
+ì•„ë˜ëŠ” ê·¸ë£¹í•‘ í•¨ìˆ˜ë¥¼ ë§Œë“¤ì–´ ë³´ì•˜ìŠµë‹ˆë‹¤. í™”ë©´ì— ê·¸ë¦¬ë“œê°€ ì—¬ëŸ¬ê°œ ì´ê³  íƒ­ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì ¸ ìˆë‹¤ê³  ê°€ì •í•´ ë³´ë©´ ê·¸ë¦¬ë“œë§ˆë‹¤ ì•„ë˜ì™€ê°™ì´ ì¨ì¤˜ì•¼ í•˜ë¯€ë¡œ í•¨ìˆ˜ í•˜ë‚˜ ë§Œë“œëŠ”ê²Œ ì´ë“ì…ë‹ˆë‹¤.
+``` C#
+private void SetGroup(GridControl gcControl, string group_col_NAME)
+{
+    gcControl.Columns[group_col_NAME].FieldNameSortGroup = group_col_NAME;
+    gcControl.Columns[group_col_NAME].SortMode = DevExpress.XtraGrid.ColumnSortMode.Default;
+    gcControl.Columns[group_col_NAME].SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+    gcControl.Columns[group_col_NAME].Group();
+}
+```
+<br>
+<br>
+<br>
+
+- 1. ì»¬ëŸ¼ ì†ŒíŒ… ì´ë²¤íŠ¸ì •ì˜ (ì •ê·œí‘œí˜„ì‹)
+
+ì•„ë˜ ì½”ë“œëŠ” ì´ë²¤íŠ¸ CustomColumnSort ë¥¼ ê·¸ë¦¬ë“œë·°ì— ë“±ë¡í•©ë‹ˆë‹¤.
+```C#
+this.gridview.CustomColumnSort += gridview_CustomColumnSort;
+```
+ë“±ë¡í•œ ì´ë²¤íŠ¸ë¥¼ ì •ì˜í•´ì¤ë‹ˆë‹¤.
+```C#
+private void gridview_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+{
+    string pattern = @"^[a-zA-Z0-9ê°€-í£]*$";
+    if ((Regex.IsMatch(e.Value2.ToString(), pattern)) && (Regex.IsMatch(e.Value1.ToString(), pattern)))
+    {
+        try
+        {
+            int value1 = Convert.ToInt32(e.Value1);
+            int value2 = Convert.ToInt32(e.Value2);
+            e.Result = value1.CompareTo(value2); //new line  
+            e.Handled = true; //new line  
+        }
+        catch { }
+    }
+}
+```
+<br>
+<br>
+<br>
+
+- 2. í’‹í„°(footer)ì˜ ì¢…ë¥˜ì— ëŒ€í•´ì„œ
+  
+footerì—ëŠ” ì—¬ëŸ¬ ì¢…ë¥˜ê°€ ìˆëŠ”ë° ê±°ì˜ ë‘ì¢…ë¥˜ê°€ ì“°ì…ë‹ˆë‹¤. í•˜ë‚˜ëŠ” ê·¸ë¦¬ë“œë·° ì „ì²´ë¥¼ ì„œë¨¸ë¦¬(summary)ì£¼ëŠ” í’‹í„°ê°€ ìˆê³  ë˜ë‹¤ë¥¸ í•˜ë‚˜ëŠ” ê·¸ë£¹í•‘ì„ í–ˆì„ë•Œ ì„œë¨¸ë¦¬ ì£¼ëŠ” í’‹í„°ê°€ ìˆìŠµë‹ˆë‹¤. ê·¸ ì™¸ì—ë„ ìˆëŠ”ë° devexpress í™ˆí˜ì´ì§€ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”. ì„œë¨¸ë¦¬ëŠ” ì»¬ëŸ¼ì„ ì—‘ì…€ê³¼ ë¹„ìŠ·í•˜ê²Œ ìë™ ê³„ì‚°í•´ì„œ ë³´ì—¬ì£¼ëŠ” ê¸°ëŠ¥ì…ë‹ˆë‹¤. ë‹¤ë¥¸ì ì€ í•¨ìˆ˜ë¥¼ êµ¬í˜„í•˜ëŠ” ê²ƒì´ ì•„ë‹ˆê³  ìë™ìœ¼ë¡œ ë§Œë“¤ì–´ ì ¸ ìˆëŠ” ë©”ì„œë“œë‘ í”„ë¡œí¼í‹°ë¥¼ ê°€ì ¸ë‹¤ ì”ë‹ˆë‹¤. ë§¤ìš° í¸ë¦¬í•˜ê³  ì§ê´€ì ì´ì§€ë§Œ ë¬¸ë²•ì´ ì¢€ ìˆìŠµë‹ˆë‹¤.
+
+- - í’‹í„°ì— í•©, í‰ê·  ë“± ê³„ì‚°ê°’ ì •ë¦¬í•´ì£¼ê¸°
+  
+ë¨¼ì € ê·¸ë¦¬ë“œë·°ì˜ ì˜µì…˜ë·°ë¥¼ ì°¸ìœ¼ë¡œ ì„¤ì •í•´ì¤˜ì•¼ í•©ë‹ˆë‹¤.
+```C#
+this.gridview.OptionsView.ShowFooter = true; //ì´ê±´ ê·¸ë£¹í•‘ ì•ˆí–ˆì„ë•Œ
+this.gridview.OptionsView.GroupFooterShowMode = GroupFooterShowMode.VisibleAlways; //ì´ê±´ ê·¸ë£¹í•‘ í–ˆì„ë•Œ
+```
+ì•„ë˜ëŠ” ê·¸ë£¹í•‘ì´ ì•„ë‹ë•Œ ì˜ˆì œì´ë‹¤. ë³´í†µ ì˜¨ë°ì´í„° ë¦¬íŠ¸ë¦¬ë¸Œ í• ë•Œ ì•ˆì—ë‹¤ ì¨ì£¼ì ì´ìœ ëŠ” ë°ì´í„°ê°€ ë°”ì¸ë”© ë˜ì–´ì•¼ í•©ê³„ë“± ê³„ì‚°ê°’ë„ ë°”ì¸ë”© ê°€ëŠ¥í•œ ê²ƒì´ê¸° ë•Œë¬¸ì…ë‹ˆë‹¤. ì•„ë˜ ì˜ˆì œì— None, Sum ë§ê³ ë„ ì—¬ëŸ¬ê°€ì§€ ê¸°ëŠ¥ì´ ìˆìœ¼ë‹ˆ í™ˆí˜ì´ì§€ ì°¸ê³  ë°”ëë‹ˆë‹¤.
+```C#
+//Summary.Add(DevExpress.Data.SummaryItemType.None 
+this.gridview.Columns["SOMETHING_COL1"].Summary.Add(DevExpress.Data.SummaryItemType.None, "SOMETHING_COL1", "ë³´ì—¬ì§€ëŠ”ë¶€ë¶„:");
+//DevExpress.Data.SummaryItemType.Sum
+this.gridview.Columns["SOMETHING_COL2"].Summary.Add(DevExpress.Data.SummaryItemType.Sum, "SOMETHING_COL2", "í¬ë©§ìŠ¤íŠ¸ë§ì‚¬ìš©ê°€ëŠ¥:{0}");
+```
+<br>
+<br>
+<br>
+
+ë§ˆì§€ë§‰ìœ¼ë¡œ ì •ë¦¬í•˜ìë©´, ì‚¬ìš©í•  ê·¸ë£¹í•‘ ì»¤ìŠ¤í…€ ì…‹íŒ… í•¨ìˆ˜ë¥¼ ì •ì˜í•©ë‹ˆë‹¤. ê·¸ë£¹í•‘ì˜ ì„œë¨¸ë¦¬ë„ ìˆìŠµë‹ˆë‹¤.
+```C#
+private void SetGroup(GridControl gcControl, string group_col)
+{
+    gcControl.Columns[group_col].FieldNameSortGroup = group_col;
+    gcControl.Columns[group_col].SortMode = DevExpress.XtraGrid.ColumnSortMode.Default;
+    gcControl.Columns[group_col].SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+    gcControl.Columns[group_col].Group();
+    gcControl.DefaultView.ExpandAllGroups();
+    gcControl.DefaultView.OptionsView.ShowFooter = true;
+    gcControl.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+    gcControl.DefaultView.GroupSummary.Add(DevExpress.Data.SummaryItemType.Sum, "SOME_COL", gcControl.Columns["SOME_COL"], "í•©ê³„={0:n0}"); //ê·¸ë£¹ ì„œë¨¸ë¦¬
+    gcControl.Columns["SOME_COL"].Summary.Add(DevExpress.Data.SummaryItemType.Sum, "SOME_COL", "ì´í•©{0:n0}"); // ì „ì²´ ì„œë¨¸ë¦¬
+}
+```
+_____________________________________________________________________
+
+<br>
+
+#### 5. ê·¸ë¦¬ë“œë·°ì˜ ì¢…ë¥˜ : ë°´ë“œê·¸ë¦¬ë“œë·° (BandedGridView)  
+
+- BandedGridView ì»¬ëŸ¼ Header ì— ìƒ‰ê¹”ì£¼ê¸°
+
+ì•„ë˜ ì½”ë“œëŠ” ì¢€ ê³¼í•œê±´ë° ê·¸ë¼ë°ì´ì…˜ì„ ë„£ì–´ì¤„ ìˆ˜ ìˆëŠ” ì½”ë“œì…ë‹ˆë‹¤. í˜¹ì‹œí•´ì„œ ê¸°ë¡í•´ë‘¡ë‹ˆë‹¤.
+ì¶œì²˜ ë§í¬ : https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.BandedGrid.BandedGridView.CustomDrawBandHeader
+
+```C#
+private void bandedGridView1_CustomDrawBandHeader(object sender, DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs e) {
+    if (e.Band == null) return;
+    if (e.Info.State != ObjectState.Pressed) return;
+    using (Brush brushPressed = new LinearGradientBrush(e.Bounds, Color.WhiteSmoke, Color.Gray, LinearGradientMode.ForwardDiagonal)) {
+        Rectangle r = e.Bounds;
+        Draw3DBorder(e.Cache, r);
+        r.Inflate(-1, -1);
+        //Fill the background
+        e.Cache.FillRectangle(brushPressed, r);
+
+        //Draw a band glyph
+        foreach (DrawElementInfo info in e.Info.InnerElements) {
+            if (!info.Visible) continue;
+            GlyphElementInfoArgs glyphInfoArgs = info.ElementInfo as GlyphElementInfoArgs;
+            if (glyphInfoArgs == null) continue;
+            info.ElementInfo.OffsetContent(1, 1);
+            ObjectPainter.DrawObject(e.Cache, info.ElementPainter, info.ElementInfo);
+            info.ElementInfo.OffsetContent(-1, -1);
+            break;
+        }
+
+        //Draw the band's caption with a shadowed effect
+        Rectangle textRect = e.Info.CaptionRect;
+        textRect.Offset(2, 2);
+        e.Appearance.DrawString(e.Cache, e.Info.Caption, textRect, Brushes.White);
+        textRect.Offset(-1, -1);
+        e.Appearance.DrawString(e.Cache, e.Info.Caption, textRect, Brushes.Black);
+
+        //Prevent default painting
+        e.Handled = true;
+    }
+}
+
+private void Draw3DBorder(GraphicsCache cache, Rectangle rect) {
+    //Draw a 3D border
+    BorderPainter painter = BorderHelper.GetPainter(DevExpress.XtraEditors.Controls.BorderStyles.Style3D);
+    AppearanceObject borderAppearance = new AppearanceObject();
+    borderAppearance.BorderColor = Color.DarkGray;
+    painter.DrawObject(new BorderObjectInfoArgs(cache, borderAppearance, rect));
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
