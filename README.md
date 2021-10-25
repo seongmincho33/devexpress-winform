@@ -1,6 +1,6 @@
 # 데브 익스프레스 컨트롤 세팅법
 
-#### 1. GridControl
+#### 1. [GridControl](https://github.com/seongmincho33/devexpress-winform/blob/main/GridControl/GridControlSetting.md)
 1. 컬럼 클릭 방지
 2. 셀값 바뀌면 다른셀값도 세팅해주는 방법
 	- 셀값이 바뀔때 테이블에서 링큐걸어서 같은로우에 있는 다른 셀값들을 불러올 수 있다. 
