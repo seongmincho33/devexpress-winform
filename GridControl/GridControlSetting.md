@@ -14,7 +14,7 @@
     - 동적컬럼 바인딩 했을때 컬럼의 크기 ~DataModel에서 자동으로 맞춰주기 
     - 동적컬럼 바인딩 했을때 만약 ~DataModel의 바인딩인포가 readonly여서 색이 검정이면 바꿔주기
 	- 동적컬럼 CU 저장할때 컬럼 잘라서 넘기기. 아래 두 메서드는 바로 위 DataSave() 에서 사용은 안했는데 사용할수도 있으니 참고바람. 출처는 MS Q&A
-7. 그리드뷰의 로우를 위 아래로 옮겨주기(위아래 버튼만들기)
+7. [그리드뷰의 로우를 위 아래로 옮겨주기(위아래 버튼만들기)](#7-그리드뷰의-로우를-위-아래로-옮겨주기위아래-버튼만들기)
 8. 로우 추가할때 순서대로 번호든 문자든 주기
 9. 정규식으로 컬럼에 정해진값만 작성할 수 있게 만들어주기
 10. 그리드뷰 필터에 관해서 
@@ -459,3 +459,93 @@ public static DataTable CutDataTableByIndex(DataTable dt, int index_count, bool 
 ```
 _______________________________________________________________________________________________
 
+<br>
+
+# 7. 그리드뷰의 로우를 위 아래로 옮겨주기(위아래 버튼만들기)
+
+위아래 버튼권한을 줘야합니다. IS_EDIT. 포커스는 사실 구글에 검색할때는 selection이라고 검색해야 편할겁니다. selection 은 셀을 클릭하면 보라색 혹은 파란색
+으로 바뀌면서 선택된 느낌이 들게 하는겁니다. 이게 왜 위아래로 옮기는 버튼을 만드는데 중요하냐면 선택한 로우가 위아래로 바뀔려면 포커스를 줘야하기 때문입니다.
+먼저 버튼 리스너를 등록합니다.
+
+```C#
+button.Click += Btn_Click;
+```
+리스너를 정의 하구
+```C#
+private void Btn_Click(object sender, EventArgs e)
+{
+    var btn = sender as SimpleButton
+    switch(btn.Text) 
+    {
+        case "Up":
+            Btn_Up();
+            break;
+        case "Down":
+            Btn_Down();
+            break;   
+    }
+}
+```
+
+위아래니깐 버튼 두개 메서드를 만들어줍니다.
+
+```C#
+private void Btn_Up()
+{
+    if (this.DateEdit_SEQ.DateTime == DateTime.MinValue)
+    {
+        XMsgBx.ShowInfoOK("순서 변경 전, 도착일을 지정해야합니다.");
+    }
+    else
+    {
+        int index = ((BandedGridView)this.Grid_SEQ.DefaultView).FocusedRowHandle;
+        if (index <= 0) return;
+
+        DataRow row1 = ((BandedGridView)this.Grid_SEQ.DefaultView).GetDataRow(index);
+        DataRow row2 = ((BandedGridView)this.Grid_SEQ.DefaultView).GetDataRow(index - 1);
+
+        object[] val1 = row1.ItemArray;
+        object[] val2 = row2.ItemArray;
+
+        row1.ItemArray = val2;
+        row2.ItemArray = val1;
+
+        row1["SORT_NO"] = val1[0];
+        row2["SORT_NO"] = val2[0];
+        
+        ColumnView cv = ((ColumnView)((BandedGridView)this.Grid_SEQ.DefaultView).GridControl.FocusedView);
+        cv.MovePrev();
+        cv.Focus();
+    }
+```
+
+```C#
+private void Btn_Down()
+{
+    if(this.DateEdit_SEQ.DateTime == DateTime.MinValue)
+    {
+        XMsgBx.ShowInfoOK("순서 변경 전, 도착일을 지정해야합니다.");
+    }
+    else
+    {
+        int index = ((BandedGridView)this.Grid_SEQ.DefaultView).FocusedRowHandle;
+        GridColumn index_col = ((BandedGridView)this.Grid_SEQ.DefaultView).FocusedColumn;
+        if (index >= ((BandedGridView)this.Grid_SEQ.DefaultView).DataRowCount - 1) return;
+
+        DataRow row1 = ((BandedGridView)this.Grid_SEQ.DefaultView).GetDataRow(index);
+        DataRow row2 = ((BandedGridView)this.Grid_SEQ.DefaultView).GetDataRow(index + 1);
+
+        object[] val1 = row1.ItemArray;
+        object[] val2 = row2.ItemArray;
+
+        row1.ItemArray = val2;
+        row2.ItemArray = val1;
+
+        row1["SORT_NO"] = val1[0];
+        row2["SORT_NO"] = val2[0];
+        ColumnView cv = ((ColumnView)((BandedGridView)this.Grid_SEQ.DefaultView).GridControl.FocusedView);
+        cv.MoveNext();
+        cv.Focus();
+    }
+}
+```
