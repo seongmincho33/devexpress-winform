@@ -10,7 +10,9 @@
     	- 풋터에 합, 평균 등 계산값 정리해주기
 5. [그리드뷰의 종류 : 밴드그리드뷰 (BandedGridView)](#5-그리드뷰의-종류--밴드그리드뷰-bandedgridview) 
 	- BandedGridView 컬럼 Header 에 색깔주기
-6. 동적컬럼
+6. [동적컬럼](#6-동적컬럼)
+    - 동적컬럼 바인딩 했을때 컬럼의 크기 ~DataModel에서 자동으로 맞춰주기 
+    - 동적컬럼 바인딩 했을때 만약 ~DataModel의 바인딩인포가 readonly여서 색이 검정이면 바꿔주기
 	- 동적컬럼 CU 저장할때 컬럼 잘라서 넘기기. 아래 두 메서드는 바로 위 DataSave() 에서 사용은 안했는데 사용할수도 있으니 참고바람. 출처는 MS Q&A
 7. 그리드뷰의 로우를 위 아래로 옮겨주기(위아래 버튼만들기)
 8. 로우 추가할때 순서대로 번호든 문자든 주기
@@ -343,17 +345,117 @@ private void Draw3DBorder(GraphicsCache cache, Rectangle rect) {
 }
 ```
 
+____________________________________________________________________________________
 
+<br>
 
+# 6. 동적컬럼
 
+#### 1) 바인딩 인포 자동맞춤
+동적컬럼 바인딩 했을때 컬럼의 크기 ~DataModel에서 자동으로 맞춰주기는 방법으로는 인덱스값으로
+길이에 8을 곱하고 40정도를 더하면됩니다. 맘에 안들면 조금씩 조정하세요.
 
+```C#
+this.BindingControlInfo.AddBand("", $"{i.ColumnName}", $"{i.ColumnName}", $"{i.ColumnName}", true, index++, true, true, ($"{i.ColumnName}".Length)*8+40, HAlignment.Center, false);
+```
+<br>
+<br>
+<br>
 
+#### 2) 동적컬럼 바인딩 했을때 만약 ~DataModel의 바인딩인포가 readonly여서 색이 검정이면 바꿔주기
 
+바인딩 인포의 AddBand던 Add던간에 readonly 가 true이면 화면의 선택은 못하고 클릭못하고 검정색일것입니다.
+검정색을 디폴드 색으로 바꿔주는 방법입니다. RowCellStyle이벤트는 그리드뷰의 셀들의 스타일을 바꿔주는 이벤트임을
+위에서 알았는데요, Color.Empty는 디폴트 색입니다.
 
+```C#
+private void SomethingGridView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+{
+    if (e.Column.OptionsColumn.ReadOnly)
+        e.Appearance.BackColor = Color.Empty;
+}
+```
+! 주의점 ! : ShowingEditor를 사용할 때 스위치문에서 아래와 같이 default: e.cancle = false;를 하면 안됩니다. 이유는 동적그리드가 바인드에 붙을때 readonly로 이미 되어
+있는데 또 e.Cancle = false;해주면 이상하게 됩니다. 따라서 ShowingEditor도 고려해주세요.
+```C#
+private void Grid_Something_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e)
+{
+    switch (Grid_Something.DefaultView.FocusedColumn.FieldName)
+    {
+        case "CAR_NUMBER":
+        case "PHONE_NUMBER":
+        case "TON_CAR":
+        case "FC_NAME":
+            e.Cancel = true;
+            break;
+        default:
+            e.Cancel = false;
+            break;
+    }
+    
+}
+```
+TextEdit컨트롤은 좀 다릅니다. 만약 텍스트박스를 클릭방지하면 연한 회색이 되므로 딱봐도 클릭방지임을 알 수는 있지만 디폴트색으로 바꿔줘야하는 상황이 있습니다.
+아래는 디폴트색을 주는방법입니다. 그런데 디폴트처럼 보이게하려면 하양을 줘야합니다. 
+```C#
+private void Txt_setting(TextEdit txt)
+{
+    txt.Enabled = false;
+    txt.ReadOnly = true;
+    txt.Properties.AppearanceReadOnly.BackColor = Color.White;
+}
+```
 
+<br>
+<br>
+<br>
 
+#### 3) 동적컬럼 CU 저장할때 컬럼 잘라서 넘기기. 아래 두 메서드는 바로 위 DataSave() 에서 사용은 안했는데 사용할수도 있으니 참고바람. 출처는 MS Q&A
 
+동적컬럼을 저장할때는 데이터 테이블의 커럼을 잘라서 넘길것입니다. 사용자 정의 테이블 형식은 정해진 컬럼들만 받을 수 있기 때문에 동적으로 생성된 커럶들은
+잘라주어야 됩니다. 그렇지 않으면 오류를 냅니다. 근데 정말 주의해야할 것이 사용자 정의 테이블의 컬럼명들 순서와 테이블 데이터의 컬럼명들 순서가 같아야 한다는
+것입니다.....'ㅁ'...!!! 그래서 테이블을 바꿔주던가 잘라줄때 잘 잘라주어야 합니다. 아래는 12번째 컬럼을 계속 잘라주는 방법입니다. 테이블 컬럼 사이가 아니라
+뒤에 동적으로 컬럼들이 붙으면 이렇게 계속 똑같은 위치에 오는 컬럼을 잘라주는 방법을 씁니다.
 
+```C#
+int index = dataTable.Columns.Count;
+for (int i = 12; i < index; i++)
+{
+    dataTable.Columns.RemoveAt(12);
+}
+```
 
+참고하면 좋은 메서드들을 기록해둡니다. 출처는 MS Q&A
 
+```C#
+//데이터 테이블 컬럼이름을 받아서 잘라주는 메서드입니다. 
+public static DataTable CutDataTableByString(DataTable dt, IList<string> columnsToRemove,
+                            bool keepData = true)
+{
+    DataTable newDt = (keepData ? dt.Copy() : dt.Clone());
+    foreach (string colName in columnsToRemove)
+    {
+        if (!newDt.Columns.Contains(colName)) continue;
+        newDt.Columns.Remove(colName);
+    }
+
+    return newDt;
+}
+```
+<br>
+
+```C#
+//데이터 테이블 인덱스로 자르는 방법입니다.
+public static DataTable CutDataTableByIndex(DataTable dt, int index_count, bool keepData = true)
+{
+    DataTable newDt = (keepData ? dt.Copy() : dt.Clone());
+    for (int i = 12; i < index_count; i++)
+    {
+        newDt.Columns.RemoveAt(12);
+    }
+
+    return newDt;
+}
+```
+_______________________________________________________________________________________________
 
