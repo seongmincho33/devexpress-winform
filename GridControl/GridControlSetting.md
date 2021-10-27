@@ -15,12 +15,13 @@
     - 동적컬럼 바인딩 했을때 만약 ~DataModel의 바인딩인포가 readonly여서 색이 검정이면 바꿔주기
 	- 동적컬럼 CU 저장할때 컬럼 잘라서 넘기기. 아래 두 메서드는 바로 위 DataSave() 에서 사용은 안했는데 사용할수도 있으니 참고바람. 출처는 MS Q&A
 7. [그리드뷰의 로우를 위 아래로 옮겨주기(위아래 버튼만들기)](#7-그리드뷰의-로우를-위-아래로-옮겨주기위아래-버튼만들기)
-8. 로우 추가할때 순서대로 번호든 문자든 주기
-9. 정규식으로 컬럼에 정해진값만 작성할 수 있게 만들어주기
-10. 그리드뷰 필터에 관해서 
+8. [로우 추가할때 순서대로 번호든 문자든 주기](#8-로우-추가할때-순서대로-번호든-문자든-주기)
+9. [정규식으로 컬럼에 정해진값만 작성할 수 있게 만들어주기](#9-정규식으로-컬럼에-정해진값만-작성할-수-있게-만들어주기)
+    - 정규식: C# 에서 sql처럼 like형식으로 사용하는 방법 이유 -> like방식이 syntax가 아주 쉽기 때문이다.
+10. [그리드뷰 필터에 관해서 ](#10-그리드뷰-필터에-관해서)
 	- 필터를 안보이게 하는법
 	- 필터가 BOOLEAN 일때 기본 디폴트값을 FALSE로 주는 방법 (기본은 NULL인듯 하다)
-11. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
+11. [그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법](#11-그리드-컨트롤-화면단에-불필요한-0-이-있을때-안보이게-하는-방법)
 _________________________________________________________________________
 <br>
 
@@ -549,3 +550,216 @@ private void Btn_Down()
     }
 }
 ```
+______________________________________________________________________________________________________
+
+<br>
+
+# 8. 로우 추가할때 순서대로 번호든 문자든 주기
+
+먼저 방식이 2가지가 있습니다. 그리드뷰 컬럼에 NO.라는 컬럼을 줄때일것 같은데 sql 프로시저에서 관리하거나
+아니면 직접 C#코드에서 데이터로우를 추가할때마다 새로 생성하는 방식을 코딩하는것입니다. sql에서 관리한다면
+IDENTITY 속성 을 테이블 컬럼에 부여해야하는데 테이블 수정을 원하지 않는다면 C#단에서 해결하는것이 좋습니다. 
+<br>
+먼저 SQL 에서 가져올때부터 저장이 먼저된순으로 부여된 IDENTITY값을 가져올수 있게 테이블을 만드는법을 
+살펴보겠습니다.
+
+```SQL
+CREATE TABLE dbo.Something(
+    SOMETHING_ID INT IDENTITY(1,1),
+    BEGINDATE DATE NULL,
+    ENDDATE DATE NULL,
+    SOMETHING_COL VARCHAR(100) NULL
+)
+GO
+```
+
+데이터를 추가해 보겠습니다.
+
+```SQL
+INSERT INTO dbo.SOMETHING(
+    , BEGINDATE
+    , ENDDATE
+    , SOMETHING_COL)
+    VALUES('2021-10-27', '2021-10-28', 'HELLO_SQL')
+
+
+INSERT INTO dbo.SOMETHING(
+    , BEGINDATE
+    , ENDDATE
+    , SOMETHING_COL)
+    VALUES('2021-10-28', '2021-10-29', 'BYE_SQL')
+```
+그러면 테이블은 이런식이 될것입니다.
+||SOMETHING_ID|BEGINDATE|ENDDATE|SOMETHING_COL|
+|---|---|---|---|---|
+|1|1|2021-10-27|2021-10-28|HELLO_SQL|
+|2|2|2021-10-28|2021-10-29|BYE_SQL|
+
+그런데 IDENTITY의 속성열이 같는 특징은 이전행을 지워도 지워진값이 채워지는것이 아닌 그냥 다음것이 쭉 증가되는값이
+계속 저장된다는것입니다. 해결방법은 나중에 설명을 쓰겠습니다(추후 수저예정)
+<br>
+이제 C#단에서 해결하는방법입니다. 데이터모델단에서 추가해줘야합니다.
+
+```C# 
+//먼저 사용중인 테이블의 모양이 같은 로우객체를 생성합니다.
+DataRow row = this.somethingtable.NewRow();
+```
+
+그리고 생성한 row 객체에 원하는 스트링포멧을 주고 데이터를 넣어줍니다. 
+
+```C#
+~Model add = ~Model.CreateInstance(row);
+add.SOMETHINGCOLUMN = string.Format(DateTime.Now.Year.ToString().Substring(2), (property + 1).ToString("0000"));
+
+```
+
+마지막으로 row객체를 데이터테이블에 넣어줍니다.
+
+```C#
+this.somethingtable.Rows.Add(row);
+```
+______________________________________________________________________________________________________
+
+<br>
+
+# 9. 정규식으로 컬럼에 정해진값만 작성할 수 있게 만들어주기
+정규표현식 참고 블로그 https://jacking75.github.io/csharp_RegularExpression/
+<br>
+ColumnView.CustomColumnSort 이벤트에 대해서 알아보겠습니다.
+원래는 커스텀 컬럼소트는 어떠한 컬럼에 숫자들이 있을때 정렬을 도와주는 이벤트입니다.
+왜 이게 필요하냐면, 갸령 3, 10, 1 숫자가 있다고 합시다. 그러면 문자열로 비교되어 소팅되기 때문에
+1, 10, 3 이런식으로 리턴받게 됩니다. 1, 3, 10 이런식으로 만들어주기 위해 CustomColumSort가 있습니다.
+사용하기에 앞서서 먼저 그리드 컨트롤의 소팅할 컬럼에 이벤트를 등록하고, 컬럼의 소팅모드를 커스텀으로 바꿔줘야합니다.
+
+```C#
+gridControl.gridview.CustomColumnSort += GridView_CustomColumnSort;
+gridControl.Columns["SOMETHING_COL"].SortMode = Devexpress.XtraGrid.ColumnSortMode.Custom;
+```
+
+모드를 추가했으면 이벤트를 작성해줍니다. 아래는 정규표현식을 사용해서 소팅합니다. 이러면 아래에 정규식으로 패턴을 부여했는데
+부여한 패턴만 화면에 붙습니다.
+
+```C#
+private void GridView_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+{
+    string pattern = @"^[a-zA-Z0-9가-힣]*$";
+    if ((Regex.IsMatch(e.Value2.ToString(), pattern)) && (Regex.IsMatch(e.Value1.ToString(), pattern)))
+    {
+        try
+        {
+            int value1 = Convert.ToInt32(e.Value1);
+            int value2 = Convert.ToInt32(e.Value2);
+            e.Result = value1.CompareTo(value2); //new line  
+            e.Handled = true; //new line  
+        }
+        catch { }
+    }
+}
+```
+
+<br>
+<br>
+<br>
+
+#### 정규식: C# 에서 sql처럼 like형식으로 사용하는 방법 이유 -> like방식이 syntax가 아주 쉽기 때문이다.
+
+참고 사이트입니다. https://stackoverflow.com/questions/19582256/unable-to-cast-object-of-type-system-int32-to-type-system-string-in-dataread
+
+이건 스테틱이 아닌 그저 프라이빗 함수입니다. 스태틱으로 하면 클래스를 새로만들어줘야하니 위 참고링크를 따라가세요. 아래 메서드는 C# 에서 마치 sql의 like를 정규식을 사용해서 쓸수 있게 만들어줍니다. 유용합니다.
+
+```C#
+ private bool Like(string toSearch, string toFind)
+{
+    return new Regex(
+        @"\A" + new Regex(@"\.|\$|\^|\{|\[|\(|\||\)|\*|\+|\?|\\")
+        .Replace(toFind, ch => @"\" + ch)
+        .Replace('_', '.')
+        .Replace("%", ".*") + @"\z", RegexOptions.Singleline
+        ).IsMatch(toSearch);
+}
+
+```
+
+아래는 사용 예시입니다.
+
+```C#
+ if(
+    Like((string)a.ToString(), "1%") ||
+    Like((string)a.ToString(), "2%") ||
+    Like((string)a.ToString(), "3%") ||
+    Like((string)a.ToString(), "4%") ||
+    Like((string)a.ToString(), "5%") 
+    )
+{
+    a = "M" + a;
+}
+```
+______________________________________________________________________________________________________
+
+<br>
+
+# 10. 그리드뷰 필터에 관해서
+
+참고링크 데브익스프레스 명세 : https://docs.devexpress.com/WindowsForms/1428/controls-and-libraries/data-grid/visual-elements/grid-view-elements/auto-filter-row
+
+<br>
+
+#### 1). 필터를 안보이게 하는법
+
+아래는 그리드뷰에 필터를 없애는 코드입니다.
+
+```C#
+this.GridControl.OptionsView.ShowAutoFilterRow = false;
+```
+
+#### 2). 필터가 BOOLEAN 일때 기본 디폴트값을 FALSE로 주는 방법 (기본은 NULL인듯 하다)
+
+필터가 Boolean일때는 디폴트로 null이 들어가있습니다. 즉 검정색 네모가 조그만 하양네모를 채우고있는.. 이것이 false 인지 null인지 true 인지 정말
+알기 힘듭니다. 따라서 sql에서 셀에 데이터가 null로 들어가있는것도 표현해주기 위함인듯 합니다. 그런데 사용자는 null이 false와 어짜피 같다고 생각하기
+때문에 필터의 디폴트를 바꿔줄 필요가 있습니다.
+
+```C#
+this.GridControl.gridview.SetAutoFilterValue(GridControl.Columns["컬럼이름"], false, AutoFilterCondition.Default);
+```
+
+그리고 그리드 컨트롤에 boolean null값이 들어가있는걸 보여주면 안됩니다. (입력하지 않았으면 상황상 false임)
+따라서 sql단에서 보내줄때 boolean null은 false로 보내줍시다.
+
+```SQL
+SELECT 
+        ISNULL(SOMETHING_BOOLEAN, 0)
+    FROM SOMETHING_TABLE
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 11. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
+
+CustomColumnDisplayText 이벤트를 사용합니다.
+
+먼저 이벤트를 등록합니다.
+
+```C#
+some_gridControl.CustomColumnDisplayText += Some_gridControl_CustomColumnDisplayText;
+```
+
+이벤트를 등록했으면 아래와 같이 이벤트를 정의해줍니다.
+
+```C#
+private void Some_gridControl_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+{
+    if(e.Value != null && e.Value != DBNull.Value)
+    {
+        if (e.Value.GetType() != typeof(string) && e.Value.GetType() != typeof(int))
+        {
+            if ((decimal)e.Value == 0)
+            {
+                e.DisplayText = "";
+            }
+        }
+    }
+}
+```
+______________________________________________________________________________________________________
