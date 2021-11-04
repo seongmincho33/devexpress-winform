@@ -161,6 +161,20 @@ private void SomethingController_CustomDrawBandHeader(object sender, BandHeaderC
     e.Appearance.FontSizeDelta = 10;            
 }
 ```
+아 그리고 혹시 컬럼헤더에 \n 속성값을 준다면 컬럼헤더의 위아래 너비를 키워줘야 \n이 먹는다. 그래서
+이것저것 할거 없이 크기를 늘려주기만 하면 \n이 먹는다. 
+
+```C#
+((BandedGridView)this.gridviewv).BandPanelRowHeight = 100; // 밴디드 그리드뷰일 경우~!
+```
+
+혹시나 \n이 먹질 않는다면 \r\n을 먹여줘야 줄바꿈이 일어날때도 있을 수 있다. 
+영어로 줄바꿈음 "line break" 또는 "multiple line" 혹은 "multiline"으로 검색하면 됩니다.
+
+```C#
+gridColumn.Caption = "Line 1" + Environment.NewLine + "Line 2";  
+```
+
 특정 컬럼에다가 색을 주는 방법이다. 이름이 SOMETHING(N)인 컬럼에는 엘리스 블루 색깔을 주고 나머지는 READONLY의 회색색깔을 주는 방법이다. READONLY회색은 아래와같이 선언해서 써야한다.
 ```C#
 private void DefaultView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
