@@ -1,6 +1,6 @@
 # 1. GridControl
 
-<img src="../img/GridControl.png" width="400" height="400"/>
+<img src="../img/GridControl_img/GridControl.png" width="400" height="400"/>
 
 1. [컬럼 클릭 방지](#1-컬럼-클릭-방지)
 2. [셀값 바뀌면 다른셀값도 세팅해주는 방법](#2-셀값-바뀌면-다른셀값도-세팅해주는-방법)
