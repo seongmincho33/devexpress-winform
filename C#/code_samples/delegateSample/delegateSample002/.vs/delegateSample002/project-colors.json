@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e0bdf67a-4945-4d81-9170-251cb5bc81bf": {
+      "ProjectGuid": "e0bdf67a-4945-4d81-9170-251cb5bc81bf",
+      "DisplayName": "delegateSample002",
+      "ColorIndex": 0
+    },
+    "97083ed3-5243-4856-9ce3-0ae073932d7f": {
+      "ProjectGuid": "97083ed3-5243-4856-9ce3-0ae073932d7f",
+      "DisplayName": "MyButtonClass",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
