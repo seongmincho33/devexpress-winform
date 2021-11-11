@@ -42,4 +42,4 @@
 3. 여러개의 나눠져있는 UI 인터페이스들을 컨트롤로 넘길때 튜플로 묶어주는 방법
 4. 텍스트 세팅 (포멧스트링 세팅법)
 #### 9. 링큐
-1. LINQPad5 (.netFrameWork 버전)
+1. [LINQPad5 (.netFrameWork 버전)](https://github.com/seongmincho33/devexpress-winform/blob/main/Linq/LINQPad5.md)
