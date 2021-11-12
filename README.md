@@ -1,5 +1,19 @@
 # 데브 익스프레스 컨트롤 세팅법
 
+#### 0. [C#](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_index.md)
+1. 프로퍼티
+2. delegate(델리게이트)
+	1. 일반적인경우
+	2. delegate 사용
+	3. 언제 사용하지
+	4. 어디서 본듯한 delegate
+	5. 이벤트
+	6. MS제공 델리게이트
+		- Action delegate
+		- Func delegate
+		- Predicate delegate
+3. 링큐
+	1. [링큐패드5 (LINQPad5 .netFrameWork)](https://github.com/seongmincho33/devexpress-winform/blob/main/linq/linqpad5.md)
 #### 1. [GridControl](https://github.com/seongmincho33/devexpress-winform/blob/main/GridControl/GridControlSetting.md)
 1. 컬럼 클릭 방지
 2. 셀값 바뀌면 다른셀값도 세팅해주는 방법
@@ -41,5 +55,17 @@
 2. 이벤트 핸들러의 파라미터 e에 관해서 callby reference사용해 함수로 코드양 줄이기
 3. 여러개의 나눠져있는 UI 인터페이스들을 컨트롤로 넘길때 튜플로 묶어주는 방법
 4. 텍스트 세팅 (포멧스트링 세팅법)
-#### 9. 링큐
-1. [LINQPad5 (.netFrameWork 버전)](https://github.com/seongmincho33/devexpress-winform/blob/main/Linq/LINQPad5.md)
+_________________________________________________________________________________
+
+
+폴더이름 소문자 및 모든 파일 소문자
+
+git config core.ignorecase false
+
+git rm -r --cached .
+
+git add .
+
+git commit -m "캐시지우기"
+
+_________________________________________________________________________________
