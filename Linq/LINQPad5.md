@@ -1,6 +1,6 @@
 # LINQPad5 (.netFrameWork)
 
-<img src="../img/Linq/linqpad_1.png" width="800" height="400"/>
+<img src="../img/linq_img/linqpad_1.png" width="800" height="400"/>
 
 1. 링큐패드 소개
 2. 링큐패드 튜토리얼
@@ -30,7 +30,7 @@ __________________________________________________
 
 # 1. 링큐패드 소개
 
-<img src="../img/Linq/linqpad_downloadpage.png" width="800" height="400"/>
+<img src="../img/linq_img/linqpad_downloadpage.png" width="800" height="400"/>
 
 링큐패드를 다운로드하는데 .NET Framework 4.6/4.7/4.8 까지 최신 릴리즈 버전을 사용하신다면 LINQPad5를 다운받으셔야 합니다. C#을 그냥 돌리는데 사용한다면 둘중에 아무거나 상관없습니다. C# 플레이그라운드로 만들어졌다고 합니다. 웬만한 객체에 .Dump() 만 붙여주면 링큐패드 결과창에 값이 보여지게 됩니다. 조사식대신 쓰기 좋습니다.
 
@@ -61,7 +61,7 @@ __________________________________________________
 
 보통은 Console.WriteLine("Hello, world"); 가 C#의 테스트용 기본 구문인데 이건 말그대로 콘솔창을 호출하는거라서 링큐패드에서는 좀 다른방식을 써야했나봅니다. .Dump() 메서드를 사용하면 거의 모든것들을 렌더링하고 값을 추출하고 그냥 다 보여진다고 보면 될것 같습니다. 심지어 이미지 비트맵까지 먹힙니다. 아래는 사이트 설명입니다. 아 참고로 .Dump()는 링큐패드에서만 사용하는 문법입니다!!. 
 
-<img src="../img/Linq/linqpad_dump.png" width="800" height="400"/>
+<img src="../img/linq_img/linqpad_dump.png" width="800" height="400"/>
 
 <br>
 <br>
@@ -90,7 +90,7 @@ select word
 
 실행결과 : 
 
-<img src="../img/Linq/linqpad_asimplequeryexpression.png" width="400" height="400"/>
+<img src="../img/linq_img/linqpad_asimplequeryexpression.png" width="400" height="400"/>
 
 <br>
 <br>
@@ -127,7 +127,7 @@ duplicates.Dump();
 
 실행결과 : 
 
-<img src="../img/Linq/linqpad_multiplestatements.png" width="400" height="400"/>
+<img src="../img/linq_img/linqpad_multiplestatements.png" width="400" height="400"/>
 
 <br>
 <br>
@@ -166,8 +166,8 @@ DateTime now = DateTime.Now.Dump();
 
 실행결과 : 
 
-<img src="../img/Linq/linqpad_thebigdump_1.png" width="400" height="400"/>
-<img src="../img/Linq/linqpad_thebigdump_2.png" width="400" height="400"/>
+<img src="../img/linq_img/linqpad_thebigdump_1.png" width="400" height="400"/>
+<img src="../img/linq_img/linqpad_thebigdump_2.png" width="400" height="400"/>
 
 <br>
 <br>
@@ -180,7 +180,7 @@ DateTime now = DateTime.Now.Dump();
 
 링큐패드에서는 클래스를 작성할 수 있습니다. 스케치 상단 패널에 Language룩업을 클릭하면 C# Program으로 바꿔주시면 알아서 Main() 메서드를 생성해줍니다. 여기서만 클래스를 작성하고 완성적프로그램을 돌릴수가 있습니다. 단순히 statement만 돌리고싶으시다면 필요없습니다. 여기 룩업에서 SQL도 선택해서 쿼리문도 실행 할 수 있습니다.
 
-<img src="../img/Linq/linqpad_custommethodsandtypes_2.png" width="600" height="200"/>
+<img src="../img/linq_img/linqpad_custommethodsandtypes_2.png" width="600" height="200"/>
 
 ```C#
 // You can also write your own methods and classes. Just change the language dropdown to 'C# Program'.
@@ -208,7 +208,7 @@ class MyClass
 
 실행결과 : 
 
-<img src="../img/Linq/linqpad_custommethodsandtypes_1.png" width="1000" height="250"/>
+<img src="../img/linq_img/linqpad_custommethodsandtypes_1.png" width="1000" height="250"/>
 
 <br>
 <br>
@@ -221,15 +221,15 @@ class MyClass
 
 앞서 다른 예제들과는 다르게 데이터베이스랑 연결해줘서 테이블을 끌어와야합니다. 제일 먼저 왼쪽 상단의 Add connection 버튼을 눌러줍니다(아래 이미지).
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_1.png" width="200" height="50"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_1.png" width="200" height="50"/>
 
 그다음 팝업이 뜨는데 라디오버튼 Build data context automatically를 선택하시고 Default (LINQ to SQL) 을 선택하고 Next> 를 클릭합니다. 아래 WCF Data Services 5.5(OData 3) 는 .svc를 가져오는 방법으로 URI값을 넣어주면 거기서 데이터를 가져오는 형식입니다. 여튼 먼저 SQL Server에서 가져오겠습니다. 
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_2.png" width="600" height="400"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_2.png" width="600" height="400"/>
 
 아래 창에서 SQL Server라디오를 체크합니다. Server의 이름을 선택하거나 적어주시고 SQL Authentication 라디오를 체크하셔서 User name 과 Password를 작성합니다. 먼저 이것을 해야 Specify new or existing database 에서 데이터베이스를 선택할 수 있습니다. 선택한 후 하단의 Test를 눌러서 테스트 후 OK버튼을 눌러주시면 됩니다.
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_3.png" width="600" height="800"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_3.png" width="600" height="800"/>
 
 아래와 같은 예제 코드를 돌리고싶으시다면 데이터베이스에 데이터를 넣어줘야합니다..
 
@@ -263,11 +263,11 @@ select new
 
 먼저 왼쪽 상단에 Add connection 링크를 클릭해주시면 아래와 같은 팝업이 뜹니다. 여기서 WCF Data Services 5.5(OData 3)를 클릭하고 Next> 를 클릭해주세요.
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_4.png" width="600" height="400"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_4.png" width="600" height="400"/>
 
 그럼 아래와 같은 팝업창이 나옵니다. URI 에 이 링크 https://services.odata.org/V3/Northwind/Northwind.svc/ 를 붙여주고 OK 버튼을 눌러주세요
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_5.png" width="600" height="400"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_5.png" width="600" height="400"/>
 
 그런데 예제 코드를 실행시키면 테이블 컬럼명이 몇개 없다고 오류를 냅니다. 아마 이 svc가 옛날버전이라 그런것같습니다. 없는 컬럼명을 고려해서 연습을 진행하면 될것 같습니다. 아래코드를 가지고 실행해봅니다.
 
@@ -284,7 +284,7 @@ select new
 
 실행 결과:
 
-<img src="../img/Linq/linqpad_whataboutqueryingadatabase_6.png" width="600" height="800"/>
+<img src="../img/linq_img/linqpad_whataboutqueryingadatabase_6.png" width="600" height="800"/>
 
 <br>
 <br>
