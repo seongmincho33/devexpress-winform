@@ -1,19 +1,39 @@
-# 데브 익스프레스 컨트롤 세팅법
+# 데브 익스프레스
 
-#### 0. [C#](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_index.md)
+## [C#](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_index.md)
 1. 프로퍼티
 2. delegate(델리게이트)
-	1. 일반적인경우
-	2. delegate 사용
-	3. 언제 사용하지
-	4. 어디서 본듯한 delegate
-	5. 이벤트
-	6. MS제공 델리게이트
+	- 일반적인경우
+	- delegate 사용
+	- 언제 사용하지
+	- 어디서 본듯한 delegate
+	- 이벤트
+	- MS제공 델리게이트
 		- Action delegate
 		- Func delegate
 		- Predicate delegate
 3. 링큐
 	1. [링큐패드5 (LINQPad5 .netFrameWork)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/linq/linqpad5_index.md)
+
+<br/>
+<br/>
+
+## ASP.NET
+1. 웹폼
+2. 내장 개체(내장 클래스)
+3. 컨트롤
+	- 표준 컨트롤
+  	- HTML 대체 컨트롤
+  	- 리치 컨트롤
+  	- Validation(유효성검사) 컨트롤
+  	- 사용자 정의(user) 컨트롤
+  	- 탐색 컨트롤
+4. 데이터베이스  
+
+<br/>
+<br/>
+
+## 데브 익스프레스 컨트롤
 #### 1. [GridControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/gridcontrol/gridcontrol_index.md)
 1. 컬럼 클릭 방지
 2. 셀값 바뀌면 다른셀값도 세팅해주는 방법
