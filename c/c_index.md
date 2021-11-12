@@ -424,6 +424,42 @@ namespace MyButtonClass
 
 ## 6). MS 제공 델리게이트
 
+(아래 3가지보다 더있습니다.)
+1. Action\<T> Delegate
+2. Func\<T, TResult> Delegate
+3. Predicate\<T> Delegate
+
+Action\<T> Delegate 에 관해서입니다. 하나의 파라미터를 받는데 리턴값이 없습니다. 따라서 Action\<T> 에 함수를 작성해서 등록을 해줄텐데 그 작성한 함수에는 return 자체가 있으면 안됩니다. 따라서 형식은 무조건 void형식입니다. 또한 파라미터는 0개부터 16까지 넣어줄 수 있는데 이거는 System 네임스페이스에서 마이크로소프트사가 미리 일일히 다 만들어 놓은것입니다. Action, Action\<T>, Action\<T1, T2>, Action\<T1, T2, T3>...... 이런식으로 미리 만들어놨습니다.
+
+```
+input 파라미터 0개  -> Action<T>
+input 파라미터 1개  -> Action<T(input), T(input)>
+input 파라미터 2개  -> Action<T(input), T(input), T(input)>
+input 파라미터 3개  -> Action<T(input), T(input), T(input), T(input)>
+.
+.
+.
+```
+
+Func\<T> Delegate 에 관해서 설명하겠습니다. Action\<T>와는 다르게 리턴값이 존재합니다. 리턴값을 무조건 등록해주는 함수에 작성해줘야합니다. 따라서 Func\<T> 는 있어도 Func는 없습니다. 리턴값을 위한 파라미터 를 넘겨야 하기 때문에 파라미터 한개는 무조건 리턴값입니다. Func\<T> 도 Action\<T>처럼 파라미터 인자로 0부터 16개 까지 받을 수 있습니다. 
+가령 예를들어 등록하는 함수의 파라미터를 0개부터 3개 를 등록받는 Func\<T>를 정의하자면 아래와같이됩니다.
+
+```
+input 파라미터 0개  -> Func<T(return)>
+input 파라미터 1개  -> Func<T(input), T(return)>
+input 파라미터 2개  -> Func<T(input), T(input), T(return)>
+input 파라미터 3개  -> Func<T(input), T(input), T(input), T(return)>
+.
+.
+.
+```
+
+마지막으로 Predicate\<T> Delegate에 대해서 알아봅니다. 위 두개의 delegate와는 다르게 리턴값이 무조건 bool 형식이어야 합니다. 위의 Action과 Func와는 달리 입력파라미터는 1개입니다. 입력파라미터의 개수는 1개만 가능합니다. 리턴값을 파라미터에 넣지는 않습니다. 따라서 모양은 Predicate\<T>만이 유일합니다. 
+
+```
+input 파라미터 무조건 1개 -> Predicate\<T(input)> 
+```
+
 <hr>
 <br>
 <br>
