@@ -1,20 +1,24 @@
 # C# 
 
-## 1. [프로퍼티](#1-프로퍼티)
-## 2. [delegate(델리게이트)](#2-delegate델리게이트)
-1. 일반적인경우
-2. delegate 사용
-3. 언제 사용하지
-4. 어디서 본듯한 delegate
-5. 이벤트
-6. MS 제공 델리게이트
-    - Action<T> delegate
-    - Func<T> delegate
-    - Predicate<T> delegate
-## 3. [링큐](#3-링큐)
-1. 링큐패드5 (LINQPad5 .netFrameWork)
+1. [프로퍼티](#1-프로퍼티)
+2. [delegate(델리게이트)](#2-delegate델리게이트)
 
-<hr>
+    1. 일반적인경우
+    2. delegate 사용
+    3. 언제 사용하지
+    4. 어디서 본듯한 delegate
+    5. 이벤트
+    6. MS 제공 델리게이트
+        - Action<T> delegate
+        - Func<T> delegate
+        - Predicate<T> delegate
+
+3. [링큐](#3-링큐)
+
+    1. 링큐패드5 (LINQPad5 .netFrameWork)
+
+_____________________________________________________
+
 <br>
 <br>
 <br>
@@ -23,12 +27,12 @@
 # 1. 프로퍼티
 
 <br>
-
+<br>
 <hr>
 <br>
 <br>
 <br>
-<br>
+
 
 # 2. delegate(델리게이트)
 
