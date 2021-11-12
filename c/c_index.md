@@ -296,7 +296,7 @@ namespace delegateSample001
 
 먼저 EvnetHandler 에 대해서 좀 알아보자면 아래와 같이 선언되어있습니다.
 
-<img src="../img/c_img/c_delegate_eventhandler_1.png" width="800" height="400"/>
+<img src="../img/c_img/delegate/c_delegate_eventhandler_1.png" width="800" height="400"/>
 
 바로 위 사진을 보면 public delegate void EventHandler(object sender, EventArgs e);로 선언되어있는것을 볼 수 있습니다. 따라서 등록해주는 함수(본인의 함수)의 파라미터도 첫번째는 object형이고 두번째는 EventArgs이어야 합니다. 용어정리를 하자면, 콜백 메서드는 본인의 메서드입니다. 등록해주는 메서드 = 콜백 메서드 입니다. 이벤트던 델리게이트(대리자)던 콜백메서드를 호출하고 콜백메서드가 일을하게 만듭니다. 따라서 위의 콜백 메서드는 txtBox_Clicked() 가 되겠습니다. 
 
