@@ -57,7 +57,7 @@
 12. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
 #### 2. TextEditControl
 1. 텍스트 에딧에 내용을 넣고 엔터를 누르면 검색되게 만들기 (keydown event)
-#### 3. DataEditControl
+#### 3. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
 3. EditDate 달력 일 클릭시 컬럼에 자동으로 날짜값 넣어주기
