@@ -67,12 +67,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FrmRequest.aspx" />
+    <Content Include="FrmResponseBuffer.aspx" />
+    <Content Include="FrmResponseRedirect.aspx" />
     <Content Include="FrmResposeWrite.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="FormHelloWorld.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmRequest.aspx.cs">
+      <DependentUpon>FrmRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRequest.aspx.designer.cs">
+      <DependentUpon>FrmRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmResponseBuffer.aspx.cs">
+      <DependentUpon>FrmResponseBuffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmResponseBuffer.aspx.designer.cs">
+      <DependentUpon>FrmResponseBuffer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmResponseRedirect.aspx.cs">
+      <DependentUpon>FrmResponseRedirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmResponseRedirect.aspx.designer.cs">
+      <DependentUpon>FrmResponseRedirect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FrmResposeWrite.aspx.cs">
       <DependentUpon>FrmResposeWrite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

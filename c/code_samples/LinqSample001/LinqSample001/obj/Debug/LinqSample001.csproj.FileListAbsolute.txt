@@ -1,0 +1,7 @@
+D:\TestProject\LinqSample001\LinqSample001\bin\Debug\LinqSample001.exe.config
+D:\TestProject\LinqSample001\LinqSample001\bin\Debug\LinqSample001.exe
+D:\TestProject\LinqSample001\LinqSample001\bin\Debug\LinqSample001.pdb
+D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.AssemblyReference.cache
+D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.CoreCompileInputs.cache
+D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.exe
+D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.pdb
