@@ -243,6 +243,8 @@ namespace LinqSample001
             //    Console.WriteLine($"{item.OrderId} : {item.ProductId} : {item.Price}");
             //}
             #endregion linq를 이용한 delete002
+
+            Console.ReadKey();
         }
     }
 

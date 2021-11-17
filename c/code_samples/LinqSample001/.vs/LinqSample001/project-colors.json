@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "57dff80d-c249-4b42-9d4d-c4a83f740ac8": {
+      "ProjectGuid": "57dff80d-c249-4b42-9d4d-c4a83f740ac8",
+      "DisplayName": "LinqSample001",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

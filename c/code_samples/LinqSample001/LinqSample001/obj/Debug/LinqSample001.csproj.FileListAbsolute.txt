@@ -5,3 +5,11 @@ D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.Assemb
 D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.CoreCompileInputs.cache
 D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.exe
 D:\TestProject\LinqSample001\LinqSample001\obj\Debug\LinqSample001.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\bin\Debug\LinqSample001.exe.config
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\bin\Debug\LinqSample001.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\bin\Debug\LinqSample001.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.SuggestedBindingRedirects.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\obj\Debug\LinqSample001.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\obj\Debug\LinqSample001.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\c\code_samples\LinqSample001\LinqSample001\obj\Debug\LinqSample001.pdb
