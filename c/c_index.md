@@ -562,6 +562,9 @@ class Program
 3 : Product3 : 20
 1 : Product1 : 25
 ```
+위의 실행결과를 보면 Product3가 먼저 찍히고 다음에 Product1이 오는것을 알 수 있습니다. 이는 orderby절에서 price에 대한 ascending 효과를 주었기 때문입니다. 따라서 result01 은 IEnumerable<> 인터페이스가 아니라 IOrderedEnumerable<> 인터페이스 형식을 띄게 됩니다.
+
+링큐절을 사용할때 반환값이 IEnumerable<> 일지 IOrderedEnumberanle<> 일지 등등 은 orderby나 select 에서 결정되는데 코딩하다보면 무슨형식이 반환될지는 잘 모를 수 있습니다. 따라서 링큐로 리턴하는값을 받을때는 'var' 로 선언하는게 이롭습니다. 물론 명시적으로 지정할 수 있지만 상당히 복잡해지는 결과를 낼 수 있을것 같습니다.
 
 ## 2. LINQ 확장메서드 사용
 
@@ -577,6 +580,16 @@ class Program
 #endregion Linq 확장메서드사용
 ```
 
+실행 결과 :
+
+```
+값 확인
+3 : Product3 : 20
+1 : Product1 : 25
+```
+
+똑같은 값이 나오는데 다른점은 확장메서드를 사용했다는 점입니다. (확장메서드에 관해서 설명-->추후 추가예정)
+
 ## 3. 기본사용 CROSS JOIN
 
 ```C#
@@ -591,6 +604,24 @@ class Program
         Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
     }
 #endregion 기본사용 cross join
+```
+
+실행 결과 :
+
+```
+값 확인
+1 : Product1 : 1
+1 : Product1 : 2
+1 : Product1 : 3
+1 : Product1 : 4
+2 : Product2 : 1
+2 : Product2 : 2
+2 : Product2 : 3
+2 : Product2 : 4
+3 : Product3 : 1
+3 : Product3 : 2
+3 : Product3 : 3
+3 : Product3 : 4
 ```
 
 ## 4. 기본사용 INNER JOIN

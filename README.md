@@ -13,19 +13,19 @@
 		- Func delegate
 		- Predicate delegate
 3. 링큐
-	1. 기본사용
-    2. LINQ 확장메서드 사용
-    3. 기본사용 CROSS JOIN
-    4. 기본사용 INNER JOIN
-    5. LEFT JOIN
-    6. GROUP JOIN
-    7. INNER JOIN MULTI 조건
-    8. Dictionary LINQ
-    9. LINQ를 이용한 UPDATE001
-    10. LINQ를 이용한 UPDATE002
-    11. LINQ를 이용한 DELETE001
-    12. LINQ를 이용한 DELETE002
-    13. [링큐패드5 (LINQPad5 .netFrameWork)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/linq/linqpad5_index.md)
+	- 기본사용
+    - LINQ 확장메서드 사용
+    - 기본사용 CROSS JOIN
+    - 기본사용 INNER JOIN
+    - LEFT JOIN
+    - GROUP JOIN
+    - INNER JOIN MULTI 조건
+    - Dictionary LINQ
+    - LINQ를 이용한 UPDATE001
+    - LINQ를 이용한 UPDATE002
+    - LINQ를 이용한 DELETE001
+    - LINQ를 이용한 DELETE002
+    - [링큐패드5 (LINQPad5 .netFrameWork)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/linq/linqpad5_index.md)
 
 <br/>
 <br/>

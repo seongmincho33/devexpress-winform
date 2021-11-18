@@ -22,17 +22,17 @@ namespace LinqSample001
             orders.Add(new Order() { OrderId = 4, ProductId = null, Price = null });
 
             #region 기본사용001
-            var result01 = from p in products
-                           where p.Price > 15
-                           orderby p.Price ascending
-                           select p;
+            //var result01 = from p in products
+            //               where p.Price > 15
+            //               orderby p.Price ascending
+            //               select p;
 
-            //값 확인
-            Console.WriteLine("값 확인");
-            foreach (var item in result01)
-            {
-                Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
-            }
+            ////값 확인
+            //Console.WriteLine("값 확인");
+            //foreach (var item in result01)
+            //{
+            //    Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
+            //}
             #endregion 기본사용001
 
             #region Linq 확장메서드사용
@@ -46,15 +46,15 @@ namespace LinqSample001
             #endregion Linq 확장메서드사용
 
             #region 기본사용 cross join
-            //var result02 = from p in products
-            //               from o in orders
-            //               select new { p, o };
-            ////값 확인
-            //Console.WriteLine("값 확인");
-            //foreach (var item in result02)
-            //{
-            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
-            //}
+            var result02 = from p in products
+                           from o in orders
+                           select new { p, o };
+            //값 확인
+            Console.WriteLine("값 확인");
+            foreach (var item in result02)
+            {
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
+            }
             #endregion 기본사용 cross join
 
             #region 기본사용 inner join
