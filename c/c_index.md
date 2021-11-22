@@ -536,6 +536,9 @@ class Program
     }
 }
 ```
+<br />
+<br />
+<br />
 
 ## 1. 기본사용
 
@@ -566,6 +569,10 @@ class Program
 
 링큐절을 사용할때 반환값이 IEnumerable<> 일지 IOrderedEnumberanle<> 일지 등등 은 orderby나 select 에서 결정되는데 코딩하다보면 무슨형식이 반환될지는 잘 모를 수 있습니다. 따라서 링큐로 리턴하는값을 받을때는 'var' 로 선언하는게 이롭습니다. 물론 명시적으로 지정할 수 있지만 상당히 복잡해지는 결과를 낼 수 있을것 같습니다.
 
+<br />
+<br />
+<br />
+
 ## 2. LINQ 확장메서드 사용
 
 ``` C#
@@ -590,11 +597,18 @@ class Program
 
 똑같은 값이 나오는데 다른점은 확장메서드를 사용했다는 점입니다. (확장메서드에 관해서 설명-->추후 추가예정)
 
+<br />
+<br />
+<br />
+
 ## 3. 기본사용 CROSS JOIN
+
+아래는 from절 두개를 사용해서 두개의 리스트의 크로스 조인을 실행해보는 예제입니다. cross조인은 두개의 테이블중 하나의 테이블의 각각의 요소에 다른테이블의 모든데이터를 조인한다~ 라는 것입니다. 
 
 ```C#
 #region 기본사용 cross join
-    var result02 = from p in products
+    var result02 = 
+                    from p in products
                     from o in orders
                     select new { p, o };
     //값 확인
@@ -624,11 +638,55 @@ class Program
 3 : Product3 : 4
 ```
 
+위의 실행결과를 보시면 cross join 이 도출된다는 것을 알 수 있습니다. 그럼 만약 from p in products 와 from o in orders 의 순서를 바꾸면 어떻게 될까 실행해 보았습니다.
+
+```C#
+#region 기본사용 cross join
+    var result02 = 
+                    from o in orders
+                    from p in products
+                    select new { p, o };
+    //값 확인
+    Console.WriteLine("값 확인");
+    foreach (var item in result02)
+    {
+        Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
+    }
+#endregion 기본사용 cross join
+```
+
+실행결과 :
+
+```
+값 확인
+1 : Product1 : 1
+2 : Product2 : 1
+3 : Product3 : 1
+1 : Product1 : 2
+2 : Product2 : 2
+3 : Product3 : 2
+1 : Product1 : 3
+2 : Product2 : 3
+3 : Product3 : 3
+1 : Product1 : 4
+2 : Product2 : 4
+3 : Product3 : 4
+```
+
+이 결과로 부터 알 수 있는것은 result02를 반환할때 from 의 순서에 따라서 다른 결과의 crossjoin 오더를 만든다는 것입니다. 처음에 온 from 절의 모든요소들을 처음부터 하나씩 뽑아서 두번째 from 절의 데이터 전부를 계속 조인하는 방식인것을 알 수 있습니다. 
+
+<br />
+<br />
+<br />
+
 ## 4. 기본사용 INNER JOIN
+
+from 절 다음에 바로 join 절을 쓴다면 LEFT JOIN 이 아니라 기본적으로 INNER JOIN 이 됩니다. 그리고 여기서 주의할 점이 있는데 sql의 쿼리문과는 다르게 on 절에서는 '='기호를 사용할 수 없습니다. equals로 대체해서 사용해야합니다. 더 주의할점은 on 절의 테이블들의 join 순서입니다. 무조건 from 절 에서 가져온 테이블이 먼저 선언되고 equals를 사용한뒤 join 절 에서 가져온 테이블을 선언해야 합니다.... 'ㅁ'!! 아래의 예시에서 그것을 확인할 수 있습니다. 만약 순서가 다르다면 에러를 냅니다. 
 
 ```C#
 #region 기본사용 inner join
-    var result04 = from p in products
+    var result04 = 
+                from p in products
                 join o in orders on p.ProductId equals o.ProductId
                 where o.Price > 10
                 select new { p, o };
@@ -642,11 +700,24 @@ class Program
 #endregion 기본사용 inner join
 ```
 
+실행 결과 :
+
+```
+값 확인
+1 : Product1 : 25
+2 : Product2 : 15
+```
+
+<br />
+<br />
+<br />
+
 ## 5. LEFT JOIN
 
 ```C#
 #region left join
-    var result05 = from p in products
+    var result05 = 
+                    from p in products
                     join o in orders on p.ProductId equals o.ProductId into g
                     from f in g.DefaultIfEmpty()
                     select new { p, f };
@@ -659,11 +730,26 @@ class Program
 #endregion left join
 ```
 
+실행결과 :
+
+```
+값 확인
+1 : Product1 : 1
+1 : Product1 : 2
+2 : Product2 : 3
+3 : Product3 :
+```
+
+<br />
+<br />
+<br />
+
 ## 6. GROUP JOIN
 
 ```C#
 #region group join
-    var result06 = from p in products
+    var result06 = 
+                    from p in products
                     join o in orders on p.ProductId equals o.ProductId into g
                     select new { p, g };
     Console.WriteLine("값 확인");
@@ -678,11 +764,16 @@ class Program
 #endregion group join
 ```
 
+<br />
+<br />
+<br />
+
 ## 7. INNER JOIN MULTI 조건
 
 ```C#
 #region inner join multi조건
-    var result07 = from p in products
+    var result07 = 
+                    from p in products
                     join o in orders on new { ProductId = p?.ProductId, Price = p?.Price } equals new { ProductId = o?.ProductId, Price = o?.Price }
                     where o.Price > 10
                     select new { p, o };
@@ -693,6 +784,10 @@ class Program
     }
 #endregion inner join multi조건
 ```
+
+<br />
+<br />
+<br />
 
 ## 8. Dictionary LINQ
 
@@ -707,7 +802,8 @@ class Program
     l2.Add(new Order() { OrderId = 3, ProductId = 2, Price = 20 });
     dic.Add(2, l2);
 
-    var result08 = from d in dic
+    var result08 = 
+                    from d in dic
                     from i in d.Value
                     where i.Price >= 20
                     group i by d.Key into g
@@ -723,11 +819,16 @@ class Program
 #endregion dictionary linq
 ```
 
+<br />
+<br />
+<br />
+
 ## 9. LINQ를 이용한 UPDATE001
 
 ```C#
 #region linq를 이용한 update001
-    var result09 = from p in products
+    var result09 = 
+                    from p in products
                     where p.Price > 15
                     select p;
     //값 확인
@@ -750,6 +851,10 @@ class Program
 #endregion linq를 이용한 update001
 ```
 
+<br />
+<br />
+<br />
+
 ## 10. LINQ를 이용한 UPDATE002
 
 ```C#
@@ -761,9 +866,11 @@ class Program
         Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
     }
     //값 변경
-    (from p in products
-    where p.Price > 15
-    select p).ToList().ForEach(x => x.Price += 100);
+    (
+        from p in products
+        where p.Price > 15
+        select p
+    ).ToList().ForEach(x => x.Price += 100);
 
     Console.WriteLine("변경후 값 확인");
     foreach (var item in products)
@@ -772,6 +879,10 @@ class Program
     }
 #endregion linq를 이용한 update002
 ```
+
+<br />
+<br />
+<br />
 
 ## 11. LINQ를 이용한 DELETE001
 
@@ -786,9 +897,11 @@ class Program
     //products.RemoveAll(x => x.Price > 15);
 
     //값 변경
-    (from p in products
-    where p.Price > 15
-    select p).ToList().ForEach(x => { products.Remove(x); });
+    (
+        from p in products
+        where p.Price > 15
+        select p
+    ).ToList().ForEach(x => { products.Remove(x); });
 
     Console.WriteLine("변경후 값 확인");
     foreach (var item in products)
@@ -797,6 +910,10 @@ class Program
     }
 #endregion linq를 이용한 delete001
 ```
+
+<br />
+<br />
+<br />
 
 ## 12. LINQ를 이용한 DELETE002
 
@@ -815,10 +932,13 @@ class Program
     }
 
     //값 변경
-    var result10 = (from p in products
-                    join o in orders on p.ProductId equals o.ProductId
-                    where p.Price > 15
-                    select new { p, o }).ToList();
+    var result10 = (
+                        from p in products
+                        join o in orders on p.ProductId equals o.ProductId
+                        where p.Price > 15
+                        select new { p, o }
+                    ).ToList();
+
     Console.WriteLine("검색된 products 값 확인");
     foreach (var item in result10)
     {

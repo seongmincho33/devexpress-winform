@@ -46,15 +46,15 @@ namespace LinqSample001
             #endregion Linq 확장메서드사용
 
             #region 기본사용 cross join
-            var result02 = from p in products
-                           from o in orders
-                           select new { p, o };
-            //값 확인
-            Console.WriteLine("값 확인");
-            foreach (var item in result02)
-            {
-                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
-            }
+            //var result02 = from o in orders
+            //               from p in products
+            //               select new { p, o };
+            ////값 확인
+            //Console.WriteLine("값 확인");
+            //foreach (var item in result02)
+            //{
+            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.OrderId}");
+            //}
             #endregion 기본사용 cross join
 
             #region 기본사용 inner join
@@ -72,16 +72,16 @@ namespace LinqSample001
             #endregion 기본사용 inner join
 
             #region left join
-            //var result05 = from p in products
-            //               join o in orders on p.ProductId equals o.ProductId into g
-            //               from f in g.DefaultIfEmpty()
-            //               select new { p, f };
+            var result05 = from p in products
+                           join o in orders on p.ProductId equals o.ProductId into g
+                           from f in g.DefaultIfEmpty()
+                           select new { p, f };
 
-            //Console.WriteLine("값 확인");
-            //foreach (var item in result05)
-            //{
-            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
-            //}
+            Console.WriteLine("값 확인");
+            foreach (var item in result05)
+            {
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
+            }
 
             #endregion left join
 
