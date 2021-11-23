@@ -23,15 +23,15 @@ namespace LinqSample001
 
             #region 기본사용001
             //var result01 = from p in products
-            //               where p.Price > 15
-            //               orderby p.Price ascending
+            //               where p.price > 15
+            //               orderby p.price ascending
             //               select p;
 
             ////값 확인
-            //Console.WriteLine("값 확인");
+            //console.writeline("값 확인");
             //foreach (var item in result01)
             //{
-            //    Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
+            //    console.writeline($"{item.productid} : {item.name} : {item.price}");
             //}
             #endregion 기본사용001
 
@@ -46,9 +46,10 @@ namespace LinqSample001
             #endregion Linq 확장메서드사용
 
             #region 기본사용 cross join
-            //var result02 = from o in orders
-            //               from p in products
-            //               select new { p, o };
+            //var result02 =
+            //       from o in orders
+            //       from p in products
+            //       select new { p, o };
             ////값 확인
             //Console.WriteLine("값 확인");
             //foreach (var item in result02)
@@ -72,32 +73,33 @@ namespace LinqSample001
             #endregion 기본사용 inner join
 
             #region left join
-            var result05 = from p in products
+            var result05 = 
+                            from p in products
                            join o in orders on p.ProductId equals o.ProductId into g
                            from f in g.DefaultIfEmpty()
-                           select new { p, f };
+                           select new { p, g };
 
             Console.WriteLine("값 확인");
             foreach (var item in result05)
             {
-                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.g}");
             }
 
             #endregion left join
 
             #region group join
-            //var result06 = from p in products
-            //               join o in orders on p.ProductId equals o.ProductId into g
-            //               select new { p, g };
-            //Console.WriteLine("값 확인");
-            //foreach (var item in result06)
-            //{
-            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.p.Price}");
-            //    foreach (var item2 in item.g)
-            //    {
-            //        Console.WriteLine($"\t{item2.OrderId} : {item2.ProductId} : {item2.Price}");
-            //    }
-            //}
+            var result06 = from p in products
+                           join o in orders on p.ProductId equals o.ProductId into g
+                           select new { p, g };
+            Console.WriteLine("값 확인");
+            foreach (var item in result06)
+            {
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.p.Price}");
+                foreach (var item2 in item.g)
+                {
+                    Console.WriteLine($"\t{item2.OrderId} : {item2.ProductId} : {item2.Price}");
+                }
+            }
             #endregion group join
 
             #region inner join multi조건

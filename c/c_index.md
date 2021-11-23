@@ -524,8 +524,8 @@ class Program
         //orders
         List<Order> orders = new List<Order>();
         orders.Add(new Order() { OrderId = 1, ProductId = 1, Price = 25 });
-        orders.Add(new Order() { OrderId = 2, ProductId = 1, Price = 10 });
-        orders.Add(new Order() { OrderId = 3, ProductId = 2, Price = 15 });
+        orders.Add(new Order() { OrderId = 2, ProductId = 2, Price = 10 });
+        orders.Add(new Order() { OrderId = 3, ProductId = 3, Price = 15 });
         orders.Add(new Order() { OrderId = 4, ProductId = null, Price = null });
 
 
@@ -705,7 +705,7 @@ from 절 다음에 바로 join 절을 쓴다면 LEFT JOIN 이 아니라 기본�
 ```
 값 확인
 1 : Product1 : 25
-2 : Product2 : 15
+3 : Product3 : 15
 ```
 
 <br />
@@ -713,6 +713,8 @@ from 절 다음에 바로 join 절을 쓴다면 LEFT JOIN 이 아니라 기본�
 <br />
 
 ## 5. LEFT JOIN
+
+LEFT JOIN 같은 경우는 INTO 문을 사용해야합니다. 여기서 SQL과 다른 문법인데요. 보통 SQL에서 INTO문은 SELECT 와 함께 쓰는것을 알 수 있습니다. LINQ에서 INTO는 JOIN문을 GROUP JOIN으로 만들어주는 역할을 합니다. 그러면 LEFT JOIN은? 하실텐데 LINQ에선 LEFT JOIN이 없습니다. 아래와 같이 만들어서 쓰느것 뿐입니다. 
 
 ```C#
 #region left join
@@ -735,10 +737,13 @@ from 절 다음에 바로 join 절을 쓴다면 LEFT JOIN 이 아니라 기본�
 ```
 값 확인
 1 : Product1 : 1
-1 : Product1 : 2
-2 : Product2 : 3
-3 : Product3 :
+2 : Product2 : 2
+3 : Product3 : 3
 ```
+
+위의 코드를 보면 item.f?.OrderId이 있는데 여기서 "?" 연산자는 ? 앞의값이 null 이 아니라면 ? 뒤의 연산을 실행하라는 뜻입니다. 조인하다보면 값이 null인 경우 혹은 정의되지 않는경우가 있을겁니다. 만약 item.f가 null값이라면 item.f.OrderId 는 에러를 낼겁니다. 따라서 item.f?.OrderId로 정의해줍니다. 
+
+DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나 없을때 해야할 예외처리를 해줍니다. 기본값처리를 해주기때문에 메서드 함수안에 값을 넣으면 그 값을 기본값으로 처리합니다. 값을 주지 않으면 0을 기본값으로 반환합니다. 
 
 <br />
 <br />

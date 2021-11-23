@@ -1,4 +1,4 @@
-# 3. DateEditControl
+# DateEditControl
 
 <img src="../../img/dateeditcontrol_img/DateEditControl_vista.png" width="400" height="400"/>
 <img src="../../img/dateeditcontrol_img/DateEditControl.png" width="400" height="400"/>
