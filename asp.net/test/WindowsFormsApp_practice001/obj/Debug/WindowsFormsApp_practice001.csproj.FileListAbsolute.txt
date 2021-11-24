@@ -1,0 +1,14 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.csproj.SuggestedBindingRedirects.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.Properties.Resources.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.csproj.GenerateResource.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\bin\Debug\WindowsFormsApp_practice001.exe.config
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\bin\Debug\WindowsFormsApp_practice001.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\bin\Debug\WindowsFormsApp_practice001.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\bin\Debug\MyButtonClass.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\bin\Debug\MyButtonClass.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.csproj.CopyComplete
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\WindowsFormsApp_practice001\obj\Debug\WindowsFormsApp_practice001.Form1.resources

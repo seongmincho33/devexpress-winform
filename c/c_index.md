@@ -714,7 +714,11 @@ from 절 다음에 바로 join 절을 쓴다면 LEFT JOIN 이 아니라 기본�
 
 ## 5. LEFT JOIN
 
-LEFT JOIN 같은 경우는 INTO 문을 사용해야합니다. 여기서 SQL과 다른 문법인데요. 보통 SQL에서 INTO문은 SELECT 와 함께 쓰는것을 알 수 있습니다. LINQ에서 INTO는 JOIN문을 GROUP JOIN으로 만들어주는 역할을 합니다. 그러면 LEFT JOIN은? 하실텐데 LINQ에선 LEFT JOIN이 없습니다. 아래와 같이 만들어서 쓰느것 뿐입니다. 
+LEFT JOIN 같은 경우는 INTO 문을 사용해야합니다. 여기서 SQL과 다른 문법인데요. 보통 SQL에서 INTO문은 SELECT 와 함께 쓰는것을 알 수 있습니다. LINQ에서 INTO는 JOIN문을 INNER JOIN 에서 GROUP JOIN으로 만들어주는 역할을 합니다. 그리고 DefaultIfEmpty() 메서드를 사용했기 때문에 GROUP JOIN 이 아니라 LEFT JOIN 이 됩니다. 
+
+LINQ 에서는 다른 OUTER JOIN들은 지원하지 않습니다. LEFT JOIN만 지원할 뿐입니다. 외부조인은 기준데이터의 모든데이터를 조인결과에 포함합니다. 기준데이터중에 연결할 데이터와 일치하는 데이터가 없다면 그 부분은 빈값이 들어갑니다. 
+
+(빈값 cf : MSSQL같은경우는 이 값이 NULL 인데 다른 DB에서는 0 일수도 있습니다. LINQ 에서는 NULL입니다.)
 
 ```C#
 #region left join
@@ -745,11 +749,32 @@ LEFT JOIN 같은 경우는 INTO 문을 사용해야합니다. 여기서 SQL과 �
 
 DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나 없을때 해야할 예외처리를 해줍니다. 기본값처리를 해주기때문에 메서드 함수안에 값을 넣으면 그 값을 기본값으로 처리합니다. 값을 주지 않으면 0을 기본값으로 반환합니다. 
 
+그런데 위와같은 방법은 여러개의 테이블을 LEFT JOIN 할때 명확하지 않습니다. 위와같은 방식의 문법은 너무 복잡하게 만들어서 여러개의 테이블을 조인할때 햇갈리게 만듭니다. 따라서 아래와 같이 확장메서드를 섞어서 사용한다면 좀더 사람의 눈에 명확하게 들어옵니다.
+
+```C#
+#region left join
+    var result05 = 
+                    from p in products
+                    from o in orders
+                        .Where(o => o.ProductId == p.ProductId)
+                        .DefaultIfEmpty();
+
+    Console.WriteLine("값 확인");
+    foreach (var item in result05)
+    {
+        Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
+    }
+#endregion left join
+```
+
+
 <br />
 <br />
 <br />
 
 ## 6. GROUP JOIN
+
+INTO문이 있는걸 GROUP JOIN입니다. GROUP JOIN 은 기준 데이터에 연결데이터가 계층적으로 붙습니다. 따라써 처음 foreach문에서 result06을 돌리면 기준데이터가 연결데이터 수 만큼 돌지 않고 기준데이터 개수만큼 돌게 됩니다. 즉 하나의 기준데이터에 여러개의 견결데이터가 계층적으로 붙습니다. 기준데이터에 연결데이터가 하나도 붙지않으면 데이터가 나타나지 않기 때문에 그룹으로 묶이는점 빼고는 INNER JOIN 이랑 같다고 보면 됩니다. 
 
 ```C#
 #region group join
@@ -768,6 +793,20 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
     }
 #endregion group join
 ```
+
+실행 결과 :
+
+```
+값 확인
+1 : Product1 : 25
+        1 : 1 : 25
+2 : Product2 : 15
+        2 : 2 : 10
+3 : Product3 : 20
+        3 : 3 : 15
+```
+
+첫번째 foreach문 을 돌렸을때 기준데이터 개수만큼 나오고 연결데이터는 계층적으로 구성됨을 확인할 수 있었습니다. 
 
 <br />
 <br />
@@ -788,6 +827,13 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
         Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.Price}");
     }
 #endregion inner join multi조건
+```
+
+실행 결과 : 
+
+```
+값 확인
+1 : Product1 : 25
 ```
 
 <br />
@@ -824,6 +870,15 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
 #endregion dictionary linq
 ```
 
+실행 결과 : 
+
+```
+1
+        2 : 1 : 25
+2
+        3 : 2 : 20
+```
+
 <br />
 <br />
 <br />
@@ -856,6 +911,19 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
 #endregion linq를 이용한 update001
 ```
 
+실행 결과 : 
+
+```
+값 확인
+1 : Product1 : 25
+2 : Product2 : 15
+3 : Product3 : 20
+변경후 값 확인
+1 : Product1 : 125
+2 : Product2 : 15
+3 : Product3 : 120
+```
+
 <br />
 <br />
 <br />
@@ -883,6 +951,19 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
         Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
     }
 #endregion linq를 이용한 update002
+```
+
+실행 결과 : 
+
+```
+값 확인
+1 : Product1 : 25
+2 : Product2 : 15
+3 : Product3 : 20
+변경후 값 확인
+1 : Product1 : 125
+2 : Product2 : 15
+3 : Product3 : 120
 ```
 
 <br />
@@ -914,6 +995,17 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
         Console.WriteLine($"{item.ProductId} : {item.Name} : {item.Price}");
     }
 #endregion linq를 이용한 delete001
+```
+
+실행 결과 : 
+
+```
+값 확인
+1 : Product1 : 25
+2 : Product2 : 15
+3 : Product3 : 20
+변경후 값 확인
+2 : Product2 : 15
 ```
 
 <br />
@@ -969,7 +1061,32 @@ DefaultIfEmpty() 메서드는 확장메서드로서 값이 입력되지않거나
     }
 #endregion linq를 이용한 delete002
 ```
-<br>
+
+실행 결과 : 
+
+```
+products 값 확인
+1 : Product1 : 25
+2 : Product2 : 15
+3 : Product3 : 20
+orders 값 확인
+1 : 1 : 25
+2 : 2 : 10
+3 : 3 : 15
+4 :  :
+검색된 products 값 확인
+1 : Product1 : 25
+3 : Product3 : 20
+검색된 orders 값 확인
+1 : 1 : 25
+3 : 3 : 15
+변경후 값 확인
+2 : Product2 : 15
+orders 값 확인
+2 : 2 : 10
+4 :  :
+```
+
 
 
 

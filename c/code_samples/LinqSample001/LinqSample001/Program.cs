@@ -17,8 +17,8 @@ namespace LinqSample001
 
             List<Order> orders = new List<Order>();
             orders.Add(new Order() { OrderId = 1, ProductId = 1, Price = 25 });
-            orders.Add(new Order() { OrderId = 2, ProductId = 1, Price = 10 });
-            orders.Add(new Order() { OrderId = 3, ProductId = 2, Price = 15 });
+            orders.Add(new Order() { OrderId = 2, ProductId = 2, Price = 10 });
+            orders.Add(new Order() { OrderId = 3, ProductId = 3, Price = 15 });
             orders.Add(new Order() { OrderId = 4, ProductId = null, Price = null });
 
             #region 기본사용001
@@ -73,45 +73,55 @@ namespace LinqSample001
             #endregion 기본사용 inner join
 
             #region left join
-            var result05 = 
-                            from p in products
-                           join o in orders on p.ProductId equals o.ProductId into g
-                           from f in g.DefaultIfEmpty()
-                           select new { p, g };
+            //var result05 =
+            //                from p in products
+            //                join o in orders on p.ProductId equals o.ProductId into g
+            //                from f in g.DefaultIfEmpty()
+            //               select new { p, f };
 
-            Console.WriteLine("값 확인");
+            //Console.WriteLine("값 확인");
+            //foreach (var item in result05)
+            //{
+            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
+            //}
+            var result05 =
+                from p in products
+                from o in orders
+                    .Where(o => o.ProductId == p.ProductId)
+                    .DefaultIfEmpty()
+
+    Console.WriteLine("값 확인");
             foreach (var item in result05)
             {
-                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.g}");
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
             }
-
             #endregion left join
 
             #region group join
-            var result06 = from p in products
-                           join o in orders on p.ProductId equals o.ProductId into g
-                           select new { p, g };
-            Console.WriteLine("값 확인");
-            foreach (var item in result06)
-            {
-                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.p.Price}");
-                foreach (var item2 in item.g)
-                {
-                    Console.WriteLine($"\t{item2.OrderId} : {item2.ProductId} : {item2.Price}");
-                }
-            }
+            //var result06 = from p in products
+            //               join o in orders on p.ProductId equals o.ProductId into g
+            //               select new { p, g };
+            //Console.WriteLine("값 확인");
+            //foreach (var item in result06)
+            //{
+            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.p.Price}");
+            //    foreach (var item2 in item.g)
+            //    {
+            //        Console.WriteLine($"\t{item2.OrderId} : {item2.ProductId} : {item2.Price}");
+            //    }
+            //}
             #endregion group join
 
             #region inner join multi조건
-            //var result07 = from p in products
-            //               join o in orders on new { ProductId = p?.ProductId, Price = p?.Price } equals new { ProductId = o?.ProductId, Price = o?.Price }
-            //               where o.Price > 10
-            //               select new { p, o };
-            //Console.WriteLine("값 확인");
-            //foreach (var item in result07)
-            //{
-            //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.Price}");
-            //}
+            var result07 = from p in products
+                           join o in orders on new { ProductId = p?.ProductId, Price = p?.Price } equals new { ProductId = o?.ProductId, Price = o?.Price }
+                           where o.Price > 10
+                           select new { p, o };
+            Console.WriteLine("값 확인");
+            foreach (var item in result07)
+            {
+                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.o.Price}");
+            }
             #endregion inner join multi조건
 
             #region dictionary linq
@@ -183,7 +193,7 @@ namespace LinqSample001
             #endregion linq를 이용한 update002
 
             #region linq를 이용한 delete001
-            //값 확인
+            ////값 확인
             //Console.WriteLine("값 확인");
             //foreach (var item in products)
             //{

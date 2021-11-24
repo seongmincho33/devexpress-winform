@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp_practice001", "WindowsFormsApp_practice001.csproj", "{2FED9F6F-D99F-4BFB-A223-F70E19ECF443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyButtonClass", "..\MyButtonClass\MyButtonClass.csproj", "{626BFF99-DE5B-41FB-8CA1-437EBA5DEC5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FED9F6F-D99F-4BFB-A223-F70E19ECF443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FED9F6F-D99F-4BFB-A223-F70E19ECF443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FED9F6F-D99F-4BFB-A223-F70E19ECF443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FED9F6F-D99F-4BFB-A223-F70E19ECF443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626BFF99-DE5B-41FB-8CA1-437EBA5DEC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626BFF99-DE5B-41FB-8CA1-437EBA5DEC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626BFF99-DE5B-41FB-8CA1-437EBA5DEC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626BFF99-DE5B-41FB-8CA1-437EBA5DEC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0753547A-7032-4D7C-8A9C-C0F0994E1108}
+	EndGlobalSection
+EndGlobal
