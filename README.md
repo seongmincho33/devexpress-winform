@@ -81,7 +81,7 @@
 #### 4. LookUpEditControl
 #### 5. XtraTabControl
 #### 6. UserControl
-#### 7. SpreadSheetControl
+#### 7. [SpreadSheetControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
 1. WorkBook과 WorkSheet
 2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
 3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
