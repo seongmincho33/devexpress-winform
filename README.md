@@ -67,6 +67,8 @@
 	- 필터를 안보이게 하는법
 	- 필터가 BOOLEAN 일때 기본 디폴트값을 FALSE로 주는 방법 (기본은 NULL인듯 하다)
 12. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
+13. 그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨( ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)
+14. 컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기
 #### 2. TextEditControl
 1. 텍스트 에딧에 내용을 넣고 엔터를 누르면 검색되게 만들기 (keydown event)
 #### 3. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)

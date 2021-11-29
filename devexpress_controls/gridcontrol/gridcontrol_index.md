@@ -27,7 +27,8 @@
 11. [그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법](#11-그리드-컨트롤-화면단에-불필요한-0-이-있을때-안보이게-하는-방법)
 12. [그리드 컨트롤 CheckBoxSelector(그리드뷰에 체크박스를 넣어줘서 선택하게 만듬)](#12-그리드-컨트롤-CheckBoxSelector그리드뷰에-체크박스를-넣어줘서-선택하게-만듬)
     - 팝업창에서 그리드 컨트롤 CheckBoxSelector 으로 체크한 것들 메인 그리드에 저장해주기
-
+13. [그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨(ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)](#13-그리드뷰의-특정-컬럼을-수정하면-전체-데이터가-수정됨ex-모든-로우셀이-boolean체크박스인데-하나-체크하고-다른거-체크하면-전체가-풀려야함)
+14. [컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기](#14-컨트롤단에서-밴디드그리드뷰던-그냥-그리드뷰던-visible-false주기)
 
 
 _________________________________________________________________________
@@ -811,12 +812,43 @@ this.GridContol.OptionsSelection.CheckBoxSelectorField = "SOMETHING_SELLECTED";
 기존의 OnDataSave()가 있을테니 이름을 잘 바꿔주세요
 
 컨트롤의 OnDataSave 가 DataList 의 OnDataSave을 호출하는 방식입니다.
+______________________________________________________________________________________________________
 
+<br>
 
+# 13. 그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨( ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)
 
+아래 코드를 보면 그리드뷰의 SetRowCellValue메서드를 사용했습니다. row는 로우 핸들러이고, 두번째 파라미터값으로 그리드컨트롤의 컬럼을 주어야합니다. 세번째 파라미터값으로는 그 컬럼에 주고싶은 값을 넣어주면 됩니다. 결국 그리드컨트롤의 모든 로우셀에 값을 주려면 그리드컨트롤의 처음 인자부터 마지막까지 foreach 문으로 읽어서 하나씩 넣어줘야합니다. 따로 메서드가 있는건 아닙니다. 아래 예시는 값으로 false를 주었는데 그리드컨트롤의 셀 형식이 boolean이었기 때문입니다. 여튼 아래와같이 코딩해주세요.
 
+```C#
+private void Grid_Something_CellValueChanging(object sender, CellValueChangedEventArgs e)
+{
+    ISOMETHINGModel item = this.Grid_Something.GetFocusedRow<ISOMETHINGModel>();
+    if(e.Column.FieldName == "SOMETHING_COL_NAME")
+    {
+        if (Grid_Something.SelectedRowsCount > 0)
+            foreach (int row in Enumerable.Range(0, this.Grid_Something.DefaultView.RowCount))
+            {
+                this.Grid_Something.DefaultView.SetRowCellValue(row, Grid_Something.Columns["SOMETHING_COL_NAME"], false);
+            }
+    }
+}
+```
+______________________________________________________________________________________________________
 
+<br>
 
+# 14. 컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기
 
+사실 .Visible값을 false로 주면 보이지 않는 간단한 코드입니다.
 
+```C#
+((BandedGridView)Grid_Something.DefaultView).Bands["SOMETHING_COL_NAME"].Visible = false;
+```
+
+그런데 아래와 같이 밴디드뷰는 부모컬럼 아래 자식컬럼이 있습니다. 따라서 자식컬럼을 보이지 않게하고 싶다면 아래와같이 명시적으로 할당해주어야 합니다. 기억해주세요.
+
+```C#
+((BandedGridView)Grid_Something.DefaultView).Bands["SOMETHING_COL_NAME"].Children["SOMETHING_CHILDREN_COL_NAME"].Visible = false;
+```
 
