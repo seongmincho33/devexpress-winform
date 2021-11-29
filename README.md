@@ -80,8 +80,19 @@
 #### 5. XtraTabControl
 #### 6. UserControl
 #### 7. SpreadSheetControl
-1. 스프레드 시트의 모든 0들을 지워주기
-2. 스프레드 시트의 컨트롤러 메서드 정리할때 주의할점
+1. WorkBook과 WorkSheet
+2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
+3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
+    - 셀 보더
+    - 셀 사이즈
+    - 셀 Alignment
+4. 셀 머징(Merge)
+5. 데이터 테이블을 워크시트에 붙여주는 방법
+6. 컬럼 더하기 기능 만들기
+7. 스프레드 시트의 모든 0들을 지워주기
+8. 동적컬럼 스프레드시트에 붙여줄때 고려해야할 사항들.
+    - 리펙터링
+9. RibbonControl
 #### 8. 기타
 1. 링큐로 테이블데이터 가져오는 방법
 2. 이벤트 핸들러의 파라미터 e에 관해서 callby reference사용해 함수로 코드양 줄이기
