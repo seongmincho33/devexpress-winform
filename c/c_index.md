@@ -27,7 +27,27 @@
     11. LINQ를 이용한 DELETE001
     12. LINQ를 이용한 DELETE002
     13. 링큐패드5 (LINQPad5 .netFrameWork)
-
+    - 링큐패드 소개
+		- 링큐패드 튜토리얼
+		- 5분 튜토리얼
+			- Hello LINQPad!
+			- A simple query expression
+			- Multiple statements
+			- The Big Dump
+			- Custom methods and types
+			- What about querying a database!
+			- But I dont't havve NORTHWIND!
+			- More on database querying
+			- PredicateBuilder is included!
+		- Ui 둘러보기
+		- 스크래치패드 특징들
+		- 스트립팅 및 자동화 특징들
+		- 데이터베이스 쿼리 특징들
+		- 링큐패드 링큐 -> 람다링큐
+		- 링큐패드 람큐 -> SQL
+		- 링큐패드 IL 분석
+		- 링큐패드 Tree
+		- 단축기
 _____________________________________________________
 
 <br>
