@@ -77,6 +77,7 @@
 	- 컬럼 소팅 이벤트정의 (정규표현식)
 	- 풋터에 합, 평균 등 계산값 정리해주기
 		- 풋터(footer)의 종류
+	- Custom Summary 등록 및 CustomSummaryCalculate 이벤트 (동적컬럼)
 6. 그리드뷰의 종류 : 밴드그리드뷰 (BandedGridView) 
 	- BandedGridView 컬럼 Header 에 색깔주기
 7. 동적컬럼

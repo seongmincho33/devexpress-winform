@@ -11,6 +11,7 @@
 	- 컬럼 소팅 이벤트정의 (정규표현식)
 	- 풋터(footer)의 종류에 대해서
     	- 풋터에 합, 평균 등 계산값 정리해주기
+    - Custom Summary 등록 및 CustomSummaryCalculate 이벤트 (동적컬럼)
 5. [그리드뷰의 종류 : 밴드그리드뷰 (BandedGridView)](#5-그리드뷰의-종류--밴드그리드뷰-bandedgridview) 
 	- BandedGridView 컬럼 Header 에 색깔주기
 6. [동적컬럼](#6-동적컬럼)
@@ -282,7 +283,7 @@ private void gridview_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.
   
 footer에는 여러 종류가 있는데 거의 두종류가 쓰입니다. 하나는 그리드뷰 전체를 서머리(summary)주는 풋터가 있고 또다른 하나는 그룹핑을 했을때 서머리 주는 풋터가 있습니다. 그 외에도 있는데 devexpress 홈페이지를 확인해주세요. 서머리는 컬럼을 엑셀과 비슷하게 자동 계산해서 보여주는 기능입니다. 다른점은 함수를 구현하는 것이 아니고 자동으로 만들어 져 있는 메서드랑 프로퍼티를 가져다 씁니다. 매우 편리하고 직관적이지만 문법이 좀 있습니다.
 
-- - 풋터에 합, 평균 등 계산값 정리해주기
+- 풋터에 합, 평균 등 계산값 정리해주기
   
 먼저 그리드뷰의 옵션뷰를 참으로 설정해줘야 합니다.
 ```C#
@@ -296,9 +297,6 @@ this.gridview.Columns["SOMETHING_COL1"].Summary.Add(DevExpress.Data.SummaryItemT
 //DevExpress.Data.SummaryItemType.Sum
 this.gridview.Columns["SOMETHING_COL2"].Summary.Add(DevExpress.Data.SummaryItemType.Sum, "SOMETHING_COL2", "포멧스트링사용가능:{0}");
 ```
-<br>
-<br>
-<br>
 
 마지막으로 정리하자면, 사용할 그룹핑 커스텀 셋팅 함수를 정의합니다. 그룹핑의 서머리도 있습니다.
 ```C#
@@ -315,6 +313,99 @@ private void SetGroup(GridControl gcControl, string group_col)
     gcControl.Columns["SOME_COL"].Summary.Add(DevExpress.Data.SummaryItemType.Sum, "SOME_COL", "총합{0:n0}"); // 전체 서머리
 }
 ```
+<br>
+<br>
+<br>
+
+- 3. Custom Summary 등록 및 CustomSummaryCalculate 이벤트 (동적컬럼)
+[데브 익스프레스 CustomSummaryCalculate 튜토리얼](https://docs.devexpress.com/WindowsForms/114633/controls-and-libraries/data-grid/getting-started/walkthroughs/summaries/tutorial-custom-summary-functions?f=customsummarycalculate)
+Summary를 커스터미이징 할 수도 있습니다. 그럼 좀더 자유로운 Summary를 구현할 수 있게 됩니다.
+
+먼저 3가지 단계가 있습니다. 처음엔 GridControl의 속성을 바꿔줘야하고 다음엔 잠시 데이터를 저장할 변수를 필드에 선언해야 합니다. 이벤트를 등록해준 다음 이벤트 함수(콜백메서드 : CustomSummaryCalculate())를 작성합니다.
+
+```
+1. GridControl 속성 바꾸기 (뷰어단이 아닌 컨트롤단에서 코딩으로)
+2. 데이터 저장변수 필드에 선언
+3. 이벤트 등록 및 이벤트 작성
+```
+
+먼저 GridControl의 속성을 변경합니다.
+```C#
+gridview_Something.Column[index_Somthing].SummaryItem.SummaryType = SummaryItemType.Custom;
+gridview_Something.Column[index_Somthing].SummaryItem.DisplayFormat = "{0:0.0}";
+gridview_Something.Column[index_Somthing].SummaryItem.Tag = index_Somthing; //꼭 컬럼인덱스와 같은값을 줄 필요 없음 아무거나 줘도 됩니다.
+```
+
+다음으로는 임시로 데이터를 저장할 변수를 필드에! 선언해주어야합니다.
+```C#
+double totalPrice = 0;
+```
+
+마지막으로는 CustomSummaryCalculate 이벤트 메서드를 정의합니다. 메서드 안에는 총 3단계로 나눠서 작성해야합니다. Initialize, Calculate, Finalize단계가 있습니다. 아래 코드를 보면 CustomSummaryProcess 프로퍼티와 e.SummaryProcess 와 비교를 합니다. 이 과정을 지켜주어야 제대로 Custom서머리가 화면에 붙습니다. 
+
+이벤트가 작동하는 원리에 대해서 생각을 해보겠습니다. 이벤트가 등록된 GridControl은 sender로서, 항상 같은값입니다. 문제는 아규먼트 e 값인데 이게 sender의 모든 셀을 훑습니다. 제 생각엔 이벤트의 포인터가 2개라는것입니다. 하나는 컬럼을 가리키고 하나는 셀을 가리킵니다. 컬럼포인터는 좌에서 우로 움직이고 셀포인터가 모든셀의 탐색을 마치면 다음 컬럼으로 움직입니다. 셀포인터는 자신의 로우에서 좌에서 우로 한번 탐색을 마치면 RowHandler를 하나 올리고 다음줄을 탐색합니다. (셀포인터는 컬럼의 개수만큼 모든셀을 탐색함을 알 수 있습니다. 전체컬럼개수 x 모든셀 개수 = 탐색수)
+
+따라서 e.TotalValue는 하나의 컬럼에 대한 서머리값입니다~ 'ㅁ' ~~!!
+
+아래 예시는 데브 홈페이지 예제와는 좀 다릅니다. 동적컬럼을 대비해서 생각해봤습니다.
+
+```C#
+private void DefaultView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+{
+    //등록된 그리드컨트롤의 그리드뷰가 sender입니다.
+    GridView view = sender as GridView;           
+    // GridControl의 속성을 변경했을때 서머리 아이템에 태그를 부여했습니다. 
+    // 그 특정 컬럼의 태그를 summaryID에 넣어줍니다. 이건 이벤트가 불려질때마다 수행됩니다.
+    int summaryID = Convert.ToInt32((e.Item as GridSummaryItem).Tag);
+
+    //initialize 시작
+    if (e.SummaryProcess == CustomSummaryProcess.Start)
+    {
+        totalPrice = 0;
+    }
+
+    //Calculate 계산
+    if (e.SummaryProcess == CustomSummaryProcess.Calculate)
+    {
+        e.TotalValue = 0;
+        //스위치문으로 해도 됩니다. 원래 코드는 for if else밖에 안되서 이렇게 했습니다.
+        //여러가지 조건을 만들어낼 수 있습니다 여기가 커스터마이징 하는곳입니다.
+        for (int i = 0; i < this.dataTable_Something.Columns.Count; i++)
+        {
+            if (summaryID == i)
+            {
+                //현재 포커싱된 셀(e)의 값을 totalPrice 필드변수에 임시로 저장합니다.
+                totalPrice += Convert.ToDouble(e.FieldValue);
+                
+                ////커스터마이징 예시        
+                // if(view.GetRowCellValue(e.RowHandle, "특정컬럼 이름").ToString() == Somthing_Value)
+                // {
+                //     totalPrice += Convert.ToDouble(e.FieldValue);
+                // }
+                // else
+                // {
+                //     totalPrice -= Convert.ToDouble(e.FieldValue);
+                // }
+            }
+        }
+    }
+
+    // Finalization. 서머리 footer에 값을 붙여줍니다. 여기가 마지막입니다.
+    if (e.SummaryProcess == CustomSummaryProcess.Finalize)
+    {
+        for (int i = 0; i < this.dataTable_Something.Columns.Count; i++)
+        {
+            if (summaryID == i)
+            {
+                e.TotalValue = totalPrice;
+                break;
+            }
+        }
+    }
+}
+
+```
+
 _____________________________________________________________________
 
 <br>
@@ -851,4 +942,7 @@ ________________________________________________________________________________
 ```C#
 ((BandedGridView)Grid_Something.DefaultView).Bands["SOMETHING_COL_NAME"].Children["SOMETHING_CHILDREN_COL_NAME"].Visible = false;
 ```
+
+______________________________________________________________________________________________________
+
 
