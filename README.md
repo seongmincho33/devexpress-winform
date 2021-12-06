@@ -91,19 +91,14 @@
 12. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
 13. 그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨( ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)
 14. 컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기
-#### 2. TextEditControl
-1. 텍스트 에딧에 내용을 넣고 엔터를 누르면 검색되게 만들기 (keydown event)
-#### 3. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
+#### 2. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
 3. EditDate 달력 일 클릭시 컬럼에 자동으로 날짜값 넣어주기
 4. EditDate 달력에 연월 선택시 일중에 주말만 표시해주기 셀값에 칠하기
 5. DateEdit의 .MinValue를 sql에 넘겨주지 못하므로 해결하는 두번째 방법
 6. DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기
-#### 4. LookUpEditControl
-#### 5. XtraTabControl
-#### 6. UserControl
-#### 7. [SpreadSheetControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
+#### 3. [SpreadSheetControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
 1. WorkBook과 WorkSheet
 2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
 3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
@@ -124,11 +119,19 @@
 10. 워크시트의 위치에 대한 변수를 고려해야할 사항들에 관해서.
     - 리펙터링
 11. RibbonControl
-#### 8. 기타
-1. 링큐로 테이블데이터 가져오는 방법
+#### 4. 기타
+1. Validation(유효성 검사)
+	- 주민등록번호
+	- 전화번호
+	- 이메일
+	- 계좌번호
+	- 주소
+	- 시간(날짜)
+	- Guid?
 2. 이벤트 핸들러의 파라미터 e에 관해서 callby reference사용해 함수로 코드양 줄이기
 3. 여러개의 나눠져있는 UI 인터페이스들을 컨트롤로 넘길때 튜플로 묶어주는 방법
 4. 텍스트 세팅 (포멧스트링 세팅법)
+5. 링큐로 테이블데이터 가져오는 방법
 _________________________________________________________________________________
 
 
