@@ -120,7 +120,7 @@
     - 리펙터링
 11. RibbonControl
 #### 4. 기타
-1. Validation(유효성 검사)
+1. [Validation(유효성 검사)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_validation.md)
 	- 주민등록번호
 	- 전화번호
 	- 이메일
