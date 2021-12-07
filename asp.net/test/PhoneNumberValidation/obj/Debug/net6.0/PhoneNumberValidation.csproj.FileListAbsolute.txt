@@ -1,0 +1,15 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\PhoneNumberValidation.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\PhoneNumberValidation.deps.json
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\PhoneNumberValidation.runtimeconfig.json
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\PhoneNumberValidation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\ref\PhoneNumberValidation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\PhoneNumberValidation.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.AssemblyInfoInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.AssemblyInfo.cs
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\ref\PhoneNumberValidation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\PhoneNumberValidation.genruntimeconfig.cache

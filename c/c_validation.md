@@ -150,6 +150,92 @@ private string SetPhoneNumberWithHyphen(string phoneNumber)
 }
 ```
 
+설명 추후 추가예정
+
+```C#
+private bool IsAvailablePhoneNumber(string phoneNumber)
+        {
+            bool success = false;
+            if (phoneNumber == null)
+            {
+                return false;
+            }
+            if (IsHyphenRightLocation(phoneNumber))
+            {
+                if (IsPhoneNumberWithOrWithOutHyphen(phoneNumber))
+                {
+                    this.SetHyphenLocation(phoneNumber);
+                    return true;
+                }
+            }
+            return success;
+        }
+        private bool IsHyphenRightLocation(string phoneNumber)
+        {
+            bool success = false;
+            int firstHyphenPosition = phoneNumber.IndexOf("-");
+            int secondHyphenPosition = phoneNumber.IndexOf("-", phoneNumber.IndexOf(',') + 1);
+            if (firstHyphenPosition != -1 && secondHyphenPosition != -1)
+            {
+                if(
+                    (firstHyphenPosition == 3 && secondHyphenPosition == 8)
+                    || (firstHyphenPosition == 2 && secondHyphenPosition == 7)
+                    || (firstHyphenPosition == 3 && secondHyphenPosition == 7)
+                    || (firstHyphenPosition == 2 && secondHyphenPosition == 6)
+                    )
+                {
+                    return true;
+                }
+            }
+            else if (firstHyphenPosition != -1 && secondHyphenPosition == -1)
+            {
+                if (firstHyphenPosition == 3 || firstHyphenPosition == 2)
+                {
+                    return success = true;
+                }
+            }
+            else if (firstHyphenPosition == -1 && secondHyphenPosition != -1)
+            {
+                if (secondHyphenPosition == 6 || secondHyphenPosition == 7 || secondHyphenPosition == 8)
+                {
+                    return success = true;
+                }
+            }
+            else
+            {
+                //no hyphens
+                return success = true;
+            }
+            return success;
+        }
+        private bool IsPhoneNumberWithOrWithOutHyphen(string phoneNumber)
+        {
+            string phoneNumberWithOutHyphen = phoneNumber;
+            phoneNumberWithOutHyphen = string.Join("", phoneNumberWithOutHyphen.Split('-'));
+            bool success = false;
+            if (phoneNumberWithOutHyphen.Length == 9 
+                || phoneNumberWithOutHyphen.Length == 10
+                || phoneNumberWithOutHyphen.Length == 11)
+            {
+                Regex regex = new Regex(@"0[0-9]{1}[016789]{0,1}-?[2-9]{1}[0-9]{2,3}-?[0-9]{4}");
+                Match match = regex.Match(phoneNumber);
+                if (match.Success)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            else
+            {
+                success = false;
+            }
+            return success;
+        }
+```
+
 _________________________________________________________________________
 <br>
 

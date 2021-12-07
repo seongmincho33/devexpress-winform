@@ -1,0 +1,15 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\Validation.exe
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\Validation.deps.json
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\Validation.runtimeconfig.json
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\Validation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\ref\Validation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\bin\Debug\net6.0\Validation.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.AssemblyInfoInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.AssemblyInfo.cs
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\ref\Validation.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\asp.net\test\PhoneNumberValidation\obj\Debug\net6.0\Validation.genruntimeconfig.cache

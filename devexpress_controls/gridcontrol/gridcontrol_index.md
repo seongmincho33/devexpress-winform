@@ -245,6 +245,7 @@ private void SetGroup(GridControl gcControl, string group_col_NAME)
     gcControl.Columns[group_col_NAME].SortMode = DevExpress.XtraGrid.ColumnSortMode.Default;
     gcControl.Columns[group_col_NAME].SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
     gcControl.Columns[group_col_NAME].Group();
+    gcControl.DefaultView.ExpandAllGroups();
 }
 ```
 <br>
