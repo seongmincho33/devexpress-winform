@@ -246,6 +246,9 @@ private void SetGroup(GridControl gcControl, string group_col_NAME)
     gcControl.Columns[group_col_NAME].SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
     gcControl.Columns[group_col_NAME].Group();
     gcControl.DefaultView.ExpandAllGroups();
+
+    //gcControl.DefaultView.GroupFormat = "{1}"; //그룹핑 컬럼명을 지우고 싶을때 코드입니다. 자세한 프로퍼티 설명은 URL을 참고해주세요
+    //https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Grid.GridView.GroupFormat
 }
 ```
 <br>
