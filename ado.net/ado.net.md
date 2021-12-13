@@ -25,7 +25,7 @@
 
 먼저 MS SQL을 설치해주어야 합니다. MS 사이트에 가셔서 MS SQL Express 무료 버전을 설치합니다. Developer를 설치해도 됩니다. 저는 Express 버전을 설치했습니다.
 
-<img src = "../img/ado_img/database001/database001_001.png" />
+<img src = "../img/ado_img/database001/database001_001.png" width="1000" height="400" />
 <br />
 <br />
 <br />
@@ -33,7 +33,7 @@
 
 설치 파일을 다운로드 받고 실행하면 아래와 같은 화면이 뜹니다. 사용자 지정버튼을 눌러주세요.
 
-<img src = "../img/ado_img/database001/database001_002.png" />
+<img src = "../img/ado_img/database001/database001_002.png" width="800" height="800" />
 <br />
 <br />
 <br />
