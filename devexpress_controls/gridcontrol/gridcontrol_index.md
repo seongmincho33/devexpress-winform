@@ -30,6 +30,9 @@
     - 팝업창에서 그리드 컨트롤 CheckBoxSelector 으로 체크한 것들 메인 그리드에 저장해주기
 13. [그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨(ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)](#13-그리드뷰의-특정-컬럼을-수정하면-전체-데이터가-수정됨ex-모든-로우셀이-boolean체크박스인데-하나-체크하고-다른거-체크하면-전체가-풀려야함)
 14. [컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기](#14-컨트롤단에서-밴디드그리드뷰던-그냥-그리드뷰던-visible-false주기)
+15. Unbound Column 주지 않고 커스텀 계산한 컬럼 만드는법
+16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
+17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
 
 
 _________________________________________________________________________
@@ -950,3 +953,124 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________
 
 
+<br>
+
+# 15. Unbound Column 주지 않고 커스텀 계산한 컬럼 만드는법
+
+예를들어 하나의 로우에 특정 컬럼들의 합이나 계산값을 특정 컬럼에 모아두고 싶을때 사실 Unbound Column을 쓰게 되어있습니다. 이는 '바인딩 안된' 컬럼 이라는 뜻입니다. 그런데 이 방식으로는 만약 컬럼들을 코드단에서 미리 다 지정을 해둔 상태라면 좀 쓰기가 힘듭니다. 어느 ordinal인덱스에 컬럼이 위치해야하는지도 사실 정해주어야 하기 때문입니다. 하지만 이를 좀더 쉽게 해결하는 방법이 있습니다. CellValueChanged이벤트와 데이터를 조회할때 사용하는 개인메서드 (OndataRetrieve)에 함수를 추가하는겁니다.
+
+아래는 예시 코드입니다.
+
+```C#
+private void CallTotal(DataRow row)
+{
+    decimal cnt = 0;
+    decimal day = 0;
+    decimal num = 0;
+    foreach (DataColumn item in this.DataSomething.Something.Something.Columns)
+    {
+        if (item.ColumnName.StartsWith("DAY_") && !row[item].ToString().Equals(""))
+        {
+            decimal.TryParse(row[item].ToString(), out num);
+            cnt += num;
+            day++;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    row["SOMETHING_COLUMN1_HOWMANY"] = cnt;
+    row["SOMETHING_COLUMN2_HOWMUCH"] = day;
+}      
+```
+
+컬럼이름이 동적이거나 아니면 정말 많이 지정이 되어있다면 이들을 하나씩 검색하는건 힘든일입니다. 따라서 
+
+
+______________________________________________________________________________________________________
+
+
+<br>
+
+# 16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
+
+이벤트를 사용하다보면 Devexpress 이벤트중에 무한루프로 돌아가는 이벤트들이 있습니다. 이벤트 핸들러를 등록하고 헤제하여서 무한루프를 잠깐동안 벗어나야하는 경우가 있습니다. 무한루프일때 다른 컨트롤들이 방해를 받기 때문에 깜빡이거나 아예 클릭으로 선택이 되질 않습니다. 이를 해결하는 여러방법이 있지만 그중 하나의 예시를 들겠습니다.
+
+아래의 CustomDrawBandHeader라는 이벤트가 대표적인 예 입니다. 이 이벤트는 계속 화면에 밴드헤더의 이미지를 그려줘야 하기때문에 끝나질 않습니다. 
+```C#
+((BandedGridView)this.Grid_Somthing.DefaultView).CustomDrawBandHeader += Something_CustomDrawBandHeader;// 이벤트 등록
+```
+
+<br />
+
+그래서 MouseDown과 MouseUp이벤트를 사용하겠습니다. 클릭할때 마우스가 눌려진 상태가 지나고 끝나는 그 시점이 MousDown 이벤트 핸들러가 실행되는 시점이고, 클릭할때 마우스가 클릭하고 올라가고 끝나는 그 바로 그시점이 MouseUp이벤트 헨들러가 호출되는 시점입니다. 이 두개의 이벤트를 사용하면 클릭할때마다 특정한 다른 이벤트를 등록하고 헤제할 수 있습니다.
+
+먼저 MouseDown과 MouseUp이벤트를 등록합니다.
+```C#
+((BandedGridView)this.Grid_Somthing.DefaultView).CustomDrawBandHeader += Something_CustomDrawBandHeader;
+this.Grid_Somthing.DefaultView.MouseDown += DefaultView_MouseDown;
+this.Grid_Somthing.DefaultView.MouseUp += DefaultView_MouseUp;  
+```
+
+그리고 나서 이벤트 핸들러를 작성해주는데 CustomDrawBandHeader의 이벤트를 Down일땐 해제, UP일땐 등록해줍니다.
+```C#
+private void DefaultView_MouseDown(object sender, MouseEventArgs e)
+{
+    ((BandedGridView)this.Grid_Personal_Labor.DefaultView).CustomDrawBandHeader -= LaborController_CustomDrawBandHeader;
+}
+private void DefaultView_MouseUp(object sender, MouseEventArgs e)
+{
+    ((BandedGridView)this.Grid_Personal_Labor.DefaultView).CustomDrawBandHeader += LaborController_CustomDrawBandHeader;
+}
+```
+______________________________________________________________________________________________________
+
+
+<br>
+
+# 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
+
+XtratabControl 을 사용한다면 탭 이름을 enum으로 선언해두는것이 편합니다. 인덱스끼리 비교하는방법도 있고 탭 컨트롤의 Tag에 이름을 부여하는 방법도 있습니다. 편한방법으로 하면될것 같습니다. 
+```C#
+enum TabPageName
+{
+    탭이름1, 탭이름2
+}
+TabPageName tabPageName;
+```
+
+왜 아래와 같이 SelectedPageChanged가 아닌 Changing을 사용하는지 생각해봤습니다. 이유는 Changed를 사용한다면 탭을 누르고 나서 이전 페이지의 그리드 컨트롤이던 데이터든간에 조회를 하는데 애초에 탭이 바뀌고 나서 그 객체들을 호출하므로 Null예외가 뜨게됩니다. 따라서 Changing을 사용해야합니다. 탭을 누르는 즉시! 발동된는 이벤트 입니다. 따라서 눌러도 이벤트 핸들러 안에서 이전 페이지들의 인스턴스들을 호출 할 수 있게됩니다. 
+```c#
+private void XtratabControl_SelectedPageChanging(object sender, TabPageChangingEventArgs e)
+{
+    if (this.XtratabControl.SelectedTabPageIndex == (int)TabPageName.탭이름1)
+    {
+        if (this.DataSomthing1.Something1.SOMETHING1.DataSet.GetChanges() != null)
+        {
+            if (XMsgBx.ShowInfoYesNo(MessageString.SAVED_SOMETHING) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.DataSave();                        
+            }
+            else 
+            {
+
+            }
+        }
+    }            
+    else if (this.XtratabControl.SelectedTabPageIndex == (int)TabPageName.탭이름2)
+    {
+        if (this.DataSomthing2.Something2.SOMETHING2.DataSet.GetChanges() != null)
+        {
+            if (XMsgBx.ShowInfoYesNo(MessageString.SAVED_SOMETHING) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.DataSave();
+            }
+            else
+            {
+
+            }
+        }
+    }
+}
+```

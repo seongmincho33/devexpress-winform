@@ -47,7 +47,12 @@
 		- 링큐패드 IL 분석
 		- 링큐패드 Tree
 		- 단축기
-
+4. 기타
+    1. 프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)
+        - Return Value
+        - Delegate
+        - LINQ Expression
+        - Reflection
 <br/>
 <br/>
 
@@ -66,7 +71,7 @@
 <br/>
 <br/>
 
-## [ADO.NET](https://github.com/seongmincho33/devexpress-winform/blob/main/ado.net/ado.net.md)
+## [ADO.NET]()
 1. 개요
     - MS SQL 설치
 2. ADO.NET 개요
@@ -105,6 +110,9 @@
 12. 그리드 컨트롤 화면단에 불필요한 0 이 있을때 안보이게 하는 방법
 13. 그리드뷰의 특정 컬럼을 수정하면 전체 데이터가 수정됨( ex: 모든 로우셀이 boolean체크박스인데 하나 체크하고 다른거 체크하면 전체가 풀려야함)
 14. 컨트롤단에서 밴디드그리드뷰던 그냥 그리드뷰던 visible false주기
+15. Unbound Column 주지 않고 커스텀 계산한 컬럼 만드는법
+16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
+17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
 #### 2. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
