@@ -34,6 +34,7 @@
 16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
 18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
+19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
 
 _________________________________________________________________________
 <br>
@@ -985,8 +986,7 @@ private void CallTotal(DataRow row)
 }      
 ```
 
-컬럼이름이 동적이거나 아니면 정말 많이 지정이 되어있다면 이들을 하나씩 검색하는건 힘든일입니다. 따라서 
-
+컬럼이름이 동적이거나 아니면 정말 많이 지정이 되어있다면 이들을 하나씩 검색하는건 힘든일입니다. 따라서 DataRow의 컬럼들을 조회하면서 StartsWith메서드를 사용하여 가지고올 컬럼 이름들을 검색합니다. 위의 예는 DAY_로 시작하는 컬럼들을 다 가져와서 일수와 공수값을 계산하는 코드내용입니다. 
 
 ______________________________________________________________________________________________________
 
@@ -1093,5 +1093,39 @@ private void SetTextEditReadOnlyAndDisableChanges(TextEdit txt)
     txt.Enabled = false;
     txt.Properties.AppearanceReadOnly.BackColor = Color.White;
     txt.ForeColor = Color.Black;
+}
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
+
+컬럼셀의 포멧스트링이 그리드컨트롤에 설정해준다고 하더라도 포커스를 주면(클릭한게 포커스임) 포멧스트링이 다르게 나옵니다. 이는 포커스를 주었을때랑 안주었을때 포멧스트링을 둘다 따로 주어야 함을 알 수 있습니다.... 도데체 왜 그런거냐..?
+
+아래 메서드에 그리드컨트롤 인스턴스를 넘기고 아래 수정하고 싶은 컬럼명들을 씁니다.
+```C#
+private void Set_SomethingGridControl_CurrencyFormatStringFocused(GridControl gridControl)
+{
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL1"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL2"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL3"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL4"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL5"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL6"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL7"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL8"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL9"]);
+    this.SetGridColumnCurrencyFormatStringFocused(gridControl.DefaultView.Columns["SOMETHING_COL10"]);
+}
+```
+
+여기에는 주고싶은 포멧스트링을 써주세요~
+```C#
+private void SetGridColumnCurrencyFormatStringFocused(GridColumn gridColumn)
+{
+    gridColumn.RealColumnEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+    gridColumn.RealColumnEdit.EditFormat.FormatString = "###,###,###"; // 여기에 주고싶은 포멧스트링을 넣어주세요.
 }
 ```
