@@ -33,7 +33,7 @@
 15. Unbound Column 주지 않고 커스텀 계산한 컬럼 만드는법
 16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
-
+18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
 
 _________________________________________________________________________
 <br>
@@ -1072,5 +1072,26 @@ private void XtratabControl_SelectedPageChanging(object sender, TabPageChangingE
             }
         }
     }
+}
+```
+
+______________________________________________________________________________________________________
+
+
+<br>
+
+# 18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
+
+텍스트박스를 선택 할 수 없게 하고 배경과 폰트색을 다시 원래대로 되돌리는법입니다. 이렇게 하지않고 그냥 ReadOnly에서 멈춘다면 회색 바탕에 회색폰트가 됩니다. 만약 보여지는것은 그대로이고 선택만 불가하게 만들고 싶다면 이 메서드를 사용하세요.
+
+```C#
+this.SetTextEditReadOnlyAndDisableChanges(this.TextEdit_SomethingControl);
+
+private void SetTextEditReadOnlyAndDisableChanges(TextEdit txt)
+{
+    txt.ReadOnly = true;
+    txt.Enabled = false;
+    txt.Properties.AppearanceReadOnly.BackColor = Color.White;
+    txt.ForeColor = Color.Black;
 }
 ```

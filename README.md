@@ -113,6 +113,7 @@
 15. Unbound Column 주지 않고 커스텀 계산한 컬럼 만드는법
 16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
+18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
 #### 2. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
