@@ -74,11 +74,20 @@
 ## [ADO.NET]()
 1. 개요
     - MS SQL 설치
-2. ADO.NET 개요
+2. `ADO.NET` 개요
     - 역할
     - 연결 형식
     - 구성 요소
-3. 데이터베이스 연결
+    - `ADO.NET` DataProvider 구성요소
+    - 연결형식별 `ADO.NET` Data Provider 구성요소 조합
+    - `ADO.NET` 네임스페이스
+3. SqlConnection클래스
+    - 상속 계층 구조
+    - SqlConnection 연결
+    - SqlConnection 연결 문자열
+3. 간단한 예시 (폼 생성후, DB와 연결)
+    - DB 생성
+    - 간단한 화면 작성
 4. 연결형 데이터베이스 프로그래밍
 
 
