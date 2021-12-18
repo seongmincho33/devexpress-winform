@@ -71,7 +71,7 @@
 <br/>
 <br/>
 
-## [ADO.NET]()
+## [ADO.NET](https://github.com/seongmincho33/devexpress-winform/blob/main/ado.net/ado.net.md)
 1. 개요
     - MS SQL 설치
 2. `ADO.NET` 개요
