@@ -156,6 +156,7 @@ _________________________________________________________________________
 private void SetGridControl()
 {
     this.Date_Something.Properties.Mask.EditMask = "Y";
+    this.Date_Something.Properties.Mask.EditMask = "yyyy/MM";
     this.Date_Something.Properties.Mask.UseMaskAsDisplayFormat = true;
     this.Date_Something.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
 }

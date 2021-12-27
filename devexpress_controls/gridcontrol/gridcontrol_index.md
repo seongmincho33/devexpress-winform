@@ -35,6 +35,7 @@
 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
 18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
 19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
+20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
 
 _________________________________________________________________________
 <br>
@@ -1127,5 +1128,24 @@ private void SetGridColumnCurrencyFormatStringFocused(GridColumn gridColumn)
 {
     gridColumn.RealColumnEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
     gridColumn.RealColumnEdit.EditFormat.FormatString = "###,###,###"; // 여기에 주고싶은 포멧스트링을 넣어주세요.
+}
+```
+______________________________________________________________________________________________________
+
+<br>
+
+# 20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
+
+먼저 RepositoryItemDateEdit에 대해서 알 필요가 있습니다. 이 클래스의 새로운 객체를 만들어서 만들어진 인스턴스 객체의 프로퍼티값을 원하는 만큼 수정한 다음에 이 인스턴스가 할당가능한 곳에 넣어주는 방식입니다. 아래 상황에서는 그리드 컨트롤 객체의 ColumnEdit프로퍼티에 RepositoryItemDateEdit을 할당 할 수 있습니다. 
+
+```C#
+private void SetGridDateMask(GridControl gridControl)
+{
+    RepositoryItemDateEdit glu = new RepositoryItemDateEdit();
+    glu.EditMask = "yyyy/MM"; // 원하는 포멧을 정함. 
+    glu.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+    glu.Mask.UseMaskAsDisplayFormat = true; // 디스플레이 포멧을 변경가능하게만들어줌
+    glu.ShowClear = false; // clear버튼 삭제
+    gridControl.Columns["SomethingColName"].ColumnEdit = glu;
 }
 ```
