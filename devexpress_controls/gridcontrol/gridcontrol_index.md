@@ -322,6 +322,37 @@ private void SetGroup(GridControl gcControl, string group_col)
     gcControl.Columns["SOME_COL"].Summary.Add(DevExpress.Data.SummaryItemType.Sum, "SOME_COL", "총합{0:n0}"); // 전체 서머리
 }
 ```
+
+2022-01-03 추가 그룹핑 및 서머리 총정리
+
+```C#
+private void SetGroupingAndGroupSummary()
+{
+    this.SetGroup(this.Grid_CarDriveLog, "GROUPING_COLUMN_NAME");
+    this.SetGroupSummary(this.Grid_CarDriveLog, "GROUPING_SUMMARY_COLUMN_NAME1");
+    this.SetGroupSummary(this.Grid_CarDriveLog, "GROUPING_SUMMARY_COLUMN_NAME2");
+}
+    private void SetGroup(IHGridControl gcControl, string group_col)
+{
+    gcControl.Columns[group_col].FieldNameSortGroup = group_col;
+    gcControl.Columns[group_col].SortMode = DevExpress.XtraGrid.ColumnSortMode.Default;
+    gcControl.Columns[group_col].SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+    gcControl.Columns[group_col].Group();
+    gcControl.DefaultView.ExpandAllGroups();
+    gcControl.DefaultView.OptionsView.ShowFooter = true;
+    gcControl.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+    gcControl.DefaultView.GroupFormat = "{1}";
+}
+private void SetGroupSummary(IHGridControl gridControl, string columnName)
+{
+    GridGroupSummaryItem item = new GridGroupSummaryItem(); 
+    item.FieldName = columnName; 
+    item.SummaryType = SummaryItemType.Sum; 
+    item.ShowInGroupColumnFooter = gridControl.Columns[columnName];
+    item.DisplayFormat = "{0:###,###,###}";
+    gridControl.DefaultView.GroupSummary.Add(item);                  
+}
+```
 <br>
 <br>
 <br>
@@ -1133,15 +1164,14 @@ private void SetGridColumnCurrencyFormatStringFocused(GridColumn gridColumn)
 
 위에거는 잘 안되어서 2021-01-03 Reposiotory 방법으로 수정합니다
 ```C#
-private void Set_Decimals_removed()
+private void Set_Decimals_removed(GridControl gridControl)
 {
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME1");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME2");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME3");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME4");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME5");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME6");
-    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME7");          
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME1");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME2");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME3");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME4");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME5");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(gridControl, "SOMETHING_COLNAME6");            
 }
 private void Set_SomethingGridControl_CurrencyFormatStringFocused(IHGridControl gridControl, string columnName)
 {
@@ -1149,7 +1179,7 @@ private void Set_SomethingGridControl_CurrencyFormatStringFocused(IHGridControl 
     repository.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
     repository.EditFormat.FormatString = "###,###,###";
     gridControl.DefaultView.Columns[columnName].ColumnEdit = repository;
-}       
+}   
 ```
 ______________________________________________________________________________________________________
 
