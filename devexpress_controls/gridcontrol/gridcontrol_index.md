@@ -1130,6 +1130,27 @@ private void SetGridColumnCurrencyFormatStringFocused(GridColumn gridColumn)
     gridColumn.RealColumnEdit.EditFormat.FormatString = "###,###,###"; // 여기에 주고싶은 포멧스트링을 넣어주세요.
 }
 ```
+
+위에거는 잘 안되어서 2021-01-03 Reposiotory 방법으로 수정합니다
+```C#
+private void Set_Decimals_removed()
+{
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME1");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME2");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME3");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME4");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME5");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME6");
+    this.Set_SomethingGridControl_CurrencyFormatStringFocused(this.Grid_CarDriveLog_Pop, "SOMETHING_COLNAME7");          
+}
+private void Set_SomethingGridControl_CurrencyFormatStringFocused(IHGridControl gridControl, string columnName)
+{
+    RepositoryItemTextEdit repository = new RepositoryItemTextEdit();
+    repository.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+    repository.EditFormat.FormatString = "###,###,###";
+    gridControl.DefaultView.Columns[columnName].ColumnEdit = repository;
+}       
+```
 ______________________________________________________________________________________________________
 
 <br>
