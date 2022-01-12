@@ -36,6 +36,7 @@
 18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
 19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
 20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
+21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
 
 _________________________________________________________________________
 <br>
@@ -916,6 +917,24 @@ private void Some_gridControl_CustomColumnDisplayText(object sender, DevExpress.
     }
 }
 ```
+
+2022-01-06 수정
+
+```C#
+private void Some_gridControl_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+{
+    if (e.Value != null && e.Value != DBNull.Value)
+    {
+        if (e.Value.GetType() == typeof(decimal))
+        {
+            if ((decimal)e.Value == 0)
+            {
+                e.DisplayText = "";
+            }
+        }
+    }
+}
+```
 ______________________________________________________________________________________________________
 
 <br>
@@ -1198,5 +1217,32 @@ private void SetGridDateMask(GridControl gridControl)
     glu.Mask.UseMaskAsDisplayFormat = true; // 디스플레이 포멧을 변경가능하게만들어줌
     glu.ShowClear = false; // clear버튼 삭제
     gridControl.Columns["SomethingColName"].ColumnEdit = glu;
+}
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
+
+```C#
+this.Something_GridView.DefaultView.DoubleClick += DefaultView_DoubleClick; // 이벤트 등록
+
+//이벤트
+private void DefaultView_DoubleClick(object sender, EventArgs e)
+{
+    DXMouseEventArgs ea = e as DXMouseEventArgs;
+    GridView view = sender as GridView;
+    GridHitInfo info = view.CalcHitInfo(ea.Location);
+    if (info.InRow || info.InRowCell)
+    {                               
+        IINPUT_CarDriveLogModel item = this.Grid_CarDriveLog.GetFocusedRow<IINPUT_CarDriveLogModel>();
+        if (item != null)
+        {
+            this.ShowPopUpWhenDoubleClicked((Guid)item.SITE_TRANSPORT_ID, (Guid)item.PROJECT_ID, (Guid)item.USER_ID, (DateTime)item.YEAR_MONTH, this.Data_CarDriveLog.Input_CarDriveLog.INPUT_CARDRIVELOG, this.MenuItem, info.RowHandle);
+        }
+    }
+    this.Data_CarDriveLog.Input_CarDriveLog.INPUT_CARDRIVELOG.DataSet.AcceptChanges();
 }
 ```
