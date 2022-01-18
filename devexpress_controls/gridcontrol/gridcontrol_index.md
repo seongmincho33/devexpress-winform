@@ -1323,3 +1323,17 @@ private void SetGrid_Item_ColumnWidthFromXml()
     this.GridView_Something.DefaultView.RestoreLayoutFromXml(filePath);
 }
 ```
+
+사용할때 주의점은 xml로 저장할때와 xml을 불러올때의 간단한 타이밍과 어느 이벤트가 실행될때 할건지 알아봐야합니다. 가령 예를들어 위 코드같은경우 그리드뷰의 레이아웃이 변경됨을 저장하는것이기 때문에 그리드뷰의 레이아웃이 변경될때!의 이벤트에 SetGrid_Item_ColumnWidthToXml() 함수를 넣어야 겠습니다. 만약 다른 컨트롤의 레이아웃이라면 그 컨트롤의 레이아웃이 변경되는 이벤트에 넣어주면 되겠습니다.
+
+예시를 들면 아래와 같이 bandedgridview의 컬럼 너비가 바뀔때 레이아웃을 저장합니다. 참고로 BandWidthChanged와 ColumnWidthChanged 이벤트는 서로 완전 다릅니다. bandedgridview라면 전자의 이벤트를 사용해야합니다. 후자는 gridview일때만 먹히는 이벤트입니다. 이게 참 찾느라 시간을 많이 버렸어요 왜 두개가 다른건지...
+
+```C#
+private void SomethingController_BandWidthChanged(object sender, BandEventArgs e)
+{
+    this.SetGrid_Item_ColumnWidthToXml();
+    //SystemBasic.SaveGrid_ColumnWidth_ToXml((GridControl)this.Grid_Item, "Grid_Item", this.MenuItem);
+}        
+```
+
+여튼 그럼은 불러올때는 언재해야하냐면 화면을 재전송 받을때나 처음 받을때 하면 됩니다. (OnDataRetrieve(), Load())
