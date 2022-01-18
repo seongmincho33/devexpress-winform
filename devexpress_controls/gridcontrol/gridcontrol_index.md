@@ -14,6 +14,7 @@
     - Custom Summary 등록 및 CustomSummaryCalculate 이벤트 (동적컬럼)
 5. [그리드뷰의 종류 : 밴드그리드뷰 (BandedGridView)](#5-그리드뷰의-종류--밴드그리드뷰-bandedgridview) 
 	- BandedGridView 컬럼 Header 에 색깔주기
+    - BandedGridView 컬럼 Header 에 색을 주면서 동시에 아래 셀들에게도 색깔을 주는 방법
 6. [동적컬럼](#6-동적컬럼)
     - 동적컬럼 바인딩 했을때 컬럼의 크기 ~DataModel에서 자동으로 맞춰주기 
     - 동적컬럼 바인딩 했을때 만약 ~DataModel의 바인딩인포가 readonly여서 색이 검정이면 바꿔주기
@@ -37,6 +38,8 @@
 19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
 20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
 21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
+22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
+
 
 _________________________________________________________________________
 <br>
@@ -501,6 +504,45 @@ private void Draw3DBorder(GraphicsCache cache, Rectangle rect) {
 }
 ```
 
+- BandedGridView 컬럼 Header 에 색을 주면서 동시에 아래 셀들에게도 색깔을 주는 방법
+
+아래는 열(컬럼)에 포함되는 셀들의 색도 칠해주는 방법입니다. RowCellStyle이벤트를 등록을 해주고 아래 코드와같이 작성해줍니다.
+
+```C#
+private void DefaultView_RowCellStyle(object sender, RowCellStyleEventArgs e)
+{          
+    //Skin currentSkin = CommonSkins.GetSkin(DevExpress.LookAndFeel.UserLookAndFeel.Default);
+    //Color readOnlyColor = currentSkin.Colors["ReadOnly"];
+    GridView currentView = sender as GridView;
+    if (
+        e.Column.FieldName == "SOMETHING_COLUMN_NAME1" ||
+        e.Column.FieldName == "SOMETHING_COLUMN_NAME2" ||
+        e.Column.FieldName == "SOMETHING_COLUMN_NAME3"          
+        )
+    {
+        e.Appearance.BackColor = Color.AliceBlue;
+    }
+    else if ( e.Column.FieldName == "SOMETHING_COLUMN_NAME4")
+    {
+        e.Appearance.BackColor = Color.LightYellow;
+    }           
+}
+private void BaseController_CustomDrawBandHeader(object sender, BandHeaderCustomDrawEventArgs e)
+{
+    if (e.Band == null) return;
+    if (e.Band.Name == "SOMETHING_COLUMN_NAME1" ||
+        e.Band.Name == "SOMETHING_COLUMN_NAME2" ||
+        e.Band.Name == "SOMETHING_COLUMN_NAME3")
+    {
+        e.Band.AppearanceHeader.BackColor = Color.AliceBlue;    
+    }
+    else if(e.Band.Name == "SOMETHING_COLUMN_NAME4")
+    {
+        e.Band.AppearanceHeader.BackColor = Color.LightYellow;
+    }
+    
+}
+```
 ____________________________________________________________________________________
 
 <br>
@@ -1244,5 +1286,40 @@ private void DefaultView_DoubleClick(object sender, EventArgs e)
         }
     }
     this.Data_CarDriveLog.Input_CarDriveLog.INPUT_CARDRIVELOG.DataSet.AcceptChanges();
+}
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
+
+아래의 코드를 활용해서 모듈화 해도 되고 아니면 그냥 아래의 코드를 사용해도 됩니다. 그런데 컬럼사이즈를 수정하고 유지하려면 XML파일로 저장할 디렉터리가 필요합니다. 이 디렉터리는 어느위치던 상관없지만 유저의 컴퓨터 시스템에 계속 쌓이기 때문에 이와 비슷한 작업을 하는 코드랑 같은 디렉터리 안에서 작업을 할 필요가 있어보입니다. 아래 코드는 USER/APPDATA/LOCAL/(SOMEHTING FOLDER) 안에 작업을 진행합니다. 
+
+```C#
+private void CreateTempDirectory_And_CreateColumnSizeXml()
+{
+    //저장할 폴더경로.
+    string folderPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SOMETHING Column_Size");
+    if (Directory.Exists(folderPath) == false)
+    {
+        Directory.CreateDirectory(folderPath);
+        this.SetGrid_Item_ColumnWidthToXml();
+    }
+}
+private void SetGrid_Item_ColumnWidthToXml()
+{
+    //저장할 파일경로. 파일명.XML을 포함해야합니다.
+    string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SOMETHING Column_Size\\SOMETHING_Column_Size.xml");
+    //SaveLayoutToXml 파라미터로 파일경로를 넣어주고 실행하면 자동으로 그리드뷰의 디자이너?같은 값이 xml형태로 저장됩니다.
+    this.GridView_Something.DefaultView.SaveLayoutToXml(filePath);
+}
+private void SetGrid_Item_ColumnWidthFromXml()
+{
+    //불러올 파일경로. 파일명.XML을 포함해야합니다.
+    string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SOMETHING Column_Size\\SOMETHING_Column_Size.xml");
+    //RestoreLayoutFromXml 파라미터로 파일경로를 넣어주면 그 파일경로안의 xml형태의 파일을 읽어서 그 형태로 그리드뷰를 바꿔줍니다.
+    this.GridView_Something.DefaultView.RestoreLayoutFromXml(filePath);
 }
 ```
