@@ -39,6 +39,7 @@
 20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
 21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
 22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
+23. 현재 화면의 컨트롤을 클릭하면 커서가 진행중으로 바뀌게 하는방법
 
 
 _________________________________________________________________________
@@ -530,13 +531,13 @@ private void DefaultView_RowCellStyle(object sender, RowCellStyleEventArgs e)
 private void BaseController_CustomDrawBandHeader(object sender, BandHeaderCustomDrawEventArgs e)
 {
     if (e.Band == null) return;
-    if (e.Band.Name == "SOMETHING_COLUMN_NAME1" ||
-        e.Band.Name == "SOMETHING_COLUMN_NAME2" ||
-        e.Band.Name == "SOMETHING_COLUMN_NAME3")
+    if (e.Band.FieldName == "SOMETHING_COLUMN_NAME1" ||
+        e.Band.FieldName == "SOMETHING_COLUMN_NAME2" ||
+        e.Band.FieldName == "SOMETHING_COLUMN_NAME3")
     {
         e.Band.AppearanceHeader.BackColor = Color.AliceBlue;    
     }
-    else if(e.Band.Name == "SOMETHING_COLUMN_NAME4")
+    else if(e.Band.FieldName == "SOMETHING_COLUMN_NAME4")
     {
         e.Band.AppearanceHeader.BackColor = Color.LightYellow;
     }
@@ -1081,6 +1082,38 @@ private void CallTotal(DataRow row)
 
 컬럼이름이 동적이거나 아니면 정말 많이 지정이 되어있다면 이들을 하나씩 검색하는건 힘든일입니다. 따라서 DataRow의 컬럼들을 조회하면서 StartsWith메서드를 사용하여 가지고올 컬럼 이름들을 검색합니다. 위의 예는 DAY_로 시작하는 컬럼들을 다 가져와서 일수와 공수값을 계산하는 코드내용입니다. 
 
+또한 CustomDrawCell 이벤트를 사용해서 빈 컬럼에(데이터베이스 테이블에 속하지 않는 컬럼) e.DisplayValue값으로 커스텀 계산한 값을 넣어주어도 됩니다. 이 방법이 젤 쉽고 실행속도가 빠릅니다. 대신 저장하지 않고 그냥 보여주기만 하므로 주의요망.
+
+```C#
+private void DefaultView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+{
+    GridView view = sender as GridView;
+    //잔여분
+    if (e.Column.FieldName == "SOMETHING_COLUM_NAME")
+    {
+        decimal remain_money = 0;      
+        for (int i = 0; i <= e.RowHandle; i++)
+        {
+            if (view.GetRowCellValue(i, col_name) != DBNull.Value
+                && (int)view.GetRowCellValue(i, "SOMETHING_COLUMN_NAME2") == ((int)Input_Type.어떤운영비)+1)
+            {
+                remain_money += (decimal)(view.GetRowCellValue(i, col_name));
+            }
+            else if (view.GetRowCellValue(i, col_name) != DBNull.Value
+                && (int)view.GetRowCellValue(i, "SOMETHING_COLUMN_NAME2") == ((int)Input_Type.어떤집행분)+1)
+            {
+                remain_money -= (decimal)(view.GetRowCellValue(i, col_name));
+            }
+            else if (view.GetRowCellValue(i, col_name) != DBNull.Value
+                && (int)view.GetRowCellValue(i, "SOMETHING_COLUMN_NAME2") == ((int)Input_Type.어떤기타)+1)
+            {
+                remain_money -= (decimal)(view.GetRowCellValue(i, col_name));
+            }
+        }
+        e.DisplayText = remain_money.ToString("####,####.###");        
+    }
+}
+```
 ______________________________________________________________________________________________________
 
 
@@ -1143,11 +1176,11 @@ private void XtratabControl_SelectedPageChanging(object sender, TabPageChangingE
         {
             if (XMsgBx.ShowInfoYesNo(MessageString.SAVED_SOMETHING) == System.Windows.Forms.DialogResult.Yes)
             {
-                this.DataSave();                        
+                                    
             }
             else 
             {
-
+                e.Cancle = true;
             }
         }
     }            
@@ -1161,7 +1194,7 @@ private void XtratabControl_SelectedPageChanging(object sender, TabPageChangingE
             }
             else
             {
-
+                e.Cancle = true;
             }
         }
     }
@@ -1337,3 +1370,26 @@ private void SomethingController_BandWidthChanged(object sender, BandEventArgs e
 ```
 
 여튼 그럼은 불러올때는 언재해야하냐면 화면을 재전송 받을때나 처음 받을때 하면 됩니다. (OnDataRetrieve(), Load())
+
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 23. 현재 화면의 컨트롤을 클릭하면 커서가 진행중으로 바뀌게 하는방법
+
+아래의 메서드에 함수명을 넣으면 그 메서드가 실행이 되고 끝날때 까지 커서가 뱅글뱅글 돌면서 유저에게 실행중임을 알려줍니다.
+
+```C#
+private void WaitCursor(Action func)
+{
+    this.CurrentForm.Cursor = Cursors.WaitCursor;
+    func();
+    this.CurrentForm.Cursor = Cursors.Default;
+}
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
