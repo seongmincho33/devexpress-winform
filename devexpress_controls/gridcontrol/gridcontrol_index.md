@@ -1371,7 +1371,21 @@ private void SomethingController_BandWidthChanged(object sender, BandEventArgs e
 
 여튼 그럼은 불러올때는 언재해야하냐면 화면을 재전송 받을때나 처음 받을때 하면 됩니다. (OnDataRetrieve(), Load())
 
+(ex)
 
+```C#
+private void BaseController_BandWidthChanged(object sender, BandEventArgs e)
+{            
+    SystemBasic.SaveGrid_ColumnWidth_ToXml((GridControl)this.Grid_Something, "Grid_Something", this.MenuItem);
+}    
+```
+
+```C#
+private void OnDataRetrieve_Something()
+{
+    SystemBasic.RestoreGrid_ColumnWidth_FromXml((GridControl)this.Grid_Something, "Grid_Something", this.MenuItem);
+}
+```
 ______________________________________________________________________________________________________
 
 <br>
