@@ -9,6 +9,7 @@
 4. [EditDate 달력에 연월 선택시 그리드뷰에 주말만 표시해주기 (셀값에 칠하기)](EditDate-달력에-연월-선택시-그리드뷰에-주말만-표시해주기-셀값에-칠하기)
 5. [DateEdit의 .MinValue를 sql에 넘겨주지 못하므로 해결하는 두번째 방법](DateEdit의-MinValue를-sql에-넘겨주지-못하므로-해결하는-두번째-방법)
 6. [DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기](DateEdit-달력을-사용자로부터-연월만-받아오고-연월만-텍스트를-달력컬럼에-붙여주기)
+7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
 
 
 
@@ -159,6 +160,23 @@ private void SetGridControl()
     this.Date_Something.Properties.Mask.EditMask = "yyyy/MM";
     this.Date_Something.Properties.Mask.UseMaskAsDisplayFormat = true;
     this.Date_Something.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+}
+```
+
+_________________________________________________________________________
+<br>
+
+# 7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
+
+컨트롤을 두개 사용해서 사용자로부터 기간을 받아올때 처음에 빈값이 있으면 CLEAR 상태이므로 전체 데이터가 보여지게 SQL단에서 뭐 그런식으로 할 수 있겠지만 사용자가 처음에 딱 봤을때 전체 데이터가 보이면 당황스럽기 때문에 초기값을 주면 좋습니다. 초기값으로 마지막날을 오늘로 지정하고 시작하는 날을 3개월 전으로 셋팅하면 적절합니다.
+
+```C#
+private void SetDateTime(DateEdit deStart, DateEdit deEnd)
+{
+    int year = DateTime.Now.Year;
+    int month = DateTime.Now.Month;
+    deStart.DateTime = new DateTime(DateTime.Now.AddMonths(-3).Year, DateTime.Now.AddMonths(-3).Month, 1);
+    deEnd.DateTime = new DateTime(year, month, DateTime.Now.Day);
 }
 ```
 
