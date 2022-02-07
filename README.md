@@ -1,6 +1,6 @@
 # 데브 익스프레스
 
-## [C#](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_index.md)
+## [C#](c/c_index.md)
 1. 프로퍼티
 2. delegate(델리게이트)
 	- 일반적인경우
@@ -25,7 +25,7 @@
     - LINQ를 이용한 UPDATE002
     - LINQ를 이용한 DELETE001
     - LINQ를 이용한 DELETE002
-    - [링큐패드5 (LINQPad5 .netFrameWork)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/linq/linqpad5_index.md)
+    - 링큐패드5 (LINQPad5 .netFrameWork)
 		- 링큐패드 소개
 		- 링큐패드 튜토리얼
 		- 5분 튜토리얼
@@ -47,16 +47,25 @@
 		- 링큐패드 IL 분석
 		- 링큐패드 Tree
 		- 단축기
-4. 기타
-    1. 프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)
-        - Return Value
-        - Delegate
-        - LINQ Expression
-        - Reflection
+
+### 기타
+1. 프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)
+    - Return Value
+    - Delegate
+    - LINQ Expression
+    - Reflection
+2. Validation(유효성 검사)
+	- 주민등록번호
+	- 전화번호
+	- 이메일
+	- 계좌번호
+	- 주소
+	- 시간(날짜)
+	- Guid?
 <br/>
 <br/>
 
-## [ASP.NET](https://github.com/seongmincho33/devexpress-winform/blob/main/asp.net/asp.net.md)
+## [ASP.NET](asp.net/asp.net_index.md)
 1. 웹폼
 2. 내장 개체(내장 클래스)
 3. 컨트롤
@@ -71,7 +80,7 @@
 <br/>
 <br/>
 
-## [ADO.NET](https://github.com/seongmincho33/devexpress-winform/blob/main/ado.net/ado.net.md)
+## [ADO.NET](ado.net/ado.net_index.md)
 1. 개요
     - MS SQL 설치
 2. `ADO.NET` 개요
@@ -95,7 +104,7 @@
 <br/>
 
 ## 데브 익스프레스 컨트롤
-#### 1. [GridControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/gridcontrol/gridcontrol_index.md)
+#### 1. [GridControl](devexpress_controls/gridcontrol//gridcontrol_index.md)
 1. 컬럼 클릭 방지
 2. 셀값 바뀌면 다른셀값도 세팅해주는 방법
 	- 셀값이 바뀔때 테이블에서 링큐걸어서 같은로우에 있는 다른 셀값들을 불러올 수 있다. 
@@ -123,14 +132,20 @@
 16. 이벤트 헤제와 등록을 통해서 특정 이벤트의 무한루프 런타임에 다른이벤트 실행하는 방법
 17. 텝페이지가 바뀔때 저장할건지 물어보기 VALIDATION포함.
 18. TextEditControl의 값을 선택못하게 하고 보여지게 만드는법
-#### 2. [DateEditControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
+19. 컬럼셀 클릭시 포멧스트링이 변환되는데 이를 막거나 바꾸는 방법
+20. 그리드 뷰 안의 특정 날짜 선택 컬럼의 포멧을 바꾸는 방법
+21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
+22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
+23. 현재 화면의 컨트롤을 클릭하면 커서가 진행중으로 바뀌게 하는방법
+#### 2. [DateEditControl](devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
 3. EditDate 달력 일 클릭시 컬럼에 자동으로 날짜값 넣어주기
 4. EditDate 달력에 연월 선택시 일중에 주말만 표시해주기 셀값에 칠하기
 5. DateEdit의 .MinValue를 sql에 넘겨주지 못하므로 해결하는 두번째 방법
 6. DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기
-#### 3. [SpreadSheetControl](https://github.com/seongmincho33/devexpress-winform/blob/main/devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
+7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
+#### 3. [SpreadSheetControl](devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
 1. WorkBook과 WorkSheet
 2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
 3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
@@ -151,19 +166,6 @@
 10. 워크시트의 위치에 대한 변수를 고려해야할 사항들에 관해서.
     - 리펙터링
 11. RibbonControl
-#### 4. 기타
-1. [Validation(유효성 검사)](https://github.com/seongmincho33/devexpress-winform/blob/main/c/c_validation.md)
-	- 주민등록번호
-	- 전화번호
-	- 이메일
-	- 계좌번호
-	- 주소
-	- 시간(날짜)
-	- Guid?
-2. 이벤트 핸들러의 파라미터 e에 관해서 callby reference사용해 함수로 코드양 줄이기
-3. 여러개의 나눠져있는 UI 인터페이스들을 컨트롤로 넘길때 튜플로 묶어주는 방법
-4. 텍스트 세팅 (포멧스트링 세팅법)
-5. 링큐로 테이블데이터 가져오는 방법
 _________________________________________________________________________________
 
 
