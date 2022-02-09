@@ -40,7 +40,8 @@
 21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
 22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
 23. 현재 화면의 컨트롤을 클릭하면 커서가 진행중으로 바뀌게 하는방법
-
+24. CellMerge 이벤트를 사용해서 셀 병합하는 방법
+25. 포커스가 먼저 주어진 그리드의 행에 색을 주는 방법(특이케이스)
 
 _________________________________________________________________________
 <br>
@@ -1407,3 +1408,86 @@ ________________________________________________________________________________
 
 <br>
 
+# 24. CellMerge 이벤트를 사용해서 셀 병합하는 방법
+
+<img src="../../img/gridcontrol_img/gridcontrol002.png"/>
+
+위와같이 셀 병합으로 로우셀들을 묶어줄 수 있습니다. 이벤트 데이터로는 CellMergeEventArgs 아규먼트값으로 받아오는데 아래 테이블과 같습니다.
+
+|프로퍼티|설명|
+|--|--|
+|CellValue1|Gets the value of the first cell being merged.|
+|CellValue2|Gets the value of the second cell being merged.|
+|Column|Gets the column that contains the values to be merged.|
+|Handled|	Gets or sets whether the cell merging operation is handled and therefore no default processing is required.|
+|Merge	|Gets or sets whether two cells should be merged.|
+|RowHandle1	|Gets the handle of the row which contains the first of two cells that are to be merged.|
+|RowHandle2	|Gets the handle of the row which contains the second of two cells that are to be merged.|
+
+이벤트를 사용하려면 작동방식을 이해해야하는 까다로움이 있는데 먼저 설명을 하자면, 위에서 아래로 행 2개를 선택합니다. 행2개를 선택해서 둘이 내용이 같다면 병합합니다. 그럼 이게 둘이었던게 하나의 행이 된것처럼 됩니다. 또 두개의 행을 선택합니다. 이전과 다른점은 앞서서 병합한 하나의 로우와 새로 선택한 로우를 병합을 비교한다는 점입니다. 이걸 계속 반복하는 과정이 CellMerge이벤트의 작동 방식입니다. 
+
+```C#
+private void GridSomething_CellMerge(object sender, CellMergeEventArgs e)
+{
+    DevExpress.XtraGrid.Views.Grid.GridView view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
+    try
+    {
+        if (e.Column.FieldName == "SOMETHING_COLUMN_NAME1")
+        {
+            string class1 = view.GetRowCellDisplayText(e.RowHandle1, "SOMETHING_COLUMN_NAME1");
+            string class2 = view.GetRowCellDisplayText(e.RowHandle2, "SOMETHING_COLUMN_NAME1");
+
+            e.Merge = (class1 == class2);
+            e.Handled = true;
+
+        }
+        else if (e.Column.FieldName == "SOMETHING_COLUMN_NAME2")
+        {
+            string class1 = view.GetRowCellDisplayText(e.RowHandle1, "SOMETHING_COLUMN_NAME2");
+            string class2 = view.GetRowCellDisplayText(e.RowHandle2, "SOMETHING_COLUMN_NAME2");
+            string class3 = view.GetRowCellDisplayText(e.RowHandle1, "SOMETHING_COLUMN_NAME1");
+            string class4 = view.GetRowCellDisplayText(e.RowHandle2, "SOMETHING_COLUMN_NAME1");
+            e.Merge = (class1 == class2 && class3 == class4);
+            e.Handled = true;
+        }
+        else
+        {
+            e.Merge = false;
+            e.Handled = true;
+        }
+    }
+    catch (Exception ex)
+    {
+
+    }
+}
+```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 25. 포커스가 먼저 주어진 그리드의 행에 색을 주는 방법(특이케이스)
+
+만약 아래와 같이 어디선가 미리 그리드뷰의 행에 포커스가 주어졌다면
+```C#
+this.Grid_Something.DefaultView.FocusedRowHandle = rowhandle;
+```
+색을 칠하는방법은 아래와 같습니다. 미리 포커스가된 행의 핸들러와 RowCellStyle의 아규먼트 e값의 행 핸들러를 비교하는것이 핵심입니다.
+[참고링크](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Grid.GridViewAppearances.FocusedRow)
+```C#
+private void GridControlFocused_RowCellStyle(object sender, RowCellStyleEventArgs e)
+{
+    GridView gridView = sender as GridView;
+    if(e.RowHandle == gridView.FocusedRowHandle)
+    {                
+        // Make the grid read-only.
+        gridView1.OptionsBehavior.Editable = false;
+        // Prevent the focused cell from being highlighted.
+        gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+        // Draw a dotted focus rectangle around the entire row.
+        gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;               
+        e.Appearance.BackColor = Color.LightCyan;
+    }
+}
+```
