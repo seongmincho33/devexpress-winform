@@ -137,6 +137,8 @@
 21. 그리드 뷰 로우 더블클릭 이벤트(ex:더블클릭하면 팝업등이 보여지게 함)
 22. 그리드 뷰의 컬럼사이즈를 수정하고 유지하는방법
 23. 현재 화면의 컨트롤을 클릭하면 커서가 진행중으로 바뀌게 하는방법
+24. CellMerge 이벤트를 사용해서 셀 병합하는 방법
+25. 포커스가 먼저 주어진 그리드의 행에 색을 주는 방법(특이케이스)
 #### 2. [DateEditControl](devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이

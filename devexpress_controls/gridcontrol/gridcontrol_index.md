@@ -1474,7 +1474,9 @@ ________________________________________________________________________________
 this.Grid_Something.DefaultView.FocusedRowHandle = rowhandle;
 ```
 색을 칠하는방법은 아래와 같습니다. 미리 포커스가된 행의 핸들러와 RowCellStyle의 아규먼트 e값의 행 핸들러를 비교하는것이 핵심입니다.
+
 [참고링크](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Grid.GridViewAppearances.FocusedRow)
+
 ```C#
 private void GridControlFocused_RowCellStyle(object sender, RowCellStyleEventArgs e)
 {

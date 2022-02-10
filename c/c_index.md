@@ -1,7 +1,7 @@
 # C# 인덱스
 
-1. [프로퍼티](property/c_property.md)
-2. [delegate(델리게이트)](delegate_and_event/delegate.md)
+1. [프로퍼티](property/property.md)
+2. [delegate(델리게이트)](delegate_and_event/delegate_and_event.md)
 
     1. 일반적인경우
     2. delegate 사용
@@ -48,17 +48,17 @@
 		- 링큐패드 IL 분석
 		- 링큐패드 Tree
 		- 단축기
-4. [BCL Library](bcl_library/bcl_library_index.md)
+4. [BCL Library](bcl_library/bcl_library001.md)
 
 <hr />
 
 ## 기타
-1. [프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)](etc/etc_001_call_by_reference.md)
+1. [프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)](etc/etc001_call_by_reference.md)
     - Return Value
     - Delegate
     - LINQ Expression
     - Reflection
-2. [Validation(유효성 검사)](etc/etc_002_validation.md)
+2. [Validation(유효성 검사)](etc/etc002_validation.md)
 	- 주민등록번호
 	- 전화번호
 	- 이메일
