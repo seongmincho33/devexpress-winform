@@ -1,0 +1,297 @@
+ private Guid _DWR_STORAGE_STOCK_ID;
+        public Guid DWR_STORAGE_STOCK_ID
+        {
+            get
+            {
+                if (CheckPropertyName("DWR_STORAGE_STOCK_ID"))
+                    return Row["DWR_STORAGE_STOCK_ID"] == DBNull.Value ? Guid.Empty : (Guid)Row["DWR_STORAGE_STOCK_ID"];
+                else
+                    return this._DWR_STORAGE_STOCK_ID;
+            }
+            set
+            {
+                if (CheckPropertyName("DWR_STORAGE_STOCK_ID"))
+                    Row["DWR_STORAGE_STOCK_ID"] = value;
+                else
+                    this._DWR_STORAGE_STOCK_ID = value;
+
+                RaisePropertyChanged((ISTORAGEModel)this, "DWR_STORAGE_STOCK_ID");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private DateTime _ORDER_DATE;
+        public DateTime ORDER_DATE
+        {
+            get
+            {
+                if (CheckPropertyName("ORDER_DATE"))
+                    return Row["ORDER_DATE"] == DBNull.Value ? DateTime.Now : (DateTime)Row["ORDER_DATE"];
+                else
+                    return this._ORDER_DATE;
+            }
+            set
+            {
+                if (CheckPropertyName("ORDER_DATE"))
+                    Row["ORDER_DATE"] = value;
+                else
+                    this._ORDER_DATE = value;
+
+                RaisePropertyChanged((ISTORAGEModel)this, "ORDER_DATE");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ private string _FREIGHT;
+        public string FREIGHT
+        {
+            get
+            {
+                if (CheckPropertyName("FREIGHT"))
+                    return Convert.ToString(Row["FREIGHT"]);
+                else
+                    return this._FREIGHT;
+            }
+            set
+            {
+                if (CheckPropertyName("FREIGHT"))
+                    Row["FREIGHT"] = value;
+                else
+                    this._FREIGHT = value;
+
+                RaisePropertyChanged((ISTORAGEModel)this, "FREIGHT");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ private decimal _TRUCK_TON;
+        public decimal TRUCK_TON
+        {
+            get
+            {
+                if (CheckPropertyName("TRUCK_TON"))
+                    return Row["TRUCK_TON"] == DBNull.Value ? (decimal)-1 : decimal.Parse(Convert.ToString(Row["TRUCK_TON"]));
+                else
+                    return this._TRUCK_TON;
+            }
+            set
+            {
+                if (CheckPropertyName("TRUCK_TON"))
+                    Row["TRUCK_TON"] = value;
+                else
+                    this._TRUCK_TON = value;
+
+                RaisePropertyChanged((ISTORAGEModel)this, "TRUCK_TON");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private int _ORDER_NO;
+        public int ORDER_NO
+        {
+            get
+            {
+                if (CheckPropertyName("ORDER_NO"))
+                    return Row["ORDER_NO"] == DBNull.Value ? (int)0 : int.Parse(Convert.ToString(Row["ORDER_NO"]));
+                else
+                    return this._ORDER_NO;
+            }
+            set
+            {
+                if (CheckPropertyName("ORDER_NO"))
+                    Row["ORDER_NO"] = value;
+                else
+                    this._ORDER_NO = value;
+
+                RaisePropertyChanged((ISTORAGEModel)this, "ORDER_NO");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ private bool _IS_DELETED;
+
+        public bool IS_DELETED
+        {
+            get
+            {
+                if (CheckPropertyName("IS_DELETED"))
+                    return Row["IS_DELETED"] == DBNull.Value ? false : Convert.ToBoolean(Row["IS_DELETED"]);
+                else
+                    return this._IS_DELETED;
+            }
+            set
+            {
+                if (CheckPropertyName("IS_DELETED"))
+                    Row["IS_DELETED"] = value;
+                else
+                    this._IS_DELETED = value;
+
+                RaisePropertyChanged((IPROJECTModel)this, "IS_DELETED");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ private DateTime _YEAR_MONTH;
+        public DateTime YEAR_MONTH
+        {
+            get
+            {
+                if (CheckPropertyName("YEAR_MONTH"))
+                    return Row["YEAR_MONTH"] == DBNull.Value ? DateTime.Now : (DateTime)Row["YEAR_MONTH"];
+                else
+                    return this._YEAR_MONTH;
+            }
+            set
+            {
+                if (CheckPropertyName("YEAR_MONTH"))
+                    Row["YEAR_MONTH"] = value;
+                else
+                    this._YEAR_MONTH = value;
+
+                RaisePropertyChanged((IINPUT_CarDriveLogModel)this, "YEAR_MONTH");
+            }
+        }

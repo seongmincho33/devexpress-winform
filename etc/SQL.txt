@@ -1,0 +1,1706 @@
+
+SQL SERVER CONFIGURATION
+IIS 인터넷 정보 서비스 관리자
+이벤트 뷰어
+작업스케줄러
+
+
+
+
+1. WHERE 절 안에 IF 문같은 효과주기
+1.1 WHERE 절 안에 IF 문같은 효과주기2
+2. 가져온 임시테이블의 값을 다른테이블에 업데이트해주기
+3. 동적 피벗 테이블(어려움)
+3.1 동적 피벗 테이블(MAT_LEASE_R) (더 어려움)
+4. 로우의 모든값을 더하고 로우의 모든값을 카운트후에 그룹핑해준다.
+5. 달력의 연월을 클릭하면 ????년??월??시 어쩌구 가 되는데 ??시 어짜구랑 동일한 날이 없어서 검색이 안될때
+6. SQL에서 Guid.Empty 즉 Guid가 다 0으로 깔린걸 비교할때
+7. 프로시저 의 값을 select문 안에 넣어주는 방법
+8. 쿼리할때 소수점을 제거하고 C#단에 보내주는법
+
+1. WHERE 절 안에 IF 문같은 효과주기
+
+			--조회용--
+	SELECT  
+				 [MAT_TP_ID] 
+				,[MAT_ORDER_ID] 
+				,[TRANS_DATE] 
+				,[TRANS_STATUS] 
+				,[DEPARTURE] 
+				,[ARRIVAL] 
+				,[TRANS_PAYMENT] 
+				,MT.[MAT_CARRIER_ID]
+				,[FC_ID] 
+				,[UNIT_PRICE] 
+				,[AMOUNT] 
+				,MT.[REMARK]
+				,[CAR_NUMBER]
+				,[PHONE_NUMBER]
+				,[REMARK2] AS [TON_CAR]
+
+			FROM MAT_TRANSPORT AS MT
+			LEFT JOIN MATERIAL_CARRIER AS MC
+			ON MT.[MAT_CARRIER_ID] = MC.[MAT_CARRIER_ID]
+			WHERE 1=1 AND
+			(
+				(YEAR(@DATE_TRANSPORT) > 1800) AND ([TRANS_DATE] = @DATE_TRANSPORT)
+				OR
+				(YEAR(@DATE_TRANSPORT) < 1800) AND ([TRANS_DATE] = [TRANS_DATE])
+			)
+			ORDER BY MT.[TRANS_DATE] ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.1 WHERE 절 안에 IF 문같은 효과주기2
+
+USE [ERP_BYEPC]
+GO
+
+/****** Object:  StoredProcedure [dbo].[uSP_MAT_REPORT_COST_R]    Script Date: 2021-10-12 오후 2:03:25 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+-- =============================================
+-- Author:		<JO SUNG MIN>
+-- Create date: <2021-10-06>
+-- Description:	<경비 현황 보고>
+-- =============================================
+CREATE PROCEDURE [dbo].[uSP_MAT_REPORT_COST_R]
+(
+	@P_DATE datetime,
+	@P_CORP uniqueidentifier,
+	@P_GROUP uniqueidentifier,
+	@P_TAB varchar(20) = ''
+)
+AS
+BEGIN
+	
+	SELECT 
+			MC.[MAT_COST_ID]
+			,CD_CORP.[NAME_KO] AS [CODE_DTL_ID_COR]--법인
+			,MC.[COST_DATE]
+			,MC.[PAYMENT_METHOD]
+			,MAI.[NAME] AS [MAT_ID]--품목명
+			,CD_GROUP.[NAME_KO] AS [CODE_DTL_ID_MAT_GROUP] --그룹명
+			,CD_ITEM.[NAME_KO] AS [CODE_DTL_ID_MAT_ITEM] --품목구분
+			,MC.[CUSTOMER]
+			,MC.[COST_CONTENT]
+			,MC.[STANDARD]
+			,MC.[LENGTH]
+			,MC.[TON]
+			,MC.[QTY]
+			,MC.[UNIT_PRICE]
+			,MC.[SUPPLY_PRICE]
+			,MC.[TOTAL_PRICE]
+			,MC.[IS_PAY]
+			,MC.[REMARK]
+		FROM MAT_COST AS MC
+			LEFT JOIN CODE_DTL AS CD_CORP ON MC.[CODE_DTL_ID_COR] = CD_CORP.[CODE_DTL_ID]
+				LEFT JOIN MAT_ALL_ITEM AS MAI ON MC.[MAT_ID] = MAI.[MAT_ID]
+					LEFT JOIN CODE_DTL AS CD_ITEM ON MC.[CODE_DTL_ID_MAT_ITEM] = CD_ITEM.[CODE_DTL_ID]
+						LEFT JOIN CODE_DTL AS CD_GROUP ON MC.[CODE_DTL_ID_MAT_GROUP] = CD_GROUP.[CODE_DTL_ID]
+		WHERE
+				(
+						(@P_TAB = 'CorpSmallPage' OR @P_TAB = 'GroupSmallPage' OR @P_TAB = 'ItemSmallPage')
+					AND 
+						(YEAR(MC.[COST_DATE]) = YEAR(@P_DATE) AND MONTH(MC.[COST_DATE]) = MONTH(@P_DATE))
+					AND 
+						(YEAR(@P_DATE) > 1800)
+				)
+			OR
+				(
+						(
+								(@P_TAB = 'DayPage' AND CAST(MC.[COST_DATE] AS DATE) = CAST(@P_DATE AS DATE))
+							OR
+								(@P_TAB = 'MonthPage' AND YEAR(MC.[COST_DATE]) = YEAR(@P_DATE) AND MONTH(MC.[COST_DATE]) = MONTH(@P_DATE))
+							OR
+								(YEAR(@P_DATE) < 1800)						
+						)
+					AND 
+						(
+								(MC.[CODE_DTL_ID_COR] = @P_CORP AND MC.[CODE_DTL_ID_MAT_GROUP] = @P_GROUP)
+							OR
+								(MC.[CODE_DTL_ID_COR] = @P_CORP AND @P_GROUP = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER))
+							OR
+								(@P_CORP = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER) AND MC.[CODE_DTL_ID_MAT_GROUP] = @P_GROUP)
+							OR
+								(@P_CORP = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER) AND @P_GROUP = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER))
+						)
+				)
+		ORDER BY MC.[COST_DATE] DESC
+END
+
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. 가져온 임시테이블의 값을 다른테이블에 업데이트해주기
+
+--LABOR_WORKING_DAY 업데이트--
+	UPDATE LABOR_WORKING_DAY
+		SET
+			 [DAY_1]	=	LC.[DAY_1]
+			,[DAY_2] 	=	LC.[DAY_2]
+			,[DAY_3] 	=	LC.[DAY_3]
+			,[DAY_4] 	=	LC.[DAY_4]
+			,[DAY_5] 	=	LC.[DAY_5]
+			,[DAY_6] 	=	LC.[DAY_6]
+			,[DAY_7] 	=	LC.[DAY_7]
+			,[DAY_8] 	=	LC.[DAY_8]
+			,[DAY_9] 	=	LC.[DAY_9]
+			,[DAY_10]	=	LC.[DAY_10]
+			,[DAY_11]	=	LC.[DAY_11]
+			,[DAY_12]	=	LC.[DAY_12]
+			,[DAY_13]	=	LC.[DAY_13]
+			,[DAY_14]	=	LC.[DAY_14]
+			,[DAY_15]	=	LC.[DAY_15]
+			,[DAY_16]	=	LC.[DAY_16]
+			,[DAY_17]	=	LC.[DAY_17]
+			,[DAY_18]	=	LC.[DAY_18]
+			,[DAY_19]	=	LC.[DAY_19]
+			,[DAY_20]	=	LC.[DAY_20]
+			,[DAY_21]	=	LC.[DAY_21]
+			,[DAY_22]	=	LC.[DAY_22]
+			,[DAY_23]	=	LC.[DAY_23]
+			,[DAY_24]	=	LC.[DAY_24]
+			,[DAY_25]	=	LC.[DAY_25]
+			,[DAY_26]	=	LC.[DAY_26]
+			,[DAY_27]	=	LC.[DAY_27]
+			,[DAY_28]	=	LC.[DAY_28]
+			,[DAY_29]	=	LC.[DAY_29]
+			,[DAY_30]	=	LC.[DAY_30]
+			,[DAY_31]	=	LC.[DAY_31]
+		FROM LABOR_WORKING_DAY AS LW
+		JOIN @P_LABOR_COST AS LC
+		ON LW.[LABOR_ID] = LC.[LABOR_ID]
+		WHERE  LW.[LABOR_ID] = LC.[LABOR_ID]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. 동적 피벗 테이블(어려움)
+음 설명은 나중에 쓰겠다.
+
+
+
+USE [ERP_BYEPC]
+GO
+/****** Object:  StoredProcedure [dbo].[uSP_MAT_ORDER_SEQ_R]    Script Date: 2021-08-27 오전 8:31:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+-- =============================================
+-- Author:		JO SUNG MIN
+-- Create date: 2021-08-24
+-- Description:	순서표 조회
+-- =============================================
+ALTER PROCEDURE [dbo].[uSP_MAT_ORDER_SEQ_R]
+(
+	--@P_DATE_SEQ_CLEAR datetime2 = ''
+	@P_DATE_SEQ_CLEAR varchar(50) = ''
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+
+DECLARE @COLUMNS VARCHAR(MAX)
+
+DECLARE @SQL VARCHAR(MAX)
+
+DECLARE @COUNT INT = 0
+
+--DECLARE @P_DATE_SEQ_CLEAR_YEAR DATETIME = ''
+
+DECLARE @TEST TABLE
+(
+	KEY_STR VARCHAR(50)
+	, NUMBER INT
+	, IS_COMPOSE BIT
+	, IS_STEEL BIT
+	, IS_GENERAL BIT
+	, IS_PLATE BIT
+	, USE_ORDER BIT
+)
+
+--DECLARE @TEST TABLE
+--(
+--	KEY_STR VARCHAR(50)
+--	, NUMBER INT
+--)
+
+--INSERT INTO @TEST VALUES ('A', 1)
+--INSERT INTO @TEST VALUES ('B', 2)
+--INSERT INTO @TEST VALUES ('C', 3)
+
+
+INSERT INTO @TEST
+	(
+		[KEY_STR]
+		,[NUMBER]
+		,[IS_COMPOSE]
+		,[IS_STEEL]
+		,[IS_GENERAL]
+		,[IS_PLATE]
+		,[USE_ORDER]
+	)
+	SELECT 
+		
+	      DISTINCT CONCAT(MA.[NAME], ' ', MA.[STANDARD]) AS 피벗대상컬럼
+		 ,ROW_NUMBER() OVER(ORDER BY MA.[IS_COMPOSE] DESC, MA.[IS_STEEL] DESC, MA.[IS_GENERAL] DESC ,MA.[IS_PLATE] DESC, MA.[USE_ORDER] DESC) AS NUMBER
+		 ,MA.[IS_COMPOSE]
+		 ,MA.[IS_STEEL]
+		 ,MA.[IS_GENERAL]
+		 ,MA.[IS_PLATE]
+		 ,MA.[USE_ORDER]
+	FROM MAT_ORDER_SEQ AS MS
+	  LEFT JOIN MAT_ORDER AS MO
+	  ON MS.[MAT_ORDER_ID] = MO.[MAT_ORDER_ID]
+	  --LEFT JOIN PROJECT AS P
+	  --ON MO.[PROJECT_ID] = P.[PROJECT_ID]
+	  LEFT JOIN MAT_ORDER_ITEM AS MI
+	  ON MO.[MAT_ORDER_ID] = MI.[MAT_ORDER_ID]
+	  LEFT JOIN MAT_ALL_ITEM AS MA
+	  ON MA.[MAT_ID] = MI.[MAT_ID]
+	  WHERE MA.[USE_ORDER] = 1
+	  GROUP BY MA.[NAME], MA.[STANDARD], MA.[USE_ORDER],MA.[IS_COMPOSE], MA.[IS_STEEL], MA.[IS_GENERAL],MA.[IS_PLATE]
+	  ORDER BY MA.[IS_COMPOSE] DESC, MA.[IS_STEEL] DESC, MA.[IS_GENERAL] DESC ,MA.[IS_PLATE] DESC, MA.[USE_ORDER] DESC
+	  
+--INSERT INTO @TEST
+--	(
+--		[KEY_STR]
+--		,[NUMBER]
+--	)
+--	SELECT 
+--		  --띄어쓰기 수정하면 아래 @SQL도 컬럼 띄어쓰기 넣어야함.--
+--	      DISTINCT CONCAT(MA.[NAME], ' ', MA.[STANDARD]) AS 피벗대상컬럼
+--		 ,ROW_NUMBER() OVER(ORDER BY MA.[NAME] ASC) AS NUMBER
+--	FROM MAT_ORDER_SEQ AS MS
+--	  LEFT JOIN MAT_ORDER AS MO
+--	  ON MS.[MAT_ORDER_ID] = MO.[MAT_ORDER_ID]
+--	  --LEFT JOIN PROJECT AS P
+--	  --ON MO.[PROJECT_ID] = P.[PROJECT_ID]
+--	  LEFT JOIN MAT_ORDER_ITEM AS MI
+--	  ON MO.[MAT_ORDER_ID] = MI.[MAT_ORDER_ID]
+--	  LEFT JOIN MAT_ALL_ITEM AS MA
+--	  ON MA.[MAT_ID] = MI.[MAT_ID]
+--	  WHERE MA.[USE_ORDER] = 1
+--	  GROUP BY MA.[NAME], MA.[STANDARD]
+--	  ORDER BY NUMBER
+
+WHILE @COUNT < 2000
+BEGIN
+
+ SET @COUNT = @COUNT + 1
+
+ SELECT @COLUMNS = COALESCE(@COLUMNS + ',' + '[' + KEY_STR + ']', '[' + KEY_STR + ']')
+ FROM @TEST
+ WHERE NUMBER = @COUNT
+ ORDER BY [IS_COMPOSE] DESC, [IS_STEEL] DESC, [IS_GENERAL] DESC ,[IS_PLATE] DESC, [USE_ORDER] DESC
+
+END
+
+PRINT(@COLUMNS)
+
+--SET @P_DATE_SEQ_CLEAR_YEAR = YEAR(@P_DATE_SEQ_CLEAR)
+
+SET @SQL = 'SELECT *
+FROM 
+(
+SELECT 
+	   MS.[SORT_NO]
+	  ,[MAT_SEQ_ID]
+      ,MS.[MAT_ORDER_ID]
+	  ,P.[PROJECT_NAME]
+	  ,MO.[ORDER_DATE] AS [START_DATE]
+      ,[ARRIVE_DATE]
+      ,[ARRIVE_TIME]
+	  --,P.[IS_MAT_LEASE]
+	  --,P.[IS_CONST]
+	  ,CASE WHEN ISNULL(P.[IS_MAT_LEASE], '''') = '''' AND ISNULL( P.[IS_CONST], '''') = 1 
+		THEN ''시공''
+	   WHEN ISNULL(P.[IS_MAT_LEASE], '''') = '''' AND ISNULL(P.[IS_CONST], '''') = ''''
+		THEN ''X''
+	   WHEN ISNULL(P.[IS_MAT_LEASE], '''') = 1 AND ISNULL(P.[IS_CONST], '''') = ''''
+		THEN ''임대''
+	   WHEN ISNULL(P.[IS_MAT_LEASE], '''') = 1 AND ISNULL(P.[IS_CONST], '''') = 1
+		THEN ''시공/임대''
+		END AS [PROJECT_CONST_LEASE]
+	  ,CASE WHEN MAT_ORDER_COMPOSE_ID IS NOT NULL THEN ''O'' ELSE ''X'' END AS [COMPOSE]
+      ,[PAINTING]
+      ,[GRADE]
+      ,MS.[REMARK]
+	  ,MI.[QTY]
+	  --,MA.[USE_ORDER]
+	  --,MA.[IS_COMPOSE]
+	  --,MA.[IS_STEEL]
+	  --,MA.[IS_GENERAL]
+	  --,MA.[IS_PLATE]
+	  ,CONCAT(MA.[NAME],'' '', MA.[STANDARD]) AS 피벗대상컬럼
+	  --,ROW_NUMBER() OVER(ORDER BY ) ASC) AS NUM
+	  FROM MAT_ORDER_SEQ AS MS
+	  LEFT JOIN MAT_ORDER AS MO
+	  ON MS.[MAT_ORDER_ID] = MO.[MAT_ORDER_ID]
+	  LEFT JOIN PROJECT AS P
+	  ON MO.[PROJECT_ID] = P.[PROJECT_ID]
+	  LEFT JOIN MAT_ORDER_ITEM AS MI
+	  ON MO.[MAT_ORDER_ID] = MI.[MAT_ORDER_ID]
+	  LEFT JOIN MAT_ALL_ITEM AS MA
+	  ON MI.[MAT_ID] = MA.[MAT_ID]
+	  LEFT JOIN MAT_ORDER_COMPOSE AS MC
+	  ON MO.[MAT_ORDER_ID] = MC.[MAT_ORDER_ID]
+	  WHERE MA.[USE_ORDER] = 1 
+				AND
+			(
+				(YEAR(CAST('''+@P_DATE_SEQ_CLEAR+''' AS DATETIME2)) > 1800) AND ([ARRIVE_DATE] = CAST('''+@P_DATE_SEQ_CLEAR+''' AS DATETIME2))
+				OR
+				(YEAR(CAST('''+@P_DATE_SEQ_CLEAR+''' AS DATETIME2)) < 1800) AND (1 = 1)
+			)
+	  
+)AS S
+PIVOT
+(
+	--MAX (피벗대상컬럼)
+	SUM(QTY)
+	FOR 피벗대상컬럼 IN (' + @COLUMNS + ')
+	
+) AS P
+ORDER BY [ARRIVE_DATE] DESC'
+
+
+EXEC(@SQL)
+
+	 
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.1 동적 피벗 테이블(MAT_LEASE_R) (더 어려움)
+
+
+USE [ERP_BYEPC]
+GO
+/****** Object:  StoredProcedure [dbo].[uSP_MAT_LEASE_R]    Script Date: 2021-10-05 오전 8:39:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+-- =============================================
+-- Author:JO SUNG MIN
+-- Create date: 2021.09.02
+-- Description: 자재임대 기성청구서 조회
+-- =============================================
+ALTER PROCEDURE [dbo].[uSP_MAT_LEASE_R]
+(
+	@P_PROJECT_ID uniqueidentifier = ''
+	,@P_YEAR int = ''
+	,@P_MONTH int = ''
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+	--리펙터링 추가 필요 2021-10-01 조성민. @COULUMNS 이름 변경후 주석제거
+
+	/*--------------------------------------------------------------------------------
+	[작업 내용] 
+
+	사용자가 선택한 프로젝트의 공종, 단위, 계약수량, 단가를 보여주어야 하고
+	달력에서 선택한 연월 기준으로 이전 연월들을 피벗한 컬럼으로 나열해 주어야 합니다.
+	사용자는 단위, 계약수량, 단가를 입력하고 수정할 수 있습니다. 이는 기성청구의 한도입니다.
+
+	공종 : [MAT_ID] 관련 MAT_ALL_ITME으로 부터 추출함. 
+		   이름은 [WORK_KINDS]로 정의함. 
+		   보통 MAT_ALL_ITEM.[NAME] 과 MAT_ALL_ITEM.[STANDARD]를 결합함.
+	MAT_LEASE [YEAR](연), [MONTH](월) 데이터 : 사용자가 팝업에서 저장할때 만들어집니다.
+	전월 누계, 전체 누계 컬럼은 C#코드 또는 여기 아래서 해결해도 됩니다. 
+	----------------------------------------------------------------------------------*/
+
+	--최종 피벗용 테이블을 스트링 형식으로 넣어줄 변수--
+	DECLARE @SQL VARCHAR(MAX)
+
+
+
+	--첫번째 QTY용 피벗컬럼--
+	DECLARE @COLUMNS VARCHAR(MAX)
+	
+	DECLARE @COUNT INT = 0
+
+	--피벗 할 대상 컬럼을 위한 임시테이블 입니다.--
+	DECLARE @PIVOT_COL TABLE
+	(
+		KEY_STR VARCHAR(50)
+		,[NUMBER] INT
+	)
+
+	--임시테이블에 피벗할 컬럼의 내용을 넣어줍니다.--
+	--WHERE 절에서 CLEAR를 누르면 모든 연월을 보여주고, 
+	--연월을 선택하면 해당연월 이하의 연월을 보여줍니다. 
+	INSERT INTO @PIVOT_COL
+	(
+		[KEY_STR]
+		,[NUMBER]
+	)
+	SELECT  
+		CONCAT([YEAR], '년 ', [MONTH], '월 : QTY') AS PIVOTED_COLUMN		
+		,ROW_NUMBER() OVER (ORDER BY [YEAR], [MONTH] ASC) AS [NUMBER]
+	FROM MAT_LEASE AS ML
+	WHERE 
+		(ML.[YEAR] = (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END) 
+		AND
+		ML.[MONTH] <= (CASE WHEN @P_YEAR > 1800 THEN @P_MONTH WHEN @P_YEAR < 1800 THEN 12 END))
+			OR
+		ML.[YEAR] < (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END)
+	GROUP BY CONCAT([YEAR], '년 ', [MONTH], '월 : QTY'), [YEAR], [MONTH]
+
+	--피벗 FOR문에 넣어줄 @COLUMNS 컬럼을 셋팅합니다.--
+	WHILE @COUNT < 2000
+	BEGIN
+		SET @COUNT = @COUNT + 1
+		SELECT @COLUMNS = COALESCE(@COLUMNS + ',' + '[' + KEY_STR + ']', '[' + KEY_STR + ']')
+		FROM @PIVOT_COL
+		WHERE NUMBER = @COUNT
+	END
+
+
+	--두번째 PRICE용 피벗컬럼--
+	DECLARE @COLUMNS2 VARCHAR(MAX)
+	
+	DECLARE @COUNT2 INT = 0
+
+	--피벗 할 대상 컬럼을 위한 임시테이블 입니다.--
+	DECLARE @PIVOT_COL2 TABLE
+	(
+		KEY_STR VARCHAR(50)
+		,[NUMBER] INT
+	)
+
+	--임시테이블에 피벗할 컬럼의 내용을 넣어줍니다.--
+	--WHERE 절에서 CLEAR를 누르면 모든 연월을 보여주고, 
+	--연월을 선택하면 해당연월 이하의 연월을 보여줍니다. 
+	INSERT INTO @PIVOT_COL2
+	(
+		[KEY_STR]
+		,[NUMBER]
+	)
+	SELECT  
+		DISTINCT CONCAT([YEAR], '년 ', [MONTH], '월 : PRICE') AS PIVOTED_COLUMN		
+		,ROW_NUMBER() OVER (ORDER BY [YEAR], [MONTH] ASC) AS [NUMBER]
+	FROM MAT_LEASE AS ML
+	WHERE 
+		(ML.[YEAR] <= (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END) 
+		AND
+		ML.[MONTH] <= (CASE WHEN @P_YEAR > 1800 THEN @P_MONTH WHEN @P_YEAR < 1800 THEN 12 END))
+			OR
+		ML.[YEAR] < (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END)
+	GROUP BY CONCAT([YEAR], '년 ', [MONTH], '월 : PRICE'), [YEAR], [MONTH]
+
+
+	--피벗 FOR문에 넣어줄 @COLUMNS 컬럼을 셋팅합니다.--
+	WHILE @COUNT2 < 2000
+	BEGIN
+		SET @COUNT2 = @COUNT2 + 1
+		SELECT @COLUMNS2 = COALESCE(@COLUMNS2 + ',' + '[' + KEY_STR + ']', '[' + KEY_STR + ']')
+		FROM @PIVOT_COL2
+		WHERE NUMBER = @COUNT2
+	END
+
+
+	--세번째 TOTAL용 피벗컬럼--
+	DECLARE @COLUMNS9 VARCHAR(MAX)
+	
+	DECLARE @COUNT9 INT = 0
+
+	--피벗 할 대상 컬럼을 위한 임시테이블 입니다.--
+	DECLARE @PIVOT_COL9 TABLE
+	(
+		KEY_STR VARCHAR(200)
+		,[NUMBER] INT
+	)
+
+	--임시테이블에 피벗할 컬럼의 내용을 넣어줍니다.--
+	--WHERE 절에서 CLEAR를 누르면 모든 연월을 보여주고, 
+	--연월을 선택하면 해당연월 이하의 연월을 보여줍니다. 
+	INSERT INTO @PIVOT_COL9
+	(
+		[KEY_STR]
+		,[NUMBER]
+	)
+	SELECT  
+		DISTINCT CONCAT('ISNULL([', [YEAR], '년 ', [MONTH], '월 : QTY', '], 0)', '*', 'ISNULL([', [YEAR], '년 ', [MONTH], '월 : PRICE', '], 0) AS [', [YEAR], '년 ', [MONTH], '월 : TOTAL' + ']') AS PIVOTED_COLUMN		
+		,ROW_NUMBER() OVER (ORDER BY [YEAR], [MONTH] ASC) AS [NUMBER]
+	FROM MAT_LEASE AS ML
+	WHERE 
+		(ML.[YEAR] <= (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END) 
+		AND
+		ML.[MONTH] <= (CASE WHEN @P_YEAR > 1800 THEN @P_MONTH WHEN @P_YEAR < 1800 THEN 12 END))
+			OR
+		ML.[YEAR] < (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END)
+	GROUP BY CONCAT('ISNULL([', [YEAR], '년 ', [MONTH], '월 : QTY', '], 0)', '*', 'ISNULL([', [YEAR], '년 ', [MONTH], '월 : PRICE', '], 0) AS [', [YEAR], '년 ', [MONTH], '월 : TOTAL' + ']'), [YEAR], [MONTH]
+
+
+	--피벗 FOR문에 넣어줄 @COLUMNS 컬럼을 셋팅합니다.--
+	WHILE @COUNT9 < 2000
+	BEGIN
+		SET @COUNT9 = @COUNT9 + 1
+		SELECT @COLUMNS9 = COALESCE(@COLUMNS9 + ',' + KEY_STR, KEY_STR)
+		FROM @PIVOT_COL9
+		WHERE NUMBER = @COUNT9
+	END
+
+	--WITH SELECT 문에 사용할 것. 0000년 00월 : QTY 를 SUM()안에 넣어서 스트링으로 만들어준것.
+	--AS 문이 필요하기 때문입니다.
+	--@COLUMNS3 세팅
+	SET @COUNT = 0
+	DECLARE @COLUMNS3 VARCHAR(MAX)
+	WHILE @COUNT < 2000
+	BEGIN
+		SET @COUNT = @COUNT + 1
+		SELECT @COLUMNS3 = COALESCE(@COLUMNS3 + ',' + 'SUM([' + KEY_STR + ']) AS ' +'[' + KEY_STR + ']' , 'SUM([' + KEY_STR + ']) AS ' +'[' + KEY_STR + ']')
+		FROM @PIVOT_COL
+		WHERE NUMBER = @COUNT
+	END
+
+	--WITH SELECT 문에 사용할 것. 0000년 00월 : PRICE 를 SUM()안에 넣어서 스트링으로 만들어준것.
+	--AS 문이 필요하기 때문입니다.
+	--@COLUMNS4 세팅
+	SET @COUNT2 = 0
+	DECLARE @COLUMNS4 VARCHAR(MAX)
+	WHILE @COUNT2 < 2000
+	BEGIN
+		SET @COUNT2 = @COUNT2 + 1
+		SELECT @COLUMNS4 = COALESCE(@COLUMNS4 + ',' + 'SUM([' + KEY_STR + ']) AS ' +'[' + KEY_STR + ']' , 'SUM([' + KEY_STR + ']) AS ' +'[' + KEY_STR + ']')
+		FROM @PIVOT_COL2
+		WHERE NUMBER = @COUNT2
+	END
+
+	--누계에 사용할 것.
+	--@COLUMNS5 세팅
+	SET @COUNT = 0
+	DECLARE @COLUMNS5 VARCHAR(MAX)
+	WHILE @COUNT < 2000
+	BEGIN
+		SET @COUNT = @COUNT + 1
+		SELECT @COLUMNS5 = COALESCE(@COLUMNS5 + '+' + 'ISNULL([' + KEY_STR + '], 0)', 'ISNULL([' + KEY_STR + '], 0)')
+		FROM @PIVOT_COL
+		WHERE NUMBER = @COUNT
+	END
+
+	--@COLUMNS6 세팅
+	SET @COUNT2 = 0
+	DECLARE @COLUMNS6 VARCHAR(MAX)
+	WHILE @COUNT2 < 2000
+	BEGIN
+		SET @COUNT2 = @COUNT2 + 1
+		SELECT @COLUMNS6 = COALESCE(@COLUMNS6 + '+' + 'ISNULL([' + KEY_STR + '], 0)', 'ISNULL([' + KEY_STR + '], 0)')
+		FROM @PIVOT_COL2
+		WHERE NUMBER = @COUNT2
+	END
+
+	--전월 누계에 사용할 것.
+	--만약 전월누계에 사용될 달이 없다면 0으로 채워줍니다.
+	DECLARE @COLUMNS7 VARCHAR(MAX)
+	DECLARE @COLUMNS8 VARCHAR(MAX)
+	IF((SELECT MAX(NUMBER)-1 FROM @PIVOT_COL) > 0)
+	BEGIN
+
+		SET @COUNT = 0
+		
+		--@COLUMNS7 세팅
+		WHILE @COUNT < (SELECT MAX([NUMBER])-1 FROM @PIVOT_COL)
+		BEGIN
+			SET @COUNT = @COUNT + 1
+			SELECT @COLUMNS7 = COALESCE(@COLUMNS7 + '+' + 'ISNULL([' + KEY_STR + '], 0)', 'ISNULL([' + KEY_STR + '], 0)')
+			FROM @PIVOT_COL
+			WHERE NUMBER = @COUNT
+		END
+
+		SET @COUNT2 = 0
+		
+		--@COLUMNS8 세팅
+		WHILE @COUNT2 < (SELECT MAX([NUMBER])-1 FROM @PIVOT_COL)
+		BEGIN
+			SET @COUNT2 = @COUNT2 + 1
+			SELECT @COLUMNS8 = COALESCE(@COLUMNS8 + '+' + 'ISNULL([' + KEY_STR + '], 0)', 'ISNULL([' + KEY_STR + '], 0)')
+			FROM @PIVOT_COL2
+			WHERE NUMBER = @COUNT2
+		END
+
+	END
+		
+	ELSE
+	BEGIN
+		
+		SET @COLUMNS7 = '0'
+		SET @COLUMNS8 = '0'
+
+	END
+	
+	
+	/*-------------------------------------------------------------------------------------
+										--신버전--
+			WITH 문으로 묶어주는 이유는 피벗된 테이블을 GROUP BY 해주기 위함입니다. 	
+			
+			SELECT 값
+			MAT_LEASE_ID											
+			PROJECT_ID						->		PROJECT_ID
+			MAT_ID							->		MAT_ID
+			WORK_KINDS						->		WORK_KINDS
+			UNIT							->		UNIT
+			CONTRACT_QTY					->		CONTRACT_QTY
+			CONTRACT_UNIT_PRICE				->		CONTRACT_UNIT_PRICE
+			CONTRACT_TOTAL_PRICE			->		CONTRACT_TOTAL_PRICE
+			YEAR							->		연은 MAT_LEASE_ID와 같이가야합니다.
+			MONTH							->		월은 MAT_LEASE_ID와 같이가야합니다.
+			QTY								->		SUM()피벗됩니다.
+			PRICE							->		SUM()피벗됩니다.
+			CREATE_ID						
+			CREATE_DATE
+	--------------------------------------------------------------------------------------*/
+												
+	SET @SQL =	'WITH PIVOTED
+				AS 
+				(
+					SELECT * 
+					FROM 
+					(
+						SELECT 
+							DISTINCT NEWID() AS [MAT_LEASE_ID]
+							,P.[PROJECT_ID]
+							,MOI.[MAT_ID]
+							,CONCAT(MI.[NAME], '' '', MI.[STANDARD]) AS [WORK_KINDS] --공종
+							,ML.[UNIT]
+							,ML.[CONTRACT_QTY] 
+							,ML.[CONTRACT_UNIT_PRICE]
+							,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+							,ML.[YEAR] AS [YEAR]
+							,ML.[MONTH] AS [MONTH]
+							,CONCAT([YEAR], ''년 '', [MONTH], ''월 : QTY'') AS [PIVOTED_COLUMN]
+							,CONCAT([YEAR], ''년 '', [MONTH], ''월 : PRICE'') AS [PIVOTED_COLUMN2]
+							,ISNULL(ML.[QTY], 0) AS [QTY]
+							,ISNULL(ML.[PRICE], 0) AS [PRICE]
+							,NEWID() AS [CREATE_ID]
+							,''2021-07-01 00:00:00.000'' AS [CREATE_DATE]
+							,MI.[CODE]
+						FROM MAT_ORDER AS MO
+						LEFT JOIN PROJECT AS P ON MO.[PROJECT_ID] = P.[PROJECT_ID]
+						LEFT JOIN MAT_ORDER_ITEM AS MOI ON MO.[MAT_ORDER_ID] = MOI.[MAT_ORDER_ID]
+						LEFT JOIN MAT_ALL_ITEM AS MI ON MOI.[MAT_ID] = MI.[MAT_ID]
+						LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+						WHERE P.[PROJECT_ID] = '''+CONVERT(NVARCHAR(100),@P_PROJECT_ID)+'''
+						GROUP BY 
+							MOI.[MAT_ID]
+							,P.[PROJECT_ID]
+							,ML.[UNIT]
+							,MI.[NAME]
+							,MI.[STANDARD]
+							,ML.[QTY]
+							,ML.[PRICE]
+							,ML.[YEAR]
+							,ML.[MONTH]
+							,ML.[CONTRACT_QTY] 
+							,ML.[CONTRACT_UNIT_PRICE]
+							,MI.[CODE]
+						
+						
+
+						UNION ALL
+						--조립비 또는 단수정리가 있다면 가져오기
+						SELECT
+							[MAT_LEASE_ID]
+							,ML.[PROJECT_ID]
+							,ML.[MAT_ID]
+							,MI.[NAME] AS [WORK_KINDS]
+							,ML.[UNIT]
+							,ML.[CONTRACT_QTY]
+							,ML.[CONTRACT_UNIT_PRICE]
+							,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+							,'''+CONVERT(NVARCHAR(100),@P_YEAR)+'''  AS [YEAR]
+							,'''+CONVERT(NVARCHAR(100),@P_MONTH)+''' AS [MONTH]
+							,CONCAT([YEAR], ''년 '', [MONTH], ''월 : QTY'') AS [PIVOTED_COLUMN]
+							,CONCAT([YEAR], ''년 '', [MONTH], ''월 : PRICE'') AS [PIVOTED_COLUMN2]
+							,ML.[QTY]
+							,ML.[PRICE]
+							,NEWID() AS [CREATE_ID] 
+							,GETDATE() AS [CREATE_DATE]
+							,MI.[CODE]
+						FROM MAT_ALL_ITEM AS MI
+						LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+						WHERE (CODE = ''A99998'') OR (CODE = ''A99999'') 
+					
+					) AS S
+					PIVOT
+					(
+						SUM(QTY)
+						--SUM(PRICE) 
+						FOR[PIVOTED_COLUMN] IN ( '+@COLUMNS+' )
+					) AS P
+					PIVOT
+					(
+						--SUM(QTY)
+						SUM(PRICE) 
+						FOR[PIVOTED_COLUMN2] IN ( '+@COLUMNS2+' )
+					) AS J
+					--ORDER BY [WORK_KINDS]
+				)
+				--WITH문에서 가져오는 SELECT문 입니다. 
+				SELECT 
+					[PROJECT_ID]
+					,[MAT_ID]
+					,[WORK_KINDS]
+					,[UNIT]
+					,[CONTRACT_QTY]
+					,[CONTRACT_UNIT_PRICE]
+					,[CONTRACT_TOTAL_PRICE]
+					,[CODE]
+					,'+@COLUMNS+'
+					,'+@COLUMNS2+'
+					,'+@COLUMNS9+' -- QTY * PRICE 합계 
+					,'+@COLUMNS7+' AS PREVIOUS_MONTH_TOTAL_QTY -- 전월 누계 수량
+					--,'+@COLUMNS8+' AS PREVIOUS_MONTH_TOTAL_PRICE -- 전월 누계 금액
+					,('+@COLUMNS7+') * [CONTRACT_UNIT_PRICE] AS PREVIOUS_MONTH_TOTAL_PRICE -- 전월 누계 금액
+					,'+@COLUMNS5+' AS MONTH_TOTAL_QTY -- 누계 수량
+					--,'+@COLUMNS6+' AS MONTH_TOTAL_PRICE --누계 금액
+					,('+@COLUMNS5+') * [CONTRACT_UNIT_PRICE] AS MONTH_TOTAL_PRICE --누계 금액
+					
+				FROM
+				(
+					SELECT 
+						PROJECT_ID
+						,MAT_ID
+						,WORK_KINDS
+						,UNIT
+						,CONTRACT_QTY
+						,CONTRACT_UNIT_PRICE
+						,'+@COLUMNS3+'
+						,'+@COLUMNS4+'
+						,CONTRACT_TOTAL_PRICE
+						,CODE
+					FROM PIVOTED --WITH문
+					GROUP BY 
+						WORK_KINDS
+						,PROJECT_ID
+						,MAT_ID, UNIT
+						,CONTRACT_QTY
+						,CONTRACT_UNIT_PRICE
+						,CONTRACT_TOTAL_PRICE
+						,CODE
+				) AS F
+				ORDER BY CASE [CODE]
+				WHEN ''조립비'' THEN 1
+				WHEN ''단수정리'' THEN 2
+				END
+				,[CODE]
+				'
+
+
+
+
+
+	/*----------------------------------------------------------------
+								화면단
+	
+		* BIZ단 테이블 이름 : "MAT_LEASE"
+		
+		* 두개의 조건 때문에 IF 문을 사용하게 되었습니다.
+			1.  MAT_LEASE에 사용자가 넘긴 PID와 연월이 일치하는 정보가 있을때
+			혹은
+			clear 버튼을 눌렀을때나 보통 연월이 들어갔을때 MAT_LEASE에 정보가 있을때
+	
+			2.  MAT_LEASE에 사용자가 넘긴 PID와 연월이 일치하는 정보가 !없을때!
+			혹은
+			clear 버튼을 눌렀을때나 보통 연월이 들어갔을때 MAT_LEASE에 데이터가 !없을때!
+	
+		비고 : 조립비와 단수정리는 MAT_ALL_ITEM의 [CODE] = A99998 과 A99999입니다.
+	-----------------------------------------------------------------*/									
+
+	/*
+	1.  MAT_LEASE에 사용자가 넘긴 PID와 연월이 일치하는 정보가 있을때
+		혹은
+		CLEAR 버튼을 눌렀을때나 보통 연월이 들어갔을때 MAT_LEASE에 정보가 있을때
+		
+			(1)CLEAR버튼 누름 -> 전체 데이터를 보고싶다는 뜻입니다. EXEC(@SQL)을 실행시키려면
+			최소한 MAT_LEASE데이터가 하나라도 존재해야합니다.
+			(2)보통 연월 누름 -> 선택한 연월을 포함한 이전 연월 데이터를 조회하고 싶다는 뜻입니다.
+			최소한 MAT_LEASE데이터에 선택한 연월 또는 이전 연월 데이터가 존재해야 합니다. 
+
+			<결론> : 따라서 MAT_ORDER에서 주문한 MAT_ALL_ITEM을 기반으로
+			MAT_LEASE 에 존재하는 공종, 단위, 계약수량, 단가, 계약금액과
+			MAT_LEASE 에 존재하는 연월 동적 데이터가 보여집니다.			
+			EXEC(@SQL)을 실행합니다. 
+	*/
+						
+	IF
+	( 
+		(
+			EXISTS(SELECT * FROM MAT_LEASE WHERE PROJECT_ID = @P_PROJECT_ID AND [YEAR] = @P_YEAR AND [MONTH] = @P_MONTH)
+			OR
+			EXISTS
+			(
+				SELECT  
+				*
+				FROM MAT_LEASE AS ML
+				WHERE 
+				(
+					ML.[YEAR] <= (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END) 
+					AND
+					ML.[MONTH] <= (CASE WHEN @P_YEAR > 1800 THEN @P_MONTH WHEN @P_YEAR < 1800 THEN 12 END)
+				)
+				OR
+				ML.[YEAR] < (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END)
+			)
+		)
+	)
+	BEGIN
+		EXEC(@SQL)
+	END 
+
+	/*
+	2.  MAT_LEASE에 사용자가 넘긴 PID와 연월이 일치하는 정보가 !없을때!
+		혹은
+		CLEAR 버튼을 눌렀을때나 보통 연월이 들어갔을때 MAT_LEASE에 데이터가 !없을때!
+			
+			(1)CLEAR버튼 누름 -> 사용자가 전체 데이터를 조회했는데 MAT_LEASE엔 데이터가 없습니다.
+			(2)보통 연월 누름 -> MAT_LEASE엔 데이터가 존재하지만 해당 연월 또는 해당연월의 이전 
+			연월 데이터가 존재하지 않습니다. 
+			
+			<결론> : 따라서 MAT_ORDER에서 주문한 MAT_ALL_ITEM을 기반으로
+			MAT_LEASE 에 존재하는 공종, 단위, 계약수량, 단가, 계약금액 
+			만 보여지게 되고 동적데이터는 보여지지 않습니다.
+	*/
+	ELSE IF
+	(
+		(
+			NOT EXISTS(SELECT * FROM MAT_LEASE WHERE PROJECT_ID = @P_PROJECT_ID ) 
+			OR 
+			NOT EXISTS
+				(
+					SELECT  
+						*
+					FROM MAT_LEASE AS ML
+					WHERE 
+						(
+							ML.[YEAR] <= (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END) 
+							AND
+							ML.[MONTH] <= (CASE WHEN @P_YEAR > 1800 THEN @P_MONTH WHEN @P_YEAR < 1800 THEN 12 END)
+						)
+						OR
+						ML.[YEAR] < (CASE WHEN @P_YEAR > 1800 THEN @P_YEAR WHEN @P_YEAR < 1800 THEN 4000 END)
+				) 
+		)
+	)
+	BEGIN 
+		--아래 SELECT는 조립비와 단수정리를 UNION 한뒤 맨 컬럼 맨아래로 내리기 위함입니다.
+		SELECT 
+			*
+		FROM
+		(
+			SELECT 
+				DISTINCT NEWID() AS [MAT_LEASE_ID]
+				,P.[PROJECT_ID]
+				,MOI.[MAT_ID]
+				,CONCAT(MI.[NAME], ' ', MI.[STANDARD]) AS [WORK_KINDS] --공종
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY] 
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,NULL AS [QTY]
+				,NULL AS [PRICE]
+				,NEWID() AS [CREATE_ID]
+				,CAST(
+					CAST(@P_YEAR AS VARCHAR(4)) +
+					RIGHT('0' + CAST(@P_MONTH AS VARCHAR(2)), 2) +
+					RIGHT('0' + CAST(1 AS VARCHAR(2)), 2) 
+				AS DATETIME) AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ORDER AS MO
+			LEFT JOIN PROJECT AS P ON MO.[PROJECT_ID] = P.[PROJECT_ID]
+			LEFT JOIN MAT_ORDER_ITEM AS MOI ON MO.[MAT_ORDER_ID] = MOI.[MAT_ORDER_ID]
+			LEFT JOIN MAT_ALL_ITEM AS MI ON MOI.[MAT_ID] = MI.[MAT_ID]
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE P.[PROJECT_ID] = @P_PROJECT_ID
+			GROUP BY 
+			MOI.[MAT_ID]
+			,P.[PROJECT_ID]
+			,MI.[NAME]
+			,MI.[STANDARD]
+			,ML.[UNIT]
+			,ML.[CONTRACT_QTY]
+			,ML.[CONTRACT_UNIT_PRICE]
+			,[CODE]
+
+			UNION ALL
+			--조립비가 없다면 새로 생성 (아무것도 없을때)
+			SELECT
+				NEWID() AS [MAT_LEASE_ID]
+				,@P_PROJECT_ID AS [PROJECT_ID]
+				,MI.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,NULL AS [QTY]
+				,NULL AS [PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99998') AND [YEAR] IS NULL AND [MONTH] IS NULL
+			AND
+			(
+				NOT EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99998') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+			
+			UNION ALL
+			--조립비가 있다면 가져오기
+			SELECT
+				[MAT_LEASE_ID]
+				,ML.[PROJECT_ID]
+				,ML.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,ML.[QTY]
+				,ML.[PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99998') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH
+			AND
+			(
+				EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99998') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+
+			UNION ALL
+			--조립비가 생성되어 있지만 다른 연월 일때
+			SELECT
+				TOP 1 NEWID() AS [MAT_LEASE_ID]
+				,ML.[PROJECT_ID]
+				,ML.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,NULL AS [QTY]
+				,NULL AS [PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99998')
+			AND
+			(
+				EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99998') AND ML.[YEAR] <> @P_YEAR AND ML.[MONTH] <> @P_MONTH)
+			)
+			AND
+			(
+				NOT EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99998') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+
+			UNION ALL
+			--단수정리가 없다면 새로 생성
+			SELECT
+				NEWID() AS [MAT_LEASE_ID]
+				,@P_PROJECT_ID AS [PROJECT_ID]
+				,MI.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,NULL AS [QTY]
+				,NULL AS [PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99999') AND [YEAR] IS NULL AND [MONTH] IS NULL
+			AND
+			(
+				NOT EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99999') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+			
+			UNION ALL
+			--단수정리가 있다면 가져오기
+			SELECT
+				[MAT_LEASE_ID]
+				,ML.[PROJECT_ID]
+				,ML.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,ML.[QTY]
+				,ML.[PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99999') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH
+			AND
+			(
+				EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99999') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+
+			UNION ALL
+			--단수정리가 생성되어 있지만 다른 연월 일때
+			SELECT
+				TOP 1 NEWID() AS [MAT_LEASE_ID]
+				,ML.[PROJECT_ID]
+				,ML.[MAT_ID]
+				,MI.[NAME] AS [WORK_KINDS]
+				,ML.[UNIT]
+				,ML.[CONTRACT_QTY]
+				,ML.[CONTRACT_UNIT_PRICE]
+				,ML.[CONTRACT_QTY] * ML.[CONTRACT_UNIT_PRICE] AS [CONTRACT_TOTAL_PRICE]
+				,@P_YEAR AS [YEAR]
+				,@P_MONTH AS [MONTH]
+				,NULL AS [QTY]
+				,NULL AS [PRICE]
+				,NEWID() AS [CREATE_ID] 
+				,GETDATE() AS [CREATE_DATE]
+				,[CODE]
+			FROM MAT_ALL_ITEM AS MI
+			LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+			WHERE (CODE = 'A99999')
+			AND
+			(
+				EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99999') AND ML.[YEAR] <> @P_YEAR AND ML.[MONTH] <> @P_MONTH)
+			)
+			AND
+			(
+				NOT EXISTS(SELECT [MAT_LEASE_ID] FROM MAT_ALL_ITEM AS MI LEFT JOIN MAT_LEASE AS ML ON MI.[MAT_ID] = ML.[MAT_ID]
+				WHERE (CODE = 'A99999') AND ML.[YEAR] = @P_YEAR AND ML.[MONTH] = @P_MONTH)
+			)
+		)AS D
+		ORDER BY CASE [WORK_KINDS]
+				WHEN '조립비' THEN 1
+				WHEN '단수정리' THEN 2
+				END
+				,[CODE]
+	END
+	
+	/*-----------------------------
+	새로운 테이블 입니다.
+	CU에도 같은내용이 있습니다. 
+	EXCEL SpreadSheet 에 붙여줄 내용입니다. 
+	BIZ단 이름 : MAT_LEASE_EXCELSUB
+
+	1. 계약업체
+	2. 현장명
+	3. 계약금액
+	4. 계약 연월일
+	5. 착공 연월일
+	6. 기성내용
+		-금회 기성청구 금액
+		-전회 기성청구 금액
+		-합계
+	(기성 내용같은 경우 C#코드에서 
+	처리했습니다)
+	------------------------------*/
+	DECLARE @ROW_NUM INT =0
+	SELECT 
+		CAST(ISNULL([CONST_COMPANY_CIVIL], '') AS VARCHAR) AS [TXT_CONTRACTCOMPANY]--계약업체
+		,CAST(ISNULL([PROJECT_NAME], '') AS VARCHAR) AS [TXT_PROJECTNAME]-- 현장명
+		,CAST(ISNULL([AMOUNT_MAT_LEASE], '') AS VARCHAR) AS [TXT_CONTRACTPRICE]--계약 금액
+		,CAST(ISNULL(YEAR([CONTRACT_DATE]), '') AS VARCHAR) AS [YEAR_CONTRACT]
+		,CAST(ISNULL(MONTH([CONTRACT_DATE]), '') AS VARCHAR) AS [MONTH_CONTRACT]
+		,CAST(ISNULL(DAY([CONTRACT_DATE]), '') AS VARCHAR) AS [DAY_CONTRACT]
+		,CAST(ISNULL(YEAR([START_DATE]), '') AS VARCHAR) AS [YEAR_CONSTRUCT]
+		,CAST(ISNULL(MONTH([START_DATE]), '') AS VARCHAR) AS [MONTH_CONSTRUCT]
+		,CAST(ISNULL(DAY([START_DATE]), '') AS VARCHAR) AS [DAY_CONSTRUCT]		
+		,@ROW_NUM AS [ROW_NUM]--인덱스용 컬럼
+	FROM PROJECT
+	WHERE [PROJECT_ID] = @P_PROJECT_ID  
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. 로우의 모든값을 더하고 로우의 모든값을 카운트후에 그룹핑해준다.
+
+
+
+USE [ERP_BYEPC]
+GO
+
+/****** Object:  StoredProcedure [dbo].[uSP_LABOR_COST_R]    Script Date: 2021-08-27 오후 4:24:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+-- =============================================
+-- Author:		JO SUNG MIN
+-- Create date: 2021-08-12
+-- Description:	일용노무비 지급명세서 조회
+-- =============================================
+CREATE PROCEDURE [dbo].[uSP_LABOR_COST_R]
+(
+	 @P_DATE_LABOR_CLEAR DATETIME2 = ''
+	,@P_DATE_LABOR_YEAR INT = ''
+	,@P_DATE_LABOR_MONTH INT = ''
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+	SELECT 
+		 LC.[LABOR_ID]
+		,[YEAR]
+		,[MONTH]
+		,[YEAR_MONTH] = CONCAT([YEAR], '-', [MONTH])
+		,[JOB]
+		,[LABOR_NAME]
+		,[REGISTRATION_NUMBER]
+		,[TEL]
+		,[ADDRESS]
+		,[VERIFY]
+		,[EXCEPT]
+		,[BANK]
+		,[BANK_NUMBER]
+		,[DAILY_PAY]
+		,[TOTAL_PAY]
+		,[INCOME_TAX]
+		,[RESIDENCE_TAX]
+		,[EMPLOYMENT_INS]
+		,[ANNUITY_INS]
+		,[HEALTH_INS]
+		,[LONGTERM_INS]
+		,[DEDUCT_SUM]
+		,[ACTUAL_PAY]
+		,[DAY_1] 
+		,[DAY_2] 
+		,[DAY_3] 
+		,[DAY_4] 
+		,[DAY_5] 
+		,[DAY_6] 
+		,[DAY_7] 
+		,[DAY_8] 
+		,[DAY_9] 
+		,[DAY_10]
+		,[DAY_11]
+		,[DAY_12]
+		,[DAY_13]
+		,[DAY_14]
+		,[DAY_15]
+		,[DAY_16]
+		,[DAY_17]
+		,[DAY_18]
+		,[DAY_19]
+		,[DAY_20]
+		,[DAY_21]
+		,[DAY_22]
+		,[DAY_23]
+		,[DAY_24]
+		,[DAY_25]
+		,[DAY_26]
+		,[DAY_27]
+		,[DAY_28]
+		,[DAY_29]
+		,[DAY_30]
+		,[DAY_31]
+		,ISNULL(
+				SUM(
+		            ISNULL(CONVERT(INT, [DAY_1]), '') + ISNULL(CONVERT(INT, [DAY_2]), '') + ISNULL(CONVERT(INT, [DAY_3]), '') + ISNULL(CONVERT(INT, [DAY_4]), '') + ISNULL(CONVERT(INT, [DAY_5]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_6]), '') + ISNULL(CONVERT(INT, [DAY_7]), '') + ISNULL(CONVERT(INT, [DAY_8]), '') + ISNULL(CONVERT(INT, [DAY_9]), '') + ISNULL(CONVERT(INT, [DAY_10]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_11]), '') + ISNULL(CONVERT(INT, [DAY_12]), '') + ISNULL(CONVERT(INT, [DAY_13]), '') + ISNULL(CONVERT(INT, [DAY_14]), '') + ISNULL(CONVERT(INT, [DAY_15]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_16]), '') + ISNULL(CONVERT(INT, [DAY_17]), '') + ISNULL(CONVERT(INT, [DAY_18]), '') + ISNULL(CONVERT(INT, [DAY_19]), '') + ISNULL(CONVERT(INT, [DAY_20]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_21]), '') + ISNULL(CONVERT(INT, [DAY_22]), '') + ISNULL(CONVERT(INT, [DAY_23]), '') + ISNULL(CONVERT(INT, [DAY_24]), '') + ISNULL(CONVERT(INT, [DAY_25]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_26]), '') + ISNULL(CONVERT(INT, [DAY_27]), '') + ISNULL(CONVERT(INT, [DAY_28]), '') + ISNULL(CONVERT(INT, [DAY_29]), '') + ISNULL(CONVERT(INT, [DAY_30]), '') 
+				  + ISNULL(CONVERT(INT, [DAY_31]), '')
+					), '')  AS [SUM_WORKING_HOURS]
+		,
+		  COUNT(CASE WHEN [DAY_1] IS NOT NULL AND [DAY_1] != '' THEN 1 END) 
+		+ COUNT(CASE WHEN [DAY_2] IS NOT NULL AND [DAY_2] != '' THEN 1 END) 
+		+ COUNT(CASE WHEN [DAY_3] IS NOT NULL AND [DAY_3] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_4] IS NOT NULL AND [DAY_4] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_5] IS NOT NULL AND [DAY_5] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_6] IS NOT NULL AND [DAY_6] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_7] IS NOT NULL AND [DAY_7] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_8] IS NOT NULL AND [DAY_8] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_9] IS NOT NULL AND [DAY_9] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_10] IS NOT NULL AND [DAY_10] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_11] IS NOT NULL AND [DAY_11] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_12] IS NOT NULL AND [DAY_12] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_13] IS NOT NULL AND [DAY_13] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_14] IS NOT NULL AND [DAY_14] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_15] IS NOT NULL AND [DAY_15] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_16] IS NOT NULL AND [DAY_16] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_17] IS NOT NULL AND [DAY_17] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_18] IS NOT NULL AND [DAY_18] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_19] IS NOT NULL AND [DAY_19] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_20] IS NOT NULL AND [DAY_20] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_21] IS NOT NULL AND [DAY_21] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_22] IS NOT NULL AND [DAY_22] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_23] IS NOT NULL AND [DAY_23] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_24] IS NOT NULL AND [DAY_24] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_25] IS NOT NULL AND [DAY_25] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_26] IS NOT NULL AND [DAY_26] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_27] IS NOT NULL AND [DAY_27] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_28] IS NOT NULL AND [DAY_28] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_29] IS NOT NULL AND [DAY_29] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_30] IS NOT NULL AND [DAY_30] != '' THEN 1 END)
+		+ COUNT(CASE WHEN [DAY_31] IS NOT NULL AND [DAY_31] != '' THEN 1 END)
+		AS [COUNT_WORKING_DAYS]
+
+	  FROM LABOR_COST AS LC
+	  LEFT JOIN LABOR_WORKING_DAY AS LW
+	  ON LC.[LABOR_ID] = LW.[LABOR_ID]
+	  WHERE 1=1 AND
+			(
+				(YEAR(@P_DATE_LABOR_CLEAR) > 1800) AND ([YEAR] = @P_DATE_LABOR_YEAR AND [MONTH] = @P_DATE_LABOR_MONTH)
+				OR
+				(YEAR(@P_DATE_LABOR_CLEAR) < 1800) AND ([YEAR] = [YEAR] AND [MONTH] = [MONTH])
+			)
+	  GROUP BY LC.[LABOR_ID]
+		,[YEAR]
+		,[MONTH]
+		,[JOB]
+		,[LABOR_NAME]
+		,[REGISTRATION_NUMBER]
+		,[TEL]
+		,[ADDRESS]
+		,[VERIFY]
+		,[EXCEPT]
+		,[BANK]
+		,[BANK_NUMBER]
+		,[DAILY_PAY]
+		,[TOTAL_PAY]
+		,[INCOME_TAX]
+		,[RESIDENCE_TAX]
+		,[EMPLOYMENT_INS]
+		,[ANNUITY_INS]
+		,[HEALTH_INS]
+		,[LONGTERM_INS]
+		,[DEDUCT_SUM]
+		,[ACTUAL_PAY]
+		,[DAY_1] 
+		,[DAY_2] 
+		,[DAY_3] 
+		,[DAY_4] 
+		,[DAY_5] 
+		,[DAY_6] 
+		,[DAY_7] 
+		,[DAY_8] 
+		,[DAY_9] 
+		,[DAY_10]
+		,[DAY_11]
+		,[DAY_12]
+		,[DAY_13]
+		,[DAY_14]
+		,[DAY_15]
+		,[DAY_16]
+		,[DAY_17]
+		,[DAY_18]
+		,[DAY_19]
+		,[DAY_20]
+		,[DAY_21]
+		,[DAY_22]
+		,[DAY_23]
+		,[DAY_24]
+		,[DAY_25]
+		,[DAY_26]
+		,[DAY_27]
+		,[DAY_28]
+		,[DAY_29]
+		,[DAY_30]
+		,[DAY_31]
+	  ORDER BY LC.[YEAR], LC.[MONTH], LC.[LABOR_NAME];
+END
+
+
+
+
+
+
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. 달력의 연월을 클릭하면 ????년??월??시 어쩌구 가 되는데 ??시 어짜구랑 동일한 날이 없어서 검색이 안될때
+
+아래와 같이 해주면 된다. @P_DATE AS DATE 가 밭아온 파라미터인데 어쩌구 부분이랑 비교할때 딱 맞는 날은 세상에 없으므로 아래처럼 캐스팅해줘야한다.
+CAST(MC.[COST_DATE] AS DATE) = CAST(@P_DATE AS DATE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6. SQL에서 Guid.Empty 즉 Guid가 다 0으로 깔린걸 비교할때
+
+@P_CORP 는 받아온 Guid.Empty값이고 이를 비교하는 방법이다. 
+@P_CORP = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. 프로시저 의 값을 select문 안에 넣어주는 방법
+
+IF @P_USER_ID = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER)
+		OR @P_USER_ID IS NULL
+	BEGIN
+	-- TABLE[0] : VACATION
+		SELECT
+			  A.VACATION_ID
+			 ,A.VACATION_TYPE_ID
+			 ,B.VACATION_NAME
+			 ,A.[USER_ID]
+			 ,A.[USER_NAME]
+			 ,A.FROM_DATE
+			 ,A.TO_DATE
+			 ,A.FROM_MONTH_COUNT + A.TO_MONTH_COUNT AS DAY_REAL_COUNT
+			 ,A.CREATE_DATE
+			 ,CONVERT(BIT, CASE	WHEN C.WF_STATUS IS NULL	THEN 0	-- 결재가 진행되지 않은경우
+								WHEN C.WF_STATUS = 'CANCEL' THEN 0	-- 결재가 취소 된 경우 
+								WHEN C.WF_STATUS = 'STOP'	THEN 0	-- 결재가 부결 된 경우 
+								ELSE 1								-- 결재진행상태
+					 END) AS ISWF
+			 ,C.WF_STATUS
+			 ,DBO.uFN_WF_STATUS_NAME(C.WF_STATUS) AS WF_STATUS_NAME-- 결재 진행 상태
+		  FROM VACATION A
+		  INNER JOIN  VACATION_TYPE B ON A.VACATION_TYPE_ID = B.VACATION_TYPE_ID
+		  LEFT OUTER JOIN  WF_MAIN C ON A.VACATION_ID = C.WF_KEY
+		  WHERE A.IS_DELETED = 0
+		  AND	(A.FROM_YEAR = @P_YEAR OR A.TO_YEAR	= @P_YEAR)
+	   ORDER BY A.FROM_DATE DESC
+	END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. 쿼리할때 소수점을 제거하고 C#단에 보내주는법
+REPLACE(CONVERT(VARCHAR,CONVERT(MONEY,TOTAL_PRICE),1), '.00', '') AS TOTAL_PRICE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
