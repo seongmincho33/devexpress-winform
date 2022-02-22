@@ -84,17 +84,17 @@ namespace LinqSample001
             //{
             //    Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
             //}
-            var result05 =
-                from p in products
-                from o in orders
-                    .Where(o => o.ProductId == p.ProductId)
-                    .DefaultIfEmpty()
+    //        var result05 =
+    //            from p in products
+    //            from o in orders
+    //                .Where(o => o.ProductId == p.ProductId)
+    //                .DefaultIfEmpty();
 
-    Console.WriteLine("값 확인");
-            foreach (var item in result05)
-            {
-                Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
-            }
+    //Console.WriteLine("값 확인");
+    //        foreach (var item in result05)
+    //        {
+    //            Console.WriteLine($"{item.p.ProductId} : {item.p.Name} : {item.f?.OrderId}");
+    //        }
             #endregion left join
 
             #region group join
