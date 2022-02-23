@@ -1,32 +1,10 @@
-# C# 인덱스
-
-1. [BCL](bcl_library/bcl_library001.md)
-
-2. [C# 1.0](c1/c1_index.md)
-    1. [문법 요소](c1/syntax_elements001.md)
-    2. [프로젝트 구성](c1/project_structure001.md)
-    3. [예외](c1/exception001.md)
-    4. [스택](c1/stack001.md)    
-    5. [힙](c1/heap001.md)
-3. C# 2.0
-
-4. C# 3.0
-
-5. C# 4.0
-
-6. C# 5.0
-
-
-
-<hr />
-
 ## 기타
-1. [프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)](etc/etc001_call_by_reference.md)
+1. [프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)](etc001_call_by_reference.md)
     - Return Value
     - Delegate
     - LINQ Expression
     - Reflection
-2. [Validation(유효성 검사)](etc/etc002_validation.md)
+2. [Validation(유효성 검사)](etc002_validation.md)
 	- 주민등록번호
 	- 전화번호
 	- 이메일
@@ -34,8 +12,8 @@
 	- 주소
 	- 시간(날짜)
 	- Guid?
-3. [프로퍼티](property/property.md)
-4. [delegate(델리게이트)](delegate_and_event/delegate_and_event.md)
+3. 프로퍼티
+4. [delegate(델리게이트)](../delegate_and_event/delegate_and_event.md)
 
     1. 일반적인경우
     2. delegate 사용
@@ -47,7 +25,7 @@
         - Func<T> delegate
         - Predicate<T> delegate
 
-5. [링큐](linq/linq.md)
+5. [링큐](../linq/linq.md)
     1. 기본사용
     2. LINQ 확장메서드 사용
     3. 기본사용 CROSS JOIN
@@ -83,19 +61,3 @@
 		- 링큐패드 Tree
 		- 단축기
 _____________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

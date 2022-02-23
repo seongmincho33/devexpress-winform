@@ -8,11 +8,6 @@
 5. C# 4.0
 6. C# 5.0
 7. 기타
-	- 프로퍼티를 Call-By-Reference로 던지기(Passing properties by reference in C#)
-	- Validation(유효성 검사)
-	- 프로퍼티
-	- delegate(델리게이트)
-	- 링큐
 <br/>
 <br/>
 
