@@ -1,13 +1,13 @@
 # C# 인덱스
 
-1. [BCL](bcl_library/bcl_library001.md)
+1. BCL
 
 2. [C# 1.0](c1/c1_index.md)
-    1. [문법 요소](c1/syntax_elements001.md)
-    2. [프로젝트 구성](c1/project_structure001.md)
-    3. [예외](c1/exception001.md)
-    4. [스택](c1/stack001.md)    
-    5. [힙](c1/heap001.md)
+    1. 문법 요소
+    2. 프로젝트 구성
+    3. 예외
+    4. 스택
+    5. 힙
 3. C# 2.0
 
 4. C# 3.0
