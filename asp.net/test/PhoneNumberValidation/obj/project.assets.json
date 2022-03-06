@@ -8,31 +8,25 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\smjo\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\이영미\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\smjo\\Desktop\\조성민업무\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\Validation.csproj",
+      "projectUniqueName": "D:\\important_donot_delete\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\Validation.csproj",
       "projectName": "Validation",
-      "projectPath": "C:\\Users\\smjo\\Desktop\\조성민업무\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\Validation.csproj",
-      "packagesPath": "C:\\Users\\smjo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\smjo\\Desktop\\조성민업무\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\obj\\",
+      "projectPath": "D:\\important_donot_delete\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\Validation.csproj",
+      "packagesPath": "C:\\Users\\이영미\\.nuget\\packages\\",
+      "outputPath": "D:\\important_donot_delete\\devexpress-winform\\asp.net\\test\\PhoneNumberValidation\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\smjo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
+        "C:\\Users\\이영미\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },

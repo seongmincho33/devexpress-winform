@@ -13,5 +13,23 @@ namespace SmjoHelloWorld001
         {
 
         }
+        protected void btnGoogle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://www.google.com/");
+        }
+        protected void btnNaver_Click(object sender, EventArgs e)
+        {
+            string url = "http://www.naver.com/";
+            Response.Redirect(url);
+        }
+        protected void btnYouTube_Click(object sender, EventArgs e)
+        {
+            string url = String.Format(
+                "http://{0}/{1}"
+                , "yt3.ggpht.com"
+                , "yti/APfAmoFnlBcMY-O75AkJXEr6J26SXxUKVus6tVm0PQ=s88-c-k-c0x00ffffff-no-rj-mo");
+            Response.Redirect(url);
+
+        }
     }
 }

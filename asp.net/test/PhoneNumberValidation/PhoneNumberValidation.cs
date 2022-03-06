@@ -53,7 +53,7 @@ namespace Validation
             return phoneNumberWithHyphen;
         }
 
-        private bool IsAvailablePhoneNumber(string phoneNumber)
+        public bool IsAvailablePhoneNumber(string phoneNumber)
         {
             bool success = false;
             if (phoneNumber == null)

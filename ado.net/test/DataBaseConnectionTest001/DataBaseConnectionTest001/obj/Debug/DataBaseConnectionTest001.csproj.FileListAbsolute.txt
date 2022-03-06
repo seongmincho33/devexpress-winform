@@ -3,9 +3,9 @@ D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\bin\Debug\DataBaseConnectionTest001.pdb
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.csproj.AssemblyReference.cache
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.csproj.SuggestedBindingRedirects.cache
-D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.Form1.resources
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.Properties.Resources.resources
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.csproj.GenerateResource.cache
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.csproj.CoreCompileInputs.cache
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.exe
 D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.pdb
+D:\important_donot_delete\devexpress-winform\ado.net\test\DataBaseConnectionTest001\DataBaseConnectionTest001\obj\Debug\DataBaseConnectionTest001.DataBaseConnectionTest001.resources
