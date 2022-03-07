@@ -10,6 +10,13 @@ namespace LinqSample001
     {
         static void Main(string[] args)
         {
+            string fileName = "hello";
+            string filterExpression = "NAME = '" + fileName +"'";
+            //string filterExpression = "NAME = " + fileName;
+            Console.WriteLine(filterExpression);
+            Console.WriteLine(string.Format("NAME = '{0}'", fileName));
+            
+
             List<Product> products = new List<Product>();
             products.Add(new Product() { ProductId = 1, Name = "Product1", Price = 25 });
             products.Add(new Product() { ProductId = 2, Name = "Product2", Price = 15 });

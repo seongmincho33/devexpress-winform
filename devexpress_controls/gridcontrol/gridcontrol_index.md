@@ -43,6 +43,7 @@
 24. CellMerge 이벤트를 사용해서 셀 병합하는 방법
 25. 포커스가 먼저 주어진 그리드의 행에 색을 주는 방법(특이케이스)
 26. 데이터 바인딩이 된 그리드뷰는 행을 추가할 수 없다.
+27. 그리드뷰의 CellValueChanging 의 Cancel이 없기 때문에 셀의 Validation을 KeyPress로 해결하는 방법
 
 _________________________________________________________________________
 <br>
@@ -1513,3 +1514,30 @@ Something_DataGridView.Rows.Add();
 ```
 
 이유는 데이터바인딩한 후의 그리드뷰의 내용을 수정할 수 없기 때문입니다. 따라서 행을 추가하고 싶다면 그리드뷰가 아니라 바인딩한 데이터소스 즉, 데이터 테이블에 DataRow를 추가하면 됩니다. 'ㅁ'
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 27. 그리드뷰의 CellValueChanging 의 Cancel이 없기 때문에 셀의 Validation을 KeyPress로 해결하는 방법
+
+그리드뷰안에 있는 셀의 유효성검사를 하는데 CellValueChangin, ShowingEditor, ValidatingEdit? 뭐 이런 이벤트들로 하면 잘 안됩니다. 사용자로부터 입력을받을때 아예 눌리지 않는 방법으로 가야만 휴먼에러가 줄어들고 에러로그에 에러가 쌓이지 않습니다. 근데 CellValueChanging이 사용자가 이상한값을 넣으면 e.Value = Cancel 해줘야만 할거같은데 CellValueChanging이벤트에 이러한 이벤트 파라미터는 존재하지 않습니다. Devexpress에서 10년전에 안만들기로 했어요. 그러면 어쨌든간에 방법을 알아내야하는데...
+
+KeyPress가 있습니다.~! 근데 이게 애를좀 먹은게 사용자가 타이핑하고있을때는 GetFocusedRowCellValue 뭐 이런 걸로다가 포커스된 값을 가져올 수 없습니다. 타이핑이 되고 다른곳을 클릭해야지 그 값이 그리드에 바인딩 되거등요. 그래서 Devexpress 저의 노고를 알았는지 EditingValue라는 프로퍼티를 만들어놨습니다. 이게 사용자가 타이핑 하는 와중에 우리가 가져다 쓸 수 있는 프로퍼티입니다. 아래는 사용 예시입니다.
+
+```C#
+private void gridView_KeyPress(object sender, KeyPressEventArgs e)
+{          
+    GridView gridView = sender as GridView;
+    string editing_value = gridView.EditingValue.ToString();
+    // 숫자, 소수점만 입력
+    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+    {
+        if ((e.KeyChar == '.') == false)
+            e.Handled = true;
+    }
+
+    if (e.KeyChar == '.' && (string.IsNullOrEmpty(editing_value.Trim()) || editing_value.IndexOf('.') > -1))
+        e.Handled = true;
+}
+```

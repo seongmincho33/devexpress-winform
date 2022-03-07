@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LinqSample001"
+    "\\LinqSample001",
+    "\\LinqSample001\\Properties"
   ],
-  "SelectedNode": "\\LinqSample001.sln",
+  "SelectedNode": "\\LinqSample001\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
