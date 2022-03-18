@@ -44,7 +44,8 @@
 25. 포커스가 먼저 주어진 그리드의 행에 색을 주는 방법(특이케이스)
 26. 데이터 바인딩이 된 그리드뷰는 행을 추가할 수 없다.
 27. 그리드뷰의 CellValueChanging 의 Cancel이 없기 때문에 셀의 Validation을 KeyPress로 해결하는 방법
-
+28. 그리드뷰 행 멀티 삭제
+29. PopulateColumns 에 관하여
 _________________________________________________________________________
 <br>
 
@@ -748,6 +749,77 @@ private void Btn_Down()
         ColumnView cv = ((ColumnView)((BandedGridView)this.Grid_SEQ.DefaultView).GridControl.FocusedView);
         cv.MoveNext();
         cv.Focus();
+    }
+}
+```
+
+2022-03-18 추가
+
+행 여러개를 선택하고 옮기는 위아래 버튼입니다. 
+
+```C#
+private void BtnUp_Click(object sender, EventArgs e)
+{
+    int[] rows_index = bandedGridView1.GetSelectedRows();
+
+    //change value
+    foreach (int row_index in rows_index)
+    {
+        DataRow row1 = bandedGridView1.GetDataRow(row_index);
+        DataRow row2 = bandedGridView1.GetDataRow(row_index - 1);
+
+        if (row1 == null || row2 == null)
+        {
+            return;
+        }
+
+        object[] val1 = row1.ItemArray;
+        object[] val2 = row2.ItemArray;
+
+        row1.ItemArray = val2;
+        row2.ItemArray = val1;
+
+        row1[2] = val1[2];
+        row2[2] = val2[2];                
+    }
+
+    //select multiple rows
+    bandedGridView1.ClearSelection();            
+    foreach(var row_index in rows_index)
+    {
+        bandedGridView1.SelectRow(row_index - 1);
+    }
+}
+
+private void BtnDown_Click(object sender, EventArgs e)
+{           
+    int[] rows_index = bandedGridView1.GetSelectedRows();           
+    //change value
+    foreach (int row_index in rows_index.Reverse())
+    {
+        DataRow row1 = bandedGridView1.GetDataRow(row_index);
+        DataRow row2 = bandedGridView1.GetDataRow(row_index + 1);
+
+        if(row1 == null || row2 == null)
+        {
+            return;
+        }
+
+        object[] val1 = row1.ItemArray;
+        object[] val2 = row2.ItemArray;
+
+        row1.ItemArray = val2;
+        row2.ItemArray = val1;
+
+        row1[2] = val1[2];
+        row2[2] = val2[2];
+    }
+
+    //select multiple rows
+    bandedGridView1.ClearSelection();
+    foreach (var row_index in rows_index)
+    {
+        bandedGridView1.SelectRow(row_index + 1);
     }
 }
 ```
@@ -1541,3 +1613,79 @@ private void gridView_KeyPress(object sender, KeyPressEventArgs e)
         e.Handled = true;
 }
 ```
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 28. 그리드뷰 행 멀티 삭제
+
+아래는 그리드뷰안의 여러개의 행을 선택하고 삭제할때 예제입니다. 참고하세요.
+```C#
+/// <summary>
+/// 현재 탭 Soil Layer 행 삭제
+/// </summary>
+private void BtnDelete_Click(object sender, EventArgs e)
+{                
+    var item = MainData.SoilBHInfoList.FirstOrDefault(x => x.BHId == this.info.BHId);
+
+    if (item != null) 
+    {
+        if (bandedGridView1.SelectedRowsCount > 1)
+        {                    
+            string selected_rows = String.Join(",", GetSelectedValues(bandedGridView1));
+            var result = XtraMessageBox.Show(this, String.Format("Are you sure you want to delete No. {0} ?", selected_rows), MainData.ProgramName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
+
+            if (bandedGridView1.FocusedRowHandle < 0) return;
+            bandedGridView1.DeleteSelectedRows();
+            int i = 1;
+            foreach (DataRow row in item.SoilLayerTable.Rows)
+            {
+                if (row.RowState == DataRowState.Deleted) continue;
+
+                row["SoilNo"] = (i++).ToString();
+            }
+        }
+        else
+        {
+            if (bandedGridView1.FocusedRowHandle < 0) return;
+            string soilLayerId = bandedGridView1.GetFocusedRowCellValue("SoilLayerId").ToString();
+
+            var rows = item.SoilLayerTable.Select($"SoilLayerId='{soilLayerId}'");
+            if (rows.Length > 0)
+                rows[0].Delete();
+
+            int i = 1;
+            foreach (DataRow row in item.SoilLayerTable.Rows)
+            {
+                if (row.RowState == DataRowState.Deleted) continue;
+
+                row["SoilNo"] = (i++).ToString();
+            }
+        }              
+        gridControl.RefreshDataSource();
+    }    
+}
+
+private object[] GetSelectedValues(BandedGridView bandedGridView, string fieldName = "SoilNo")
+{
+    int[] selectedRows = bandedGridView.GetSelectedRows();
+    object[] result = new object[selectedRows.Length];
+    for (int i = 0; i < selectedRows.Length; i++)
+    {
+        int rowHandle = selectedRows[i];
+        if (!bandedGridView1.IsGroupRow(rowHandle))
+        {
+            result[i] = bandedGridView.GetRowCellValue(rowHandle, fieldName);
+        }
+        else
+            result[i] = -1;
+    }
+    return result;
+}
+```
+
+# 29. PopulateColumns에 관하여
+
