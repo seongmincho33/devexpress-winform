@@ -194,6 +194,8 @@ class Program
 3 : Product3 : 4
 ```
 
+![img](../../img/c_img/etc/etc005/c_linq_crossjoin.png)
+
 이 결과로 부터 알 수 있는것은 result02를 반환할때 from 의 순서에 따라서 다른 결과의 crossjoin 오더를 만든다는 것입니다. 처음에 온 from 절의 모든요소들을 처음부터 하나씩 뽑아서 두번째 from 절의 데이터 전부를 계속 조인하는 방식인것을 알 수 있습니다. 
 
 <br />

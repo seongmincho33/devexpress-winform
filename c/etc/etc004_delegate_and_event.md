@@ -94,7 +94,7 @@ namespace delegateSample001
 ```
 실행 결과 :
 
-<img src="../img/c_img/delegate/c_delegate_1.png" width="400" height="200"/>
+![img](../../img/c_img/etc/etc004/c_delegate_1.png)
 
 아래부터는 처음부터 delegate에 관해서 설명합니다. 
 
@@ -129,7 +129,7 @@ namespace delegateSample001
 
 실행결과 :
 
-<img src="../img/c_img/delegate/c_delegate_일반적인경우.png" width="300" height="100"/>
+![img](../../img/c_img/etc/etc004/c_delegate_일반적인경우.png)
 
 <br>
 <br>
@@ -176,7 +176,7 @@ namespace delegateSample001
 
 실행결과 :
 
-<img src="../img/c_img/delegate/c_delegate_use.png" width="300" height="100"/>
+![img](../../img/c_img/etc/etc004/c_delegate_use.png)
 
 <br>
 <br>
@@ -222,7 +222,7 @@ namespace delegateSample001
 
 실행결과 :
 
-<img src="../img/c_img/delegate/c_delegate_use_when.png" width="300" height="100"/>
+![img](../../img/c_img/etc/etc004/c_delegate_use_when.png)
 
 <br>
 <br>
@@ -256,11 +256,11 @@ namespace delegateSample001
 
 실행결과 :
 
-<img src="../img/c_img/delegate/c_delegate_use_where.png" width="300" height="100"/>
+![img](../../img/c_img/etc/etc004/c_delegate_use_where.png)
 
 먼저 EvnetHandler 에 대해서 좀 알아보자면 아래와 같이 선언되어있습니다.
 
-<img src="../img/c_img/delegate/c_delegate_eventhandler_1.png" width="800" height="400"/>
+![img](../../img/c_img/etc/etc004/c_delegate_eventhandler_1.png)
 
 바로 위 사진을 보면 public delegate void EventHandler(object sender, EventArgs e);로 선언되어있는것을 볼 수 있습니다. 따라서 등록해주는 함수(본인의 함수)의 파라미터도 첫번째는 object형이고 두번째는 EventArgs이어야 합니다. 용어정리를 하자면, 콜백 메서드는 본인의 메서드입니다. 등록해주는 메서드 = 콜백 메서드 입니다. 이벤트던 델리게이트(대리자)던 콜백메서드를 호출하고 콜백메서드가 일을하게 만듭니다. 따라서 위의 콜백 메서드는 txtBox_Clicked() 가 되겠습니다. 
 
@@ -274,7 +274,7 @@ delegate와 event의 차이라면 델리게이트는 자신의 하는 일을 하
 
 먼저 솔루션 하위 프로젝트 구조입니다. MyButtonClass프로젝트를 delegateSample002가 참조하고있습니다.
 
-<img src="../img/c_img/delegate/c_delegate_event_1.png" width="400" height="300"/>
+![img](../../img/c_img/etc/etc004/c_delegate_event_1.png)
 
 아래는 폼 클래스입니다.
 
@@ -384,7 +384,7 @@ namespace MyButtonClass
 
 실행 결과 :
 
-<img src="../img/c_img/delegate/c_delegate_event_2.png" width="800" height="450"/>
+![img](../../img/c_img/etc/etc004/c_delegate_event_2.png)
 
 ## 6). MS 제공 델리게이트
 
