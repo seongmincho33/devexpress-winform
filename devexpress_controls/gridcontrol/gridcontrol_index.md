@@ -46,6 +46,7 @@
 27. 그리드뷰의 CellValueChanging 의 Cancel이 없기 때문에 셀의 Validation을 KeyPress로 해결하는 방법
 28. 그리드뷰 행 멀티 삭제
 29. PopulateColumns 에 관하여
+30. XtraTabPageControl의 텝페이지를 마우스로 옮기는 방법
 _________________________________________________________________________
 <br>
 
@@ -1688,4 +1689,62 @@ private object[] GetSelectedValues(BandedGridView bandedGridView, string fieldNa
 ```
 
 # 29. PopulateColumns에 관하여
+
+______________________________________________________________________________________________________
+
+<br>
+
+# 30. XtraTabPageControl의 텝페이지를 마우스로 옮기는 방법
+
+```C#
+   this.xtcBorehole.AllowDrop = true;
+            this.xtcBorehole.DragOver += this.XtcBorehole_DragOver;
+            this.xtcBorehole.MouseMove += this.XtcBorehole_MouseMove;
+            this.xtcBorehole.MouseDown += this.XtcBorehole_MouseDown;
+            this.MouseDown += this.XtcBorehole_MouseDown;
+            this.DragOver += this.XtcBorehole_DragOver;
+            this.MouseMove += this.XtcBorehole_MouseMove;
+```
+
+```C#
+        private void XtcBorehole_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            XtraTabControl c = sender as XtraTabControl;
+            p = new Point(e.X, e.Y);
+            XtraTabHitInfo hi = c?.CalcHitInfo(p);
+            if (hi == null)
+                return;
+            ; page = hi.Page;
+            if (hi.Page == null)
+                p = Point.Empty;
+        }
+
+        private void XtcBorehole_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                if ((p != Point.Empty) && ((Math.Abs(e.X - p.X) > SystemInformation.DragSize.Width) || (Math.Abs(e.Y - p.Y) > SystemInformation.DragSize.Height)))
+                    this.xtcBorehole.DoDragDrop(sender, DragDropEffects.Move);
+        }
+
+        private void XtcBorehole_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            XtraTabControl c = sender as XtraTabControl;
+            if (c == null)
+                return;
+            XtraTabHitInfo hi = c.CalcHitInfo(c.PointToClient(new Point(e.X, e.Y)));
+            if (hi.Page != null)
+            {
+                if (hi.Page != page)
+                {
+                    if (c.TabPages.IndexOf(hi.Page) < c.TabPages.IndexOf(page))
+                        c.TabPages.Move(c.TabPages.IndexOf(hi.Page), page);
+                    else
+                        c.TabPages.Move(c.TabPages.IndexOf(hi.Page) + 1, page);
+                }
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+                e.Effect = DragDropEffects.None;
+        }
+```
 
