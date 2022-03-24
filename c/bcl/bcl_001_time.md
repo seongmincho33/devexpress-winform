@@ -125,6 +125,10 @@ Console.WriteLine(DateTime.UtcNow.Ticks / 10000); // 출력 : 63496674226482
 long javaMillis = (DateTime.UtcNow.Ticks - 621355968000000000) / 10000;
 ```
 
+<br />
+<br />
+<br />
+
 ## 2. System.TimeSpan
 
 DateTime 타입에 대해 사칙 연산 중에서 유일하게 허용되는 것이 "빼기"입니다. 그리고 빼기의 연산 결과 값은 2개의 DateTime 사이의 시간 간격을 나타내는 TimeSpan으로 나옵니다. 
@@ -146,6 +150,10 @@ class Program
 ```
 
 TotalDays 말고도, TotalHours, TotalMilliseconds, TotalMinutes, TotalSeconds등의 속성을 통해 손쉽게 해당하는 단위의 시간 간격을 알 수 있습니다.
+
+<br />
+<br />
+<br />
 
 ## 3. System.Diagnostics.Stopwatch
 

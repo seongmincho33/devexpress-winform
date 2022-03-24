@@ -1697,54 +1697,219 @@ ________________________________________________________________________________
 # 30. XtraTabPageControl의 텝페이지를 마우스로 옮기는 방법
 
 ```C#
-   this.xtcBorehole.AllowDrop = true;
-            this.xtcBorehole.DragOver += this.XtcBorehole_DragOver;
-            this.xtcBorehole.MouseMove += this.XtcBorehole_MouseMove;
-            this.xtcBorehole.MouseDown += this.XtcBorehole_MouseDown;
-            this.MouseDown += this.XtcBorehole_MouseDown;
-            this.DragOver += this.XtcBorehole_DragOver;
-            this.MouseMove += this.XtcBorehole_MouseMove;
+this.xtcBorehole.AllowDrop = true;
+this.xtcBorehole.DragOver += this.XtcBorehole_DragOver;
+this.xtcBorehole.MouseMove += this.XtcBorehole_MouseMove;
+this.xtcBorehole.MouseDown += this.XtcBorehole_MouseDown;
+this.MouseDown += this.XtcBorehole_MouseDown;
+this.DragOver += this.XtcBorehole_DragOver;
+this.MouseMove += this.XtcBorehole_MouseMove;
 ```
 
 ```C#
-        private void XtcBorehole_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            XtraTabControl c = sender as XtraTabControl;
-            p = new Point(e.X, e.Y);
-            XtraTabHitInfo hi = c?.CalcHitInfo(p);
-            if (hi == null)
-                return;
-            ; page = hi.Page;
-            if (hi.Page == null)
-                p = Point.Empty;
-        }
+private void XtcBorehole_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+{
+    XtraTabControl c = sender as XtraTabControl;
+    p = new Point(e.X, e.Y);
+    XtraTabHitInfo hi = c?.CalcHitInfo(p);
+    if (hi == null)
+        return;
+    ; page = hi.Page;
+    if (hi.Page == null)
+        p = Point.Empty;
+}
 
-        private void XtcBorehole_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                if ((p != Point.Empty) && ((Math.Abs(e.X - p.X) > SystemInformation.DragSize.Width) || (Math.Abs(e.Y - p.Y) > SystemInformation.DragSize.Height)))
-                    this.xtcBorehole.DoDragDrop(sender, DragDropEffects.Move);
-        }
+private void XtcBorehole_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+{
+    if (e.Button == MouseButtons.Left)
+        if ((p != Point.Empty) && ((Math.Abs(e.X - p.X) > SystemInformation.DragSize.Width) || (Math.Abs(e.Y - p.Y) > SystemInformation.DragSize.Height)))
+            this.xtcBorehole.DoDragDrop(sender, DragDropEffects.Move);
+}
 
-        private void XtcBorehole_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
+private void XtcBorehole_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
+{
+    XtraTabControl c = sender as XtraTabControl;
+    if (c == null)
+        return;
+    XtraTabHitInfo hi = c.CalcHitInfo(c.PointToClient(new Point(e.X, e.Y)));
+    if (hi.Page != null)
+    {
+        if (hi.Page != page)
         {
-            XtraTabControl c = sender as XtraTabControl;
-            if (c == null)
-                return;
-            XtraTabHitInfo hi = c.CalcHitInfo(c.PointToClient(new Point(e.X, e.Y)));
-            if (hi.Page != null)
-            {
-                if (hi.Page != page)
-                {
-                    if (c.TabPages.IndexOf(hi.Page) < c.TabPages.IndexOf(page))
-                        c.TabPages.Move(c.TabPages.IndexOf(hi.Page), page);
-                    else
-                        c.TabPages.Move(c.TabPages.IndexOf(hi.Page) + 1, page);
-                }
-                e.Effect = DragDropEffects.Move;
-            }
+            if (c.TabPages.IndexOf(hi.Page) < c.TabPages.IndexOf(page))
+                c.TabPages.Move(c.TabPages.IndexOf(hi.Page), page);
             else
-                e.Effect = DragDropEffects.None;
+                c.TabPages.Move(c.TabPages.IndexOf(hi.Page) + 1, page);
         }
+        e.Effect = DragDropEffects.Move;
+    }
+    else
+        e.Effect = DragDropEffects.None;
+}
 ```
 
+```C#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.Charts.Native;
+using FDN.AUTOMATION.COMMON;
+using FDN.AUTOMATION.DB;
+using FDN.AUTOMATION.Model.Calculation;
+using FDN.AUTOMATION.Model;
+using FDN.AUTOMATION.UI.Common;
+using static FDN.AUTOMATION.Model.EnumDefinition;
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Resources;
+using System.Diagnostics;
+using DevExpress.XtraGrid.Views.Base;
+using static DevExpress.XtraPrinting.Native.ExportOptionsPropertiesNames;
+
+namespace FDN.AUTOMATION.UI
+{
+    public partial class CalculationProgress : DevExpress.XtraEditors.XtraForm
+    {
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        private static bool _isCloseCall = false;
+        private bool _cannotClose = true;
+        private static int _progress_step;
+        private static bool _performStep = false;
+        private static string _currentStep = "Calculating...";
+
+        public CalculationProgress()
+        {
+            InitializeComponent();
+            SetControls();
+        }
+
+        private void SetControls()
+        {
+            this.simpleButton1.Text = "CANCEL";
+            this.simpleButton1.Click += simpleButton1_Click;
+            this.progressBarControl1.Properties.Step = 1;
+            this.progressBarControl1.Properties.ShowTitle = true;
+            this.progressBarControl1.Properties.PercentView = true;
+            this.progressBarControl1.Properties.Maximum = 100;
+            this.progressBarControl1.Properties.Minimum = 0;
+        }
+
+        #region 프로그래스바 실행 메서드
+        /// <summary>
+        /// 프로세스의 진행상태를 나타내는 팝업을 생성합니다.
+        /// </summary>
+        /// <param name="progressStep">몇번에 나눠서 progress를 진행할지 정해주세요.</param>
+        public static void ProgressShow(int progressStep)
+        {
+            Process process = Process.GetCurrentProcess();
+            Control mainWindow = Control.FromHandle(process.MainWindowHandle);
+
+            _isCloseCall = false;
+            _progress_step = 100 / progressStep;
+
+            Thread thread = new Thread(new ParameterizedThreadStart(ThreadShowWait));
+            thread.Start(new object[] { mainWindow });               
+        }
+        /// <summary>
+        /// 계산 진행하고 나서 호출하는 메서드입니다(프로그래스바 스텝 증가).
+        /// </summary>
+        /// <param name="message">진행 상태 메세지</param>
+        public static void Progressed(string message = "Calculating...")
+        {
+            _currentStep = message;
+            _performStep = true;
+        }
+        /// <summary>
+        /// 프로그래스바 화면을 닫아줍니다.
+        /// </summary>
+        /// <param name="formFront">호출한 메인화면의 객체</param>
+        public static void ProgressClose(Form formFront)
+        {
+            _isCloseCall = true;
+
+            SetForegroundWindow(formFront.Handle);
+            formFront.BringToFront();
+        }
+        #endregion
+
+        private static void ThreadShowWait(object obj)
+        {
+            object[] objParam = obj as object[];
+            CalculationProgress calculationProgress = new CalculationProgress();
+            Control mainWindow = objParam[0] as Control;
+
+            calculationProgress.progressBarControl1.Properties.Step = _progress_step;
+            if (mainWindow != null)
+            {
+                calculationProgress.StartPosition = FormStartPosition.Manual;
+                calculationProgress.Location = new Point(
+                    mainWindow.Location.X + (mainWindow.Width / 2 - calculationProgress.Width / 2)
+                    , mainWindow.Location.Y + (mainWindow.Height / 2 - calculationProgress.Height / 2)
+                    );
+            }
+            else
+            {
+                calculationProgress.StartPosition = FormStartPosition.CenterScreen;
+            }
+
+            calculationProgress.Show();
+            calculationProgress.BringToFront();
+
+            while (!_isCloseCall)
+            {
+                calculationProgress.lblCurrentStep.Text = _currentStep.ToString();
+                calculationProgress.PerformStepProgressBar(_performStep);
+                Application.DoEvents();               
+                Thread.Sleep(100);
+            }
+
+            if (calculationProgress != null)
+            {
+                calculationProgress.CloseForce();
+                calculationProgress = null;
+            }
+        }
+
+        private void PerformStepProgressBar(bool performStep)
+        {
+            if (performStep)
+            {
+                this.progressBarControl1.PerformStep();
+                this.progressBarControl1.Update();
+                _performStep = false;
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (_cannotClose)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            base.OnClosing(e);
+        }
+
+        private void CloseForce()
+        {
+            _cannotClose = false;
+            this.Close();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            _isCloseCall = true;
+            this.simpleButton1.Text = "OK";
+        }
+    }
+}
+```
