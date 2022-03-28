@@ -2,23 +2,18 @@
 
 목차
 
-1. ApplicationSettings
-2. DataBindings
-3. AllowDrop
-4. AllowHtmlTextInToolTip
-5. CausesValidation
-6. EnterMoveNextControl
-7. GenerateMember
-8. ImeMode
-9. Menumanager
-10. StyleController
-11. SuperTip
-12. TabIndex
-13. TabStop
-14. Tag
-15. ToolTipAnchor
-16. ToolTipController
-17. UseWaitCursor
+1. [ApplicationSettings(MS)](#1-applicationsettings)
+2. [DataBindings(MS)](#2-databindings)
+3. [AllowDrop(MS)](#3-allowdrop)
+4. [AllowHtmlTextInToolTip(DevExpress)](#4-allowhtmltextintooltip)
+5. [GenerateMember, Modifiers(MS)](#5-generatemember-and-modifiers)
+6. [ImeMode(MS)](#6-imemode)
+7. [Menumanager(DevExpress)](#7-menumanager)
+8. [StyleController(DevExpress)](#8-stylecontroller)
+9. [SuperTip(DevExpress)](#9-supertip)
+10. [ToolTipAnchor(DevExpress)](#10-tooltipanchor)
+11. Tag
+12. UseWaitCursor
 
 <hr />
 <br />
@@ -429,5 +424,174 @@ private void Form1_DragEnter(object sender, DragEventArgs e)
    {
       e.Effect = DragDropEffects.None;
    }
+}
+```
+
+## 4. AllowHtmlTextInToolTip
+
+<hr />
+<br />
+
+## 5. GenerateMember and Modifiers
+
+GenerateMember는 Default값이 true이고 디자이너에 맴버로 생성합니다. 왠만하면 건드릴 일이 없어보입니다. Modifers는 맴버의 한정자를 선택하는 기능을 제공합니다. 
+
+```C#
+private void InitializeComponent()
+{
+    // button3 is declared in a local scope, because
+    // its GenerateMember property is false.
+    System.Windows.Forms.Button button3;
+    this.button1 = new System.Windows.Forms.Button();
+    this.button2 = new System.Windows.Forms.Button();
+    button3 = new System.Windows.Forms.Button();
+}
+```
+
+```C#
+// The Modifiers property for button1 is "private".
+private Button button1;
+
+// The Modifiers property for button2 is "protected".
+protected Button button2;
+
+// button3 is not a member, because
+// its GenerateMember property is false.
+```
+
+<hr />
+<br />
+
+## 6. ImeMode
+
+선택된 객체의 입력기의 상태를 선택할 수 있습니다. 제품의 infrastructure를 위한것이지 코드단에서 사용하는것이 아니랍니다. IME(Input Method Editor)를 사용하면, 중국어, 일본어, 및 한국어 문자를 입력하고 편집할 수 있습니다. 보통 인코딩할 수 있는것보다 많은 문자를 지원합니다. IME는 개별 문자 또는 문자그룹을 설명하는 기본 문자 시퀀스를 사용하여 더 많은 문자 집합을 입력할 수 있도록 합니다. 기본문자 중에는 한글 음절의 구성문자 등이 있습니다. 
+
+아래는 예제입니다. 폼의 InputLanguageChanged 이벤트 핸들러에 작성한 이벤트를 등록합니다. 
+
+```C#
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+public class Form1 : System.Windows.Forms.Form
+{
+    RichTextBox rtb = new RichTextBox();
+    public Form1()
+    {
+        this.Controls.Add(rtb);
+        rtb.Dock = DockStyle.Fill;
+        this.InputLanguageChanged += new InputLanguageChangedEventHandler(languageChange);
+    }
+    private void languageChange(Object sender, InputLanguageChangedEventArgs e)
+    {
+        //한국어로 설정합니다.        
+        if (e.InputLanguage.Culture.TwoLetterISOLanguageName.Equals("ko"))
+        {
+            rtb.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+        }
+    }
+    public static void Main(string[] args)
+    {
+        Application.Run(new Form1());
+    }
+}
+```
+
+<hr />
+<br />
+
+## 7. Menumanager
+
+타입은 DevExpress.Utils.Menu.IDXMenuManager	이고 기본값은 null입니다. popup menu의 look and feel을 컨트롤 합니다. MenuManager프로퍼티는 프로그래머로부터 IDXMenuManager 객체를 선택할 수 있게 합니다. 프로퍼티가 현재 null값이라면 컨트롤의 popup menus는 컨트롤 자신이 그리게 됩니다. 
+
+현재는 IDXMenuManager 인터페이스는 BarManager 컴포넌트로부터 상속되어있습니다. BarManager는 DevExpress.Ribbon, Menu, Docking 라이브러리에 있습니다. 
+
+만약 MenuManager프로퍼티를 BarManager객체로 할당하면 좀더 다른 Look and Feel을 줄 수 있습니다. 이런경우 look and feel의 셋팅값은 BarManager에서 사용하는 BarAndDockingController 의 BarAndDockingController.LookAndFeel 프로퍼티로 컨트롤됩니다. 
+
+번외로 스킨에 대해서 알아보겠습니다. 어플리케이션의 모든 컴포넌트들에 스킨을 씌우는것이 Look And Feel과 관련이 있습니다. 먼저 프로젝트를 오른쪽 클릭하고 DevExpress 설정을 눌러줍니다.
+
+![img](../img/devexpress_img/properties/005.png)
+
+여기서 스킨에 관련된 설정을 할 수 있는데 클래스가 static전역으로 되어있는것 같습니다. 여튼 여기서 원하는 스킨을 골라줍니다. 저는 McSkin을 골라봤습니다.
+
+![img](../img/devexpress_img/properties/006.png)
+
+아래의 코드를 코드단에 넣어줘야합니다. DevExpress.LookAndFeel은 전역입니다.
+
+```C#
+ DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("McSkin");
+```
+아래와 같이 스킨이 씌워진것을 확인할 수 있습니다.
+
+![img](../img/devexpress_img/properties/007.png)
+
+<hr />
+<br />
+
+## 8. StyleController
+
+스타일 컨트롤러 객체를 생성하고 그 객체의 속성을 원하는 값으로 바꿔준다음 BaseControl을 상속하는 모든 객체들에게 BaseControl.StyleController에 할당하면 원하는 값으로 바뀌게 됩니다. 도구상자에서 StyleController를 가져다가 놓을 수도 있지만 코드단에서 객체를 생성하고 관리하는것이 좀더 좋아보입니다. 이렇게 한다면 여러개의 컨트롤들에게, 원하는만큼 동일한 스타일을 부여할 수 있습니다. 
+
+```C#
+using DevExpress.XtraEditors;
+// Create and customize the Style Controller.
+StyleController styleController1 = new StyleController();
+// Set the background color.
+styleController1.Appearance.BackColor = Color.LightYellow;
+// Customize the LookAndFeel settings.
+//스킨 이름은 데브의 LookAndFeel관련 항목을 보면 됩니다. 
+styleController1.LookAndFeel.UseDefaultLookAndFeel = false;
+styleController1.LookAndFeel.SkinName = "Office 2016 Colorful"; 
+// Assign the StyleController to editors.
+buttonEdit1.StyleController = styleController1;
+lookUpEdit1.StyleController = styleController1;
+```
+
+<hr />
+<br />
+
+## 9. SuperTip
+
+SuperTip은 컨트롤에 마우스 커서를 가져다 대면 나오는 작은 메모입니다. 사용자에게 컨트롤의 힌트를 주는 방법입니다. 코드단에서 설정할 수도 있고 VisualStudio의 Property 속성 변경을 통해서도 가능합니다. 
+
+먼저 SuperTip속성을 찾습니다.
+
+![img](../img/devexpress_img/properties/008.png)
+
+다음으로 속성을 관리하는 윈도우창이 생성되는데 여기서 메모의 형식과 내용을 작성해 줍니다.
+
+![img](../img/devexpress_img/properties/009.png)
+
+짜란~
+
+![img](../img/devexpress_img/properties/010.png)
+
+<hr />
+<br />
+
+## 10. ToolTipAnchor
+
+컨트롤의 툴팁이 마우스 포인터에 상대적으로 고정되는지 아니면 소유하는 컨트롤에 상대적으로 고정되는지 여부를 지정하는 앵커 값입니다. 기본 디폴트값으로는 Default가 지정되어 있고, 기본이라면 마우스 포인터에 상대적으로 툴팁이 고정되어 보입니다. 
+
+만약 아래와 같이 다른 컨트롤의 툴팁정보를 가져와 이벤트 GetActiveObjectIfo로 할당하면 툴팁엥커는 상관없어지게 됩니다. 아래는 groupControl1에 다가 button1 에서 가져온 툴팁정보를 넣어줄때 예시입니다. 
+
+```C#
+private void SetTooltipAnchor()
+{
+    this.groupControl1.ToolTipController.GetActiveObjectInfo += toolTipController1_GetActiveObjectInfo;
+}
+
+private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
+{
+    //버튼이 가지고 있는 툴팁컨트롤을 가져옵니다. 
+    ToolTipControlInfo info = new ToolTipControlInfo(this.button1, "hihi");
+    info.SuperTip = new SuperToolTip();
+    info.SuperTip.Items.Add(new ToolTipTitleItem() { Text = "안녕하세요" });
+    info.SuperTip.Items.Add(new ToolTipItem() { Text = "ㅎㅇㅎㅇ" });
+    info.ObjectBounds = e.SelectedControl.RectangleToScreen(e.SelectedControl.ClientRectangle);
+    e.Info = info;
 }
 ```

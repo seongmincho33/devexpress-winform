@@ -143,3 +143,22 @@ class Program
     }
 }
 ```
+
+문자열의 "=="비교 연산자는 대소문자를 무시하는 기능은 없지만 대신 Equals메서드로 바꾸면 가능합니다.
+
+```C#
+string txt = "Hello";
+
+Console.WriteLine(txt + " == Hello: " + (txt == "Hello")); //출력결과 false
+Console.WriteLine(txt + " == Hello: " + (txt.Equals("Hello", String Comparison.OrdinalIgnoreCase))); //출력결과 true
+
+Console.WriteLine();
+```
+
+마지막으로 Format메서드에 대해서 알아봅니다. 이 메서드의 주된 기능은 인자를 형식 문자열에 포함된 번호와 맞춰서 치환하는 기능입니다. 다음코드를 보면 쉽게 이해됩니다.
+
+```C#
+string txt = "Hello {0}: {1}";
+
+string output = string.Format(txt, ")
+```
