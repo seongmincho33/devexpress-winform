@@ -1,6 +1,372 @@
-# 1. GridControl
+# 목차
 
-<img src="../../img/gridcontrol_img/gridcontrol.png" width="400" height="400"/>
+1. [컨트롤 공통속성](#컨트롤-공통속성)
+2. [GridControl](#gridcontrol)
+3. [SpreadSheetControl](#spreadsheetcontrol)
+4. [DateEditControl](#dateeditcontrol)
+5. [TextEditControl](#textedit)
+
+<hr />
+<br />
+<br />
+<br />
+
+# 컨트롤 공통속성
+
+1. ApplicationSettings
+2. DataBindings
+3. AllowDrop
+4. AllowHtmlTextInToolTip
+5. CausesValidation
+6. EnterMoveNextControl
+7. GenerateMember
+8. ImeMode
+9. Menumanager
+10. StyleController
+11. SuperTip
+12. TabIndex
+13. TabStop
+14. Tag
+15. ToolTipAnchor
+16. ToolTipController
+17. UseWaitCursor
+
+<hr />
+<br />
+
+## 1. ApplicationSettings
+
+이 속성은 모든 컨트롤에 있는 속성인데 사용자가 값을 바꾸면 셋팅값으로 저장했다가 다시 불러오는 기능입니다. 쉽게 설명하자면 윈도우 사이즈를 사용자가 줄이거나 늘렸을때 프로그램을 끄고 다시키면 사용자가 설정한 값을 다시 불러오는 기능입니다. 물론 이건 하나의 예시고 다른용도입니다. 아래는 예시입니다.
+
+먼저 프로젝트에 셋팅값 변수를 생성해 주어야 합니다. 프로젝트를 오른쪽 클릭한 후 속성을 눌러주세요.
+
+![img](../img/devexpress_img/properties/001.png)
+
+프로젝트의 셋팅값 변수를 할당합니다. 여기에 이름과 형식 법위 값이 중요한데 값이 없으면 nullexception을 냅니다. 형식에 따라서 ApplicationSettings 하위에 PropertyBinding 속성에 바인딩 할 수 있는 속성이 달라집니다.
+
+![img](../img/devexpress_img/properties/002.png)
+
+메인 폼 컨트롤의 속성으로 들어가면 ApplicationsSettings 하위에 PropertyBinding속성 컬렉션이 있습니다. 눌러줍니다.
+
+![img](../img/devexpress_img/properties/003.png)
+
+아래와 같이 팝업이 뜨면서 바인딩할 변수를 선택해 줄 수 있습니다. 위에서 작성한 WindowLocation이 보이죠? 이걸 인제 선택할 수 있습니다. 
+
+![img](../img/devexpress_img/properties/004.png)
+
+이로써 사용자가 프로그램을 실행하고 사용할 때 프로그램의 위치를 기억해서 프로젝트의 WindowLocation 변수에 값을 저장했다가 다시 프로그램을 실행시키면 그 위치로 생성됨을 알 수 있습니다. 
+
+이와 달리 코드단에서도 더 많은 기능을 수행할 수 있습니다. 이벤트를 사용해서 초기 셋팅값을 주는 방식입니다. 아래는 예제 코드입니다. 
+
+```C#
+public partial class Form1 : Form
+{     
+    public Form1()
+    {
+        InitializeComponent();
+        SetControls();
+    }
+
+    private void SetControls()
+    {
+        this.Load += FormMain_Load; //Form1의 Load 이벤트 핸들러에게 FormMain_Load를 등록합니다.          
+    }
+
+    private void FormMain_Load(object sender, EventArgs e)
+    {
+        // Set window location
+        if (Settings.Default.WindowLocation != null)
+        {
+            this.Location = Settings.Default.WindowLocation;
+        }
+
+        // Set window size
+        if (Settings.Default.WindowSize != null)
+        {
+            this.Size = Settings.Default.WindowSize;
+        }
+        this.FormClosing += FormMain_FormClosing;
+    }
+
+    private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        // Copy window location to app settings
+        Settings.Default.WindowLocation = this.Location;
+
+        // Copy window size to app settings
+        if (this.WindowState == FormWindowState.Normal)
+        {
+            Settings.Default.WindowSize = this.Size;
+        }
+        else
+        {
+            Settings.Default.WindowSize = this.RestoreBounds.Size;
+        }
+
+        // Save settings
+        Settings.Default.Save();
+    }
+}
+```
+
+위와같이 컨트롤마다 컨트롤 생성 이벤트 핸들러에 위의 FormMain_Load, FormMain_FormClosing이벤트를 등록해주는 방법이 있습니다만 그러면 컨트롤 개수마다 
+커스텀한 이벤트들을 작성해 주어야 하므로 코드양이 매우 길어질 수 있습니다. 따라서 모든 컨트롤에는 속성값으로 ApplicationSettings와 하위에 
+PropertyBinding 속성을 제공합니다. 여기에 필요한 셋팅값을 줄 수 있습니다. 
+
+<hr />
+<br />
+
+## 2. DataBindings
+
+데이터 바인딩은 컨트롤단에서 사용자가 값을 바꾸면 연결된 데이터 모델/db도 자동으로 수정되게 만드는 기능입니다. Binding이란 뜻이 우리나라 말로 "묶다"라는 의미를 가지고 있습니다. 즉 컨트롤과 데이터를 한데로 묶어서 연결시킨다~ 라는 개념입니다. 모델이나 db등에 데이터가 바뀐다면 자연스럽게 묶여버린 컨트롤에도 값이 바뀌겠죠. 
+
+가령 예를 들어 Devexpress의 TextEdit 컨트롤과 모델클래스를 바인딩 해보겠습니다. 아래 평범한 모델 Person.cs를 생성합니다.
+
+```C#
+public class Person 
+{
+    public string Name {get;set;}
+    public DateTime DateOfBirth {get;set;}
+}
+```
+
+그리고 나서 TextEdit컨트롤에 (ControlBindingsCollection)Databinding 프로퍼티의 Add메서드를 호출해줍니다. 첫 인자는 컨트롤의 속성(프로퍼티) 두번째 인자는 모델, 세번째 인자는 모델의 속성 (프로퍼티)을 차례대로 넣어줍니다.
+
+```C#
+this.textEdit1.DataBindings.Add("Text", person, "Name");
+```
+
+그런데 이렇게만 하면 사용자가 값을 아무리 바꾸어도 모델의 값이 바뀌지 않습니다. 이유는 바인딩은 되었지만 UI에게 값이 바뀌었다고 알려주지 않았기 때문입니다(속성값이 변경되었음을 클라이언트에게 알려줌). 모델에 INotifyPropertyChanged 인터페이스를 상속받게 하고 UI에게 값이 바뀌었다고 알려줘야 합니다. 참으로.. 이게 뭔상황인지.. 그래서 Person.cs를 아래와 같이 고쳐줘야 합니다. 
+
+```C#
+public class Person : INotifyPropertyChanged
+{
+    private string name;
+    public string Name
+    {
+        get { return name; }
+        set
+        {
+            name = value;
+            NotifyPropertyChanged("name");
+        }
+    }
+    private DateTime dateOfBirth;
+    public DateTime DateOfBirth
+    {
+        get { return dateOfBirth; }
+        set
+        {
+            dateOfBirth = value;
+            NotifyPropertyChanged("dateOfBirth");
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private void NotifyPropertyChanged(String info)
+    {
+        var handler = PropertyChanged;
+        if (handler != null)
+        {
+            handler(this, new PropertyChangedEventArgs(info));
+        }
+    }
+}
+```
+
+또한 바인딩의 Add메서드의 아규먼트 formattingEnabled와 updateMode에 각각 true와 DataSourceUpdateMode.OnPropertyChanged를 넣어줘야 합니다. 
+
+```C#
+this.textEdit1.DataBindings.Add("Text", person, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+```
+
+보면 여기서 DateOfBirth도 있는데 상식적으로 생각해보면 컨트롤에서 TextEdit은 입력값을 하나만 받아서 속성으로 "Text"라는것이 있는데 이거는 이미 Person클래스의 Name과 바인딩 했습니다. 그러면 DatOfBirth도 바인딩을 하고싶어도 못합니다. 다른 컨트롤을 사용해야합니다. 아니면 TextEdit의 컨트롤을 하나더 생성해서 DateOfBirth와 바인딩 해도 됩니다. 
+
+근데 DataSource는 컬렉션을 줄 수도 있습니다. 하나의 MSDN으로 부터 가져온 예제를 보면 알 수 있습니다. 먼저 폼에 TextEdit 2개를 만들고 Button하나를 생성합니다. 그리고 아래와 같이 State.cs클래스를 하나 만들어봅니다. 
+
+```C#
+public class State
+{
+    private string stateName;
+    public string Name
+    {
+        get { return stateName; }
+    }
+
+    private string stateCapital;
+    public string Capital
+    {
+        get { return stateCapital; }
+    }
+
+    public State(string name, string capital)
+    {
+        stateName = name;
+        stateCapital = capital;
+    }
+}
+```
+
+아래와 같이 코드를 작성하면 버튼을 누를때마다 ArrayList에 있는 State모델들을 하나씩 꺼내서 보여주게 됩니다. 여기서 중요한점은 DataBinding 프로퍼티에게 DataSource를 넘길때 컬랙션 스타일을 넘겨도 된다는 것입니다. 
+
+```C#
+public partial class Form1 : Form
+{
+    ArrayList states;
+    BindingSource bindingSource1;
+
+    public Form1()
+    {
+        InitializeComponent();
+        SetTextEditAndBox();
+    }
+
+    private void SetTextEditAndBox()
+    {              
+        states = new ArrayList();
+        states.Add(new State("California", "Sacramento"));
+        states.Add(new State("Oregon", "Salem"));
+        states.Add(new State("Washington", "Olympia"));
+        states.Add(new State("Idaho", "Boise"));
+        states.Add(new State("Utah", "Salt Lake City"));
+        states.Add(new State("Hawaii", "Honolulu"));
+        states.Add(new State("Colorado", "Denver"));
+        states.Add(new State("Montana", "Helena"));
+
+        bindingSource1 = new BindingSource();
+        bindingSource1.DataSource = states;
+
+        this.textEdit1.DataBindings.Add("Text", bindingSource1, "Name");
+        this.textEdit2.DataBindings.Add("Text", bindingSource1, "Capital");
+
+        this.button1.Click += button1_Click;        
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        // If items remain in the list, remove the first item.
+        if (states.Count > 0)
+        {
+            states.RemoveAt(0);
+
+            // Call ResetBindings to update the textboxes.
+            bindingSource1.ResetBindings(false);
+        }
+    }
+}
+```
+
+위의 코드 또한 INotifyPropertyChanged State.cs에 부여하지 않았기 때문에 컨트롤에서 값을 바꾸어도 모델값은 바뀌지 않습니다. 아래는 완전히 정리한 예제 입니다. 아래의 NotifyPropertyChanged의 구현이 위와는 다릅니다. [CallerMemberName]속성을 파라미터에 부여했는데요. 이는 호출한 프로퍼티의 멤버이름을 자동으로 가져옵니다. 따라서 NotifyPropertyChanged(stateName);이렇게 하지 않고 NotifyPropertyChanged();만 프로퍼티 안에서 호출해주면 자동으로 stateName이 파라미터값으로 들어가게 됩니다. 
+
+```C#
+public class State : INotifyPropertyChanged
+    {
+        private string stateName;
+        public string Name
+        {
+            get { return stateName; }
+            set 
+            {
+                if(value != stateName)
+                {
+                    stateName = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private string stateCapital;
+
+        public string Capital
+        {
+            get { return stateCapital; }
+            set
+            {
+                if(value != stateCapital)
+                {
+                    stateCapital = value;
+                    NotifyPropertyChanged();
+                }                    
+            }
+        }
+
+        public State(string name, string capital)
+        {
+            stateName = name;
+            stateCapital = capital;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        // This method is called by the Set accessor of each property.  
+        // The CallerMemberName attribute that is applied to the optional propertyName  
+        // parameter causes the property name of the caller to be substituted as an argument.  
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }    
+    }
+
+
+public partial class Form1 : Form
+{
+    ArrayList states;
+    BindingSource bindingSource1;
+
+    public Form1()
+    {
+        InitializeComponent();
+        SetTextEditAndBox();
+    }
+
+    private void SetTextEditAndBox()
+    {              
+        states = new ArrayList();
+        states.Add(new State("California", "Sacramento"));
+        states.Add(new State("Oregon", "Salem"));
+        states.Add(new State("Washington", "Olympia"));
+        states.Add(new State("Idaho", "Boise"));
+        states.Add(new State("Utah", "Salt Lake City"));
+        states.Add(new State("Hawaii", "Honolulu"));
+        states.Add(new State("Colorado", "Denver"));
+        states.Add(new State("Montana", "Helena"));
+
+        bindingSource1 = new BindingSource();
+        bindingSource1.DataSource = states;
+
+        //바인딩 파라미터로 true 와 DataSourceUpdateMode.OnPropertyChanged를 넘겨줘야 합니다. 
+        this.textEdit1.DataBindings.Add("Text", bindingSource1, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+        this.textEdit2.DataBindings.Add("Text", bindingSource1, "Capital", true, DataSourceUpdateMode.OnPropertyChanged);
+
+        this.button1.Click += button1_Click;        
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        // If items remain in the list, remove the first item.
+        if (states.Count > 0)
+        {
+            states.RemoveAt(0);
+
+            // Call ResetBindings to update the textboxes.
+            bindingSource1.ResetBindings(false);
+        }
+    }
+}
+```
+
+
+<hr />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+# GridControl
+
+<img src="../img/gridcontrol_img/gridcontrol.png" width="400" height="400"/>
 
 1. [컬럼 클릭 방지](#1-컬럼-클릭-방지)
 2. [셀값 바뀌면 다른셀값도 세팅해주는 방법](#2-셀값-바뀌면-다른셀값도-세팅해주는-방법)
@@ -1485,7 +1851,7 @@ ________________________________________________________________________________
 
 # 24. CellMerge 이벤트를 사용해서 셀 병합하는 방법
 
-<img src="../../img/gridcontrol_img/gridcontrol002.png"/>
+<img src="../img/gridcontrol_img/gridcontrol002.png"/>
 
 위와같이 셀 병합으로 로우셀들을 묶어줄 수 있습니다. 이벤트 데이터로는 CellMergeEventArgs 아규먼트값으로 받아오는데 아래 테이블과 같습니다.
 
@@ -1812,7 +2178,7 @@ namespace FDN.AUTOMATION.UI
             Process process = Process.GetCurrentProcess();
             Control mainWindow = Control.FromHandle(process.MainWindowHandle);
 
-            _isCloseCall = false;
+            _isCloseCall = fals e;
             _progress_step = 100 / progressStep;
 
             Thread thread = new Thread(new ParameterizedThreadStart(ThreadShowWait));
@@ -1913,3 +2279,760 @@ namespace FDN.AUTOMATION.UI
     }
 }
 ```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+# SpreadSheetControl
+
+<img src="../img/spreadsheetcontrol_img/spreadsheetcontrol_example001.png" width="800" heigth="800" />
+
+<br />
+
+1. WorkBook과 WorkSheet
+2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
+3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
+    - 값 할당
+        - 자동 변환
+        - 함수 할당
+    - 셀 형식
+        - 셀 보더
+        - 셀 사이즈
+        - 셀 폰트 사이즈
+        - 셀 Alignment
+4. 셀 머징(Merge)
+5. 데이터 테이블을 워크시트에 붙여주는 방법
+6. 컬럼 더하기 기능 만들기
+7. 스프레드 시트의 모든 0들을 지워주기
+8. 동적컬럼 테이블 붙일때 고려사항
+9. 이름이 애매한 컬럼의 전체 로우들을 색칠해주기
+10. 워크시트의 위치에 대한 변수를 고려해야할 사항들에 관해서.
+    - 리펙터링
+11. RibbonControl
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 1. WorkBook과 WorkSheet
+스프레드시트 컨트롤의 도큐먼트 가 워크북이고 워크북 안에 여러개의 워크시트가 있는 개념입니다. 마치 엑셀에서 시트 하나에 여러개의 탭이 있는것과 같은것입니다. 
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 2. SpreadSheetControl의 BeginUpdate()와 EndUpdate()
+
+먼저 BeginUpdate()는 스프레드시트 컨트롤의 시각적 업데이트를 막습니다. EndUpdate()가 호출되기 전까지는 시각적 업데이트를 막아줘야합니다. 이렇게 감싸주게 된다면 여러가지 수행을 하는 스프레드시트의 성능을 올려줄 수 있습니다(속도가 좋아짐).
+
+```C#
+this.SpreadsheetControl_Something.BeginUpdate();
+
+//스프레드 시트 컨트롤 내용및 수정입력
+
+this.SpreadsheetControl_Something.EndUpdate();
+```
+
+또는 아래와 같이 EndUpdate()문을 try finally문으로 감싸주어서 exception 에러가 나와도 실행되게끔 만들어 줄 수 있습니다.
+
+```C#
+this.SpreadsheetControl_Something.BeginUpdate();
+try
+{
+    //스프레드 시트 컨트롤 내용및 수정입력
+}
+finally 
+{
+    this.SpreadsheetControl_Something.EndUpdate();
+}
+```
+
+아래 코드는 하나의 워크북에 하나의 워크시트를 가지고 어떤 작업을 할때 셋팅해주는 코드입니다. 
+
+```C#
+this.SpreadsheetControl_Something.BeginUpdate();
+IWorkbook workbook_Something = this.SpreadsheetControl_Something.Document;
+workbook_Something.Unit = DevExpress.Office.DocumentUnit.Millimeter;
+int count = workbook_Something.Worksheets.Count;
+for (int i = count - 1; i >= 1; i--)
+{
+    workbook_Something.Worksheets.RemoveAt(i);
+}
+Worksheet worksheet_Lease = workbook_Something.Worksheets[0];
+
+//워크시트 내용 및 수정 입력
+
+this.SpreadsheetControl_Something.EndUpdate();
+```
+
+위 내용들은 SpreadSheetControl에 대해서만 말하고있습니다. WorkBook도 마찬가지로 BeginUpdate()와 EndUpdate()가 있습니다.
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 3. 위크시트의 범위를 정하고 값과 셀크기등을 조절하는 방법 (FromLTRB)
+
+워크시트의 내용을 수정하고 채울때 셀의 범위를 정해주어야 합니다(행:row, 열:column). 이걸 정해주는 방법은 2가지 정도가 있습니다. 처음으로는 Cell 프로퍼티를 사용하는 방법입니다. Cell.Value프로퍼티에는 값을 할당할 수 있습니다. 이게 워크시트에 무언가를 쓰는 방법입니다. A1은 엑셀처럼 처음값은 열의 알파벳이고 뒤에 숫자는 행의 로우 핸들러 번호입니다.
+
+```C#
+worksheet_Something.Cells["A1"].Value = "Hello, World!";
+```
+
+범위를 주어서 값을 여러개 할당할 수도 있습니다.
+
+```C#
+worksheet.Range["B10:E10"].Value = "Hello, World!";;
+```
+
+두번째로는 FromLTRB()메서드를 사용하는것입니다. 이는 아래와 같이 4개의 인자값을 받습니다. 주의할 점은 워크시트에서 Range를 타고 써야하는것입니다. 이 방법이 편할 수도 있습니다. 이유는 범위를 4개로 주어져서 동적컬럼을 만들때는 수월합니다. 저는 이 방식을 선호하는편입니다.
+
+```C#
+CellRange rangeFromLTRB = worksheet_Something.Range.FromLTRB(시작 열, 시작 행[top], 끝 열, 끝 행[bottom]);
+```
+
+아래 코드는 또다른 방식들입니다. 여러가지 방법으로 셀에 값을 할당할 수 있습니다.
+
+```C#
+//출처 데브익스프레스
+using DevExpress.Spreadsheet;
+// ...
+
+Workbook workbook = new Workbook();
+Worksheet worksheet = workbook.Worksheets[0];
+
+// A range that includes cells from the top left cell (A1) to the bottom right cell (B5).
+CellRange rangeA1B5 = worksheet["A1:B5"];
+
+// A rectangular range that includes cells from the top left cell (C4) to the bottom right cell (E7).
+CellRange rangeC4E7 = worksheet.Range["C4:E7"];
+
+// The C4:E7 cell range located in the "Sheet3" worksheet.
+CellRange rangeSheet3C4E7 = workbook.Range["Sheet3!C4:E7"];
+
+// A range that contains a single cell (E7).
+CellRange rangeE7 = worksheet.Range["E7"];
+
+// A range that includes the entire column A.
+CellRange rangeColumnA = worksheet.Range["A:A"];
+
+// A range that includes the entire row 5.
+CellRange rangeRow5 = worksheet.Range["5:5"];
+
+// A minimal rectangular range that includes all listed cells: C6, D9 and E7.
+CellRange rangeC6D9E7 = worksheet.Range.Parse("C6:D9:E7");
+
+// A rectangular range whose left column index is 0, top row index is 0, 
+// right column index is 3 and bottom row index is 2. This is the A1:D3 cell range.
+CellRange rangeA1D3 = worksheet.Range.FromLTRB(0, 0, 3, 2);
+
+// A range that includes the intersection of two ranges: C5:E10 and E9:G13. 
+// This is the E9:E10 cell range.
+CellRange rangeE9E10 = worksheet.Range["C5:E10 E9:G13"];
+
+// Create a defined name for the D20:G23 cell range.
+worksheet.DefinedNames.Add("Range_Name", "Sheet1!$D$20:$G$23");
+// Access a range by its defined name.
+CellRange rangeD20G23 = worksheet.Range["Range_Name"];
+
+CellRange rangeA1D4 = worksheet["A1:D4"];
+CellRange rangeD5E7 = worksheet["D5:E7"];
+CellRange rangeRow11 = worksheet["11:11"];
+CellRange rangeF7 = worksheet["F7"];
+
+// Create a complex range via the Range.Union method.
+CellRange complexRange1 = worksheet["B7:C9"].Union(rangeD5E7);
+
+// Create a complex range via the IRangeProvider.Union method.
+CellRange complexRange2 = worksheet.Range.Union(new CellRange[] { rangeRow11, rangeA1D4, rangeF7 });
+
+// Create a complex range from multiple cell ranges separated by commas.
+CellRange complexRange3 = worksheet["D15:F18, G19:H20, I21"];
+
+// Fill the ranges with different colors.
+complexRange1.FillColor = Color.LightBlue;
+complexRange2.FillColor = Color.LightGreen;
+complexRange3.FillColor = Color.LightPink;
+
+// Use the Areas property to get access to a complex range's component.
+complexRange2.Areas[2].Borders.SetOutsideBorders(Color.DarkGreen, BorderLineStyle.Medium);
+```
+
+<br />
+<br />
+
+## 값 할당
+
+<br />
+<br />
+
+### 자동변환
+
+<br />
+
+워크시트의 셀에 값을 넣어줄때 SetValueFromText를 사용하면 값을 자동으로 형식을 변환해서 셀에 넣어줍니다. 반대로 NumberFormat프로퍼티처럼 이런값에 형식을 미리 지정해줄 수도 있습니다.
+
+```C#
+// 출처 데브익스프레스
+// Add data of different types to cells.
+worksheet.Cells["B1"].SetValueFromText("28-Jul-20 5:43PM"); // DateTime
+worksheet.Cells["B2"].SetValueFromText("3.1415926536"); // double
+worksheet.Cells["B3"].SetValueFromText("Have a nice day!"); // string
+worksheet.Cells["B4"].SetValueFromText("#REF!"); // error
+worksheet.Cells["B5"].SetValueFromText("true"); // Boolean
+worksheet.Cells["B6"].SetValueFromText("3.40282E+38"); // float
+worksheet.Cells["B7"].SetValueFromText("2147483647"); // int32
+worksheet.Cells["B8"].NumberFormat = "d-mmm-yy h:mm";
+worksheet.Cells["B8"].SetValueFromText("28-Jul-20 5:43PM", true); // DateTime with a custom format
+worksheet.Cells["B9"].SetValueFromText("=SQRT(25)"); // formula
+```
+
+### 함수 할당
+
+<br />
+
+아래와 같이 셀 범위에 Formula 프로퍼티에 스트링값으로 함수를 작성해서 할당해주면 엑셀과 같은 함수의 효과를 볼 수 있습니다. 여러가지 함수 작성법이 있는데 이는 Devexpress의 명세를 참고해서 만들면 될것 같습니다. 
+
+[참고링크1 nested formulas](https://docs.devexpress.com/WindowsForms/15410/controls-and-libraries/spreadsheet/examples/formulas/how-to-use-functions-and-nested-functions-in-formulas)
+
+[참고링크2 formulas syntax](https://docs.devexpress.com/WindowsForms/13811/controls-and-libraries/spreadsheet/spreadsheet-formulas)
+```C#
+private void SetColumnSum(Worksheet worksheet, int col_set, int row_set, int row_start, int row_end)
+{
+    //row_start 부터 row_end까지 위에서부터 아래로 값을 더합니다.
+    worksheet.Cells[row_set, col_set].Formula =
+            "=SUM ("
+            + worksheet.Cells[row_start, col_set].GetReferenceA1()
+            + ":"
+            + worksheet.Cells[row_end, col_set].GetReferenceA1()
+            + ")";
+}
+```
+
+<br />
+<br />
+
+## 셀 형식
+
+<br />
+<br />
+
+### 셀 보더
+
+<br />
+
+아래와같이 Border.SetAllBorders() 메서드를 사용합니다. 두개의 인자를 받습니다. 처음은 색이고 두번째는 보더의 스타일입니다. 
+
+```C#
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).Borders.SetAllBorders(Color.Black, BorderLineStyle.Thin);
+```
+
+### 셀 사이즈
+
+<br />
+
+셀 사이즈는 RowHeight 와 ColumnWidth 프로퍼티에 값을 할당해서 조절합니다. RowHeigth는 셀의 높이고, ColumnWidth는 셀의 너비 입니다.
+
+```C#
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).RowHeigth = 10; //셀 높이 10으로 할당
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).ColumnWidth = 10; //셀 너비 10으로 할당
+```
+
+### 셀 폰트 사이즈
+
+<br />
+
+셀 폰트사이즈는 말 그대로 셀 안의 값의 크기 입니다. 셀 사이즈랑 셀 폰트사이즈랑 다르니 유의해야 합니다. Font.Size프로퍼티에 값을 할당하면 폰트크기를 조절할 수 있습니다. Font.Bold프로퍼티에 boolean값을 할당하면 볼드체를 줄수도 있습니다.
+
+```C#
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).Font.Size = 10;
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).Font.Bold = true;
+```
+
+### 셀 Alignment
+
+<br />
+
+셀의 안의 값의 Alignment값을 주는 건 Alignment.Vertical 프로퍼티와 Alignment.Horizontal 프로퍼티 입니다. 근데 주는 값으로는 좌우 중심 위아래 가 있을텐데 이 속성은 SpreadsheetVertivalAlignment와 SpreadsheetHorizontalAlignment 의 속성으로부터 불러와야 합니다. 임의로 Center나 뭐 그런걸 할당하면 먹지 않습니다. 
+
+```C#
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).Alignment.Vertical = SpreadsheetVerticalAlignment.
+Center
+worksheet.Range.FromLTRB(col_left, top_row, col_right, bottom_row).Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center
+```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 4. 셀 머징(Merge)
+
+셀을 병합하는 방법입니다. 아래는 메서드로 만들어보았습니다. 인자값으로는 워크시트, 첫번째 컬럼, 탑 로우, 컬럼스팬, 로우스팬 값을 입력 받습니다. 메서드는 만들기 나름이지만 고려해야하는 사항들이 있습니다. 이는 아래 8번 '고려해야하는 사항'에서 설명하겠습니다.
+
+```C#
+public bool CellMerge(Worksheet worksheet, int first_column, int top_row, int colSpan = 0, int rowSpan = 0)
+{
+    bool isResult = true;
+    if (rowSpan == 0 && colSpan == 0)
+        return true;
+    try
+    {
+        if (rowSpan != 0 || colSpan != 0)
+        {
+            Range range = worksheet.Range.FromLTRB(first_column, top_row, colIndex + colSpan, rowIndex + rowSpan);
+            worksheet.ActiveView.ShowGridlines = true;
+            worksheet.MergeCells(range);
+        }
+    }
+    catch
+    {
+        isResult = false;
+    }
+    return isResult;
+}
+```
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 5. 데이터 테이블을 워크시트에 붙여주는 방법
+
+워크시트에 Import 메서드를 사용합니다. 아래와 같이 사용하면 됩니다. 
+
+```C#
+ worksheet_Something.Import(dataTable_Something, true, first_row, first_column);  
+```
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 6. 컬럼 더하기 기능 만들기
+
+```C#
+private void SetColumnSum(Worksheet worksheet, int col_set, int row_set, int row_start, int row_end)
+{
+//row_start 부터 row_end까지 위에서부터 아래로 값을 더합니다.
+worksheet.Cells[row_set, col_set].Formula =
+        "=SUM ("
+        + worksheet.Cells[row_start, col_set].GetReferenceA1()
+        + ":"
+        + worksheet.Cells[row_end, col_set].GetReferenceA1()
+        + ")";
+}
+```
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 7. 스프레드 시트의 모든 0들을 지워주기
+
+아래 코드는 SpreadSheetControl과 WorkBook의 BeginUpdate() 와 EndUpdate() 사이에 넣어주시면됩니다. 
+
+```C#
+worksheet_Something.ActiveView.ShowZeroValues = false;//모든 0들을 지워줍니다.
+```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 8. 동적컬럼 테이블 붙일때 고려사항
+먼저 SetOrdinal() 메서드에 대해서 알아두어야 합니다. 이유는 동적컬럼가지고 있는 데이터 테이블을 스프레드시트에 붙여주어야 하는데 그대로 붙여준다면 정말 편하고 좋겠지만 현실은 여기있어야 할 컬럼이 끝에 있고 끝에있는컬럼은 앞으로 가야하고 뭐 이런식이라서 컬럼도 명시적으로 옮겨주어야합니다. 
+
+또한 고려해야할 사항은 동적컬럼이 BandedGridview일때 입니다. 이러면 컬럼 부모는 셀 병합을 해주어야하고 자식들 컬럼들은 따로 분리해서 List<DataColumn>형식으로 따로 객체를 생성하는것이 좋은것 같습니다. 아래는 예시입니다. 받아오는 데이터테이블은 컬럼이름이 sql에서 정의한대로거나 마음대로일텐데 이를 for 문이나 foreach문을 사용해서 Regex(정규식)을 통해 좀 나눠줄 필요가 있습니다. 
+
+```C#
+//동적 컬럼 이름 바꿔주기: 중복되는 이름을 허용해야하므로 caption을 사용합니다. 
+string pattern = @"[[0-9]년|[0-9]월]";
+string pattern2 = @"[Q]";
+string pattern3 = @"[P]";
+List<DataColumn> col_qty = new List<DataColumn>();
+List<DataColumn> col_price = new List<DataColumn>();
+List<DataColumn> col_total = new List<DataColumn>();
+foreach (DataColumn col in dt_main.Columns)
+{
+    if (Regex.IsMatch(col.ColumnName, pattern))
+    {
+        if (Regex.IsMatch(col.ColumnName, pattern2))
+        {
+            //QTY
+            col.Caption = "수량";
+            col_qty.Add(col);
+        }
+        else if ((Regex.IsMatch(col.ColumnName, pattern3)))
+        {
+            //PRICE
+            col.Caption = "금액";
+            col_price.Add(col);
+        }
+        else
+        {
+            //QTY, PRICE 합계
+            col.Caption = "합계";
+            col_total.Add(col);
+        }
+    }
+}
+```
+
+근데 문제는 동적컬럼을 다 셀에 셋팅해주고 SetOrdinal을 시전하면 문제가 됩니다. SetOrdinal은 데이터 테이블의 컬럼 인덱스를 바꿔주는 것입니다. Cell과는 전혀 상관이 없습니다. 따라서 SetOrdinal로 데이터 테이블의 컬럼들을 미리 정리 한 뒤에 foreach문으로 셀에 붙여주시면 됩니다. 
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 9. 이름이 애매한 컬럼의 전체 로우들을 색칠해주기
+
+컬럼 이름이 애매하면 Regex(정규식)으로 맞춤으로 찾아서 범위를 선택합니다. 셀에 색을 할당받는 파라미터는 FillColor입니다.
+
+```C#
+ //선택한 연월이 마지막 연월과 동일하다면 노란색으로 색칠해 줍니다.
+string date_to_yellow = Regex.Replace(worksheet_Something.Range.FromLTRB(???, ???, ???, ???).Value.ToString(), @"\s", "");
+string compare_date = Regex.Replace($"{this.Date_Year_Month.Date.Year.ToString()}년 {this.Date_Year_Month.Date.Month.ToString()}월", @"\s", "");
+if (String.Equals(date_to_yellow, compare_date, StringComparison.OrdinalIgnoreCase))
+{
+    worksheet_Something.Range.FromLTRB(???, ???, ???, ???).FillColor = Color.Yellow; // 색 할당
+}
+```
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 10. 워크시트의 위치에 대한 변수를 고려해야할 사항들에 관해서.
+일단 모든 데이터가 화면의 (0, 0) 에 서부터 시작해서 보여지는것은 아닙니다. 어떤 테이블은 저기있고 어떤 테이블은 여기있고 항상 위치는 달라질 수 있고 수정될수 있습니다. 그때그때 바꿔줘야하는 테이블도 있습니다. 동적테이블은 데이터의 개수에 따라서 컬럼이 늘어나는 피벗테이블입니다. 만약 피벗테이블 옆에 다른 테이블을 놓았다고 한다면 서로 겹칠수도 있습니다. 위치선정을 변수로 주어야 하는데 전역은 지양해야합니다. 
+
+또한 변수를 파라미터값으로 넘길때 규칙을 정하는편이 이롭습니다. 별거 아니지만 메서드를 만들때 고려해야할 사항 두가지를 생각해 보았습니다.
+
+1. 메서드(자작) 파라미터 순서
+2. colspan, rowspan 사용여부
+
+예를들어 1번을 설명하면, 아래와 같은 워크시트의 셀에 함수를 넣어본다고 가정하겠습니다. 함수가중요한게 아니고 Cell프로퍼티의 처음 인자는 로우를 받고 다음에 컬럼값을 받는다는것입니다. 
+
+```C#
+worksheet.Cells[row_set, col_set].Formula =
+                    "=SUM ("
+                    + worksheet.Cells[row_start, col_set].GetReferenceA1()
+                    + ":"
+                    + worksheet.Cells[row_end, col_set].GetReferenceA1()
+                    + ")";
+```
+
+반면 아래의 FromLTRB메서드를 사용했다고 가정하면 처음인자로 컬럼을 주고 두번째로 로우값을 줍니다. 이렇게 메서드 마다 처음과 나중에 받는 인자의 값이 순서가 다릅니다. 만약 개인이 만든 메서드가 규칙을 정하지 않는다면 줄때마다 메서드파라미터 순서를 외우거나 일일히 확인해야합니다. 이렇게 devexpress 메서드는 파라미터 순서를 바꿀 순 없지만 개인이 만든 메서드는 파라미터 순서를 통일해서 만들어야합니다. 
+
+```C#
+worksheet.Range.FromLTRB(first_col, top_row, first_col, bottom_row).Formula =
+                    "=SUM ("
+                    + worksheet.Range.FromLTRB(first_col, top_row, first_col, bottom_row).GetReferenceA1()
+                    + ":"
+                    + worksheet.Range.FromLTRB(first_col, top_row, first_col, bottom_row).GetReferenceA1()
+                    + ")";
+```
+
+2번의 rowspan과 colspan에 대해서 입니다. 아래 코드를 보면 자작메서드를 만들때 colspan과 rowspan을 받습니다. 이 방식은 처음받는 파라미터 두개는 시작셀에 관한 위치값이고 span은 늘려주기위한 파라미터입니다. 
+
+```C#
+public bool CellMerge(Worksheet worksheet, int first_column, int top_row, int colSpan = 0, int rowSpan = 0)
+{
+    bool isResult = true;
+    if (rowSpan == 0 && colSpan == 0)
+        return true;
+    try
+    {
+        if (rowSpan != 0 || colSpan != 0)
+        {
+            Range range = worksheet.Range.FromLTRB(first_column, top_row, colIndex + colSpan, rowIndex + rowSpan);
+            worksheet.ActiveView.ShowGridlines = true;
+            worksheet.MergeCells(range);
+        }
+    }
+    catch
+    {
+        isResult = false;
+    }
+    return isResult;
+}
+```
+
+아래와 같이 만들때 span이 아니라 명시적으로 끝나느 셀의 위치값을 넣어주게 만들 수도 있습니다. 방법은 중요하지 않지만 위 두 규칙을 일관성있게 지키는것이 나중에 헷갈리지 않을 수 있습니다. 
+
+```C#
+public bool CellMerge(Worksheet worksheet, int first_column, int top_row, int end_col, int bottom_row)
+{
+    bool isResult = true;
+    if (first_column < end_col && top_row > bottom_row)
+        return true;
+    try
+    {
+        Range range = worksheet.Range.FromLTRB(first_column, top_row, end_col, bottom_row);
+        worksheet.ActiveView.ShowGridlines = true;
+        worksheet.MergeCells(range);
+    }
+    catch
+    {
+        isResult = false;
+    }
+    return isResult;
+}
+```
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 11. RibbonControl
+Devexpress 18.2 는 지원하는것으로 나오지만 참조를 걸어도 안뜰때가 있습니다. 이럴땐 UI뷰어로 가서 강제로 붙여주고 속성으로 스프레드시트를 선택하는 부분이 생길수도~ 안생길수도~ 있는데 알잘딱으로 다가 감으로 붙이세요. 그럼 20000
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# DateEditControl
+
+![img](../img/dateeditcontrol_img/DateEditControl.png)
+
+![img](../img/dateeditcontrol_img/DateEditControl_vista.png)
+
+1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
+2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
+3. EditDate 달력 일 클릭시 컬럼에 자동으로 날짜값 넣어주기
+4. EditDate 달력에 연월 선택시 그리드뷰에 주말만 표시해주기 (셀값에 칠하기)
+5. DateEdit의 .MinValue를 sql에 넘겨주지 못하므로 해결하는 두번째 방법
+6. DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기
+7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
+
+_________________________________________________________________________
+<br>
+
+# 1. DateEdit. 사용자 달력클릭시 일어나는 이벤트
+
+DateEdit 형 객체에서 DateTimeChanged 이벤트에 콜백메서드를 등록해주어야 합니다. 
+
+```C#
+public void SetGridControl()
+{
+    this.DateEditSomething.DateTimeChanged += Date_Transport_DateTimeChanged; // 여기가 이벤트 등록하는곳
+}
+
+```
+
+_________________________________________________________________________
+<br>
+
+
+# 2. DateTime.MinValue 와 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 의 차이
+
+
+DateTime.MinValue 는 달력 clear누르면 반환하는 값입니다. Devexpress 달력 컨트롤이 그렇게 되어있습니다. DateEditSomething.DateTime 의 리턴값이라 보면 됩니다. 근데 이는 sql파라미터로 넘어가지 않습니다. 이유는 00001년 01월01인 값이기 때문입니다.그래서 최소값으로 1753년대가 최소값으로 세팅된 sql은 위의값을 받지 못합니다. 따라서 (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue 로 변환시켜 주어야 합니다. 
+
+아래 코드는 개인적으로 만들어본 FilterDate() 메서드입니다. 이런식으로 값이 DateTime.MinValue일 경우에는 바꿔줘야합니다.
+
+```C#
+private DateTime FilterDate(DateTime filterDate)
+{
+    if(filterDate == DateTime.MinValue)
+    {
+        filterDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+    }
+    return filterDate;
+}
+```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+
+# 3. EditDate 달력 일 클릭시 컬럼에 자동으로 날짜값 넣어주기
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 4. EditDate 달력에 연월 선택시 그리드뷰에 주말만 표시해주기 (셀값에 칠하기)
+
+먼저 세팅에서 그리드뷰에 이벤트를 걸어줍니다. .GridView.RowCellStyle 이 이벤트는 화면이 보여질때 Fire해줍니다. 즉 보여질때 연산되는것입니다.
+
+```C#
+private void SetGridControl()
+{
+    this.Grid_Something.RowCellStyle += Grid_Something_RowCellStyle;
+    this.Date_Something.DateTime = DateTime.Today;
+}
+```
+
+그리고 윤년까지 고려해서 해당 연, 월의 모든 일의 요일을 리스트 형식으로 반환하는 메서드를 작성합니다.
+
+```C#
+private List<DayOfWeek> DateTime_Weeks(int year, int month, DateEdit Date_Something)
+{
+    int[] days_In_Month = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
+    {
+        days_In_Month[1] = 29;
+    }
+
+    List<DayOfWeek> dateTime_Weeks = new List<DayOfWeek>();
+    for (int i = 1; i < days_In_Month[month - 1] + 1; i++)
+    {
+        dateTime_Weeks.Add((new DateTime(year, month, i)).DayOfWeek);
+    }
+
+    if (days_In_Month[Date_Something.DateTime.Month - 1] == 30)
+    {
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+    }
+    else if (days_In_Month[Date_Something.DateTime.Month - 1] == 28)
+    {
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+    }
+    else if (days_In_Month[Date_Something.DateTime.Month - 1] == 29)
+    {
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+        dateTime_Weeks.Add(DayOfWeek.Monday);
+    }
+
+    return dateTime_Weeks;
+}
+```
+
+이벤트 콜백 메서드를 작성합니다. 필드의 데이터값에 주말이면 토요일은 파란색 일요일은 빨강으로 칠해줍니다. 위의 메서드를 사용합니다.
+
+```C#
+private void DefaultView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+{
+    List<DayOfWeek> dateTime_Weeks = DateTime_Weeks(this.Date_Something.DateTime.Year, this.Date_Something.DateTime.Month, this.Date_Something);
+
+    if (Date_Something.DateTime != DateTime.MinValue)
+    {
+        for (int i = 0; i < 31; i++)
+        {
+            if (e.Column.FieldName == $"DAY_{i + 1}")
+            {
+                if (dateTime_Weeks[i] == DayOfWeek.Sunday)
+                {
+                    e.Column.AppearanceHeader.BackColor = Color.LavenderBlush;
+                    e.Appearance.BackColor = Color.LavenderBlush;
+                }
+                else if (dateTime_Weeks[i] == DayOfWeek.Saturday)
+                {
+                    e.Column.AppearanceHeader.BackColor = Color.LightCyan;
+                    e.Appearance.BackColor = Color.LightCyan;
+                }
+                //e.Column.AppearanceHeader.BackColor = (dateTime_Weeks[i] == DayOfWeek.Sunday || dateTime_Weeks[i] == DayOfWeek.Saturday) ? Color.Red : Color.Transparent;
+                //e.Appearance.BackColor = (dateTime_Weeks[i] == DayOfWeek.Sunday || dateTime_Weeks[i] == DayOfWeek.Saturday) ? Color.LavenderBlush : Color.Transparent;
+                //this.Grid_Labor.DefaultView.Appearance.HeaderPanel.BackColor = (dateTime_Weeks[i] == DayOfWeek.Sunday || dateTime_Weeks[i] == DayOfWeek.Saturday) ? Color.Red : Color.Transparent;
+            }
+        }
+    }
+}
+```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+
+# 5. DateEdit의 .MinValue를 sql에 넘겨주지 못하므로 해결하는 두번째 방법
+
+추후 추가 예정
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+
+# 6. DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기
+
+아래 코드를 추가하면 됩니다. 간단한 작업이라 설명X
+
+```C#
+private void SetGridControl()
+{
+    this.Date_Something.Properties.Mask.EditMask = "Y";
+    this.Date_Something.Properties.Mask.EditMask = "yyyy/MM";
+    this.Date_Something.Properties.Mask.UseMaskAsDisplayFormat = true;
+    this.Date_Something.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+}
+```
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+
+# 7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
+
+컨트롤을 두개 사용해서 사용자로부터 기간을 받아올때 처음에 빈값이 있으면 CLEAR 상태이므로 전체 데이터가 보여지게 SQL단에서 뭐 그런식으로 할 수 있겠지만 사용자가 처음에 딱 봤을때 전체 데이터가 보이면 당황스럽기 때문에 초기값을 주면 좋습니다. 초기값으로 마지막날을 오늘로 지정하고 시작하는 날을 3개월 전으로 셋팅하면 적절합니다.
+
+```C#
+private void SetDateTime(DateEdit deStart, DateEdit deEnd)
+{
+    int year = DateTime.Now.Year;
+    int month = DateTime.Now.Month;
+    deStart.DateTime = new DateTime(DateTime.Now.AddMonths(-3).Year, DateTime.Now.AddMonths(-3).Month, 1);
+    deEnd.DateTime = new DateTime(year, month, DateTime.Now.Day);
+}
+```
+
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# TextEdit
+
+
+
+18. Properties
+
+_________________________________________________________________________
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# GridLookUpEdit
+
+1. CascadingOwner
+2. CasusesValidation
+3. EditValue
+4. GenerateMemeber
+5. ImeMode
+6. Locked
+7. MenuManager
+8. Modifiers
+9. StyleController
+10. SuperTip
+
+
+
+

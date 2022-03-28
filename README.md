@@ -1,5 +1,10 @@
 # 데브 익스프레스
 
+## [데브 익스프레스 컨트롤](devexpress_controls/devexpress_controls.md)
+1. GridControl
+2. SpreadSheetControl
+3. DateEditControl
+
 ## [C#](c/c_index.md)
 1. BCL
 2. C# 1.0
@@ -8,6 +13,7 @@
 5. C# 4.0
 6. C# 5.0
 7. 기타
+
 <br/>
 <br/>
 
@@ -30,11 +36,6 @@
 
 <br/>
 <br/>
-
-## 데브 익스프레스 컨트롤
-1. [GridControl](devexpress_controls/gridcontrol//gridcontrol_index.md)
-2. [DateEditControl](devexpress_controls/dateeditcontrol/dateeditcontrol_index.md)
-3. [SpreadSheetControl](devexpress_controls/spreadsheetcontrol/spreadsheetcontrol.md)
 _________________________________________________________________________________
 
 
