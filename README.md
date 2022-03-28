@@ -1,9 +1,8 @@
 # 데브 익스프레스
 
-## [데브 익스프레스 컨트롤](devexpress_controls/devexpress_controls.md)
-1. GridControl
-2. SpreadSheetControl
-3. DateEditControl
+## [데브 익스프레스 컨트롤](devexpress_controls/devexpress_controls_index.md)
+
+데브 익스프레스의 컨트롤에 대해서 사용방법을 정리했습니다.
 
 ## [C#](c/c_index.md)
 1. BCL
