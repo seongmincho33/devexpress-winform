@@ -97,6 +97,10 @@
 6. DateEdit 달력을 사용자로부터 연월만 받아오고 연월만 텍스트를 달력컬럼에 붙여주기
 7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
 
+## 5. [PropertyGridControl](devexpress_controls_005_propertygridcontrol.md)
+
+## 6. [TreeList](devexpress_controls_006_treelist.md)
+
 
 
 

@@ -12,8 +12,8 @@
 8. [StyleController(DevExpress)](#8-stylecontroller)
 9. [SuperTip(DevExpress)](#9-supertip)
 10. [ToolTipAnchor(DevExpress)](#10-tooltipanchor)
-11. Tag
-12. UseWaitCursor
+11. [Tag(MS)](#11-tag)
+12. [UseWaitCursor(MS)](#12-usewaitcursor)
 
 <hr />
 <br />
@@ -593,5 +593,52 @@ private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Ut
     info.SuperTip.Items.Add(new ToolTipItem() { Text = "ㅎㅇㅎㅇ" });
     info.ObjectBounds = e.SelectedControl.RectangleToScreen(e.SelectedControl.ClientRectangle);
     e.Info = info;
+}
+```
+
+<hr />
+<br />
+
+## 11. Tag
+
+[참고링크](https://stackoverflow.com/questions/71655385/c-sharp-tag-when-should-i-use-it?noredirect=1#comment126638529_71655385)
+
+Control.Tag는 아래와 같이 형식이 object형식으로서 모든 객체를 저장 할 수 있습니다. Bindable 속성은 DataBinding을 지원하는 모든 프로퍼티들에 데코레이트(할당) 되어있습니다. StringConverter는 base converter로서 다른 컨버터들이 사용할 수 있게 됩니다. 이것의 사용성에 대해서 생각해보면 아무거나 프로그래머가 원하는값을 넣어도 됩니다. 좀 오래된 유물같은 프로퍼티로서 옛날부터 사용했다고 합니다. 
+
+```C#
+[System.ComponentModel.Bindable(true)]
+[System.ComponentModel.TypeConverter(typeof(System.ComponentModel.StringConverter))]
+public object Tag { get; set; }
+```
+
+아래의 예제를 보면 Tag에 객체정보를 저장하는것을 알 수 있습니다.
+
+```C#
+private void buttonNewCustomer_Click(object sender, EventArgs e)
+{
+   /* Create a new customer form and assign a new 
+    * Customer object to the Tag property. */
+   CustomerForm customerForm = new CustomerForm();
+   customerForm.Tag = new Customer();
+   customerForm.Show();
+}
+```
+
+Tag에는 클래스에서 파생된 모든형식을 object속성에 맞게 할당할 수 있습니다. 대신에 Windows Forms디자이너를 통해 속성을 설정하는경우 텍스트만 할당가능합니다. 
+
+<hr />
+<br />
+
+## 12. UseWaitCursor
+
+현재 컨트롤과 자식컨트롤에게 WaitCursor를 사용하려면 true값을, 아니면 false값을 할당합니다. 시간이 많이 걸리는 작업을 수행할 때마다 대기 커서를 사용합니다. 근데 UI스레드를 차단하는 작업은 커서가 바뀌는것도 막아버립니다. 따라서 커서를 전역적으로 즉시변경을 위해서는 Cursor.Current 프로퍼티를 수정해줘야합니다. UseWaitCursor는 Control의 멤버입니다. 
+
+
+```C#
+private void WaitCursor(Action func)
+{
+    this.CurrentForm.Cursor = Cursors.WaitCursor;
+    func();
+    this.CurrentForm.Cursor = Cursors.Default;
 }
 ```
