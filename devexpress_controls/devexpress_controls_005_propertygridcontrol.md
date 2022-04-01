@@ -2,9 +2,9 @@
 
 ![img](../img/devexpress_img/propertygridcontrol/001.png)
 
-1. 간단한 예제
-2. PropertyDescriptionControl
-3. 프로퍼티 컨틀롤로 속성값 변경
+1. [간단한 예제](#1-간단한-예제)
+2. [PropertyDescriptionControl](#2-propertydescriptioncontrol)
+3. [프로퍼티 컨틀롤로 속성값 변경](#3-프로퍼티-컨틀롤로-속성값-변경)
 
 <hr />
 <br />
@@ -72,3 +72,8 @@ public partial class Form2 : Form
 결과는 아래사진과 같습니다.
 
 ![img](../img/devexpress_img/propertygridcontrol/002.png)
+
+## 2. PropertyDescriptionControl
+
+
+## 3. 프로퍼티 컨틀롤로 속성값 변경

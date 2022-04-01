@@ -98,6 +98,9 @@
 7. DateEdit 컨트롤을 두개 사용해서 기간을 받아야할때 처음 셋팅값 주기.
 
 ## 5. [PropertyGridControl](devexpress_controls_005_propertygridcontrol.md)
+1. 간단한 예제
+2. PropertyDescriptionControl
+3. 프로퍼티 컨틀롤로 속성값 변경
 
 ## 6. [TreeList](devexpress_controls_006_treelist.md)
 
