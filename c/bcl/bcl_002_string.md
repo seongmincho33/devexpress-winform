@@ -1,9 +1,9 @@
 # 2. 문자열 처리 
 
-1. [System.String](#1-systemstring)
-2. [System.Text.StringBuilder](#2-systemtextstringbuilder)
-3. [System.Text.Encoding](#3-systemtextencoding)
-4. System.Text.RegularExpressions.Regex
+- [2. 문자열 처리](#2-문자열-처리)
+  - [1. System.String](#1-systemstring)
+  - [2. System.Text.StringBuilder](#2-systemtextstringbuilder)
+  - [3. System.Text.Encoding](#3-systemtextencoding)
 
 <hr />
 <br />
@@ -274,7 +274,7 @@ string lwrText = txt.ToLower();
 
 txt변수는 힙ㄴ에 있는 "Hello World"를 가리킵니다. 그 상태에서 ToLower메서드를 호출하면 txt변수에 담긴 문자열이 소문자로 변경되는 것이 아니라 원문이 통째로 복사된 다음 그것이 소문자로 변경되어 반환되는 절차를 거칩니다.
 
-![img](..)
+![img](../../img/c_img/bcl/001.png)
 
 불변 타입의 string 클래스가 발생시키는 가장 큰 문제는 문자열을 더할때 입니다. 예를 들어 다음코드를 보겠습니다.
 
