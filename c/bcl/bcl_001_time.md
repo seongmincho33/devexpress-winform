@@ -1,8 +1,9 @@
 # 1. 시간
     
-1. System.DateTime
-2. System.TimeSpan
-3. System.Diagnostics.Stopwatch
+- [1. 시간](#1-시간)
+  - [1. System.DateTime](#1-systemdatetime)
+  - [2. System.TimeSpan](#2-systemtimespan)
+  - [3. System.Diagnostics.Stopwatch](#3-systemdiagnosticsstopwatch)
 
 <hr />
 <br />
