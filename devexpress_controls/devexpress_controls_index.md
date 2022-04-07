@@ -1,5 +1,7 @@
 # 목차
 
+## 0. [데이터 바인딩](devexpress_controls_000_databinding.md)
+
 ## 1. [컨트롤 공통속성](devexpress_controls_001_properties.md)
 1. ApplicationSettings
 2. DataBindings
