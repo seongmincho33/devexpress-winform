@@ -1,0 +1,6 @@
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\bin\Debug\DataHelperLibrary.dll
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\bin\Debug\DataHelperLibrary.pdb
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\obj\Debug\DataHelperLibrary.csprojAssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\obj\Debug\DataHelperLibrary.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\obj\Debug\DataHelperLibrary.dll
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DataHelperLibrary\obj\Debug\DataHelperLibrary.pdb

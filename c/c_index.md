@@ -93,7 +93,7 @@
 8. [DataSet](etc/etc008_dataset.md)
 9. [구조체](etc/etc009_struct.md)
 10. [방어적 복사](etc/etc010_defensive_copy.md)
-11. [ref/out 예약어](etc/etc_011_ref_out.md)
+11. [ref/out 예약어](etc/etc011_ref_out.md)
 
 <hr />
 

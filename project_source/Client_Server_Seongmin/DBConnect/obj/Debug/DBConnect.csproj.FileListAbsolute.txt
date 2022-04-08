@@ -1,0 +1,6 @@
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\bin\Debug\DBConnect.dll
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\bin\Debug\DBConnect.pdb
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.csprojAssemblyReference.cache
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.csproj.CoreCompileInputs.cache
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.dll
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.pdb

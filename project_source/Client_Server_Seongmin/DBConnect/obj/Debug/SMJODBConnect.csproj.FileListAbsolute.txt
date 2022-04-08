@@ -1,0 +1,12 @@
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\bin\Debug\DBConnect.dll
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\bin\Debug\DBConnect.pdb
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\SMJODBConnect.csprojAssemblyReference.cache
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\SMJODBConnect.csproj.CoreCompileInputs.cache
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.dll
+C:\Users\smjo\source\repos\WindowsFormsApp1\DBConnect\obj\Debug\DBConnect.pdb
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\bin\Debug\DBConnect.dll
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\bin\Debug\DBConnect.pdb
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\obj\Debug\SMJODBConnect.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.dll
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.pdb
+C:\Users\smjo\Desktop\조성민업무\Client_Server_Seongmin\DBConnect\obj\Debug\SMJODBConnect.csprojAssemblyReference.cache

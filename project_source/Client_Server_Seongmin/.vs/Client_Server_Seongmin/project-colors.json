@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "94baae80-8046-4bd6-95a7-703f17e9ffd8": {
+      "ProjectGuid": "94baae80-8046-4bd6-95a7-703f17e9ffd8",
+      "DisplayName": "Client_Server_Seongmin",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    },
+    "cc22d32a-6d6d-439b-8400-761194be919d": {
+      "ProjectGuid": "cc22d32a-6d6d-439b-8400-761194be919d",
+      "DisplayName": "SMJODBConnect",
+      "ColorIndex": 1
+    },
+    "3e331afa-4732-45f5-8cea-25adf454f494": {
+      "ProjectGuid": "3e331afa-4732-45f5-8cea-25adf454f494",
+      "DisplayName": "Main",
+      "ColorIndex": 2
+    },
+    "16fdb669-8069-4808-b4b7-f2d0fbcfc777": {
+      "ProjectGuid": "16fdb669-8069-4808-b4b7-f2d0fbcfc777",
+      "DisplayName": "UC_Library",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
