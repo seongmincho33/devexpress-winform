@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DBConnect.Data.DataAccessComponent;
+using DBConnect.Data.DataContainer_POCO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,22 +12,51 @@ namespace SMJODBConnect
 {
     public class DBConnection
     {
-        private SqlConnection Conn { get; set; }
-        public DataTable SelectedTable { get; set; }
+        private SqlConnection Conn { get; set; }        
+        private DataSet SelectedDataSet { get; set; }
+        private DAC_MemeberInfo Dac_MemberInfo { get; set; }
         
         public DBConnection()
         {
-            this.Conn = new SqlConnection();
-            this.SelectedTable = new DataTable();
+            this.Conn = new SqlConnection();            
+            this.SelectedDataSet = new DataSet();
+            this.CreateDAC();
         }
 
-        #region CRUD
+        #region DAC MemberInfo
+        public void CreateDAC()
+        {
+            this.Dac_MemberInfo = new DAC_MemeberInfo(this.Conn);
+        }
+
+        public void DAC_Insert(DataRow item)
+        {
+            this.Dac_MemberInfo.Insert(item);
+        }
+
+        public void DAC_Update(DataRow item)
+        {
+            this.Dac_MemberInfo.Update(item);
+        }
+
+        public void DAC_Delete(DataRow item)
+        {
+            this.Dac_MemberInfo.Delete(item);
+        }
+
+        public DataSet DAC_SelectAll()
+        {
+            return this.Dac_MemberInfo.DataSet_SelectAll();
+        }
+        #endregion
+
+        #region 쿼리문 직접 받을때
         public bool SendQuerystring_CUD(string queryString, out string message)
         {
             bool IsSuccess = false;
 
             try
-            {           
+            {                        
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Conn;
                 cmd.CommandText = queryString;
@@ -41,7 +72,7 @@ namespace SMJODBConnect
             message = "쿼리 성공";
             return IsSuccess = true;
         }
-        public bool SendQuerystring_R(string queryString, out string message, out DataTable dataTable)
+        public bool SendQuerystring_R(string queryString, out string message, out DataSet dataSet)
         {
             bool IsSuccess = false;
 
@@ -50,17 +81,21 @@ namespace SMJODBConnect
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Conn;
                 cmd.CommandText = queryString;                
-                SqlDataReader reader = cmd.ExecuteReader();             
-                this.SelectedTable.Load(reader);
+                //SqlDataReader reader = cmd.ExecuteReader();             
+                //this.SelectedTable.Load(reader);
+                this.SelectedDataSet.Tables.Clear();
+                SqlDataAdapter adapter = new SqlDataAdapter(queryString, Conn);
+                adapter.Fill(this.SelectedDataSet);
             }
             catch (Exception ex)
             {
-                dataTable = null;
+                dataSet = null;
                 message = ex.ToString();
                 return IsSuccess = false;
             }
 
-            dataTable = this.SelectedTable;
+            //dataTable = this.SelectedTable;
+            dataSet = this.SelectedDataSet;
             message = "쿼리 성공";
             return IsSuccess = true;
         }

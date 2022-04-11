@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
-namespace DataHelperLibrary
+namespace SMJODBConnect
 {
     public class DataTableHelper : IDisposable
     {
         private bool _disposed = false;
         public DataTable MainDataTable { get; set; }
+
+        public DataTableHelper()
+        {
+            this.MainDataTable = new DataTable();
+        }
 
         public void AddColunms(string columnName, Type columnType)
         {

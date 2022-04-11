@@ -25,7 +25,12 @@
       "ProjectGuid": "16fdb669-8069-4808-b4b7-f2d0fbcfc777",
       "DisplayName": "UC_Library",
       "ColorIndex": 3
+    },
+    "d86df7c9-34bf-443d-b27e-376e94be9b70": {
+      "ProjectGuid": "d86df7c9-34bf-443d-b27e-376e94be9b70",
+      "DisplayName": "DataHelperLibrary",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

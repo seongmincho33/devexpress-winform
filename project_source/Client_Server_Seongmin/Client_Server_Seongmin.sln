@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMJODBConnect", "DBConnect\SMJODBConnect.csproj", "{CC22D32A-6D6D-439B-8400-761194BE919D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{3E331AFA-4732-45F5-8CEA-25ADF454F494}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_Library", "UC_Library\UC_Library.csproj", "{16FDB669-8069-4808-B4B7-F2D0FBCFC777}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHelperLibrary", "DataHelperLibrary\DataHelperLibrary.csproj", "{D86DF7C9-34BF-443D-B27E-376E94BE9B70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{16FDB669-8069-4808-B4B7-F2D0FBCFC777}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16FDB669-8069-4808-B4B7-F2D0FBCFC777}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16FDB669-8069-4808-B4B7-F2D0FBCFC777}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D86DF7C9-34BF-443D-B27E-376E94BE9B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D86DF7C9-34BF-443D-B27E-376E94BE9B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D86DF7C9-34BF-443D-B27E-376E94BE9B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D86DF7C9-34BF-443D-B27E-376E94BE9B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

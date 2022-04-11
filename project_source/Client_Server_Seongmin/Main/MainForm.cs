@@ -1,10 +1,12 @@
-﻿using DataHelperLibrary;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using UC_Library;
@@ -15,32 +17,66 @@ namespace Main
         public MainForm()
         {
             InitializeComponent();
-            this.SetGridControl();
-            this.SetMemoEdit();
+            this.SetGridControl();            
             this.SetButtons();
         }
 
         private void SetButtons()
         {
-            this.btn_retrieve.Click += Btn_retrieve_Click;
-        }
-
-        private void Btn_retrieve_Click(object sender, EventArgs e)
-        {
-            if(this.uC_DBConnection1.UC_DataTable != null)
+            this.btn_Retrieve.Click += Btn_Click;
+            this.btn_Insert.Click += Btn_Click;
+            this.btn_Update.Click += Btn_Click;
+            this.btn_Delete.Click += Btn_Click;
+            void Btn_Click(object sender, EventArgs e)
             {
-                this.gridControl1.DataSource = this.uC_DBConnection1.UC_DataTable;
-                this.gridControl1.DefaultView.PopulateColumns();
-            }
-        }
+                SimpleButton btn = sender as SimpleButton;
+                if (btn.Text == "조회")
+                {
+                    this.DataRetrieve();
+                }
+                else if (btn.Text == "추가")
+                {
+                    if (this.gridControl1.DataSource != null)
+                    {
+                        DataRow row = (this.gridControl1.DataSource as DataTable).NewRow();
+                        row["MEMBER_ID"] = Guid.NewGuid().ToString();
+                        (this.gridControl1.DataSource as DataTable).Rows.Add(row);
+                    }
+                }
+                else if (btn.Text == "저장")
+                {
+                    if (XtraMessageBox.Show("저장하시겠습니까?", "저장", MessageBoxButtons.OKCancel) == DialogResult.No)
+                    {
+                        return;
+                    }
 
-        private void SetMemoEdit()
-        {
-            this.uC_DBConnection1.queryString = this.memoEdit1.Text;
-            this.memoEdit1.EditValueChanged += MemoEdit1_EditValueChanged;
-            void MemoEdit1_EditValueChanged(object sender, EventArgs e)
-            {
-                this.uC_DBConnection1.queryString = this.memoEdit1.Text;
+                    foreach (DataRow row in (this.gridControl1.DataSource as DataTable).Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            this.uC_DBConnection1.dbConn.DAC_Insert(row);
+                        }
+                        if (row.RowState == DataRowState.Modified)
+                        {
+                            this.uC_DBConnection1.dbConn.DAC_Update(row);
+                        }
+                    }
+                    (this.gridControl1.DataSource as DataTable).AcceptChanges();
+                    this.DataRetrieve();
+                }
+                else if (btn.Text == "삭제")
+                {
+                    if (XtraMessageBox.Show("삭제하시겠습니까?", "삭제", MessageBoxButtons.OKCancel) == DialogResult.No)
+                    {
+                        return;
+                    }
+
+                    int[] selRows = ((GridView)gridControl1.MainView).GetSelectedRows();
+                    DataRowView selRow = (DataRowView)(((GridView)gridControl1.MainView).GetRow(selRows[0]));
+                    //_ = selRow["name"].ToString();               
+                    this.uC_DBConnection1.dbConn.DAC_Delete((DataRow)selRow.Row);
+                    this.DataRetrieve();
+                }
             }
         }
 
@@ -58,6 +94,22 @@ namespace Main
             //}
 
             //this.gridControl1.DataSource = somethingDataTable;
+
+            if (this.uC_DBConnection1.UC_DataSet != null)
+            {
+                this.gridControl1.DataBindings.Clear();
+                this.gridControl1.DataSource = null;
+                this.gridControl1.DataSource = this.uC_DBConnection1.UC_DataSet;
+                this.gridControl1.DefaultView.PopulateColumns();
+            }
+        }
+
+        private void DataRetrieve()
+        {
+            this.gridControl1.DataBindings.Clear();
+            this.gridControl1.DataSource = null;
+            this.gridControl1.DataSource = this.uC_DBConnection1.dbConn.DAC_SelectAll().Tables[0];
+            this.gridControl1.DefaultView.PopulateColumns();
         }
     }    
 }

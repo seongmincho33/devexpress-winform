@@ -28,31 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uC_DBConnection1 = new UC_Library.UC_DBConnection();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btn_retrieve = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            this.btn_Retrieve = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Insert = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Update = new DevExpress.XtraEditors.SimpleButton();
+            this.uC_DBConnection1 = new UC_Library.UC_DBConnection();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // uC_DBConnection1
-            // 
-            this.uC_DBConnection1.Location = new System.Drawing.Point(12, 12);
-            this.uC_DBConnection1.Name = "uC_DBConnection1";
-            this.uC_DBConnection1.queryString = null;
-            this.uC_DBConnection1.Size = new System.Drawing.Size(271, 475);
-            this.uC_DBConnection1.TabIndex = 0;
-            this.uC_DBConnection1.UC_DataTable = null;
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Location = new System.Drawing.Point(299, 485);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(769, 240);
-            this.memoEdit1.TabIndex = 1;
             // 
             // gridControl1
             // 
@@ -69,39 +57,85 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // btn_retrieve
+            // btn_Retrieve
             // 
-            this.btn_retrieve.Location = new System.Drawing.Point(993, 17);
-            this.btn_retrieve.Name = "btn_retrieve";
-            this.btn_retrieve.Size = new System.Drawing.Size(75, 23);
-            this.btn_retrieve.TabIndex = 3;
-            this.btn_retrieve.Text = "조회";
+            this.btn_Retrieve.Location = new System.Drawing.Point(5, 5);
+            this.btn_Retrieve.Name = "btn_Retrieve";
+            this.btn_Retrieve.Size = new System.Drawing.Size(75, 23);
+            this.btn_Retrieve.TabIndex = 3;
+            this.btn_Retrieve.Text = "조회";
+            // 
+            // btn_Insert
+            // 
+            this.btn_Insert.Location = new System.Drawing.Point(86, 5);
+            this.btn_Insert.Name = "btn_Insert";
+            this.btn_Insert.Size = new System.Drawing.Size(75, 23);
+            this.btn_Insert.TabIndex = 4;
+            this.btn_Insert.Text = "추가";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.btn_Delete);
+            this.panelControl1.Controls.Add(this.btn_Update);
+            this.panelControl1.Controls.Add(this.btn_Insert);
+            this.panelControl1.Controls.Add(this.btn_Retrieve);
+            this.panelControl1.Location = new System.Drawing.Point(742, 5);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(326, 35);
+            this.panelControl1.TabIndex = 5;
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(248, 5);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.TabIndex = 6;
+            this.btn_Delete.Text = "삭제";
+            // 
+            // btn_Update
+            // 
+            this.btn_Update.Location = new System.Drawing.Point(167, 5);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(75, 23);
+            this.btn_Update.TabIndex = 5;
+            this.btn_Update.Text = "저장";
+            // 
+            // uC_DBConnection1
+            // 
+            this.uC_DBConnection1.Location = new System.Drawing.Point(12, 46);
+            this.uC_DBConnection1.Name = "uC_DBConnection1";
+            this.uC_DBConnection1.queryString = null;
+            this.uC_DBConnection1.Size = new System.Drawing.Size(269, 691);
+            this.uC_DBConnection1.TabIndex = 6;
+            this.uC_DBConnection1.UC_DataSet = null;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 744);
-            this.Controls.Add(this.btn_retrieve);
-            this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.memoEdit1);
+            this.ClientSize = new System.Drawing.Size(1083, 748);
             this.Controls.Add(this.uC_DBConnection1);
+            this.Controls.Add(this.panelControl1);
+            this.Controls.Add(this.gridControl1);
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private UC_Library.UC_DBConnection uC_DBConnection1;
-        private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.SimpleButton btn_retrieve;
+        private DevExpress.XtraEditors.SimpleButton btn_Retrieve;
+        private DevExpress.XtraEditors.SimpleButton btn_Insert;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraEditors.SimpleButton btn_Update;
+        private UC_Library.UC_DBConnection uC_DBConnection1;
     }
 }
 

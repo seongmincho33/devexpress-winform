@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataHelperLibrary
+namespace SMJODBConnect
 {
     public class DataTableHelperFactory
     {
@@ -15,5 +15,5 @@ namespace DataHelperLibrary
             dataTableHelper.MainDataTable = dataTable;
             return dataTableHelper;
         }
-    }
+    }    
 }

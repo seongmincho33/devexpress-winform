@@ -42,6 +42,7 @@
     <Reference Include="DevExpress.Data.v20.2" />
     <Reference Include="DevExpress.Utils.v20.2" />
     <Reference Include="DevExpress.Sparkline.v20.2.Core" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v20.2" />
     <Reference Include="DevExpress.Printing.v20.2.Core" />
     <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -93,10 +94,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataHelperLibrary\DataHelperLibrary.csproj">
-      <Project>{d86df7c9-34bf-443d-b27e-376e94be9b70}</Project>
-      <Name>DataHelperLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DBConnect\SMJODBConnect.csproj">
       <Project>{cc22d32a-6d6d-439b-8400-761194be919d}</Project>
       <Name>SMJODBConnect</Name>

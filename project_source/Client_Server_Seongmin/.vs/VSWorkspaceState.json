@@ -3,8 +3,13 @@
     "",
     "\\Client_Server_Seongmin",
     "\\DBConnect",
-    "\\WindowsFormsControlLibrary1"
+    "\\DBConnect\\Data",
+    "\\DBConnect\\DataTableHelper",
+    "\\DBConnect\\Data\\DataAccessComponent",
+    "\\DBConnect\\Data\\DataContainer_POCO",
+    "\\Main",
+    "\\UC_Library"
   ],
-  "SelectedNode": "\\Client_Server_Seongmin.sln",
+  "SelectedNode": "\\UC_Library\\UC_DBConnection.cs",
   "PreviewInSolutionExplorer": false
 }

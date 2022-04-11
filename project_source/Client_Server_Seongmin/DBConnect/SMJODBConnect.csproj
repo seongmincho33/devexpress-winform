@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTableHelper\DataTableHelper.cs" />
+    <Compile Include="DataTableHelper\DataTableHelperFactory.cs" />
+    <Compile Include="Data\DataAccessComponent\DAC_MemeberInfo.cs" />
+    <Compile Include="Data\DataAccessComponent\IDAC.cs" />
+    <Compile Include="Data\DataContainer_POCO\MemberInfo.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

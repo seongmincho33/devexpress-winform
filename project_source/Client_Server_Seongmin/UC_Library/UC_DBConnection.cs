@@ -15,16 +15,15 @@ using SMJODBConnect;
 namespace UC_Library
 {
     public partial class UC_DBConnection : DevExpress.XtraEditors.XtraUserControl
-    {
-        //SqlConnection Conn = null;        
-        private DBConnection dbConn = new DBConnection();
+    {             
+        public DBConnection dbConn = new DBConnection();
         public string queryString { get; set; }
-        public DataTable UC_DataTable { get; set; }
+        public DataSet UC_DataSet { get; set; }        
 
         public UC_DBConnection()
         {
             InitializeComponent();
-            this.SetControls();
+            this.SetControls();            
         }
 
         private void SetControls()
@@ -32,7 +31,7 @@ namespace UC_Library
             SetForm();
             SetButtons();
             SetTextEdits();
-            SetCheckedListBox();
+            SetMemoEdit();
 
             void SetButtons()
             {
@@ -47,18 +46,19 @@ namespace UC_Library
             {
                 this.txtEdit_ServerConnection.Text = "해제";
                 this.txtEdit_ServerConnection.Enabled = false;
-            }
-            void SetCheckedListBox()
+            }            
+            void SetMemoEdit()
             {
-                this.checkBox_Save.ItemCheck += CheckBox_Save_ItemCheck;
-            }
-            void CheckBox_Save_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
-            {
-                    
+                this.queryString = this.memoEdit_QueryString.Text;
+                this.memoEdit_QueryString.EditValueChanged += memoEdit_QueryString_EditValueChanged;
+                void memoEdit_QueryString_EditValueChanged(object sender, EventArgs e)
+                {
+                    this.queryString = this.memoEdit_QueryString.Text;
+                }
             }
             void SetForm()
             {
-                this.Load += Form1_Load;
+                this.Load += Form1_Load;                
             }
             void Form1_Load(object sender, EventArgs e)
             {
@@ -95,6 +95,7 @@ namespace UC_Library
                 }
 
                 ((Form)this.Parent).FormClosing += FormMain_FormClosing;
+
             }
 
             void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -125,10 +126,11 @@ namespace UC_Library
             }
         }
 
+        #region 버튼 이벤트
         private void Btn_SendQuery_R_Click(object sender, EventArgs e)
         {
-            this.dbConn.SendQuerystring_R(this.queryString, out string message, out DataTable selectedTable);
-            this.UC_DataTable = selectedTable;
+            this.dbConn.SendQuerystring_R(this.queryString, out string message, out DataSet selectedDataSet);            
+            this.UC_DataSet = selectedDataSet;           
             if (message != null)
             {
                 MessageBox.Show(message);
@@ -152,43 +154,7 @@ namespace UC_Library
             {
                 MessageBox.Show(message);
                 txtEdit_ServerConnection.Text = message;
-            }
-            //String ConnectionString;
-            //ConnectionString =
-            //    "server=.\\" + this.txtEdit_ServerName.Text + ";" +
-            //    "database=" + this.txtEdit_DataBaseName.Text + ";" +
-            //    "user id=" + this.txtEdit_ID.Text + ";" +
-            //    "pwd=" + this.txtEdit_Password.Text + ";";
-           
-            //DBConnection dbConn = new DBConnection();
-            //dbConn.ServerConnect(this.txtEdit_ServerName.Text, this.txtEdit_DataBaseName.Text, this.txtEdit_ID.Text, this.txtEdit_Password.Text, out string message);   
-            //if (message != null)
-            //{
-            //    MessageBox.Show(message);
-            //}
-
-            //if (Conn != null)
-            //{
-            //    Conn.Dispose(); //Close()역할 까지 함
-            //}
-
-            //Conn = new SqlConnection(ConnectionString);
-
-            ///*
-            ////아래와 같이 해도 된다.
-            //Conn = new SqlConnection();
-            //Conn.ConnectionString =
-            //    "server=.\\" + this.txtEdit_ServerName.Text + ";" +
-            //    "database=" + textBox_DBName.Text + ";" +
-            //    "user id=" + textBox_User_ID.Text + ";" +
-            //    "pwd=" + textBox_User_Password.Text + ";";
-            //*/
-
-
-            //if (Conn != null)
-            //    txtEdit_ServerConnection.Text = "연결";
-            //else
-            //    txtEdit_ServerConnection.Text = "해제";
+            }   
         }
 
         private void btn_DbOpen_Click(object sender, EventArgs e)
@@ -197,31 +163,7 @@ namespace UC_Library
             if (message != null)
             {
                 MessageBox.Show(message);
-            }
-            //if (Conn != null)
-            //{
-            //    try
-            //    {
-            //        Conn.Open();
-            //        if (Conn.State == ConnectionState.Open)
-            //        {
-            //            MessageBox.Show("데이터베이스 열었습니다.");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("데이터베이스 Open 에러. 서버와 연결되지 않았습니다.");
-            //        }
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        MessageBox.Show(ex.ToString());
-            //    }
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("연결된 DB가 없습니다.");
-            //}
+            }           
         }
 
         private void btn_DbClose_Click(object sender, EventArgs e)
@@ -231,30 +173,7 @@ namespace UC_Library
             if (message != null)
             {
                 MessageBox.Show(message);
-            }
-            //if (Conn != null)
-            //{
-            //    try
-            //    {
-            //        Conn.Close();
-            //        if (Conn.State == ConnectionState.Closed)
-            //        {
-            //            MessageBox.Show("데이터베이스 닫았습니다.");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("데이터베이스 Close 에러. 서버와 연결되지 않았습니다.");
-            //        }
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        MessageBox.Show(ex.ToString());
-            //    }               
-            //}
-            //else
-            //{
-            //    MessageBox.Show("연결된 DB가 없습니다.");
-            //}
+            }          
         }
 
         private void btn_ServerDisconnect_Click(object sender, EventArgs e)
@@ -264,11 +183,8 @@ namespace UC_Library
             {
                 MessageBox.Show(message);
                 txtEdit_ServerConnection.Text = message;                
-            }
-            //Conn.Dispose();
-            //Conn = null;
-            //txtEdit_ServerConnection.Text = "해제";
-            //MessageBox.Show("서버 연결 해제");
+            }      
         }
+        #endregion
     }
 }
