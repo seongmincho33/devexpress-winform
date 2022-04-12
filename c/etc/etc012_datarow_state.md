@@ -1,14 +1,10 @@
 # DataRow의 상태
 
-1. DataRow.RowState
-2. DataRow.AcceptChanges()
-3. DataRow.BeginEdit()
-4. DataRow.CancelEdit()
-5. DataRow.EndEdit()
-6. DataRow.SetAdded()
-7. DataRow.SetModified()
+- [DataRow의 상태](#datarow의-상태)
+  - [1. DataRow.RowState](#1-datarowrowstate)
+  - [2. DataRow.AcceptChanges()](#2-datarowacceptchanges)
 
-## DataRow.RowState
+## 1. DataRow.RowState
 
 DataRow.RowState는 DataRowState 열거형 형식입니다. DataRowState는 5가지 상태가 있는데 DataRow는 이중 하나의 상태를 가지게 됩니다.
 
@@ -58,3 +54,5 @@ private DataTable MakeTable(){
    return dt;
 }
 ```
+
+## 2. DataRow.AcceptChanges()

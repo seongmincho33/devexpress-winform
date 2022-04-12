@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 748);
+            this.ClientSize = new System.Drawing.Size(1148, 794);
             this.Controls.Add(this.uC_DBConnection1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.gridControl1);

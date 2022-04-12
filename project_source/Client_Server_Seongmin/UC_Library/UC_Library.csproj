@@ -52,6 +52,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="UC_Buttons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Buttons.Designer.cs">
+      <DependentUpon>UC_Buttons.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_DBConnection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -63,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UC_Buttons.resx">
+      <DependentUpon>UC_Buttons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_DBConnection.resx">
       <DependentUpon>UC_DBConnection.cs</DependentUpon>
     </EmbeddedResource>

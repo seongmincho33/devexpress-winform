@@ -94,7 +94,7 @@
 9. [구조체](etc/etc009_struct.md)
 10. [방어적 복사](etc/etc010_defensive_copy.md)
 11. [ref/out 예약어](etc/etc011_ref_out.md)
-12. [DataRow 상태(state)]()
+12. [DataRow 상태(state)](etc/etc012_datarow_state.md)
 
 <hr />
 

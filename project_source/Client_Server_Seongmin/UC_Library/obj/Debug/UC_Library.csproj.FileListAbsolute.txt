@@ -156,4 +156,5 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csproj.CopyComplete
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.dll
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.pdb
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csprojAssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.UC_Buttons.resources

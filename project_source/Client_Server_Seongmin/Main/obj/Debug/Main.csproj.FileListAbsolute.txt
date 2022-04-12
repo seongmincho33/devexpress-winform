@@ -199,5 +199,14 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.exe
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.pdb
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.AssemblyReference.cache
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.SuggestedBindingRedirects.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csprojAssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.Home.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_User.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.TreeMap.v20.2.Core.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.UI.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.DataVisualization.v20.2.Core.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.TreeMap.v20.2.Core.xml
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.xml
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.UI.xml
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_Main.resources

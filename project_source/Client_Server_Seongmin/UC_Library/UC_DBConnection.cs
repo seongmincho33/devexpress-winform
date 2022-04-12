@@ -63,39 +63,40 @@ namespace UC_Library
             void Form1_Load(object sender, EventArgs e)
             {
                 //기본셋팅값을 불러옵니다.
-
-                if (Settings.Default.WindowLocation != null)
+                if(this.Parent is Form)
                 {
-                    ((Form)this.Parent).Location = Settings.Default.WindowLocation;
-                }
+                    if (Settings.Default.WindowLocation != null)
+                    {
+                        ((Form)this.Parent).Location = Settings.Default.WindowLocation;
+                    }
 
-                if (Settings.Default.WindowSize != null)
-                {
-                    ((Form)this.Parent).Size = Settings.Default.WindowSize;
-                }
+                    if (Settings.Default.WindowSize != null)
+                    {
+                        ((Form)this.Parent).Size = Settings.Default.WindowSize;
+                    }
 
-                if (Settings.Default.ServerName != null)
-                {
-                    this.txtEdit_ServerName.Text = Settings.Default.ServerName;
-                }
+                    if (Settings.Default.ServerName != null)
+                    {
+                        this.txtEdit_ServerName.Text = Settings.Default.ServerName;
+                    }
 
-                if (Settings.Default.DataBaseName != null)
-                {
-                    this.txtEdit_DataBaseName.Text = Settings.Default.DataBaseName;
-                }
+                    if (Settings.Default.DataBaseName != null)
+                    {
+                        this.txtEdit_DataBaseName.Text = Settings.Default.DataBaseName;
+                    }
 
-                if (Settings.Default.UserID != null)
-                {
-                    this.txtEdit_ID.Text = Settings.Default.UserID;
-                }
+                    if (Settings.Default.UserID != null)
+                    {
+                        this.txtEdit_ID.Text = Settings.Default.UserID;
+                    }
 
-                if (Settings.Default.Password != null)
-                {
-                    this.txtEdit_Password.Text = Settings.Default.Password;
-                }
+                    if (Settings.Default.Password != null)
+                    {
+                        this.txtEdit_Password.Text = Settings.Default.Password;
+                    }
 
                 ((Form)this.Parent).FormClosing += FormMain_FormClosing;
-
+                }                
             }
 
             void FormMain_FormClosing(object sender, FormClosingEventArgs e)
