@@ -33,13 +33,13 @@
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordion_Form = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordion_MainForm = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordion_Settings = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordion_Settings_DB = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordion_Settings_User = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.accordion_Settings_User = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -80,7 +80,11 @@
             // 
             this.accordion_MainForm.Name = "accordion_MainForm";
             this.accordion_MainForm.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordion_MainForm.Text = "메인 화면";
+            this.accordion_MainForm.Text = "MemberInfo테이블 CRUD 연습";
+            // 
+            // accordionControlSeparator2
+            // 
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
             // 
             // accordion_Settings
             // 
@@ -102,6 +106,16 @@
             this.accordion_Settings_DB.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordion_Settings_DB.Text = "DB 설정";
             // 
+            // accordion_Settings_User
+            // 
+            this.accordion_Settings_User.Name = "accordion_Settings_User";
+            this.accordion_Settings_User.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordion_Settings_User.Text = "사용자관리(TreeListView)";
+            // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
+            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
@@ -115,20 +129,6 @@
             // fluentFormDefaultManager1
             // 
             this.fluentFormDefaultManager1.Form = this;
-            // 
-            // accordionControlSeparator1
-            // 
-            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
-            // 
-            // accordionControlSeparator2
-            // 
-            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
-            // 
-            // accordion_Settings_User
-            // 
-            this.accordion_Settings_User.Name = "accordion_Settings_User";
-            this.accordion_Settings_User.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordion_Settings_User.Text = "사용자관리";
             // 
             // Home
             // 

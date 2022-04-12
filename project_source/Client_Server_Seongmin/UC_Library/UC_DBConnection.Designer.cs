@@ -55,6 +55,16 @@
             this.txtEdit_DataBaseName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Update = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Insert = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Retrieve = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -78,6 +88,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_ServerConnection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_ID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_DataBaseName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            this.splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.Panel2.SuspendLayout();
+            this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl3
@@ -90,7 +114,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(269, 691);
+            this.panelControl3.Size = new System.Drawing.Size(269, 667);
             this.panelControl3.TabIndex = 8;
             // 
             // panelControl4
@@ -106,9 +130,9 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.memoEdit_QueryString);
-            this.groupControl1.Location = new System.Drawing.Point(3, 5);
+            this.groupControl1.Location = new System.Drawing.Point(3, 6);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(262, 204);
+            this.groupControl1.Size = new System.Drawing.Size(262, 183);
             this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "쿼리문 작성";
             // 
@@ -117,7 +141,7 @@
             this.memoEdit_QueryString.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoEdit_QueryString.Location = new System.Drawing.Point(2, 23);
             this.memoEdit_QueryString.Name = "memoEdit_QueryString";
-            this.memoEdit_QueryString.Size = new System.Drawing.Size(258, 179);
+            this.memoEdit_QueryString.Size = new System.Drawing.Size(258, 158);
             this.memoEdit_QueryString.TabIndex = 6;
             // 
             // panelControl1
@@ -328,13 +352,112 @@
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "데이터 베이스 연결하기";
             // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.panelControl6);
+            this.groupControl2.Controls.Add(this.panelControl5);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(645, 667);
+            this.groupControl2.TabIndex = 8;
+            this.groupControl2.Text = "조회결과";
+            // 
+            // panelControl6
+            // 
+            this.panelControl6.Controls.Add(this.btn_Delete);
+            this.panelControl6.Controls.Add(this.btn_Update);
+            this.panelControl6.Controls.Add(this.btn_Insert);
+            this.panelControl6.Controls.Add(this.btn_Retrieve);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl6.Location = new System.Drawing.Point(2, 23);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(641, 35);
+            this.panelControl6.TabIndex = 7;
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(248, 5);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.TabIndex = 6;
+            this.btn_Delete.Text = "삭제";
+            // 
+            // btn_Update
+            // 
+            this.btn_Update.Location = new System.Drawing.Point(167, 5);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(75, 23);
+            this.btn_Update.TabIndex = 5;
+            this.btn_Update.Text = "저장";
+            // 
+            // btn_Insert
+            // 
+            this.btn_Insert.Location = new System.Drawing.Point(86, 5);
+            this.btn_Insert.Name = "btn_Insert";
+            this.btn_Insert.Size = new System.Drawing.Size(75, 23);
+            this.btn_Insert.TabIndex = 4;
+            this.btn_Insert.Text = "추가";
+            // 
+            // btn_Retrieve
+            // 
+            this.btn_Retrieve.Location = new System.Drawing.Point(5, 5);
+            this.btn_Retrieve.Name = "btn_Retrieve";
+            this.btn_Retrieve.Size = new System.Drawing.Size(75, 23);
+            this.btn_Retrieve.TabIndex = 3;
+            this.btn_Retrieve.Text = "조회";
+            // 
+            // panelControl5
+            // 
+            this.panelControl5.Controls.Add(this.gridControl1);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl5.Location = new System.Drawing.Point(2, 23);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(641, 642);
+            this.panelControl5.TabIndex = 1;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(2, 2);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(637, 638);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.panelControl3);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(924, 667);
+            this.splitContainerControl1.SplitterPosition = 269;
+            this.splitContainerControl1.TabIndex = 1;
+            // 
             // UC_DBConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelControl3);
+            this.Controls.Add(this.splitContainerControl1);
             this.Name = "UC_DBConnection";
-            this.Size = new System.Drawing.Size(269, 691);
+            this.Size = new System.Drawing.Size(924, 667);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -360,6 +483,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_ServerConnection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_ID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEdit_DataBaseName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            this.splitContainerControl1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            this.splitContainerControl1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -393,5 +530,15 @@
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.MemoEdit memoEdit_QueryString;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.PanelControl panelControl6;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraEditors.SimpleButton btn_Update;
+        private DevExpress.XtraEditors.SimpleButton btn_Insert;
+        private DevExpress.XtraEditors.SimpleButton btn_Retrieve;
     }
 }

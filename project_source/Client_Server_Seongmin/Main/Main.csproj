@@ -84,11 +84,11 @@
     <Compile Include="UC\UC_User.Designer.cs">
       <DependentUpon>UC_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC\UC_Main.cs">
+    <Compile Include="UC\UC_Member.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC\UC_Main.Designer.cs">
-      <DependentUpon>UC_Main.cs</DependentUpon>
+    <Compile Include="UC\UC_Member.Designer.cs">
+      <DependentUpon>UC_Member.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -107,8 +107,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UC\UC_Main.resx">
-      <DependentUpon>UC_Main.cs</DependentUpon>
+    <EmbeddedResource Include="UC\UC_Member.resx">
+      <DependentUpon>UC_Member.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>

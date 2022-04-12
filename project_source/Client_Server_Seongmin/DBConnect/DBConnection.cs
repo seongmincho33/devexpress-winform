@@ -20,13 +20,13 @@ namespace SMJODBConnect
         {
             this.Conn = new SqlConnection();            
             this.SelectedDataSet = new DataSet();
-            this.CreateDAC();
+            this.CreateDAC(this.Conn);
         }
 
         #region DAC MemberInfo
-        public void CreateDAC()
+        public void CreateDAC(SqlConnection Conn)
         {
-            this.Dac_MemberInfo = new DAC_MemeberInfo(this.Conn);
+            this.Dac_MemberInfo = new DAC_MemeberInfo(Conn);
         }
 
         public void DAC_Insert(DataRow item)
@@ -219,7 +219,8 @@ namespace SMJODBConnect
                 message = "해제 실패";
             }
 
-            this.Conn = new SqlConnection(); //기존 연결 해지후 새로운 SqlConnection할당            
+            this.Conn = new SqlConnection(); //기존 연결 해지후 새로운 SqlConnection할당       
+            this.CreateDAC(this.Conn); //데이터엑세스컨트롤러(DAC)이 있다면 새로운 SqlConnection을 데이터엑세스컨트롤러에게 주어야 합니다.
             return IsSuccess = true;
         }
         #endregion

@@ -209,4 +209,4 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.TreeMap.v20.2.Core.xml
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.xml
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.UI.xml
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_Main.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_Member.resources

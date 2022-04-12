@@ -14,7 +14,7 @@ namespace Main
     public partial class Home : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private UC_DBConnection uC_DBConnection;
-        private UC.UC_Main uC_Main;
+        private UC.UC_Member uC_Main;
         private UC.UC_User uC_User;
 
         public Home()
@@ -27,7 +27,7 @@ namespace Main
         private void CreateUC()
         {
             this.uC_DBConnection = new UC_DBConnection();
-            this.uC_Main = new UC.UC_Main(uC_DBConnection);
+            this.uC_Main = new UC.UC_Member(uC_DBConnection);
             this.uC_User = new UC.UC_User(uC_DBConnection);
         }
 
