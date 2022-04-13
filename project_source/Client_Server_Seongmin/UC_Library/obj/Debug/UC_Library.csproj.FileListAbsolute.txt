@@ -156,7 +156,6 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csproj.CopyComplete
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.dll
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.pdb
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csprojAssemblyReference.cache
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.UC_Buttons.resources
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\bin\Debug\DevExpress.XtraGrid.v20.2.dll
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\bin\Debug\DevExpress.XtraLayout.v20.2.dll
@@ -202,3 +201,4 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\bin\Debug\ru\DevExpress.Office.v20.2.Core.resources.dll
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.FileCopy.resources
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.Properties.Resources.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\UC_Library\obj\Debug\UC_Library.csproj.AssemblyReference.cache

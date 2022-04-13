@@ -199,7 +199,6 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.exe
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.pdb
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csprojAssemblyReference.cache
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.Home.resources
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_User.resources
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.TreeMap.v20.2.Core.dll
@@ -210,3 +209,11 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.xml
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraTreeMap.v20.2.UI.xml
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.UC.UC_Member.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraVerticalGrid.v20.2.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\DevExpress.XtraVerticalGrid.v20.2.xml
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\de\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\es\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\ja\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\bin\Debug\ru\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\Main\obj\Debug\Main.csproj.SuggestedBindingRedirects.cache

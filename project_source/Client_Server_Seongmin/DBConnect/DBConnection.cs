@@ -15,38 +15,96 @@ namespace SMJODBConnect
         private SqlConnection Conn { get; set; }        
         private DataSet SelectedDataSet { get; set; }
         private DAC_MemeberInfo Dac_MemberInfo { get; set; }
+        private DAC_User DAC_User { get; set; }
+        private DAC_Department DAC_Department { get; set; }
         
         public DBConnection()
         {
             this.Conn = new SqlConnection();            
             this.SelectedDataSet = new DataSet();
-            this.CreateDAC(this.Conn);
+            this.CreateDAC_MemberInfo(this.Conn);
+            this.CreateDAC_User(this.Conn);
+            this.CreateDAC_Department(this.Conn);
         }
 
         #region DAC MemberInfo
-        public void CreateDAC(SqlConnection Conn)
+        public void CreateDAC_MemberInfo(SqlConnection Conn)
         {
             this.Dac_MemberInfo = new DAC_MemeberInfo(Conn);
         }
 
-        public void DAC_Insert(DataRow item)
+        public void DAC_Insert_MemberInfo(DataRow item)
         {
             this.Dac_MemberInfo.Insert(item);
         }
 
-        public void DAC_Update(DataRow item)
+        public void DAC_Update_MemberInfo(DataRow item)
         {
             this.Dac_MemberInfo.Update(item);
         }
 
-        public void DAC_Delete(DataRow item)
+        public void DAC_Delete_MemberInfo(DataRow item)
         {
             this.Dac_MemberInfo.Delete(item);
         }
 
-        public DataSet DAC_SelectAll()
+        public DataSet DAC_SelectAll_MemberInfo()
         {
             return this.Dac_MemberInfo.DataSet_SelectAll();
+        }
+        #endregion
+
+        #region DAC User
+        public void CreateDAC_User(SqlConnection Conn)
+        {
+            this.DAC_User = new DAC_User(Conn);
+        }
+
+        public void DAC_Insert_User(DataRow item)
+        {
+            this.DAC_User.Insert(item);
+        }
+
+        public void DAC_Update_User(DataRow item)
+        {
+            this.DAC_User.Update(item);
+        }
+
+        public void DAC_Delete_User(DataRow item)
+        {
+            this.DAC_User.Delete(item);
+        }
+
+        public DataSet DAC_SelectAll_User()
+        {
+            return this.DAC_User.DataSet_SelectAll();
+        }
+        #endregion
+
+        #region DAC Department
+        public void CreateDAC_Department(SqlConnection Conn)
+        {
+            this.DAC_Department = new DAC_Department(Conn);
+        }
+
+        public void DAC_Insert_Department(DataRow item)
+        {
+            this.DAC_Department.Insert(item);
+        }
+
+        public void DAC_Update_Department(DataRow item)
+        {
+            this.DAC_Department.Update(item);
+        }
+
+        public void DAC_Delete_Department(DataRow item)
+        {
+            this.DAC_Department.Delete(item);
+        }
+
+        public DataSet DAC_SelectAll_Department()
+        {
+            return this.DAC_Department.DataSet_SelectAll();
         }
         #endregion
 
@@ -220,7 +278,7 @@ namespace SMJODBConnect
             }
 
             this.Conn = new SqlConnection(); //기존 연결 해지후 새로운 SqlConnection할당       
-            this.CreateDAC(this.Conn); //데이터엑세스컨트롤러(DAC)이 있다면 새로운 SqlConnection을 데이터엑세스컨트롤러에게 주어야 합니다.
+            this.CreateDAC_MemberInfo(this.Conn); //데이터엑세스컨트롤러(DAC)이 있다면 새로운 SqlConnection을 데이터엑세스컨트롤러에게 주어야 합니다.
             return IsSuccess = true;
         }
         #endregion

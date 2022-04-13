@@ -59,11 +59,11 @@ namespace Main.UC
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            this.uC_DBConnection1.dbConn.DAC_Insert(row);
+                            this.uC_DBConnection1.dbConn.DAC_Insert_MemberInfo(row);
                         }
                         if (row.RowState == DataRowState.Modified)
                         {
-                            this.uC_DBConnection1.dbConn.DAC_Update(row);
+                            this.uC_DBConnection1.dbConn.DAC_Update_MemberInfo(row);
                         }
                     }
                     (this.gridControl1.DataSource as DataTable).AcceptChanges();
@@ -79,7 +79,7 @@ namespace Main.UC
                     int[] selRows = ((GridView)gridControl1.MainView).GetSelectedRows();
                     DataRowView selRow = (DataRowView)(((GridView)gridControl1.MainView).GetRow(selRows[0]));
                     //_ = selRow["name"].ToString();               
-                    this.uC_DBConnection1.dbConn.DAC_Delete((DataRow)selRow.Row);
+                    this.uC_DBConnection1.dbConn.DAC_Delete_MemberInfo((DataRow)selRow.Row);
                     this.DataRetrieve();
                 }
             }
@@ -90,7 +90,7 @@ namespace Main.UC
             {
                 this.gridControl1.DataBindings.Clear();
                 this.gridControl1.DataSource = null;
-                this.gridControl1.DataSource = this.uC_DBConnection1.dbConn.DAC_SelectAll().Tables[0];
+                this.gridControl1.DataSource = this.uC_DBConnection1.dbConn.DAC_SelectAll_MemberInfo().Tables[0];
                 this.gridControl1.DefaultView.PopulateColumns();
             }
             catch(Exception ex)

@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="DataTableHelper\DataTableHelper.cs" />
     <Compile Include="DataTableHelper\DataTableHelperFactory.cs" />
+    <Compile Include="Data\DataAccessComponent\DAC_Department.cs" />
     <Compile Include="Data\DataAccessComponent\DAC_MemeberInfo.cs" />
+    <Compile Include="Data\DataAccessComponent\DAC_User.cs" />
     <Compile Include="Data\DataAccessComponent\IDAC.cs" />
     <Compile Include="Data\DataContainer_POCO\MemberInfo.cs" />
     <Compile Include="DBConnection.cs" />

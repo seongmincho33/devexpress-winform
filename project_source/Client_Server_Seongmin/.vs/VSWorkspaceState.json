@@ -8,8 +8,9 @@
     "\\DBConnect\\Data\\DataAccessComponent",
     "\\DBConnect\\Data\\DataContainer_POCO",
     "\\Main",
+    "\\Main\\UC",
     "\\UC_Library"
   ],
-  "SelectedNode": "\\Main\\MainForm.cs",
+  "SelectedNode": "\\Main\\UC\\UC_User.cs",
   "PreviewInSolutionExplorer": false
 }
