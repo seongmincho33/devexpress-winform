@@ -1,0 +1,11 @@
+C:\Test Code\PDMS_TEST\PDMS_TEST\bin\Debug\Aveva.Pdms.Examples.dll
+C:\Test Code\PDMS_TEST\PDMS_TEST\bin\Debug\Aveva.Pdms.Examples.pdb
+C:\Test Code\PDMS_TEST\PDMS_TEST\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\PDMS_TEST.frmDesignTreeList.resources
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\PDMS_TEST.csproj.GenerateResource.cache
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\PDMS_TEST.csproj.CoreCompileInputs.cache
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\PDMS_TEST.csproj.CopyComplete
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\Aveva.Pdms.Examples.dll
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\Aveva.Pdms.Examples.pdb
+C:\Test Code\PDMS_TEST\PDMS_TEST\bin\Debug\Aveva.Pdms.Examples.dll.config
+C:\Test Code\PDMS_TEST\PDMS_TEST\obj\Debug\PDMS_TEST.csprojAssemblyReference.cache
