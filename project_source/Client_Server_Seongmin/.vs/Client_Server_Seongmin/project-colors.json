@@ -30,7 +30,12 @@
       "ProjectGuid": "d86df7c9-34bf-443d-b27e-376e94be9b70",
       "DisplayName": "DataHelperLibrary",
       "ColorIndex": 4
+    },
+    "e7b95bd8-2342-4085-a449-4fd8163402b2": {
+      "ProjectGuid": "e7b95bd8-2342-4085-a449-4fd8163402b2",
+      "DisplayName": "SMJOWizard",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }

@@ -16,3 +16,9 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_S
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.dll
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.pdb
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\SMJODBConnect.csproj.AssemblyReference.cache
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\bin\Debug\DBConnect.dll
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\bin\Debug\DBConnect.pdb
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\SMJODBConnect.csproj.AssemblyReference.cache
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\SMJODBConnect.csproj.CoreCompileInputs.cache
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.dll
+D:\important_donot_delete\devexpress-winform\project_source\Client_Server_Seongmin\DBConnect\obj\Debug\DBConnect.pdb
