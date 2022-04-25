@@ -1,1 +1,46 @@
-<mxfile host="app.diagrams.net" modified="2022-04-20T16:23:05.365Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15" version="17.4.6" etag="TexOKtdU7-XST_CFOXTv" type="github"><diagram id="qArzvaBtKs2ZD9iZ1-9I">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-04-25T13:33:48.446Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15" etag="JhPgZK1pjHjUUs1lpH6I" version="17.4.6" type="github">
+  <diagram id="qArzvaBtKs2ZD9iZ1-9I" name="Page-1">
+    <mxGraphModel dx="714" dy="604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-1" value="&lt;h1&gt;데브익스프레스 연습&amp;nbsp;&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. 데브 익스프레스 컨트롤을 사용을 익힙니다.&lt;/div&gt;&lt;div&gt;2. SQL Server와 데이터를 주고받을 수 있어야 합니다.&amp;nbsp;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="290" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.13;entryY=0.77;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="HhZkeLlCTQ54a1hXGvo2-18" target="HhZkeLlCTQ54a1hXGvo2-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="320" as="sourcePoint" />
+            <mxPoint x="450" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-12" value="인터넷" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="130" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.96;exitY=0.7;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="HhZkeLlCTQ54a1hXGvo2-12" target="HhZkeLlCTQ54a1hXGvo2-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="390" as="sourcePoint" />
+            <mxPoint x="430" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-16" value="서버 컴퓨터" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="440" y="240" width="260" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-4" value="SQL Server" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="HhZkeLlCTQ54a1hXGvo2-16">
+          <mxGeometry x="30" y="130" width="60" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-17" value="우분투 리눅스" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="HhZkeLlCTQ54a1hXGvo2-16">
+          <mxGeometry x="20" y="40" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-18" value="클라이언트 프로그램" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="55" y="240" width="260" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-22" value="데브 익스프레스" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="HhZkeLlCTQ54a1hXGvo2-18">
+          <mxGeometry x="25" y="40" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HhZkeLlCTQ54a1hXGvo2-23" value=".NET Framework&lt;br&gt;4.72 or 4.8" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="HhZkeLlCTQ54a1hXGvo2-18">
+          <mxGeometry x="25" y="130" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
