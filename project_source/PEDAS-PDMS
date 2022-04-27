@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-27T05:14:44.998Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="2N9dg7FqAi29XUpCHcDP" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-27T05:15:39.988Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="l_vwecEeV_UXha38f2S9" version="17.4.6" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="1077" dy="378" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1585" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -111,6 +111,9 @@
             <mxPoint x="30" y="680" as="sourcePoint" />
             <mxPoint y="690" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-45" value="command &lt;br&gt;기다리는 무한루프 탈출" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="350" y="740" width="140" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
