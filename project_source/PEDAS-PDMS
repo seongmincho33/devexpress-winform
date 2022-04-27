@@ -1,17 +1,17 @@
-<mxfile host="app.diagrams.net" modified="2022-04-27T05:18:47.367Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="_kFKXkQNDFSacykJ809M" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-27T07:58:13.188Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="I2WVeYUex-uzOChzIt8y" version="17.4.6" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="1585" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1692" dy="648" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-23" value="" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;container=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="270" width="200" height="650.001287128713" as="geometry" />
+          <mxGeometry x="590" y="230" width="210" height="730" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-5" value="StartForm.cs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
-          <mxGeometry x="40" y="20" width="120" height="111.42857142857143" as="geometry" />
+          <mxGeometry x="40" y="22.46" width="120" height="67.54" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-7" value="사용자 로그인" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
-          <mxGeometry x="40" y="159.9994342291372" width="120" height="111.42857142857143" as="geometry" />
+          <mxGeometry x="40" y="130" width="120" height="60.31" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="lcF-y2kZeLp0ssiMAGF6-23" source="lcF-y2kZeLp0ssiMAGF6-5" target="lcF-y2kZeLp0ssiMAGF6-7">
           <mxGeometry relative="1" as="geometry" />
@@ -20,7 +20,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-6" value="MainForm.cs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
-          <mxGeometry x="40" y="289.997270155587" width="120" height="111.42857142857143" as="geometry" />
+          <mxGeometry x="40" y="240" width="120" height="64.31" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="lcF-y2kZeLp0ssiMAGF6-23" source="lcF-y2kZeLp0ssiMAGF6-7" target="lcF-y2kZeLp0ssiMAGF6-6">
           <mxGeometry relative="1" as="geometry" />
@@ -28,11 +28,14 @@
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="lcF-y2kZeLp0ssiMAGF6-23" source="lcF-y2kZeLp0ssiMAGF6-32" target="lcF-y2kZeLp0ssiMAGF6-38">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-32" value="1. 데이터 XML 저장&lt;br&gt;2. REG 명령어 IMPORT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
-          <mxGeometry x="30" y="420.0045544554456" width="140" height="111.42673267326732" as="geometry" />
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-32" value="1. 데이터 XML 저장&lt;br&gt;2. registry 의 command 변경&lt;br&gt;key : PDMSCommand&lt;br&gt;value : PDMS_IMPORT_SEND" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
+          <mxGeometry x="10" y="340" width="180" height="128.31" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-38" value="무한루프" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
-          <mxGeometry x="30" y="560" width="140" height="81.43" as="geometry" />
+          <mxGeometry x="30" y="500.00183153331136" width="140" height="91.45197275313848" as="geometry" />
+        </mxCell>
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-45" value="command &lt;br&gt;기다리는 무한루프 탈출" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="lcF-y2kZeLp0ssiMAGF6-23">
+          <mxGeometry x="35" y="620" width="140" height="90" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-13" value="" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="390" y="440" width="60" height="300" as="geometry" />
@@ -67,8 +70,8 @@
             <mxPoint x="420" y="590" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-26" value="1. Addin 버튼 클릭&lt;br&gt;2. 무한루프 상태체크&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="-260" y="440" width="140" height="100" as="geometry" />
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-26" value="1. Addin 버튼 클릭&lt;br&gt;2. 무한루프 상태체크&lt;br&gt;3. registry 에 command 저장&lt;br&gt;key : PDMSCommand&lt;br&gt;value : PDMS_IMPORT_WAITING" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="-380" y="400" width="240" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-30" value="1. 특정 폴더에 XML 데이터 저장&lt;br&gt;2. Registry 에 명령어 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-13" target="lcF-y2kZeLp0ssiMAGF6-19">
           <mxGeometry width="80" relative="1" as="geometry">
@@ -85,7 +88,7 @@
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-35" target="lcF-y2kZeLp0ssiMAGF6-36">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-35" value="1. IMPORT&lt;br&gt;2. XML 로드&lt;br&gt;3. PDMS 객체 생성" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-35" value="1. IMPORT&lt;br&gt;2. PEDAS XML 로드&lt;br&gt;3. PDMS 객체 생성" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="-350" y="590" width="140" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-36" target="lcF-y2kZeLp0ssiMAGF6-37">
@@ -94,28 +97,35 @@
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-36" value="성공&amp;nbsp;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="-330" y="730" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-37" value="1. XML 저장&lt;br&gt;2. IMPORT 완료 REG" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="-350" y="900" width="140" height="100" as="geometry" />
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-37" value="1. XML 저장&lt;br&gt;2.registry 에 command 저장&lt;br&gt;key : PDMSCommand&lt;br&gt;value : PDMS_IMPORT_COMPLETE" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="-395" y="900" width="230" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-43" value="완료 REG" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=0.483;entryY=0.845;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-19" target="lcF-y2kZeLp0ssiMAGF6-13">
-          <mxGeometry width="80" relative="1" as="geometry">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-43" value="value : PDMS_IMPORT_COMPLETE&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=0.483;entryY=0.845;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-19" target="lcF-y2kZeLp0ssiMAGF6-13">
+          <mxGeometry x="0.0144" y="13" width="80" relative="1" as="geometry">
             <mxPoint x="70" y="690" as="sourcePoint" />
             <mxPoint x="150" y="690" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-44" value="명령어를 완료형태로 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-37">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-44" value="value : PDMS_IMPORT_COMPLETE 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-37">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="30" y="680" as="sourcePoint" />
             <mxPoint y="690" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-45" value="command &lt;br&gt;기다리는 무한루프 탈출" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="350" y="740" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-46" value="PDMS의 무한루프가 명령어를 인지함" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" target="lcF-y2kZeLp0ssiMAGF6-35">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-46" value="PDMS의 무한루프가 registry command를 인지함" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" target="lcF-y2kZeLp0ssiMAGF6-35">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="10" y="590" as="sourcePoint" />
             <mxPoint x="-70" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-48" value="&lt;span&gt;[메모]&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span&gt;1. Common.cs 의 PedasData에는 RegistryPath가 있고 명령어들이 있다.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;div&gt;public const string RegistryPath = &quot;HKEY_CURRENT_USER\\Software\\PEDAS\\&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;public const string SelectionFolder = &quot;SelectionFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;public const string NowProgramVersion = &quot;NowProgramVersion&quot;;&lt;/div&gt;&lt;div&gt;public const string NowProgramVersionDev = &quot;NowProgramVersionDev&quot;;&lt;/div&gt;&lt;div&gt;public const string DownloadTemplateFolder = &quot;DownloadTemplateFolder&quot;;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-330" y="30" width="640" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-49" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" target="lcF-y2kZeLp0ssiMAGF6-45">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="410" y="700" as="sourcePoint" />
+            <mxPoint x="266.1500000000002" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
