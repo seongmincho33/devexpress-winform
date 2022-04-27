@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-27T05:15:39.988Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="l_vwecEeV_UXha38f2S9" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-27T05:18:47.367Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="_kFKXkQNDFSacykJ809M" version="17.4.6" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="1585" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1585" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -67,9 +67,6 @@
             <mxPoint x="420" y="590" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-26" target="lcF-y2kZeLp0ssiMAGF6-35">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-26" value="1. Addin 버튼 클릭&lt;br&gt;2. 무한루프 상태체크&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="-260" y="440" width="140" height="100" as="geometry" />
         </mxCell>
@@ -89,16 +86,16 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-35" value="1. IMPORT&lt;br&gt;2. XML 로드&lt;br&gt;3. PDMS 객체 생성" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="-260" y="570" width="140" height="100" as="geometry" />
+          <mxGeometry x="-350" y="590" width="140" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-36" target="lcF-y2kZeLp0ssiMAGF6-37">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-36" value="성공&amp;nbsp;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-240" y="700" width="100" height="100" as="geometry" />
+          <mxGeometry x="-330" y="730" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-37" value="1. XML 저장&lt;br&gt;2. IMPORT 완료 REG" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="-270" y="830" width="140" height="100" as="geometry" />
+          <mxGeometry x="-350" y="900" width="140" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-43" value="완료 REG" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=0.483;entryY=0.845;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-19" target="lcF-y2kZeLp0ssiMAGF6-13">
           <mxGeometry width="80" relative="1" as="geometry">
@@ -106,7 +103,7 @@
             <mxPoint x="150" y="690" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-44" value="dispatch" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-37">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-44" value="명령어를 완료형태로 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-37">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="30" y="680" as="sourcePoint" />
             <mxPoint y="690" as="targetPoint" />
@@ -114,6 +111,12 @@
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-45" value="command &lt;br&gt;기다리는 무한루프 탈출" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="350" y="740" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-46" value="PDMS의 무한루프가 명령어를 인지함" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" target="lcF-y2kZeLp0ssiMAGF6-35">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="10" y="590" as="sourcePoint" />
+            <mxPoint x="-70" y="650" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
