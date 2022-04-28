@@ -1,28 +1,28 @@
 # C# 인덱스
 
-|Year|C# version|.NET|
-|--|--|--|
-|2002|[C# 1.0](c1/c1_index.md)|.NET 1.0|
-|2003|~|~|
-|2004|~|.NET 1.1|
-|2005|[C# 2.0](c2/c2_index.md)|.NET 2.0|
-|2006|~|.NET 3.0|
-|2007|C# 3.0|.NET 3.5|
-|2008|~|~|
-|2009|~|~|
-|2010|C# 4.0|.NET 4.0|
-|2011|~|~|
-|2012|C# 5.0|.NET 4.5|
-|2013|~|.NET 4.5.1|
-|2014|~|.NET 4.5.2|
-|2015|C# 6.0|.NET 4.6 <br /> .NET4.6.1|
-|2016|~|.NET 4.6.2|
-|2017|C# 7.0 <br /> C# 7.1 <br /> C# 7.2|.NET 4.7 <br /> .NET 4.7.1|
-|2018|C# 7.3|.NET 4.7.2|
-|2019|C# 8.0|.NET 4.8|
-|2020|[C# 9.0](c9/c9_index.md)|.NET 5(통합)|
-|2021|C# 10.0|.NET 6(통합)|
-|2022|~|~|
+|Year|C# version|.NET|Visual Studio version|
+|--|--|--|--|
+|2002|[C# 1.0](c1/c1_index.md)|.NET 1.0|Visual Studio.NET 2002|
+|2003|~|~|Visual Studio.NET 2003|
+|2004|~|.NET 1.1|~|
+|2005|[C# 2.0](c2/c2_index.md)|.NET 2.0|Visual Studio 2005|
+|2006|~|.NET 3.0|~|
+|2007|C# 3.0|.NET 3.5|~|
+|2008|~|~|Visual Studio 2008|
+|2009|~|~|~|
+|2010|C# 4.0|.NET 4.0|Visual Studio 2010|
+|2011|~|~|~|
+|2012|C# 5.0|.NET 4.5|Visual Studio 2012|
+|2013|~|.NET 4.5.1|Visual Studio 2013|
+|2014|~|.NET 4.5.2|~|
+|2015|C# 6.0|.NET 4.6 <br /> .NET4.6.1|Visual Studio 2015|
+|2016|~|.NET 4.6.2|~|
+|2017|C# 7.0 <br /> C# 7.1 <br /> C# 7.2|.NET 4.7 <br /> .NET 4.7.1|Visual Studio 2017|
+|2018|C# 7.3|.NET 4.7.2|~|
+|2019|C# 8.0|.NET 4.8|Visual Studio 2019|
+|2020|[C# 9.0](c9/c9_index.md)|.NET 5(통합)|~|
+|2021|C# 10.0|.NET 6(통합)|Visual Studio 2022|
+|2022|~|~|~|
 
 <hr />
 
@@ -95,7 +95,7 @@
 10. [방어적 복사](etc/etc010_defensive_copy.md)
 11. [ref/out 예약어](etc/etc011_ref_out.md)
 12. [DataRow 상태(state)](etc/etc012_datarow_state.md)
-
+13. [Timer 와 Registry](etc/etc013_timer_registry.md)
 <hr />
 
 
