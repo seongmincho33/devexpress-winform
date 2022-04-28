@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-28T01:20:59.421Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="3WIYSLNE0rPjWcUSvYpe" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-28T08:36:00.997Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="V7siVePn59ggj1rfnSLG" version="17.4.6" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="2092" dy="571" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1748" dy="929" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -123,8 +123,8 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-48" value="&lt;span&gt;[메모]&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span&gt;1. Common.cs 의 PedasData에는 RegistryPath가 있고 명령어들이 있다.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;div&gt;public const string RegistryPath = &quot;HKEY_CURRENT_USER\\Software\\PEDAS\\&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string SelectionFolder = &quot;SelectionFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string NowProgramVersion = &quot;NowProgramVersion&quot;;&lt;/div&gt;&lt;div&gt;public const string NowProgramVersionDev = &quot;NowProgramVersionDev&quot;;&lt;/div&gt;&lt;div&gt;public const string DownloadTemplateFolder = &quot;DownloadTemplateFolder&quot;;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-750" y="8" width="640" height="220" as="geometry" />
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-48" value="&lt;span&gt;[메모]&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span&gt;1. Common.cs 의 PedasData에는 RegistryPath가 있고 명령어들이 있다.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;div&gt;public const string RegistryPath = &quot;HKEY_CURRENT_USER\\Software\\PEDAS\\&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string SelectionFolder = &quot;SelectionFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string NowProgramVersion = &quot;NowProgramVersion&quot;;&lt;/div&gt;&lt;div&gt;public const string NowProgramVersionDev = &quot;NowProgramVersionDev&quot;;&lt;/div&gt;&lt;div&gt;public const string DownloadTemplateFolder = &quot;DownloadTemplateFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. 현재 작업중인 PEDAS_Converter 에서 PDMSHelper프로젝트가 참조하는 AVEVAdll들은 12.0.0버전으로 PDMSFilter.dll이 사용 불가능임 따라서 12.1.0으로 바꿔주었고 백업은 바탕화면에 있음. 그리고 PDMSHelper 빌드&lt;/div&gt;&lt;div&gt;할때 떨어지는 dll 이름 Aveva.Pdms.Examples.dll이니깐 나중에 바꿔줘야함.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. PEDAS_Converter_App.exe&amp;nbsp; 를 원격에 넣을때 DEBUG안에 일단은 임시로 넣는데 PEDAS_ConverterLib.dll&lt;/div&gt;&lt;div&gt;도 같이 넣어줘야함~!!!&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-740" y="-53" width="640" height="333" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-49" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="lcF-y2kZeLp0ssiMAGF6-45" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
