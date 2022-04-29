@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-28T08:36:00.997Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="V7siVePn59ggj1rfnSLG" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-29T05:27:45.812Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="A50FujOGpmv7Y2Vhd68U" version="17.4.6" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="1748" dy="929" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2674" dy="1228" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -33,10 +33,10 @@
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-32" value="1. 데이터 XML 저장&lt;br&gt;2. registry 의 command 변경&lt;br&gt;key : PDMSCommand&lt;br&gt;value : CONVERTER_DATA_REQUEST" style="rounded=0;whiteSpace=wrap;html=1;" parent="lcF-y2kZeLp0ssiMAGF6-23" vertex="1">
           <mxGeometry x="6.923076923076923" y="320" width="346.15384615384613" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="lcF-y2kZeLp0ssiMAGF6-23" source="lcF-y2kZeLp0ssiMAGF6-38" target="lcF-y2kZeLp0ssiMAGF6-45">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="lcF-y2kZeLp0ssiMAGF6-23" source="lcF-y2kZeLp0ssiMAGF6-38" target="lcF-y2kZeLp0ssiMAGF6-45" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-38" value="&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;무한루프&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;if (PDMS_DATA_READY)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;PDMS에서 가져온 XML로 컨버터에 바인딩&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;command = CONVERTER_DRAW_REQUEST&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lcF-y2kZeLp0ssiMAGF6-23" vertex="1">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-38" value="&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;무한루프&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;if (PDMS_DATA_READY)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;PDMS에서 가져온 XML로 컨버터에 바인딩&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;command = CONVERTER_DRAW_REQUEST&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lcF-y2kZeLp0ssiMAGF6-23" vertex="1">
           <mxGeometry x="25.77" y="460" width="308.46" height="112.75" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-45" value="command &lt;br&gt;기다리는 무한루프 탈출&lt;br&gt;PDMS_COMMAND_WAITING" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="lcF-y2kZeLp0ssiMAGF6-23" vertex="1">
@@ -123,7 +123,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcF-y2kZeLp0ssiMAGF6-48" value="&lt;span&gt;[메모]&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span&gt;1. Common.cs 의 PedasData에는 RegistryPath가 있고 명령어들이 있다.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;div&gt;public const string RegistryPath = &quot;HKEY_CURRENT_USER\\Software\\PEDAS\\&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string SelectionFolder = &quot;SelectionFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string NowProgramVersion = &quot;NowProgramVersion&quot;;&lt;/div&gt;&lt;div&gt;public const string NowProgramVersionDev = &quot;NowProgramVersionDev&quot;;&lt;/div&gt;&lt;div&gt;public const string DownloadTemplateFolder = &quot;DownloadTemplateFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. 현재 작업중인 PEDAS_Converter 에서 PDMSHelper프로젝트가 참조하는 AVEVAdll들은 12.0.0버전으로 PDMSFilter.dll이 사용 불가능임 따라서 12.1.0으로 바꿔주었고 백업은 바탕화면에 있음. 그리고 PDMSHelper 빌드&lt;/div&gt;&lt;div&gt;할때 떨어지는 dll 이름 Aveva.Pdms.Examples.dll이니깐 나중에 바꿔줘야함.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. PEDAS_Converter_App.exe&amp;nbsp; 를 원격에 넣을때 DEBUG안에 일단은 임시로 넣는데 PEDAS_ConverterLib.dll&lt;/div&gt;&lt;div&gt;도 같이 넣어줘야함~!!!&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+        <mxCell id="lcF-y2kZeLp0ssiMAGF6-48" value="&lt;span&gt;[메모]&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span&gt;1. Common.cs 의 PedasData에는 RegistryPath가 있고 명령어들이 있다.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;div&gt;public const string RegistryPath = &quot;HKEY_CURRENT_USER\\Software\\PEDAS\\&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string SelectionFolder = &quot;SelectionFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;public const string NowProgramVersion = &quot;NowProgramVersion&quot;;&lt;/div&gt;&lt;div&gt;public const string NowProgramVersionDev = &quot;NowProgramVersionDev&quot;;&lt;/div&gt;&lt;div&gt;public const string DownloadTemplateFolder = &quot;DownloadTemplateFolder&quot;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. 현재 작업중인 PEDAS_Converter 에서 PDMSHelper프로젝트가 참조하는 AVEVAdll들은 12.0.0버전으로 PDMSFilter.dll이 사용 불가능임 따라서 12.1.0으로 바꿔주었고 백업은 바탕화면에 있음. 그리고 PDMSHelper 빌드&lt;/div&gt;&lt;div&gt;할때 떨어지는 dll 이름 Aveva.Pdms.Examples.dll이니깐 나중에 바꿔줘야함.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. PEDAS_Converter_App.exe&amp;nbsp; 를 원격에 넣을때 DEBUG안에 일단은 임시로 넣는데 PEDAS_ConverterLib.dll&lt;/div&gt;&lt;div&gt;도 같이 넣어줘야함~!!!&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. PDMS 에서 DbElement 의 identity는 속성프로퍼티 ref1/ref2 의 조합으로 식별됩니다. 여기서 속성프로퍼티는&lt;/div&gt;&lt;div&gt;DbAttribute아니고 진짜 그냥 프로퍼티임.&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="-740" y="-53" width="640" height="333" as="geometry" />
         </mxCell>
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-49" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="lcF-y2kZeLp0ssiMAGF6-45" edge="1">
@@ -138,10 +138,10 @@
         <mxCell id="lcF-y2kZeLp0ssiMAGF6-22" value="AVEVA&lt;br&gt;PDMS" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="-45" y="360" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-9" value="" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-9" value="" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="395" y="460" width="78" height="548" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-10" value="PDMS_DATA_READY" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-19" target="0-rDRc4YW5vBCut7P23o-9">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-10" value="PDMS_DATA_READY" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="lcF-y2kZeLp0ssiMAGF6-19" target="0-rDRc4YW5vBCut7P23o-9" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="160" y="620" as="sourcePoint" />
             <mxPoint x="240" y="620" as="targetPoint" />
@@ -150,7 +150,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-11" value="CONVERTER_DATA_REQUEST" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="0-rDRc4YW5vBCut7P23o-9" target="lcF-y2kZeLp0ssiMAGF6-19">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-11" value="CONVERTER_DATA_REQUEST" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="0-rDRc4YW5vBCut7P23o-9" target="lcF-y2kZeLp0ssiMAGF6-19" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="310" y="560" as="sourcePoint" />
             <mxPoint x="390" y="560" as="targetPoint" />
@@ -159,40 +159,40 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-12" value="DesignExplorer를&amp;nbsp; 특정경로에 XML 저장" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-12" value="DesignExplorer를&amp;nbsp; 특정경로에 XML 저장" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-280" y="530" width="170" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-14" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="0-rDRc4YW5vBCut7P23o-12">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-14" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="0-rDRc4YW5vBCut7P23o-12" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-110" y="640" as="sourcePoint" />
             <mxPoint y="630" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-15" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="0-rDRc4YW5vBCut7P23o-12">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-15" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" target="0-rDRc4YW5vBCut7P23o-12" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="10" y="580" as="sourcePoint" />
             <mxPoint x="-30" y="560" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="lcF-y2kZeLp0ssiMAGF6-38">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-21" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" target="lcF-y2kZeLp0ssiMAGF6-38" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="410" y="630" as="sourcePoint" />
             <mxPoint x="620" y="721.12605771317" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-38">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-22" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="lcF-y2kZeLp0ssiMAGF6-38" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="460" y="740" as="sourcePoint" />
             <mxPoint x="410" y="680" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-24" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="lcF-y2kZeLp0ssiMAGF6-45">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-24" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="lcF-y2kZeLp0ssiMAGF6-45" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="290" y="970" as="sourcePoint" />
             <mxPoint x="410" y="910" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-27" value="PDMS_COMMAND_WAITING" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="0-rDRc4YW5vBCut7P23o-9" target="lcF-y2kZeLp0ssiMAGF6-19">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-27" value="PDMS_COMMAND_WAITING" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="0-rDRc4YW5vBCut7P23o-9" target="lcF-y2kZeLp0ssiMAGF6-19" edge="1">
           <mxGeometry x="0.0144" y="13" width="80" relative="1" as="geometry">
             <mxPoint x="-99.99965517241395" y="910" as="sourcePoint" />
             <mxPoint x="324.69" y="910" as="targetPoint" />
@@ -202,25 +202,25 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-30" value="Registry" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-30" value="Registry" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-14" y="1036" width="450" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-31" value="PDMS : 명령 기다리고 있어요 = PDMS_COMMAND_WAITING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-31" value="PDMS : 명령 기다리고 있어요 = PDMS_COMMAND_WAITING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="30" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-32" value="CONVERTER : 데이터 주세요 = CONVERTER_DATA_REQUEST" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-32" value="CONVERTER : 데이터 주세요 = CONVERTER_DATA_REQUEST" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="60" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-36" value="PDMS : 데이터 준비됬어요 가져가세요 = PDMS_DATA_READY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-36" value="PDMS : 데이터 준비됬어요 가져가세요 = PDMS_DATA_READY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="90" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-35" value="CONVERTER : 데이터 그려주세요 = CONVERTER_DRAW_REQUEST" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-35" value="CONVERTER : 데이터 그려주세요 = CONVERTER_DRAW_REQUEST" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="120" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-34" value="PDMS : 다 그렸어요 = PDMS_DRAW_COMPLETE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-34" value="PDMS : 다 그렸어요 = PDMS_DRAW_COMPLETE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="150" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0-rDRc4YW5vBCut7P23o-33" value="CONVERTER : PDMS분 다시 기다리세요 = PDMS_COMMAND_WAITING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="0-rDRc4YW5vBCut7P23o-30">
+        <mxCell id="0-rDRc4YW5vBCut7P23o-33" value="CONVERTER : PDMS분 다시 기다리세요 = PDMS_COMMAND_WAITING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="0-rDRc4YW5vBCut7P23o-30" vertex="1">
           <mxGeometry y="180" width="450" height="30" as="geometry" />
         </mxCell>
       </root>
