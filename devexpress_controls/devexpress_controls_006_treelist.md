@@ -5,7 +5,8 @@
     - [1). 부모-자식 관계](#1-부모-자식-관계)
     - [2). Root Nodes](#2-root-nodes)
     - [3). Unbound 컬럼 추가](#3-unbound-컬럼-추가)
-
+  - [2. TreeList 정렬하기](#2-treelist-정렬하기)
+  - [2. TreeList 이미지 설정하기](#2-treelist-이미지-설정하기)
 <hr />
 <br />
 
@@ -169,5 +170,79 @@ private void CreateNodes(TreeList treeList)
     treeList.AppendNode(new object[] { "CCCCCC", "DDDDDDD", "1111-1111-1111" }, rootNode);
     treeList.AppendNode(new object[] { "ABB", "ADDADA", "222-2222-1111" }, rootNode);
     treeList.EndUnboundLoad();
+}
+```
+
+## 2. TreeList 정렬하기 
+
+
+```C#
+using DevExpress.XtraTreeList;
+
+treeList1.Columns["SOMETHING_COLUMN_NAME"].SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom;
+
+private void TreeList1_CustomColumnSort(object sender, DevExpress.XtraTreeList.CustomColumnSortEventArgs e) {
+    if (e.Node1.HasChildren && !e.Node2.HasChildren)
+        e.Result = e.SortOrder == SortOrder.Ascending ? -1 : 1;
+    if (!e.Node1.HasChildren && e.Node2.HasChildren)
+        e.Result = e.SortOrder == SortOrder.Ascending ? 1 : -1;
+
+}
+```
+
+## 2. TreeList 이미지 설정하기
+
+```C#
+//이미지 컬렉션에 이미지 넣어줘야합니다.
+tlSystem.StateImageList = this.imageCollection;
+//이미지를 셋팅하는 이벤트입니다. 
+tlSystem.GetStateImage += this.TlSystem_GetStateImage;
+```
+
+```C#
+private void TlSystem_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
+{
+    if (e.Node == null) return;
+    
+    int selectedIndex = 10;
+
+    switch (e.Node["Something_Col_Name"].ToString())
+    {
+        case "AreaSystem":
+            selectedIndex = 0;
+            break;
+        case "ConduitSystem":
+            selectedIndex = 1;
+            break;
+        case "ElectricalSystem":
+            selectedIndex = 2;
+            break;
+        case "EquipmentSystem":
+            selectedIndex = 3;
+            break;
+        case "GenericSystem":
+            selectedIndex = 4;
+            break;
+        case "Pipeline":
+            selectedIndex = 6;
+            break;
+        case "PipingSystem":
+            selectedIndex = 7;
+            break;
+        case "StructuralSystem":
+            selectedIndex = 8;
+            break;
+        case "UnitSystem":
+            selectedIndex = 9;
+            break;
+        case "Root":
+            selectedIndex = 10;
+            break;
+        default: // DuctingSystem
+            selectedIndex = 5;
+            break;
+    }
+
+    e.NodeImageIndex = selectedIndex;
 }
 ```
