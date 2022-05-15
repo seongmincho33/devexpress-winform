@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-15T08:00:15.375Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.151 Whale/3.14.134.62 Safari/537.36" etag="JM3LEXPx11IC2yIV2aA7" version="18.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-15T08:38:31.919Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.151 Whale/3.14.134.62 Safari/537.36" etag="AiHI4LLPILBdfaSL2nFa" version="18.0.4" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="3718" dy="1336" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3422" dy="1174" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -702,14 +702,14 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-140" source="9l37MxuJ5m96kl29vm_A-145" target="9l37MxuJ5m96kl29vm_A-141">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-145" value="-1.5m" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-140">
-          <mxGeometry x="292" y="204" width="60" height="30" as="geometry" />
+        <mxCell id="9l37MxuJ5m96kl29vm_A-145" value="-1.5m = Footing B.O.F" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-140">
+          <mxGeometry x="292" y="204" width="137" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-140" source="9l37MxuJ5m96kl29vm_A-147" target="9l37MxuJ5m96kl29vm_A-142">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-147" value="-1.4m" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-140">
-          <mxGeometry x="352" y="14" width="60" height="30" as="geometry" />
+        <mxCell id="9l37MxuJ5m96kl29vm_A-147" value="-1.4m = GlobalZ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-140">
+          <mxGeometry x="352" y="14" width="93" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-159" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.twoWayArrow;dy=0.73;dx=9.93;fontSize=12;rotation=90;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-140">
           <mxGeometry x="112.31" y="278.69" width="338" height="15" as="geometry" />
@@ -856,16 +856,16 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-135" value="Pile 포인트 좌표" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
-          <mxGeometry x="658" y="817" width="140" height="120" as="geometry" />
+          <mxGeometry x="658" y="817" width="248" height="120" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-136" value="GlobalX" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
-          <mxGeometry y="30" width="140" height="30" as="geometry" />
+          <mxGeometry y="30" width="248" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-137" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
-          <mxGeometry y="60" width="140" height="30" as="geometry" />
+          <mxGeometry y="60" width="248" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-138" value="GlobalZ = -1.4m" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
-          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        <mxCell id="9l37MxuJ5m96kl29vm_A-138" value="GlobalZ = PileGlobalZ - Pile_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
+          <mxGeometry y="90" width="248" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-164" value="1. GlobalZ 값은 객체의 무조건 바텀값을 가져온다.&amp;nbsp;&lt;br&gt;&lt;br&gt;2. 그리고 그 객체의 높이만 있으면 된다. 끝" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=12;align=left;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
           <mxGeometry x="1802" y="1032" width="342" height="106" as="geometry" />
