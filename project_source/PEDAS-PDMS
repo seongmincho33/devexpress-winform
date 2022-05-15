@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-15T08:38:31.919Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.151 Whale/3.14.134.62 Safari/537.36" etag="AiHI4LLPILBdfaSL2nFa" version="18.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-15T09:21:25.815Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.151 Whale/3.14.134.62 Safari/537.36" etag="htJAS8n-xCY-mA-tjq09" version="18.0.4" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="3422" dy="1174" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3718" dy="1336" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -789,7 +789,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-32" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-30">
           <mxGeometry y="60" width="262" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-33" value="GlobalZ = Footing의 GlobalZ(T.O.F)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-30">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-33" value="Z = Footing의 GlobalZ(T.O.F)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-30">
           <mxGeometry y="90" width="262" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=410;entryDy=181.56770877715246;entryPerimeter=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="9l37MxuJ5m96kl29vm_A-35" target="9l37MxuJ5m96kl29vm_A-14">
@@ -804,7 +804,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-37" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-35">
           <mxGeometry y="60" width="300" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-38" value="GlobalZ = BOF =&gt; tof - footing height = -1.5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-35">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-38" value="Z = BOF =&gt; tof (GlobalZ)- footing height = -1.5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-35">
           <mxGeometry y="90" width="300" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=480;entryDy=115.23780435845568;entryPerimeter=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="9l37MxuJ5m96kl29vm_A-40" target="9l37MxuJ5m96kl29vm_A-8">
@@ -819,7 +819,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-42" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-40">
           <mxGeometry y="60" width="232" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-43" value="GlobalZ = Footing (BOF)&#xa;                - Screed_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-40">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-43" value="Z = Footing (BOF)&#xa;                - Screed_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-40">
           <mxGeometry y="90" width="232" height="53" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=480;entryDy=115.23780435845568;entryPerimeter=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="9l37MxuJ5m96kl29vm_A-81" target="9l37MxuJ5m96kl29vm_A-7">
@@ -834,7 +834,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-83" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-81">
           <mxGeometry y="60" width="243" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-84" value="GlobalZ = Footing (BOF) &#xa;                - Screed_Height&#xa;                - LeanConcrete_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-81">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-84" value="Z = Footing (BOF) &#xa;                - Screed_Height&#xa;                - LeanConcrete_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-81">
           <mxGeometry y="90" width="243" height="43" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=480;entryDy=144.76219564154434;entryPerimeter=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="9l37MxuJ5m96kl29vm_A-77" target="9l37MxuJ5m96kl29vm_A-7">
@@ -849,7 +849,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-79" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-77">
           <mxGeometry y="60" width="260" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-80" value="GlobalZ = Footing (BOF)&#xa;                - Screed_Height&#xa;                - LeanConcrete_Height&#xa;                - CrushedStones_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-77">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-80" value="Z = Footing (BOF)&#xa;                - Screed_Height&#xa;                - LeanConcrete_Height&#xa;                - CrushedStones_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-77">
           <mxGeometry y="90" width="260" height="65" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=90;entryDy=348.39291168278953;entryPerimeter=0;fontSize=12;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="9l37MxuJ5m96kl29vm_A-135" target="9l37MxuJ5m96kl29vm_A-6">
@@ -864,7 +864,7 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-137" value="GlobalY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
           <mxGeometry y="60" width="248" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9l37MxuJ5m96kl29vm_A-138" value="GlobalZ = PileGlobalZ - Pile_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
+        <mxCell id="9l37MxuJ5m96kl29vm_A-138" value="Z = PileGlobalZ - Pile_Height" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-135">
           <mxGeometry y="90" width="248" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-164" value="1. GlobalZ 값은 객체의 무조건 바텀값을 가져온다.&amp;nbsp;&lt;br&gt;&lt;br&gt;2. 그리고 그 객체의 높이만 있으면 된다. 끝" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=12;align=left;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
