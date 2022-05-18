@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-16T10:50:20.648Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36" etag="M0cEfUeY4lp6MUoxI0Na" version="17.5.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-18T02:19:40.969Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" etag="CZkIjrGFL9Ih8f3Tg7w6" version="18.0.5" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="4370" dy="1723" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3785" dy="1189" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -726,6 +726,12 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-162" value="Cut off" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="9l37MxuJ5m96kl29vm_A-140" vertex="1">
           <mxGeometry x="109" y="121" width="60" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="8cHU24q2MJVFFTX92W_7-1" value="" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="3zj9hnSaJ0E2I_km9iTn-56">
+          <mxGeometry x="270" y="305" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8cHU24q2MJVFFTX92W_7-2" value="" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="3zj9hnSaJ0E2I_km9iTn-56">
+          <mxGeometry x="265" y="245" width="150" height="40" as="geometry" />
+        </mxCell>
         <mxCell id="9l37MxuJ5m96kl29vm_A-21" value="" style="swimlane;startSize=0;" parent="1" vertex="1">
           <mxGeometry x="-1668" y="2664" width="2144" height="1136" as="geometry" />
         </mxCell>
@@ -870,29 +876,35 @@
         <mxCell id="9l37MxuJ5m96kl29vm_A-164" value="1. GlobalZ 값은 객체의 무조건 바텀값을 가져온다.&amp;nbsp;&lt;br&gt;&lt;br&gt;2. 그리고 그 객체의 높이만 있으면 된다. 끝" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=12;align=left;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1802" y="1032" width="342" height="106" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-1" value="" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.isocube;isoAngle=15;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-1" value="" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.isocube;isoAngle=15;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1525" y="348" width="486" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-2" value="" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.isocube;isoAngle=15;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-2" value="" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.isocube;isoAngle=15;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1656.5" y="385" width="223" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="bZq312EhkiO7ppO3sG_A-5" target="bZq312EhkiO7ppO3sG_A-1">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="9l37MxuJ5m96kl29vm_A-21" source="bZq312EhkiO7ppO3sG_A-5" target="bZq312EhkiO7ppO3sG_A-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-5" value="Extrtusion의 Z좌표는 Footing의 BOF이어야 함." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-5" value="Extrtusion의 Z좌표는 Footing의 BOF이어야 함." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1481" y="725" width="272" height="92" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=223.00000000000003;entryDy=116.46243672513413;entryPerimeter=0;" edge="1" parent="9l37MxuJ5m96kl29vm_A-21" source="bZq312EhkiO7ppO3sG_A-7" target="bZq312EhkiO7ppO3sG_A-2">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=223.00000000000003;entryDy=116.46243672513413;entryPerimeter=0;" parent="9l37MxuJ5m96kl29vm_A-21" source="bZq312EhkiO7ppO3sG_A-7" target="bZq312EhkiO7ppO3sG_A-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-7" value="Nxtrusion의 z좌표는 무조건 0 이어야 함. 자신의 부모인 Extrusion을 따라가는듯함." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-7" value="Nxtrusion의 z좌표는 무조건 0 이어야 함. 자신의 부모인 Extrusion을 따라가는듯함." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1894" y="623" width="228" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-9" value="Nxtrusion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-9" value="Nxtrusion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1596.5" y="450" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bZq312EhkiO7ppO3sG_A-10" value="Extrusion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+        <mxCell id="bZq312EhkiO7ppO3sG_A-10" value="Extrusion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="9l37MxuJ5m96kl29vm_A-21" vertex="1">
           <mxGeometry x="1465" y="477" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8cHU24q2MJVFFTX92W_7-3" value="" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+          <mxGeometry x="345" y="240" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8cHU24q2MJVFFTX92W_7-4" value="" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="9l37MxuJ5m96kl29vm_A-21">
+          <mxGeometry x="340" y="175" width="150" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
