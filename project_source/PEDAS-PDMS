@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-20T07:02:24.059Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" etag="gPdYuE5xTNJO2l8-fytj" version="18.0.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-23T04:43:53.485Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" etag="1lUAkoBhq0ab4Qe0QMGt" version="18.0.5" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="2948" dy="929" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2917" dy="912" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -915,7 +915,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="8cHU24q2MJVFFTX92W_7-25" value="" style="swimlane;startSize=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="940" y="2653" width="732" height="448" as="geometry" />
+          <mxGeometry x="940" y="2653" width="745" height="448" as="geometry" />
         </mxCell>
         <mxCell id="8cHU24q2MJVFFTX92W_7-13" value="PDMS" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="8cHU24q2MJVFFTX92W_7-25">
           <mxGeometry x="468" y="225" width="120" height="60" as="geometry" />
@@ -951,8 +951,8 @@
         <mxCell id="8cHU24q2MJVFFTX92W_7-22" value="Converter시작" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="8cHU24q2MJVFFTX92W_7-25">
           <mxGeometry x="51" y="126" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8cHU24q2MJVFFTX92W_7-26" value="1. PDMS 의 DbElement객체들의 이름은 Guid 이어야함.&amp;nbsp;" style="shape=card;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="8cHU24q2MJVFFTX92W_7-25">
-          <mxGeometry x="48" y="12" width="335" height="77" as="geometry" />
+        <mxCell id="8cHU24q2MJVFFTX92W_7-29" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1. 리비전 관련 XML을&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1. PDMS 의 DbElement객체들의 이름은 Guid 로 바꿈&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2. 좌표 역계산할때 필요한 정보 파악&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3. 좌표 역계산 코드 만들기&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;4. 역계산 코드를 Converter가 읽는지 테스트&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=10;" vertex="1" parent="8cHU24q2MJVFFTX92W_7-25">
+          <mxGeometry x="51" y="10" width="312" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
