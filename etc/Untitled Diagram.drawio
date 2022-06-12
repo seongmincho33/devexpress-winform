@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-12T09:54:09.102Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="28EjJvlAjlctvkDAJ2vr" version="20.0.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-06-12T10:35:56.002Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="hEDkHhChg8dxmhCUXLsu" version="20.0.0" type="github" pages="2">
   <diagram id="36znd14WvVVBDzM-c6KM" name="Page-1">
-    <mxGraphModel dx="1303" dy="898" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1698" dy="1116" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -120,6 +120,42 @@
             <mxPoint x="205" y="798" as="sourcePoint" />
             <mxPoint x="255" y="748" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-4" value="팀원 나" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="814" y="3" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-5" value="팀원 제이지" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1037" y="-57" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-6" value="팀원 무지" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="897" y="164" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-7" value="팀원 라이언" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1161" y="128" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-8" value="어떤 데이터가 의미있는 데이터이고 그 데이터의 엔티티가 많은가?" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="-169" width="203" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-9" value="만다라트는 긍정 부정을 내기 좋은 엔티티를 많이 가지고 있다 하지만 가지수가 n승으로다가 오버한다. 문제가 반드시 된다. 차원축소 해야한다.&amp;nbsp;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="762" y="-128" width="203" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-10" value="데이터들이 어떤것들은 스트링 100 블롭으로다가 넘어간다. 이거 데이터베이스 터질수도 있을까?" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="1107" y="-3" width="203" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-11" value="프로토 타입제작 버튼을 만들어서 각 회의록마다 객체를 생성해서 마지막 테스트 버튼을 눌렀을때 프로토 타입을 선택하게 해야한다. 그래야 할것만 같다." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="874" y="39" width="203" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-13" value="축소 랭크값의 제한을 고객이 원하는 퍼센트를 도출하는데까지 제한을 걸어야 한다. 우리가 정할 수 없다." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="1061" y="220.5" width="203" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-14" value="팀원 나" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1086.5" y="343" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-17" value="팀원 무지" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="828" y="359" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXhtHJsDDVKiZp_gRuEX-18" value="나중에 물어보자." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="849" y="254" width="203" height="125" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
