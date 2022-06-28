@@ -6,6 +6,7 @@
   - [1. 간단한 예제](#1-간단한-예제)
   - [2. PropertyDescriptionControl](#2-propertydescriptioncontrol)
   - [3. 프로퍼티 컨틀롤로 속성값 변경](#3-프로퍼티-컨틀롤로-속성값-변경)
+  - [4. 카테고리(Category) 속성의 Caption을 변경하는 방법](#4-카테고리category-속성의-caption을-변경하는-방법)
 
 <hr />
 <br />
@@ -85,3 +86,42 @@ public partial class Form2 : Form
 <br />
 
 ## 3. 프로퍼티 컨틀롤로 속성값 변경
+
+<hr />
+<br />
+
+## 4. 카테고리(Category) 속성의 Caption을 변경하는 방법
+
+![img](../img/devexpress_img/propertygridcontrol/003.png)
+
+아래 코드 예시와 같이 속성으로 Category를 줄 수 있습니다. 이렇게 속성으로 준 Category는 Devexpress 컨트롤이 잡아내서 제목으로 사용하던 뭘로 사용하던 할겁니다. 근데 이러한 속성값을 변경해서 보여줘야하는경우가 있습니다. 근데 속성값을 수정할 수 없으므로 보여지는 Viewer부분의 Caption을 변경하는것이 차선책입니다. 
+
+```C#
+private double _Lx_mm;
+[Category("1. Foundation Information"), DisplayName(" 3) Lx (mm)"), Description("")]
+public double Lx_mm
+{
+    get
+    {
+        return Math.Round(_Lx_mm, 3);
+    }
+    set
+    {
+        _Lx_mm = value;
+    }
+}
+```
+
+아래와 같이 PropertyGridview에서 사용한다고 가정할때 Category 속성에 접근해서 Caption을 변경합니다. 
+
+```C#
+foreach (CategoryRow category in propDataView.Rows)
+{
+    string caption = category.Properties.Caption;
+    if (category.Visible == true)
+    {
+        if(int.TryParse(caption.Substring(0, 1), out int n))
+            category.Properties.Caption = i++ + caption.Substring(1);
+    }
+}
+```
