@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-24T07:54:00.717Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="onXh10Odo-oSZIpPZ3y3" version="20.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-01T02:05:56.507Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="JPvmD1RKhpkQmZj8GxP6" version="20.0.1" type="github">
   <diagram id="iAXCqvQy5Qc9o9UGZm_w" name="Page-1">
-    <mxGraphModel dx="2773" dy="769" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2762" dy="873" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1380,6 +1380,12 @@
         </mxCell>
         <mxCell id="M248JS0oiVyvX4pLmgBd-150" value="StartForm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="3678" y="3255" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="M248JS0oiVyvX4pLmgBd-152" value="객체 생성방식 변경 2022-07-01" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="4252" y="189" width="263" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M248JS0oiVyvX4pLmgBd-153" value="[사용자가 PDMS에 생성하는 방식으로 객체 Converting 변경]&lt;br&gt;&lt;br&gt;&lt;ol&gt;&lt;li&gt;사용자는 World 하위에 Site와 Zone을 만든다.&amp;nbsp; 각각 position wrt owner를 셋팅한다. Site = Area, Zone = Unit이라고 생각하면 된다. World는 Plant 라고 생각한다. Orientaion을 잡는것은 디자이너가 할 일이다.&lt;/li&gt;&lt;li&gt;디자이너가 Footing을 만든다고 생각하자. Position wrt Owner(Equipment)를 설정할것이다. 근데 Footing의 Extrusion에 Converter의 GCP(Global Center Point)를 주면 안된다. 이유는 사용자 관점에서는 하나의 Fdn(Foundation)이 하나의 Equipment로 취급할 예정이기 때문이다. 따라서 Footing, Pedestal, Grout, Pile등은 Equipment의 Offset이 되어야만 한다.&lt;/li&gt;&lt;li&gt;위의 생각대로라면 Footing의 Position wrt Owner(Equipment)는 (0, 0, ???)이 될것이다. 그리고 Equipment의 Position wrt Owner(Zone)은 컨버팅하려는 Footing의 GCP를 할당받는다. 그러면 Pedestal은? Pedestal의 GCP를 PDMS에 그대로 넘겨주는 것이 아니라 Footing의 GCP와 Pedestal의 FCP를 비교해서 Footing의 Offset으로 Pedestal의 중심을 구해서 Pedestal Extrusion의 Position값에 넣어줘야 한다. ....&lt;/li&gt;&lt;li&gt;나머지 Grout, Pile 도 마찬가지로 진행해준다.&amp;nbsp;&lt;/li&gt;&lt;/ol&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="4252" y="269" width="458" height="291" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
