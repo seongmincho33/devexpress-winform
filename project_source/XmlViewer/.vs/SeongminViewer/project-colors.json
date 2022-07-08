@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b2c077c3-33f8-4a6d-982c-fddb6a1c0ec8": {
+      "ProjectGuid": "b2c077c3-33f8-4a6d-982c-fddb6a1c0ec8",
+      "DisplayName": "XmlViewer",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

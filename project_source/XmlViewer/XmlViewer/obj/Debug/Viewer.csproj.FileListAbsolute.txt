@@ -1,0 +1,14 @@
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\bin\Debug\XmlViewer.exe.config
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\bin\Debug\XmlViewer.exe
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\bin\Debug\XmlViewer.pdb
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\Viewer.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\Viewer.csproj.SuggestedBindingRedirects.cache
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.frmViewer.resources
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.Properties.Resources.resources
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.userXMLViewer.resources
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\Viewer.csproj.GenerateResource.cache
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\Viewer.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.exe
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.pdb
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.frmStart.resources
+C:\Users\smjo\Desktop\조성민업무\XmlViewer\XmlViewer\obj\Debug\XmlViewer.frmPDMSRegistry.resources
