@@ -17,13 +17,14 @@ namespace UC_Library
 {
     public partial class UC_DBConnection : DevExpress.XtraEditors.XtraUserControl
     {             
-        public DBConnection dbConn = new DBConnection();
+        public DBConnection dbConn { get; set; }
         public string queryString { get; set; }
         public DataSet UC_DataSet { get; set; }        
 
-        public UC_DBConnection()
+        public UC_DBConnection(DBConnection dbConn)
         {
             InitializeComponent();
+            this.dbConn = dbConn;
             this.SetControls();            
         }
 

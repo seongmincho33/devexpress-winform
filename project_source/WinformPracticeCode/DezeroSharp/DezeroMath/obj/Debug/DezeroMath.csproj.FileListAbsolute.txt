@@ -1,0 +1,9 @@
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Debug\DezeroMath.dll
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Debug\DezeroMath.pdb
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Debug\DezeroMath.csproj.AssemblyReference.cache
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Debug\DezeroMath.csproj.CoreCompileInputs.cache
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Debug\DezeroMath.dll
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Debug\DezeroMath.pdb
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Debug\MathNet.Numerics.dll
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Debug\MathNet.Numerics.xml
+C:\Users\SMJO\Desktop\SMJO_CODE\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Debug\DezeroMath.csproj.CopyComplete

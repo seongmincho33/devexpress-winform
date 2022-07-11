@@ -15,7 +15,6 @@ namespace DBConnect.Data.DataAccessComponent
         void Insert(T item);
         void Update(T item);
         void Delete(T item);
-        T[] SelectAll();
         DataSet DataSet_SelectAll();
     }
 }

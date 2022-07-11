@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DBConnect.Data.DataAccessComponent
 {
-    public class DAC_Department
+    public class DAC_Department : IDAC<DataRow>
     {
         public SqlConnection sqlCon { get; set; }
         private DataSet DepartmentSet { get; set; }

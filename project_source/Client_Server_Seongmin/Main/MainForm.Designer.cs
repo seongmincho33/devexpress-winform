@@ -44,32 +44,37 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(299, 46);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControl1.Location = new System.Drawing.Point(342, 59);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(769, 433);
+            this.gridControl1.Size = new System.Drawing.Size(879, 557);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.DetailHeight = 450;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
             // btn_Retrieve
             // 
-            this.btn_Retrieve.Location = new System.Drawing.Point(5, 5);
+            this.btn_Retrieve.Location = new System.Drawing.Point(6, 6);
+            this.btn_Retrieve.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Retrieve.Name = "btn_Retrieve";
-            this.btn_Retrieve.Size = new System.Drawing.Size(75, 23);
+            this.btn_Retrieve.Size = new System.Drawing.Size(86, 30);
             this.btn_Retrieve.TabIndex = 3;
             this.btn_Retrieve.Text = "조회";
             // 
             // btn_Insert
             // 
-            this.btn_Insert.Location = new System.Drawing.Point(86, 5);
+            this.btn_Insert.Location = new System.Drawing.Point(98, 6);
+            this.btn_Insert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Insert.Name = "btn_Insert";
-            this.btn_Insert.Size = new System.Drawing.Size(75, 23);
+            this.btn_Insert.Size = new System.Drawing.Size(86, 30);
             this.btn_Insert.TabIndex = 4;
             this.btn_Insert.Text = "추가";
             // 
@@ -79,44 +84,49 @@
             this.panelControl1.Controls.Add(this.btn_Update);
             this.panelControl1.Controls.Add(this.btn_Insert);
             this.panelControl1.Controls.Add(this.btn_Retrieve);
-            this.panelControl1.Location = new System.Drawing.Point(742, 5);
+            this.panelControl1.Location = new System.Drawing.Point(848, 6);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(326, 35);
+            this.panelControl1.Size = new System.Drawing.Size(373, 45);
             this.panelControl1.TabIndex = 5;
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(248, 5);
+            this.btn_Delete.Location = new System.Drawing.Point(283, 6);
+            this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.Size = new System.Drawing.Size(86, 30);
             this.btn_Delete.TabIndex = 6;
             this.btn_Delete.Text = "삭제";
             // 
             // btn_Update
             // 
-            this.btn_Update.Location = new System.Drawing.Point(167, 5);
+            this.btn_Update.Location = new System.Drawing.Point(191, 6);
+            this.btn_Update.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(75, 23);
+            this.btn_Update.Size = new System.Drawing.Size(86, 30);
             this.btn_Update.TabIndex = 5;
             this.btn_Update.Text = "저장";
             // 
             // uC_DBConnection1
             // 
-            this.uC_DBConnection1.Location = new System.Drawing.Point(12, 46);
+            this.uC_DBConnection1.Location = new System.Drawing.Point(14, 59);
+            this.uC_DBConnection1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.uC_DBConnection1.Name = "uC_DBConnection1";
             this.uC_DBConnection1.queryString = null;
-            this.uC_DBConnection1.Size = new System.Drawing.Size(269, 691);
+            this.uC_DBConnection1.Size = new System.Drawing.Size(322, 888);
             this.uC_DBConnection1.TabIndex = 6;
             this.uC_DBConnection1.UC_DataSet = null;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 794);
+            this.ClientSize = new System.Drawing.Size(1238, 844);
             this.Controls.Add(this.uC_DBConnection1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.gridControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

@@ -12,21 +12,43 @@ namespace SMJODBConnect
 {
     public class DBConnection
     {
-        private SqlConnection Conn { get; set; }        
+        private static SqlConnection Conn { get; set; }        
         private DataSet SelectedDataSet { get; set; }
+        private IDAC<DataRow> IDAC { get; set; }
         private DAC_MemeberInfo Dac_MemberInfo { get; set; }
         private DAC_User DAC_User { get; set; }
         private DAC_Department DAC_Department { get; set; }
+        private DACSimpleFactory DAC_SimpleFactory { get; set; }
         
-        public DBConnection()
+        public DBConnection(DACSimpleFactory DACFactory)
         {
-            this.Conn = new SqlConnection();            
+            Conn = new SqlConnection();            
             this.SelectedDataSet = new DataSet();
-            this.CreateDAC_MemberInfo(this.Conn);
-            this.CreateDAC_User(this.Conn);
-            this.CreateDAC_Department(this.Conn);
+            //this.CreateDAC_MemberInfo(Conn);
+            //this.CreateDAC_User(Conn);
+            //this.CreateDAC_Department(Conn);
+            this.DAC_SimpleFactory = DACFactory;
         }
 
+        public void DAC_Insert(DataRow item, string dataName)
+        {
+            this.IDAC = this.DAC_SimpleFactory.CreateDAC(dataName, Conn);
+            this.IDAC.Insert(item);
+        }
+
+        public void DAC_Update(DataRow item)
+        {
+
+        }
+
+        public void DAC_Delete(DataRow item)
+        {
+
+        }
+        public DataSet DAC_SelectAll()
+        {
+            return null;
+        }
         #region DAC MemberInfo
         public void CreateDAC_MemberInfo(SqlConnection Conn)
         {
@@ -277,10 +299,31 @@ namespace SMJODBConnect
                 message = "해제 실패";
             }
 
-            this.Conn = new SqlConnection(); //기존 연결 해지후 새로운 SqlConnection할당       
-            this.CreateDAC_MemberInfo(this.Conn); //데이터엑세스컨트롤러(DAC)이 있다면 새로운 SqlConnection을 데이터엑세스컨트롤러에게 주어야 합니다.
+            Conn = new SqlConnection(); //기존 연결 해지후 새로운 SqlConnection할당       
+            this.CreateDAC_MemberInfo(Conn); //데이터엑세스컨트롤러(DAC)이 있다면 새로운 SqlConnection을 데이터엑세스컨트롤러에게 주어야 합니다.
             return IsSuccess = true;
         }
         #endregion
+    }
+
+    public class DACSimpleFactory
+    {
+        public IDAC<DataRow> CreateDAC(string dataName, SqlConnection conn)
+        {
+            IDAC<DataRow> dac = null;
+            if (dataName == "Users")
+            {
+                dac = new DAC_User(conn);
+            }
+            else if(dataName == "MemberInfo")
+            {   
+                dac = new DAC_MemeberInfo(conn);
+            }
+            else if (dataName == "Department")
+            {
+                dac = new DAC_Department(conn);
+            }
+            return dac;
+        }
     }
 }

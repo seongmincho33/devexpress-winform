@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "DezeroSharp\Main.csproj", "{F3AC82A0-BD16-40B2-85D7-8ED85D2166BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DezeroMath", "DezeroMath\DezeroMath.csproj", "{EFBC7689-5FB5-4B43-8A9F-5C55AE39017D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph3D", "Graph3D\Graph3D.csproj", "{D1820EAB-01F6-4C4E-8821-86549809145A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3AC82A0-BD16-40B2-85D7-8ED85D2166BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3AC82A0-BD16-40B2-85D7-8ED85D2166BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3AC82A0-BD16-40B2-85D7-8ED85D2166BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3AC82A0-BD16-40B2-85D7-8ED85D2166BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBC7689-5FB5-4B43-8A9F-5C55AE39017D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBC7689-5FB5-4B43-8A9F-5C55AE39017D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBC7689-5FB5-4B43-8A9F-5C55AE39017D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBC7689-5FB5-4B43-8A9F-5C55AE39017D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1820EAB-01F6-4C4E-8821-86549809145A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1820EAB-01F6-4C4E-8821-86549809145A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1820EAB-01F6-4C4E-8821-86549809145A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1820EAB-01F6-4C4E-8821-86549809145A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63C4E4EF-3C1E-4995-ADB8-8E64D33B7C26}
+	EndGlobalSection
+EndGlobal

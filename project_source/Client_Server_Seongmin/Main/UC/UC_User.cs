@@ -10,16 +10,17 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using UC_Library;
 using DevExpress.XtraGrid.Views.Grid;
+using SMJODBConnect;
 
 namespace Main.UC
 {
     public partial class UC_User : DevExpress.XtraEditors.XtraUserControl
     {
-        UC_DBConnection uC_DBConnection;
-        public UC_User(UC_DBConnection uC_DBConnection)
+        DBConnection dbConn;
+        public UC_User(DBConnection dbConn)
         {
             InitializeComponent();
-            this.uC_DBConnection = uC_DBConnection;
+            this.dbConn = dbConn;
             this.SetControls();
             
            
@@ -72,11 +73,11 @@ namespace Main.UC
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            this.uC_DBConnection.dbConn.DAC_Insert_User(row);
+                            this.dbConn.DAC_Insert_User(row);
                         }
                         if (row.RowState == DataRowState.Modified)
                         {
-                            this.uC_DBConnection.dbConn.DAC_Update_User(row);
+                            this.dbConn.DAC_Update_User(row);
                         }
                     }
                     (this.gridControl1.DataSource as DataTable).AcceptChanges();
@@ -93,7 +94,7 @@ namespace Main.UC
                     int[] selRows = ((GridView)gridControl1.MainView).GetSelectedRows();
                     DataRowView selRow = (DataRowView)(((GridView)gridControl1.MainView).GetRow(selRows[0]));
                     //_ = selRow["name"].ToString();               
-                    this.uC_DBConnection.dbConn.DAC_Delete_User((DataRow)selRow.Row);
+                    this.dbConn.DAC_Delete_User((DataRow)selRow.Row);
                     this.DataRetrieve_User();
                 }
             }
@@ -148,11 +149,11 @@ namespace Main.UC
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            this.uC_DBConnection.dbConn.DAC_Insert_Department(row);
+                            this.dbConn.DAC_Insert_Department(row);
                         }
                         if (row.RowState == DataRowState.Modified)
                         {
-                            this.uC_DBConnection.dbConn.DAC_Update_Department(row);
+                            this.dbConn.DAC_Update_Department(row);
                         }
                     }
                     (this.treeList1.DataSource as DataTable).AcceptChanges();
@@ -164,7 +165,7 @@ namespace Main.UC
                     {
                         return;
                     }                                       
-                    this.uC_DBConnection.dbConn.DAC_Delete_Department(this.treeList1.GetFocusedDataRow());
+                    this.dbConn.DAC_Delete_Department(this.treeList1.GetFocusedDataRow());
                     this.DataRetrieve_Department();
                 }
             }
@@ -176,7 +177,7 @@ namespace Main.UC
             {
                 this.gridControl1.DataBindings.Clear();
                 this.gridControl1.DataSource = null;
-                this.gridControl1.DataSource = this.uC_DBConnection.dbConn.DAC_SelectAll_User().Tables[0];
+                this.gridControl1.DataSource = this.dbConn.DAC_SelectAll_User().Tables[0];
                 this.gridControl1.DefaultView.PopulateColumns();
             }
             catch (Exception ex)
@@ -191,7 +192,7 @@ namespace Main.UC
             {
                 this.treeList1.DataBindings.Clear();
                 this.treeList1.DataSource = null;
-                this.treeList1.DataSource = this.uC_DBConnection.dbConn.DAC_SelectAll_Department().Tables[0];
+                this.treeList1.DataSource = this.dbConn.DAC_SelectAll_Department().Tables[0];
                 this.treeList1.PopulateColumns();
             }
             catch (Exception ex)

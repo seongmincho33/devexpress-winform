@@ -1,0 +1,12 @@
+# Requirements for both Travis and AppVeyor
+pytest
+psutil
+
+# Coverage upload
+coverage
+codecov
+
+wheel
+pycparser
+setuptools
+clr-loader
