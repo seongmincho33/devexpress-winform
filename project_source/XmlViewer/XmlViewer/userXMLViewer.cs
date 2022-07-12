@@ -16,15 +16,40 @@ namespace XmlViewer
     {
         private List<(DataSet, string)> DsFiles { get; set; }
 
+        private List<(string[], string)> TextFiles { get; set; }
+
         private List<TreeNode> CurrentNodeMatches = new List<TreeNode>();
 
         private int LastNodeIndex = 0;
 
         private string LastSearchText;
 
-        public userXMLViewer()
+        public string ViewerName { get; set; }
+
+        private string _PathXML_FolderPath;
+
+        public string PathXML_FolderPath
+        {
+            get { return _PathXML_FolderPath; }
+            set 
+            {
+                _PathXML_FolderPath = value;
+                this.txtXML_FolderPath.Text = value;
+            }
+        }       
+
+        public userXMLViewer(string viewerName = "")
         {
             InitializeComponent();
+            ViewerName = viewerName;
+            this.SetControl();            
+        }
+
+        private void SetControl()
+        {            
+            this.dataGridView_XMLDataTable.RowTemplate.Resizable = DataGridViewTriState.True;
+            this.dataGridView_XMLDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.richTextBox_TEXTView.Visible = false;
             this.btnSearch_FolderPath.Click += Btn_Search_Click;
             this.btnFileNameSearch.Click += BtnFileNameSearch_Click;
             this.txtFileNameSearch.KeyDown += TxtFileNameSearch_KeyDown;
@@ -34,7 +59,13 @@ namespace XmlViewer
             this.treeView_FolderPath.AfterSelect += TreeView_FolderPath_AfterSelect;
             this.dataGridView_XMLDataTable.MouseHover += DataGridView_XMLDataTable_MouseHover;
             this.dataGridView_XMLDataTable.MouseLeave += DataGridView_XMLDataTable_MouseLeave;
-            this.SetControl();
+            this.txtXML_FolderPath.TextChanged += TxtXML_FolderPath_TextChanged;
+        }
+
+        private void TxtXML_FolderPath_TextChanged(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            this.PathXML_FolderPath = box.Text;
         }
 
         private void DataGridView_XMLDataTable_MouseLeave(object sender, EventArgs e)
@@ -110,23 +141,32 @@ namespace XmlViewer
                 MessageBox.Show(exc.Message);
             }
             //this.dataGridView_XMLDataTable.SelectionMode = DataGridViewSelectionMode.CellSelect;
-        }
-
-        private void SetControl()
-        {
-            //this.txtXML_FolderPath.Text = Settings.Default.SearchXMLPath;
-            this.dataGridView_XMLDataTable.RowTemplate.Resizable = DataGridViewTriState.True;
-            this.dataGridView_XMLDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-        }
+        }     
 
         private void TreeView_FolderPath_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
             {
                 this.dataGridView_XMLDataTable.DataSource = null;
+                this.richTextBox_TEXTView.Visible = false;
+                this.richTextBox_TEXTView.Clear();
+                dynamic aa = e.Node.Tag;
                 if (e.Node.Tag.GetType() == typeof(DataTable))
                 {
                     this.dataGridView_XMLDataTable.DataSource = (DataTable)e.Node.Tag;
+                    this.lblTableName.Text = e.Node.Tag.ToString();
+                    this.lblDataSetName.Text = e.Node.Parent.Text;
+                }
+                else if (aa.Item2.Contains(".txt"))
+                {
+                    this.richTextBox_TEXTView.Visible = true;
+                    foreach (var ss in this.TextFiles)
+                    {
+                        foreach (var ii in ss.Item1)
+                        {
+                            this.richTextBox_TEXTView.AppendText(ii);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -165,8 +205,7 @@ namespace XmlViewer
         }
 
         private void SearchNodes(string SearchText, TreeNode StartNode)
-        {
-            TreeNode node = null;
+        {            
             while (StartNode != null)
             {
                 if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
@@ -188,6 +227,7 @@ namespace XmlViewer
             //Settings.Default.Save();
             this.Cursor = Cursors.WaitCursor;
             this.SetXMLFilesToDataSetList();
+            this.SetTextFilesToList();
             this.SetDataSetListToTreeView();
             this.Cursor = Cursors.Default;
         }
@@ -204,14 +244,33 @@ namespace XmlViewer
                     if (ds != null)
                     {
                         this.DsFiles.Add((ds, Path.GetFileName(file)));
-                    }
+                    }             
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
 
+        private void SetTextFilesToList()
+        {
+            try
+            {
+                this.TextFiles = new List<(string[], string)>();
+                string[] files = Directory.GetFiles(this.txtXML_FolderPath.Text);
+                foreach (var file in files)
+                {                    
+                    if (Path.GetFileName(file).Contains(".txt"))
+                    {
+                        this.TextFiles.Add((System.IO.File.ReadAllLines(file), Path.GetFileName(file)));
+                    }                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private DataSet XmlToDataSet(string file_path)
@@ -242,6 +301,16 @@ namespace XmlViewer
                     dsNode.Nodes.Add(dtNode);
                 }
                 this.treeView_FolderPath.Nodes.Add(dsNode);
+            }
+
+            if(this.TextFiles.Count > 0)
+            {
+                foreach (var textfile in this.TextFiles)
+                {
+                    TreeNode dsNode = new TreeNode(textfile.Item2, 0, 0);
+                    dsNode.Tag = textfile;
+                    this.treeView_FolderPath.Nodes.Add(dsNode);
+                }
             }
         }
     }
