@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRegistryKeyName = new System.Windows.Forms.TextBox();
@@ -43,12 +43,12 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 98);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(800, 352);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox.Location = new System.Drawing.Point(0, 98);
+            this.richTextBox.Name = "richTextBox1";
+            this.richTextBox.Size = new System.Drawing.Size(800, 352);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
             // 
             // panel1
             // 
@@ -91,7 +91,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.richTextBox1);
+            this.panel2.Controls.Add(this.richTextBox);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -141,7 +141,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRegistrySearch;
         private System.Windows.Forms.TextBox txtRegistryKeyName;

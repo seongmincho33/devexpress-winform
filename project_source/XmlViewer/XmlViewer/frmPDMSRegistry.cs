@@ -39,7 +39,7 @@ namespace XmlViewer
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.Clear();
+            this.richTextBox.Clear();
             if(timer != null)
             {
                 timer.Tick -= Timer_Tick;
@@ -64,7 +64,22 @@ namespace XmlViewer
                 var registry_value = this.GetRegistryValue();
                 if(previousValue != registry_value)
                 {
-                    this.richTextBox1.AppendText("\n\n" + this.GetRegistryValue());
+                    int length = richTextBox.TextLength;
+                    this.richTextBox.AppendText(registry_value + "\n\n");
+                    richTextBox.SelectionStart = length;
+                    richTextBox.SelectionLength = registry_value.Length;
+                    if (registry_value.StartsWith("PDMS") && !registry_value.Contains("ERROR"))
+                    {
+                        richTextBox.SelectionColor = Color.Blue;
+                    }
+                    else if (registry_value.StartsWith("CONVERTER") && !registry_value.Contains("ERROR"))
+                    {
+                        richTextBox.SelectionColor = Color.Green;
+                    }                    
+                    else if (registry_value.Contains("ERROR"))
+                    {
+                        richTextBox.SelectionColor = Color.Red;
+                    }
                     previousValue = registry_value;
                 }                
             }

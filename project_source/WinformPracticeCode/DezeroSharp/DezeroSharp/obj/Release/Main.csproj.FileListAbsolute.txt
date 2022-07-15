@@ -1,0 +1,5 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroSharp\obj\Release\Main.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroSharp\obj\Release\Main.csproj.SuggestedBindingRedirects.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroSharp\obj\Release\Main.frmStart.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroSharp\obj\Release\seongmin_product.Properties.Resources.resources
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroSharp\obj\Release\Main.csproj.GenerateResource.cache

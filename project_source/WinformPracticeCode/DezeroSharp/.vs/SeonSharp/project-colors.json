@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f3ac82a0-bd16-40b2-85d7-8ed85d2166ba": {
+      "ProjectGuid": "f3ac82a0-bd16-40b2-85d7-8ed85d2166ba",
+      "DisplayName": "Main",
+      "ColorIndex": 0
+    },
+    "efbc7689-5fb5-4b43-8a9f-5c55ae39017d": {
+      "ProjectGuid": "efbc7689-5fb5-4b43-8a9f-5c55ae39017d",
+      "DisplayName": "DezeroMath",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

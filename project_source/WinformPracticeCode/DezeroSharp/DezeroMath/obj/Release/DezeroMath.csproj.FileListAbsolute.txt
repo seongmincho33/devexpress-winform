@@ -1,0 +1,9 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Release\DezeroMath.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Release\DezeroMath.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Release\MathNet.Numerics.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\bin\Release\MathNet.Numerics.xml
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Release\DezeroMath.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Release\DezeroMath.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Release\DezeroMath.csproj.CopyComplete
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Release\DezeroMath.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\WinformPracticeCode\DezeroSharp\DezeroMath\obj\Release\DezeroMath.pdb
