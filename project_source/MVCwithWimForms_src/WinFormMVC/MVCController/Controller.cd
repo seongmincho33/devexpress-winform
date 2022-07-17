@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WinFormMVC.Controller.UsersController">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAKAAAAAAAAAQAQAAAAAAAAAAAIAAACAAoAQAAAA=</HashCode>
+      <FileName>UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="WinFormMVC.Controller.IUsersView">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAgAAAAhAAQAAAAAQAAEgAAAAAAAAAQAAAAAIg=</HashCode>
+      <FileName>IUsersView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
