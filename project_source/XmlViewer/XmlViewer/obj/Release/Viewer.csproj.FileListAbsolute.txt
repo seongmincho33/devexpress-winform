@@ -19,7 +19,6 @@ C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewe
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\bin\Release\XmlViewer.exe.config
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\bin\Release\XmlViewer.exe
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\bin\Release\XmlViewer.pdb
-C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\obj\Release\Viewer.csproj.AssemblyReference.cache
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\obj\Release\Viewer.csproj.SuggestedBindingRedirects.cache
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\obj\Release\XmlViewer.frmPDMSRegistry.resources
 C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\XmlViewer\XmlViewer\obj\Release\XmlViewer.frmStart.resources

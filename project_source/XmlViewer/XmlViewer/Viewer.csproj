@@ -49,39 +49,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmPDMSRegistry.cs">
+    <Compile Include="PDSMRegistry\MVC-Controller\IPDMSRegistry.cs" />
+    <Compile Include="PDSMRegistry\MVC-Controller\PDMSRegistryController.cs" />
+    <Compile Include="PDSMRegistry\MVC-Model\RegistryKeyAndValue.cs" />
+    <Compile Include="PDSMRegistry\MVC-View\frmPDMSRegistry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPDMSRegistry.Designer.cs">
+    <Compile Include="PDSMRegistry\MVC-View\frmPDMSRegistry.Designer.cs">
       <DependentUpon>frmPDMSRegistry.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmStart.cs">
+    <Compile Include="Start\frmStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmStart.Designer.cs">
+    <Compile Include="Start\frmStart.Designer.cs">
       <DependentUpon>frmStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewer.cs">
+    <Compile Include="XmlViewer\MVC-View\frmViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewer.Designer.cs">
+    <Compile Include="XmlViewer\MVC-View\frmViewer.Designer.cs">
       <DependentUpon>frmViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Start\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="userXMLViewer.cs">
+    <Compile Include="XmlViewer\MVC-View\userXMLViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="userXMLViewer.Designer.cs">
+    <Compile Include="XmlViewer\MVC-View\userXMLViewer.Designer.cs">
       <DependentUpon>userXMLViewer.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmPDMSRegistry.resx">
+    <EmbeddedResource Include="PDSMRegistry\MVC-View\frmPDMSRegistry.resx">
       <DependentUpon>frmPDMSRegistry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStart.resx">
+    <EmbeddedResource Include="Start\frmStart.resx">
       <DependentUpon>frmStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewer.resx">
+    <EmbeddedResource Include="XmlViewer\MVC-View\frmViewer.resx">
       <DependentUpon>frmViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -93,7 +96,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="userXMLViewer.resx">
+    <EmbeddedResource Include="XmlViewer\MVC-View\userXMLViewer.resx">
       <DependentUpon>userXMLViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -109,6 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="XmlViewer\MVC-Controller\" />
+    <Folder Include="XmlViewer\MVC-Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

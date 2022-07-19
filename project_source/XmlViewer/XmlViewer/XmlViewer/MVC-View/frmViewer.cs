@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using XmlViewer.Properties;
 
 namespace XmlViewer
 {
     public partial class frmViewer : Form
-    {      
+    {
         List<userXMLViewer> ListuserXmlVier = new List<userXMLViewer>();
 
         public frmViewer()
@@ -29,7 +22,7 @@ namespace XmlViewer
         {
             try
             {
-                using(OpenFileDialog ofd = new OpenFileDialog())
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
                     DataSet ds = new DataSet();
                     if (ofd.ShowDialog() == DialogResult.OK)
@@ -37,7 +30,7 @@ namespace XmlViewer
                         ds.ReadXml(ofd.FileName);
                         DataTable dt = new DataTable();
                         dt = ds.Tables["XML_PATH"];
-                        if(dt.Rows.Count > 0)
+                        if (dt.Rows.Count > 0)
                         {
                             this.tabControl_Search.TabPages.Clear();
                             ListuserXmlVier.Clear();
@@ -57,16 +50,16 @@ namespace XmlViewer
                                     title = "검색창" + (tabControl_Search.TabCount + 1).ToString();
                                 }
                                 TabPage myTabPage = new TabPage(title);//Create new tabpage
-                                myTabPage.Controls.Add(myUserControl);                                
+                                myTabPage.Controls.Add(myUserControl);
                                 this.tabControl_Search.TabPages.Add(myTabPage);
                             }
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -77,8 +70,8 @@ namespace XmlViewer
             ds.Tables.Add(dt);
             dt.Columns.Add("TAB_NAME");
             dt.Columns.Add("SEARCH_FILE_PATH");
-            foreach(userXMLViewer viewer in this.ListuserXmlVier)
-            {                
+            foreach (userXMLViewer viewer in this.ListuserXmlVier)
+            {
                 DataRow dr = dt.NewRow();
                 dr["TAB_NAME"] = viewer.ViewerName;
                 dr["SEARCH_FILE_PATH"] = viewer.PathXML_FolderPath;
@@ -125,9 +118,9 @@ namespace XmlViewer
             if (this.tabControl_Search.SelectedTab != null)
             {
                 //foreach(var ss in this.ListuserXmlVier)
-                for(int i = 0; i < this.ListuserXmlVier.Count; i++)
+                for (int i = 0; i < this.ListuserXmlVier.Count; i++)
                 {
-                    if(ListuserXmlVier[i] == this.tabControl_Search.SelectedTab.Controls[0] as userXMLViewer)
+                    if (ListuserXmlVier[i] == this.tabControl_Search.SelectedTab.Controls[0] as userXMLViewer)
                     {
                         this.ListuserXmlVier.RemoveAt(i);
                     }
@@ -135,6 +128,6 @@ namespace XmlViewer
                 this.tabControl_Search.TabPages.Remove(this.tabControl_Search.SelectedTab);
                 this.txtTabName.Text = null;
             }
-        }       
+        }
     }
 }

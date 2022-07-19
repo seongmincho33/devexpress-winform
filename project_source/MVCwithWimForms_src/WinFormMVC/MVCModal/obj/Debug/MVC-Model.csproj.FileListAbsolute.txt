@@ -1,0 +1,6 @@
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\bin\Debug\MVCModal.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\bin\Debug\MVCModal.pdb
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csproj.AssemblyReference.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.dll
+C:\Users\smjo\Desktop\조성민업무\devexpress-winform\project_source\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.pdb
