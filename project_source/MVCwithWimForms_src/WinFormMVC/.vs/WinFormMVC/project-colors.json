@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d9e425ca-c61d-4ac2-b9c9-b95e186e6300": {
+      "ProjectGuid": "d9e425ca-c61d-4ac2-b9c9-b95e186e6300",
+      "DisplayName": "MVC-Controller",
+      "ColorIndex": 0
+    },
+    "21528841-93c2-4f68-9c58-2efe2d0d37ee": {
+      "ProjectGuid": "21528841-93c2-4f68-9c58-2efe2d0d37ee",
+      "DisplayName": "MVC-Model",
+      "ColorIndex": 1
+    },
+    "a83c27ba-91c3-421a-b154-a4fd4afb536e": {
+      "ProjectGuid": "a83c27ba-91c3-421a-b154-a4fd4afb536e",
+      "DisplayName": "UseMVCApplication",
+      "ColorIndex": 2
+    },
+    "d141c46e-b8ea-4ed6-a9bd-b14585744da0": {
+      "ProjectGuid": "d141c46e-b8ea-4ed6-a9bd-b14585744da0",
+      "DisplayName": "MVC-View",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,4 +1,7 @@
-﻿using XmlViewer.PDSMRegistry.MVC_Model;
+﻿using System.Collections;
+using System.Data;
+using System.Windows.Forms;
+using XmlViewer.PDSMRegistry.MVC_Model;
 
 namespace XmlViewer.PDSMRegistry.MVC_Controller
 {
@@ -6,14 +9,18 @@ namespace XmlViewer.PDSMRegistry.MVC_Controller
     {
         void SetController(PDMSRegistryController controller);
 
-        void UpdateRichResultWithRegistryValue(string registry_value);
+        void UpdateRichResultWithValueData(string vvalue);
 
         void ClearRichTextBox();
 
-        void UpdateRichTrackListWithRegistryKeyAndValue(RegistryKeyAndValue registryKeyAndValue);
+        void ClearDataGridView();
 
-        string KeyName { get; set; }
+        void UpdateDataGridViewTrackListWithRegistryKeyAndValueName(IList registryList);
 
-        string KeyValue { get; set; }
+        string Key { get; set; }
+
+        string ValueName { get; set; }
+
+        IList SelectedTrackInfoToDelete { get; }
     }
 }

@@ -49,9 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PDSMRegistry\MVC-View\Mode\IModeState.cs" />
     <Compile Include="PDSMRegistry\MVC-Controller\IPDMSRegistry.cs" />
+    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeStateStartToStop.cs" />
+    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeStateStopToStart.cs" />
+    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeSwitch.cs" />
     <Compile Include="PDSMRegistry\MVC-Controller\PDMSRegistryController.cs" />
-    <Compile Include="PDSMRegistry\MVC-Model\RegistryKeyAndValue.cs" />
+    <Compile Include="PDSMRegistry\MVC-Model\SeonRegistry.cs" />
     <Compile Include="PDSMRegistry\MVC-View\frmPDMSRegistry.cs">
       <SubType>Form</SubType>
     </Compile>

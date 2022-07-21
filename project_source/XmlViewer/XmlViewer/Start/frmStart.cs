@@ -29,9 +29,9 @@ namespace XmlViewer
             view.Visible = false;
 
             //2. 데이터 생성
-            IList registrys = new List<RegistryKeyAndValue>();
-            registrys.Add(new RegistryKeyAndValue(@"HKEY_CURRENT_USER\Software\PEDAS\", @"PDMSCommand"));
-            registrys.Add(new RegistryKeyAndValue(@"HKEY_CURRENT_USER\Software\PEDAS\", @"PDMS_REFNO"));
+            IList registrys = new List<SeonRegistry>();
+            registrys.Add(new SeonRegistry(@"HKEY_CURRENT_USER\Software\PEDAS\", @"PDMSCommand"));
+            registrys.Add(new SeonRegistry(@"HKEY_CURRENT_USER\Software\PEDAS\", @"PDMS_REFNO"));
 
             //3. 컨트롤 생성
             PDMSRegistryController controller = new PDMSRegistryController(view, registrys);

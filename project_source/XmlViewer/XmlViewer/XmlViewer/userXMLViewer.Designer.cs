@@ -31,37 +31,37 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView_FolderPath = new System.Windows.Forms.TreeView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFileNameSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFileNameSearch = new System.Windows.Forms.Button();
-            this.txtFileNameSearch = new System.Windows.Forms.TextBox();
+            this.richTextBox_TEXTView = new System.Windows.Forms.RichTextBox();
             this.dataGridView_XMLDataTable = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblDataSetName = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblTableName = new System.Windows.Forms.Label();
+            this.txtSearchRecord = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSearchRecord = new System.Windows.Forms.Button();
             this.txtSearchRecordColumn = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnSearchRecord = new System.Windows.Forms.Button();
-            this.txtSearchRecord = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch_FolderPath = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtXML_FolderPath = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTableName = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblDataSetName = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_TEXTView = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_XMLDataTable)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_XMLDataTable)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,6 +103,46 @@
             this.treeView_FolderPath.Size = new System.Drawing.Size(427, 658);
             this.treeView_FolderPath.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtFileNameSearch);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.btnFileNameSearch);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(427, 100);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "파일 탐색";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(359, 12);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "[2] 데이터 셋 하위의 테이블이 보이면 클릭시 옆에 테이블이 보임";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(251, 12);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "[1] 선택한 파일은 데이터셋일 경우만 해당함.";
+            // 
+            // txtFileNameSearch
+            // 
+            this.txtFileNameSearch.Location = new System.Drawing.Point(77, 65);
+            this.txtFileNameSearch.Name = "txtFileNameSearch";
+            this.txtFileNameSearch.Size = new System.Drawing.Size(162, 21);
+            this.txtFileNameSearch.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -121,12 +161,14 @@
             this.btnFileNameSearch.Text = "검색";
             this.btnFileNameSearch.UseVisualStyleBackColor = true;
             // 
-            // txtFileNameSearch
+            // richTextBox_TEXTView
             // 
-            this.txtFileNameSearch.Location = new System.Drawing.Point(77, 65);
-            this.txtFileNameSearch.Name = "txtFileNameSearch";
-            this.txtFileNameSearch.Size = new System.Drawing.Size(162, 21);
-            this.txtFileNameSearch.TabIndex = 4;
+            this.richTextBox_TEXTView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_TEXTView.Location = new System.Drawing.Point(0, 100);
+            this.richTextBox_TEXTView.Name = "richTextBox_TEXTView";
+            this.richTextBox_TEXTView.Size = new System.Drawing.Size(1050, 658);
+            this.richTextBox_TEXTView.TabIndex = 4;
+            this.richTextBox_TEXTView.Text = "";
             // 
             // dataGridView_XMLDataTable
             // 
@@ -137,6 +179,86 @@
             this.dataGridView_XMLDataTable.RowTemplate.Height = 23;
             this.dataGridView_XMLDataTable.Size = new System.Drawing.Size(1050, 658);
             this.dataGridView_XMLDataTable.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblDataSetName);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.lblTableName);
+            this.groupBox3.Controls.Add(this.txtSearchRecord);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.btnSearchRecord);
+            this.groupBox3.Controls.Add(this.txtSearchRecordColumn);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1050, 100);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "테이터 테이블 탐색";
+            // 
+            // lblDataSetName
+            // 
+            this.lblDataSetName.AutoSize = true;
+            this.lblDataSetName.Location = new System.Drawing.Point(131, 16);
+            this.lblDataSetName.Name = "lblDataSetName";
+            this.lblDataSetName.Size = new System.Drawing.Size(90, 12);
+            this.lblDataSetName.TabIndex = 12;
+            this.lblDataSetName.Text = "Data Set Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 12);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "[1] 데이터 셋 이름 : ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(227, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "레코드 검색 : ";
+            // 
+            // lblTableName
+            // 
+            this.lblTableName.AutoSize = true;
+            this.lblTableName.Location = new System.Drawing.Point(131, 42);
+            this.lblTableName.Name = "lblTableName";
+            this.lblTableName.Size = new System.Drawing.Size(75, 12);
+            this.lblTableName.TabIndex = 10;
+            this.lblTableName.Text = "Table Name";
+            // 
+            // txtSearchRecord
+            // 
+            this.txtSearchRecord.Location = new System.Drawing.Point(314, 67);
+            this.txtSearchRecord.Name = "txtSearchRecord";
+            this.txtSearchRecord.Size = new System.Drawing.Size(162, 21);
+            this.txtSearchRecord.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "[2] 테이블 이름     : ";
+            // 
+            // btnSearchRecord
+            // 
+            this.btnSearchRecord.Location = new System.Drawing.Point(482, 67);
+            this.btnSearchRecord.Name = "btnSearchRecord";
+            this.btnSearchRecord.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchRecord.TabIndex = 6;
+            this.btnSearchRecord.Text = "검색";
+            this.btnSearchRecord.UseVisualStyleBackColor = true;
             // 
             // txtSearchRecordColumn
             // 
@@ -153,31 +275,6 @@
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 7;
             this.label4.Text = "컬럼 : ";
-            // 
-            // btnSearchRecord
-            // 
-            this.btnSearchRecord.Location = new System.Drawing.Point(482, 67);
-            this.btnSearchRecord.Name = "btnSearchRecord";
-            this.btnSearchRecord.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchRecord.TabIndex = 6;
-            this.btnSearchRecord.Text = "검색";
-            this.btnSearchRecord.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchRecord
-            // 
-            this.txtSearchRecord.Location = new System.Drawing.Point(314, 67);
-            this.txtSearchRecord.Name = "txtSearchRecord";
-            this.txtSearchRecord.Size = new System.Drawing.Size(162, 21);
-            this.txtSearchRecord.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(227, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "레코드 검색 : ";
             // 
             // groupBox1
             // 
@@ -217,103 +314,6 @@
             this.txtXML_FolderPath.Size = new System.Drawing.Size(584, 21);
             this.txtXML_FolderPath.TabIndex = 1;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "[2] 테이블 이름     : ";
-            // 
-            // lblTableName
-            // 
-            this.lblTableName.AutoSize = true;
-            this.lblTableName.Location = new System.Drawing.Point(131, 42);
-            this.lblTableName.Name = "lblTableName";
-            this.lblTableName.Size = new System.Drawing.Size(75, 12);
-            this.lblTableName.TabIndex = 10;
-            this.lblTableName.Text = "Table Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 12);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "[1] 데이터 셋 이름 : ";
-            // 
-            // lblDataSetName
-            // 
-            this.lblDataSetName.AutoSize = true;
-            this.lblDataSetName.Location = new System.Drawing.Point(131, 16);
-            this.lblDataSetName.Name = "lblDataSetName";
-            this.lblDataSetName.Size = new System.Drawing.Size(90, 12);
-            this.lblDataSetName.TabIndex = 12;
-            this.lblDataSetName.Text = "Data Set Name";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(251, 12);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "[1] 선택한 파일은 데이터셋일 경우만 해당함.";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 43);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(359, 12);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "[2] 데이터 셋 하위의 테이블이 보이면 클릭시 옆에 테이블이 보임";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtFileNameSearch);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btnFileNameSearch);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(427, 100);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "파일 탐색";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lblDataSetName);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.lblTableName);
-            this.groupBox3.Controls.Add(this.txtSearchRecord);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.btnSearchRecord);
-            this.groupBox3.Controls.Add(this.txtSearchRecordColumn);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1050, 100);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "테이터 테이블 탐색";
-            // 
-            // richTextBox_TEXTView
-            // 
-            this.richTextBox_TEXTView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox_TEXTView.Location = new System.Drawing.Point(0, 100);
-            this.richTextBox_TEXTView.Name = "richTextBox_TEXTView";
-            this.richTextBox_TEXTView.Size = new System.Drawing.Size(1050, 658);
-            this.richTextBox_TEXTView.TabIndex = 4;
-            this.richTextBox_TEXTView.Text = "";
-            // 
             // userXMLViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -326,13 +326,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_XMLDataTable)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_XMLDataTable)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
