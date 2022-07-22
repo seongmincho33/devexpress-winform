@@ -3,16 +3,16 @@ using System.Collections;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using XmlViewer.PDSMRegistry.MVC_Controller;
-using XmlViewer.PDSMRegistry.MVC_Model;
+using Viewer.RegistryViewer.View;
+using Viewer.RegistryViewer.Model;
 
-namespace XmlViewer
+namespace Viewer
 {
-    public partial class frmPDMSRegistry : Form, IPDMSRegistry
+    public partial class frmRegistryViewer : Form, IRegistryViewer
     {
         ModeSwitch modeSwitch { get; set; }
 
-        PDMSRegistryController _controller;
+        RegistrVieweryController _controller;
 
         public string Key
         {
@@ -31,7 +31,7 @@ namespace XmlViewer
             get { return this.dataGridView_RegistryInfos.SelectedRows; }
         }
 
-        public frmPDMSRegistry()
+        public frmRegistryViewer()
         {
             InitializeComponent();            
             this.btn_TrackStop.Click += Btn_TrackStop_Click;
@@ -138,7 +138,7 @@ namespace XmlViewer
             this._controller.StopTimer();
         }
 
-        public void SetController(PDMSRegistryController controller)
+        public void SetController(RegistrVieweryController controller)
         {
             this._controller = controller;
         }

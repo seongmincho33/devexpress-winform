@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace XmlViewer
+namespace Viewer
 {
     internal static class Program
     {

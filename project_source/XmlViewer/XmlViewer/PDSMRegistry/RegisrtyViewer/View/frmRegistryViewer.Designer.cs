@@ -1,6 +1,6 @@
-﻿namespace XmlViewer
+﻿namespace Viewer
 {
-    partial class frmPDMSRegistry
+    partial class frmRegistryViewer
     {
         /// <summary>
         /// Required designer variable.

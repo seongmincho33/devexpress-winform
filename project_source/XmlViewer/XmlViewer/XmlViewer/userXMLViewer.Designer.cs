@@ -1,4 +1,4 @@
-﻿namespace XmlViewer
+﻿namespace Viewer
 {
     partial class userXMLViewer
     {

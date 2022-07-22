@@ -4,21 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using XmlViewer.PDSMRegistry.MVC_Model;
+using Viewer.RegistryViewer.Model;
 
-namespace XmlViewer.PDSMRegistry.MVC_Controller
+namespace Viewer.RegistryViewer.View
 {
-    public class PDMSRegistryController
+    public class RegistrVieweryController
     {
         private List<Timer> TimerList = new List<Timer>();
 
-        IPDMSRegistry _view;
+        IRegistryViewer _view;
 
         IList _registryList;        
 
         List<string> _lastValueDataList = new List<string>();        
 
-        public PDMSRegistryController(IPDMSRegistry view, IList registrys)
+        public RegistrVieweryController(IRegistryViewer view, IList registrys)
         {
             this._view = view;
             this._registryList = registrys;

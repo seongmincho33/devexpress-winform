@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XmlViewer.PDSMRegistry.MVC_Controller
+namespace Viewer.PDSMRegistry.RegistrySetter.Controller
 {
-    public interface IModeState
+    public class RegistrySetterController
     {
-        void toggle(ModeSwitch modeSwitch);
     }
 }

@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using XmlViewer.PDSMRegistry.MVC_Controller;
-using XmlViewer.PDSMRegistry.MVC_Model;
+using Viewer.RegistryViewer.View;
+using Viewer.RegistryViewer.Model;
 
-namespace XmlViewer
+namespace Viewer
 {
     public partial class frmStart : Form
     {
@@ -25,7 +25,7 @@ namespace XmlViewer
         private void BtnPDMSRegistry_Click(object sender, EventArgs e)
         {   
             //1. 뷰 생성
-            frmPDMSRegistry view = new frmPDMSRegistry();
+            frmRegistryViewer view = new frmRegistryViewer();
             view.Visible = false;
 
             //2. 데이터 생성
@@ -34,7 +34,7 @@ namespace XmlViewer
             registrys.Add(new SeonRegistry(@"HKEY_CURRENT_USER\Software\PEDAS\", @"PDMS_REFNO"));
 
             //3. 컨트롤 생성
-            PDMSRegistryController controller = new PDMSRegistryController(view, registrys);
+            RegistrVieweryController controller = new RegistrVieweryController(view, registrys);
             controller.LoadView();
             view.Show();
         }

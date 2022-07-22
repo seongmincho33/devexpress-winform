@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
-namespace XmlViewer
+namespace Viewer
 {
     public partial class frmViewer : Form
     {

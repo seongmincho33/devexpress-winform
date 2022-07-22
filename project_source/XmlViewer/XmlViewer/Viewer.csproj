@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B2C077C3-33F8-4A6D-982C-FDDB6A1C0EC8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>XmlViewer</RootNamespace>
+    <RootNamespace>Viewer</RootNamespace>
     <AssemblyName>XmlViewer</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,18 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PDSMRegistry\MVC-View\Mode\IModeState.cs" />
-    <Compile Include="PDSMRegistry\MVC-Controller\IPDMSRegistry.cs" />
-    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeStateStartToStop.cs" />
-    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeStateStopToStart.cs" />
-    <Compile Include="PDSMRegistry\MVC-View\Mode\ModeSwitch.cs" />
-    <Compile Include="PDSMRegistry\MVC-Controller\PDMSRegistryController.cs" />
-    <Compile Include="PDSMRegistry\MVC-Model\SeonRegistry.cs" />
-    <Compile Include="PDSMRegistry\MVC-View\frmPDMSRegistry.cs">
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\Mode\IModeState.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\Controller\IRegistryViewer.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\Mode\ModeStateStartToStop.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\Mode\ModeStateStopToStart.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\Mode\ModeSwitch.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\Controller\RegistryViewerController.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\Model\SeonRegistry.cs" />
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\frmRegistryViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PDSMRegistry\MVC-View\frmPDMSRegistry.Designer.cs">
-      <DependentUpon>frmPDMSRegistry.cs</DependentUpon>
+    <Compile Include="PDSMRegistry\RegisrtyViewer\View\frmRegistryViewer.Designer.cs">
+      <DependentUpon>frmRegistryViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDSMRegistry\RegistrySetter\Controller\IRegistrySetter.cs" />
+    <Compile Include="PDSMRegistry\RegistrySetter\Controller\RegistrySetterController.cs" />
+    <Compile Include="PDSMRegistry\RegistrySetter\View\frmRegisrtySetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDSMRegistry\RegistrySetter\View\frmRegisrtySetter.Designer.cs">
+      <DependentUpon>frmRegisrtySetter.cs</DependentUpon>
     </Compile>
     <Compile Include="Start\frmStart.cs">
       <SubType>Form</SubType>
@@ -68,27 +76,30 @@
     <Compile Include="Start\frmStart.Designer.cs">
       <DependentUpon>frmStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="XmlViewer\MVC-View\frmViewer.cs">
+    <Compile Include="XmlViewer\frmViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XmlViewer\MVC-View\frmViewer.Designer.cs">
+    <Compile Include="XmlViewer\frmViewer.Designer.cs">
       <DependentUpon>frmViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Start\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlViewer\MVC-View\userXMLViewer.cs">
+    <Compile Include="XmlViewer\userXMLViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="XmlViewer\MVC-View\userXMLViewer.Designer.cs">
+    <Compile Include="XmlViewer\userXMLViewer.Designer.cs">
       <DependentUpon>userXMLViewer.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="PDSMRegistry\MVC-View\frmPDMSRegistry.resx">
-      <DependentUpon>frmPDMSRegistry.cs</DependentUpon>
+    <EmbeddedResource Include="PDSMRegistry\RegisrtyViewer\View\frmRegistryViewer.resx">
+      <DependentUpon>frmRegistryViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDSMRegistry\RegistrySetter\View\frmRegisrtySetter.resx">
+      <DependentUpon>frmRegisrtySetter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start\frmStart.resx">
       <DependentUpon>frmStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XmlViewer\MVC-View\frmViewer.resx">
+    <EmbeddedResource Include="XmlViewer\frmViewer.resx">
       <DependentUpon>frmViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -99,8 +110,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="XmlViewer\MVC-View\userXMLViewer.resx">
+    <EmbeddedResource Include="XmlViewer\userXMLViewer.resx">
       <DependentUpon>userXMLViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -118,8 +130,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="XmlViewer\MVC-Controller\" />
-    <Folder Include="XmlViewer\MVC-Model\" />
+    <Folder Include="PDSMRegistry\RegistrySetter\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

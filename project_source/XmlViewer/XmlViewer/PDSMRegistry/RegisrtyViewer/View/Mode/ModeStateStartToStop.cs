@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace XmlViewer.PDSMRegistry.MVC_Controller
+namespace Viewer.RegistryViewer.View
 {
     public class ModeStateStartToStop : IModeState
     {

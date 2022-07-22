@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Data;
 using System.Windows.Forms;
-using XmlViewer.PDSMRegistry.MVC_Model;
+using Viewer.RegistryViewer.Model;
 
-namespace XmlViewer.PDSMRegistry.MVC_Controller
+namespace Viewer.RegistryViewer.View
 {
-    public interface IPDMSRegistry
+    public interface IRegistryViewer
     {
-        void SetController(PDMSRegistryController controller);
+        void SetController(RegistrVieweryController controller);
 
         void UpdateRichResultWithValueData(string vvalue);
 

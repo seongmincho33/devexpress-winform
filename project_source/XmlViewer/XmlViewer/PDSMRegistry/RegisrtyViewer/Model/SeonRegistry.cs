@@ -1,4 +1,4 @@
-﻿namespace XmlViewer.PDSMRegistry.MVC_Model
+﻿namespace Viewer.RegistryViewer.Model
 {
     public class SeonRegistry
     {
